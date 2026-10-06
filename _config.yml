@@ -1,0 +1,18 @@
+# Sicherheitsnetz für die Branch-Auslieferung von GitHub Pages.
+# Eigentlich liefert .github/workflows/deploy-pages.yml aus (nur Seitendateien).
+# Solange in Settings → Pages noch „Deploy from a branch“ eingestellt ist,
+# sorgt diese Liste dafür, dass Notizen, Recherche und Originalfotos nicht ins Netz gehen.
+exclude:
+  - CLAUDE.md
+  - README.md
+  - PRODUCT.md
+  - DESIGN.md
+  - ABNAHME.md
+  - UEBERGABE.md
+  - recherche
+  - bilder
+  - daten
+  - werkzeuge
+  - "img/*.json"
+  - "*.md"
+  - "*.json"
