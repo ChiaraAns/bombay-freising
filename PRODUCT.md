@@ -2,60 +2,69 @@
 
 <!-- impeccable:product-schema 1 -->
 
-> Zielgruppe und Spielraum vom Betreiber bestätigt (Abstimmung vom 06.10.2026). Mit „[abgeleitet]“ markierte Punkte stammen aus dem Repository.
+> Quellen: Startpaket des Betreibers (`CLAUDE.md`, `recherche/vision.md`, `recherche/bombay.md`, `recherche/speisekarte.md`, Stand 06.10.2026) und Abstimmungen mit dem Betreiber vom 06.10.2026. Offene Punkte stehen in `ABNAHME.md`.
 
 ## Platform
 
 web
 
+## Stack
+
+Statisch: HTML, CSS, Vanilla JS. Kein Build, keine Abhängigkeiten, keine CDNs. Die Speisekarte wird aus `daten/speisekarte.json` per `node werkzeuge/karte.mjs` in die Seiten geschrieben. Auslieferung über GitHub Pages (`.github/workflows/deploy-pages.yml`), nur Seitendateien.
+
 ## Users
 
-- Studierende (u. a. TUM Weihenstephan, Hochschule Weihenstephan-Triesdorf) und Stammgäste aus Freising. **Alle nutzen die Seite am Handy.** (bestätigt)
-- Typische Lage [abgeleitet]: unterwegs oder zu Hause kurz vor dem Essen; sie wollen schnell wissen, ob offen ist, was sie essen wollen und wie sie bestellen oder anrufen.
+- Studierende (TU-Campus Weihenstephan) und Stammgäste aus Freising, **alle am Handy** (bestätigt). Dazu Büro- und Altstadt-Publikum zum Mittagstisch.
+- Mittags zählen Tempo und Preis, abends der farbige Raum (Bewertungen, Öffnungszeiten).
+- Sie wollen wissen: Ist heute offen, bis wann? Was kostet es? Wie bestelle ich oder reserviere?
 
 ## Product Purpose
 
-Website des indischen Restaurants Bombay, Obere Hauptstraße 67, 85354 Freising. Sie soll Gäste zum Besuch, zur telefonischen Reservierung oder zur Online-Bestellung (Abholen/Liefern) führen. Erfolg heißt: Besucher finden in Sekunden ein passendes Gericht, die Öffnungszeiten und den Weg zur Bestellung oder zum Telefon.
+Die Website ersetzt das Durcheinander aus zwei Bestellseiten. Sie zeigt das Lokal, wie es ist, und schickt jeden, der bestellen will, mit **einem** Knopf zur Karvi-Bestellseite. Erfolg: eine Adresse, eine App, eine Preisliste; mehr Bestellungen über Karvi; weniger Anrufe mit „Habt ihr heute offen?“.
 
 ## Positioning
 
-- Tandoori aus dem Holzkohlelehmofen, Currys aus der Pfanne.
-- Rund zwanzig vegetarische Spezialitäten, mehrere auch vegan.
-- Thalis auf original indischen Platten, auch für zwei Personen, als Spezialität des Chefkochs.
-- Schärfe-Finder auf der Startseite: Gäste wählen Schärfe, Ernährung und Hunger und bekommen drei Gerichte aus der echten Karte.
+- Restaurant Bombay, Indische Spezialitäten, Obere Hauptstraße 67, 85354 Freising (Altstadt).
+- Laut Google-Profil: „farbenfrohe Inneneinrichtung, Terrasse und WLAN“, indische Currys und Tandoori-Gerichte; Lehmofen (Tandoor).
+- Gäste loben wiederholt: reichlich, günstig, schnell, freundlich (Google-Bewertungen, 4,5 von 5 aus 417, Stand 06.10.2026).
+- Jedes Gericht in vier Schärfegraden bestellbar: mild, pikant, scharf, sehr scharf (laut Restaurant, Karvi-Seite).
 
 ## Operating Context
 
-- Reservierung nur telefonisch: 08161 4965102, während der Öffnungszeiten.
-- Online-Bestellung über ein externes Bestellportal: https://restaurant-bombayfreising.de/bombay-freising/delivery
-- Öffnungszeiten: täglich 11:30–14:00 und 17:30–22:00, Dienstag Ruhetag (gepflegt in `app.js`).
-- Speisekarte mit Nummern, Preisen und Kennzeichnungen (vegetarisch, vegan erhältlich, scharf, sehr scharf, beliebt, ab 18), gepflegt in `menu.js`.
+- Öffnungszeiten: Mo, Mi–So 11:30–14:00 und 17:30–22:00; **Dienstag Ruhetag**; Mittagspause 14:00–17:30. Lieferzeiten folgen den Öffnungszeiten.
+- Online bestellen: Karvi, `https://bombayrestaurant-freising.de/order_type` (Lieferung ca. 60 min, Abholung ca. 30 min, Vorbestellung, PayPal und Karte). Apps: iOS `id6504758170`, Android `com.de.bombay.resto`.
+- Reservieren: telefonisch, +49 8161 4965102.
+- Die ältere order-smart-Seite und Lieferando werden nicht verlinkt (Vision: ein Weg).
 
 ## Capabilities and Constraints
 
-- Statische Website aus HTML, CSS und Vanilla-JavaScript ohne Build-Schritt; der Betreiber pflegt Preise und Zeiten direkt in `menu.js` und `app.js`.
-- Keine Cookies, keine Tracker, keine Schriften oder Skripte von Drittanbietern (so in der Datenschutzerklärung zugesagt). Schriften werden selbst gehostet.
-- Allergene und Zusatzstoffe: nur Hinweis auf Auskunft durch den Service; keine Angaben erfinden.
-- Impressum und Datenschutz enthalten gelb markierte Platzhalter, die der Betreiber vor dem Livegang ausfüllt.
+- Keine eigene Bestellstrecke, kein Warenkorb, kein Server: die Seite führt zu Karvi.
+- Keine Cookies, keine Tracker, keine Schriften, Skripte oder Karten von Drittanbietern. `localStorage` nur für die gemerkten Filter der Speisekarte.
+- Preise: 7 Preise von der neueren Karvi-Seite bestätigt, die übrigen vorläufig (siehe `ABNAHME.md`).
+- Allergene/Zusatzstoffe: nur die Legende und der Wortlaut des Restaurants; Kennzeichnung je Gericht liegt nicht vor.
+- Barrierefreiheit des Lokals laut Google-Profil: kein rollstuhlgerechter Eingang, kein rollstuhlgerechter Parkplatz.
 
 ## Brand Commitments
 
-- Name „Bombay“ und vorhandenes Logo (`logo-gold.png`, goldener Schriftzug mit Kuppelbogen) als Asset.
-- Keine weiteren Vorgaben: Farben, Schriften und Gestaltung dürfen komplett neu sein (bestätigt: kompletter Redesign).
-- Ansprache: höflich mit „Sie“, kurz und konkret.
+- Name „Bombay“, Logo: Schriftzug unter einem Kuppelbogen (Werbegrafik des Inhabers in Magenta; im Repo als Freisteller `logo-gold.png`, auf der Seite einfarbig eingefärbt).
+- **Leitfarbe: Rot der Polsterbänke und Servietten** (Betreiber, 06.10.2026). Kupfer der Handi-Schalen nur als Ornament. Farben, Schrift und Material kommen aus dem Raum, nicht aus einer Vorlage.
+- Ansprache: höflich mit „Sie“, kurz und konkret, Deutsch.
 
 ## Evidence on Hand
 
-- Echte Speisekarte mit Preisen (`menu.js`), echte Öffnungszeiten, Adresse und Telefonnummer.
-- Keine Fotos von Gerichten oder Räumen im Repository; keine Bewertungen, Auszeichnungen oder Presse. Nichts davon erfinden.
+- Sieben ausgewählte Gästefotos (`bilder/auswahl/`, EXIF/GPS entfernt) — für den Entwurf; für die Live-Seite Einwilligung oder eigene Aufnahmen nötig.
+- Einziges Raumfoto: `04-gastraum-wandbild` (Taj-Mahal-Wandbild, rote Bänke, Sternlaternen).
+- Echte Speisekarte (`daten/speisekarte.json`, 17 Gruppen, 141 Posten), Allergenlegende, Bewertungsauszüge ohne Namen.
+- Nicht vorhanden und nicht zu erfinden: Mittagstisch-/Buffetpreis und -zeiten, Fotos von Inhaber/Küche, Liefergebiet, Rabatte, „frisch“/„hausgemacht“-Aussagen über die Karte hinaus.
 
 ## Product Principles
 
-1. Der Weg zum Essen ist das Produkt: Bestellen, Anrufen und Route sind nie mehr als einen Daumen entfernt.
-2. Nur echte Fakten aus Karte und Betrieb; keine erfundenen Versprechen, Bewertungen oder Bilder.
-3. Der Betreiber muss Inhalte ohne Entwicklerwissen pflegen können.
-4. Ehrliche Orientierung zur Schärfe und Ernährung, damit Gäste sicher wählen.
+1. Ein Weg zum Essen: genau ein Hauptknopf „Online bestellen“ (Karvi); Telefon für Reservierung gleich daneben.
+2. Der erste Bildschirm beantwortet: Was gibt es, heute offen bis wann, Lieferung/Abholung, Telefon.
+3. Das Lokal zeigen, wie es ist: echte Fotos, echte Farben, nichts Geliehenes.
+4. Nur echte Fakten. Unklares weglassen und in `ABNAHME.md` fragen.
+5. Mittags Tempo, abends Atmosphäre.
 
 ## Accessibility & Inclusion
 
-- Deutschsprachig, **mobil zuerst** (bestätigt), vollständig per Tastatur bedienbar, WCAG-2.2-AA-Kontraste, reduzierte Bewegung respektieren.
+- Deutschsprachig, mobil zuerst, vollständig per Tastatur bedienbar, sichtbarer Fokus, WCAG-2.2-AA-Kontraste, `prefers-reduced-motion` bedient, jede klickbare Fläche mit Namen.

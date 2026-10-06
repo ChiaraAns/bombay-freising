@@ -1,0 +1,1253 @@
+{
+ "_lies_mich": "Quelle der Speisekarte. Nach jeder Änderung: node werkzeuge/karte.mjs (der Deploy-Workflow macht das auch selbst). Kennzeichen: v vegetarisch, n vegan möglich, s scharf, S sehr scharf (jeweils Grundeinstellung), t beliebt (Auswahl des Restaurants), a ab 18. karvi=true: Preis von der Karvi-Seite bestätigt; alle anderen vorläufig.",
+ "stand": "2026-10-06",
+ "gruppen": [
+  {
+   "id": "warme-vorspeisen",
+   "name": "Warme Vorspeisen",
+   "hinweis": "Alle warmen Vorspeisen werden mit 3 verschiedenen, schmackhaften Dips serviert. Alle Pakoras werden in Kichererbsenmehl gewendet und frittiert.",
+   "posten": [
+    {
+     "nr": 15,
+     "name": "Vegetable Pakora",
+     "beschreibung": "Frisches, gemischtes Gemüse",
+     "preis": "5,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 16,
+     "name": "Onions Bhaji",
+     "beschreibung": "Zwiebelringe kräftig gewürzt und frittiert",
+     "preis": "5,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 17,
+     "name": "Paneer Pakora",
+     "beschreibung": "Frischer hausgemachter Käse",
+     "preis": "5,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 18,
+     "name": "Fish Pakora",
+     "beschreibung": "Zartes Seelachsfilet",
+     "preis": "5,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 19,
+     "name": "Chicken Pakora",
+     "beschreibung": "Zartes Hühnerfleisch",
+     "preis": "5,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 20,
+     "name": "Jheenga Pakora",
+     "beschreibung": "Marinierte Riesengarnelen ohne Schale",
+     "preis": "8,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 21,
+     "name": "Vegetable Samosa",
+     "beschreibung": "2 kleine Pasteten mit frischem Gemüse gefüllt",
+     "preis": "5,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 22,
+     "name": "Mixed Starter Dish",
+     "beschreibung": "Gemischter Vorspeisenteller für 2 Personen",
+     "preis": "13,50",
+     "kennzeichen": "",
+     "karvi": false
+    }
+   ]
+  },
+  {
+   "id": "kalte-vorspeisen",
+   "name": "Kalte Vorspeisen",
+   "hinweis": "",
+   "posten": [
+    {
+     "nr": 10,
+     "name": "Chicken-Chana-Chat Delhi",
+     "beschreibung": "Indischer Hühnerfleisch- und Kichererbsen-Salat",
+     "preis": "5,50",
+     "kennzeichen": "",
+     "karvi": false
+    }
+   ]
+  },
+  {
+   "id": "suppen",
+   "name": "Suppen",
+   "hinweis": "",
+   "posten": [
+    {
+     "nr": 1,
+     "name": "Daal-Shorba",
+     "beschreibung": "Linsensuppe",
+     "preis": "4,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 2,
+     "name": "Sabzi-Shorba",
+     "beschreibung": "Gemüsesuppe",
+     "preis": "4,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 3,
+     "name": "Bohnensuppe",
+     "beschreibung": "Bohnensuppe",
+     "preis": "4,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 4,
+     "name": "Chicken-Shorba",
+     "beschreibung": "Hühnerfleischsuppe",
+     "preis": "4,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 5,
+     "name": "Tomatensuppe",
+     "beschreibung": "Tomatensuppe",
+     "preis": "4,90",
+     "kennzeichen": "",
+     "karvi": false
+    }
+   ]
+  },
+  {
+   "id": "salate",
+   "name": "Salate",
+   "hinweis": "",
+   "posten": [
+    {
+     "nr": 28,
+     "name": "Salat Saison",
+     "beschreibung": "Gemischter Salat mit French Dressing oder Essig und Öl",
+     "preis": "5,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 29,
+     "name": "Tomatensalat",
+     "beschreibung": "Mit Zwiebeln, Essig und Öl",
+     "preis": "5,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 30,
+     "name": "Salat Bombay",
+     "beschreibung": "Gemischter Salat mit Kichererbsen, Ananas, Käse und Mais",
+     "preis": "9,50",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 31,
+     "name": "Indien Salat",
+     "beschreibung": "Mit gebratenen Hühnerbrustfiletstreifen, frischen Champignons, Mais und Zwiebeln",
+     "preis": "9,50",
+     "kennzeichen": "",
+     "karvi": false
+    }
+   ]
+  },
+  {
+   "id": "fisch-spezialitaeten",
+   "name": "Fisch-Spezialitäten",
+   "hinweis": "Mit ofenfrischem Naan, Reis und Soßen serviert.",
+   "posten": [
+    {
+     "nr": 89,
+     "name": "Fisch Curry",
+     "beschreibung": "Fischfilet in Currysoße",
+     "preis": "14,90",
+     "kennzeichen": "S",
+     "karvi": false
+    },
+    {
+     "nr": 90,
+     "name": "Fisch Chili",
+     "beschreibung": "Fischfilet in Chilisoße",
+     "preis": "13,90",
+     "kennzeichen": "S",
+     "karvi": true
+    },
+    {
+     "nr": 91,
+     "name": "Fisch Masala",
+     "beschreibung": "Fischfilet nach ostindischer Art zubereitet",
+     "preis": "14,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 92,
+     "name": "Jheenga Curry",
+     "beschreibung": "Riesengarnelen ohne Schale in Currysoße mit feinen Gewürzen",
+     "preis": "16,90",
+     "kennzeichen": "",
+     "karvi": true
+    },
+    {
+     "nr": 93,
+     "name": "Jheenga Masala",
+     "beschreibung": "Riesengarnelen ohne Schale in kräftiger Masala-Soße",
+     "preis": "17,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 94,
+     "name": "Jheenga Khumb Wala",
+     "beschreibung": "Riesengarnelen ohne Schale mit frischen Pfifferlingen, Knoblauch und Ingwer in Mandel-Safransoße",
+     "preis": "17,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 95,
+     "name": "Jheenga Goa",
+     "beschreibung": "Riesengarnelen ohne Schale in Kokosnusssoße mit ausgewählten Gewürzen nach Goa-Art",
+     "preis": "17,90",
+     "kennzeichen": "S",
+     "karvi": false
+    },
+    {
+     "nr": 96,
+     "name": "Jheenga Mango",
+     "beschreibung": "Riesengarnelen ohne Schale in frischer Mango-Safran-Cashewnusssoße, fein gewürzt",
+     "preis": "17,90",
+     "kennzeichen": "",
+     "karvi": false
+    }
+   ]
+  },
+  {
+   "id": "enten-spezialitaeten",
+   "name": "Enten-Spezialitäten",
+   "hinweis": "Mit ofenfrischem Naan, Reis und Soßen serviert.",
+   "posten": [
+    {
+     "nr": 81,
+     "name": "Duck Curry",
+     "beschreibung": "Entenbrustfilet in Currysoße mit feinen Gewürzen",
+     "preis": "16,50",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 82,
+     "name": "Duck Khumb Wala",
+     "beschreibung": "Entenbrustfilet mit frischen Champignons, Knoblauch und Ingwer in Mandel-Safransoße",
+     "preis": "16,50",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 83,
+     "name": "Duck Jalfrezi",
+     "beschreibung": "Entenbrustfilet mit Paprika, Zwiebeln, Tomaten, grünem Chili und frischem Gemüse",
+     "preis": "16,50",
+     "kennzeichen": "s",
+     "karvi": false
+    },
+    {
+     "nr": 84,
+     "name": "Duck Bombay",
+     "beschreibung": "Entenbrustfilet in Masala-Soße",
+     "preis": "16,50",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 85,
+     "name": "Duck Mango",
+     "beschreibung": "Entenbrustfilet in Mango-Safran-Cashewnusssoße, fein gewürzt",
+     "preis": "16,50",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 86,
+     "name": "Duck Korma",
+     "beschreibung": "Entenbrustfilet in Kokosnusssoße, fein gewürzt",
+     "preis": "16,50",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 87,
+     "name": "Duck Palak",
+     "beschreibung": "Entenbrustfilet mit Spinat",
+     "preis": "16,50",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 88,
+     "name": "Duck Vindaloo",
+     "beschreibung": "Entenbrustfilet mit Spezialgewürzen aus Goa",
+     "preis": "16,50",
+     "kennzeichen": "S",
+     "karvi": false
+    }
+   ]
+  },
+  {
+   "id": "huehnerfleisch-spezialitaeten",
+   "name": "Hühnerfleisch-Spezialitäten",
+   "hinweis": "Mit ofenfrischem Naan, Reis und Soßen serviert.",
+   "posten": [
+    {
+     "nr": 51,
+     "name": "Chicken Curry",
+     "beschreibung": "Zartes Hühnerfleisch in Currysoße mit feinen Gewürzen",
+     "preis": "14,90",
+     "kennzeichen": "t",
+     "karvi": false
+    },
+    {
+     "nr": 52,
+     "name": "Chicken Badam Pasanda",
+     "beschreibung": "Zartes Hühnerfleisch in Nusssoße mit Kokosnussflocken und gemahlenen Mandeln",
+     "preis": "14,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 53,
+     "name": "Chicken Sabzi",
+     "beschreibung": "Zartes Hühnerfleisch mit verschiedenem frischem Gemüse",
+     "preis": "14,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 54,
+     "name": "Karahi Chicken",
+     "beschreibung": "Gebratenes Hühnerfleisch in Currysoße, in der Pfanne serviert",
+     "preis": "14,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 55,
+     "name": "Chicken Jalfrezi",
+     "beschreibung": "Hühnerfleisch ohne Knochen, mit Paprika, Zwiebeln, Tomaten und grünem Chili",
+     "preis": "14,90",
+     "kennzeichen": "s",
+     "karvi": false
+    },
+    {
+     "nr": 56,
+     "name": "Chicken Vindaloo",
+     "beschreibung": "Hühnerfleisch mit Spezialgewürzen aus Goa",
+     "preis": "14,90",
+     "kennzeichen": "S",
+     "karvi": false
+    },
+    {
+     "nr": 57,
+     "name": "Butter Chicken",
+     "beschreibung": "Zartes Hühnerfleisch in Butter-Tomaten-Soße",
+     "preis": "14,90",
+     "kennzeichen": "t",
+     "karvi": false
+    },
+    {
+     "nr": 58,
+     "name": "Chicken Tikka Masala",
+     "beschreibung": "Zartes Hühnerfleisch in Masalasoße",
+     "preis": "14,90",
+     "kennzeichen": "t",
+     "karvi": false
+    },
+    {
+     "nr": 60,
+     "name": "Chicken Palak",
+     "beschreibung": "Zartes Hühnerfleisch mit Spinat, nach berühmter nordindischer Art",
+     "preis": "14,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 61,
+     "name": "Mango Chicken",
+     "beschreibung": "Hühnerfleisch in frischer Mango-Safran-Cashewnusssoße",
+     "preis": "13,90",
+     "kennzeichen": "",
+     "karvi": true
+    },
+    {
+     "nr": 62,
+     "name": "Chicken Korma",
+     "beschreibung": "Hühnerfleisch in frischer Kokosnusssoße",
+     "preis": "14,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 63,
+     "name": "Chicken Ananas",
+     "beschreibung": "Zartes Hühnerfleisch mit Ananas",
+     "preis": "14,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 64,
+     "name": "Chicken Dal",
+     "beschreibung": "Zartes Hühnerfleisch mit gelben indischen Linsen gegart",
+     "preis": "14,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 65,
+     "name": "Chili Chicken",
+     "beschreibung": "Zartes Hühnerbrustfilet, gebraten mit grünem Chili",
+     "preis": "14,90",
+     "kennzeichen": "",
+     "karvi": false
+    }
+   ]
+  },
+  {
+   "id": "lamm-spezialitaeten",
+   "name": "Lamm-Spezialitäten",
+   "hinweis": "Mit ofenfrischem Naan, Reis und Soßen serviert.",
+   "posten": [
+    {
+     "nr": 66,
+     "name": "Lamm Curry",
+     "beschreibung": "Zartes Lammfleisch in Currysoße",
+     "preis": "15,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 67,
+     "name": "Rogan Josh",
+     "beschreibung": "Zartes Lammfleisch in Rogan-Currysoße",
+     "preis": "15,50",
+     "kennzeichen": "",
+     "karvi": true
+    },
+    {
+     "nr": 68,
+     "name": "Mughlai Meat",
+     "beschreibung": "Zartes Lammfleisch in Mandel-Safran-Sahnesoße",
+     "preis": "15,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 69,
+     "name": "Bhunna Ghosht",
+     "beschreibung": "Gebratenes Lammfleisch mit Tomaten und Röstzwiebeln in kräftiger Soße",
+     "preis": "15,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 70,
+     "name": "Ghosht Palak",
+     "beschreibung": "Gebratenes Lammfleisch mit Spinat nach berühmter nordindischer Art",
+     "preis": "15,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 71,
+     "name": "Mutton Khumb Wala",
+     "beschreibung": "Zartes Lammfleisch mit frischen Champignons, Knoblauch und Ingwer in Mandel-Safransoße",
+     "preis": "15,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 72,
+     "name": "Mutton Vindaloo",
+     "beschreibung": "Zartes Lammfleisch mit Spezialgewürzen aus Goa",
+     "preis": "15,90",
+     "kennzeichen": "S",
+     "karvi": false
+    },
+    {
+     "nr": 73,
+     "name": "Karahi Ghosht",
+     "beschreibung": "Gebratenes Lammfleisch in Currysoße, in der Pfanne serviert",
+     "preis": "15,50",
+     "kennzeichen": "",
+     "karvi": true
+    },
+    {
+     "nr": 74,
+     "name": "Dal Gosht",
+     "beschreibung": "Zartes Lammfleisch mit Korianderblättern und gelben Linsen",
+     "preis": "15,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 75,
+     "name": "Data Ghosht",
+     "beschreibung": "Zartes Lammfleisch in Curry-Joghurt-Mandel-Soße",
+     "preis": "15,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 76,
+     "name": "Bhindi Ghosht",
+     "beschreibung": "Zartes Lammfleisch mit Okragemüse",
+     "preis": "15,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 77,
+     "name": "Mango Lamb",
+     "beschreibung": "Zartes Lammfleisch in frischer Mango-Safran-Cashewnusssoße",
+     "preis": "15,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 78,
+     "name": "Lamm Korma",
+     "beschreibung": "Zartes Lammfleisch in Kokosnusssoße",
+     "preis": "15,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 79,
+     "name": "Lamm Tikka Masala",
+     "beschreibung": "Zartes Lammfleisch in Masalasoße",
+     "preis": "15,90",
+     "kennzeichen": "",
+     "karvi": false
+    }
+   ]
+  },
+  {
+   "id": "vegetarische-spezialitaeten",
+   "name": "Vegetarische Spezialitäten",
+   "hinweis": "Mit ofenfrischem Naan, Reis und Soßen serviert.",
+   "posten": [
+    {
+     "nr": 101,
+     "name": "Malai Kofta",
+     "beschreibung": "2 Klößchen aus hausgemachtem Käse mit Kartoffeln und Nüssen",
+     "preis": "12,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 102,
+     "name": "Navratan Korma",
+     "beschreibung": "Gemischtes Gemüse mit verschiedenen Zutaten, nach Mughlai-Art",
+     "preis": "12,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 103,
+     "name": "Shahi Paneer",
+     "beschreibung": "Hausgemachter Käse, zubereitet in Butter-Tomaten-Sahne-Soße, fein gewürzt",
+     "preis": "12,90",
+     "kennzeichen": "vt",
+     "karvi": false
+    },
+    {
+     "nr": 104,
+     "name": "Palak Paneer",
+     "beschreibung": "Kräftiger Spinat mit hausgemachtem Käse, Ayurvedische Art",
+     "preis": "12,90",
+     "kennzeichen": "vt",
+     "karvi": false
+    },
+    {
+     "nr": 105,
+     "name": "Shahi Baingan",
+     "beschreibung": "Auberginen mit hausgemachtem Käse und Ingwer in Mandelsoße, fein gewürzt",
+     "preis": "12,90",
+     "kennzeichen": "vt",
+     "karvi": false
+    },
+    {
+     "nr": 106,
+     "name": "Sabzi Kofta",
+     "beschreibung": "Gemüseklößchen in würziger Currysoße",
+     "preis": "12,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 107,
+     "name": "Chana Masala",
+     "beschreibung": "Kichererbsen in Curry mit frischen Tomaten und Ingwer",
+     "preis": "12,90",
+     "kennzeichen": "vnt",
+     "karvi": false
+    },
+    {
+     "nr": 108,
+     "name": "Dal Makhni",
+     "beschreibung": "Indisches Nationalgericht mit gelben Linsen und Butter nach ayurvedischer Art, auf Wunsch vegan zubereitet",
+     "preis": "12,90",
+     "kennzeichen": "vn",
+     "karvi": true
+    },
+    {
+     "nr": 109,
+     "name": "Karahi Paneer",
+     "beschreibung": "Frischer, gebratener, hausgemachter Käse in Currysoße, in der Pfanne serviert",
+     "preis": "12,90",
+     "kennzeichen": "v",
+     "karvi": true
+    },
+    {
+     "nr": 110,
+     "name": "Bhindi Masala",
+     "beschreibung": "Frisches indisches Okra-Gemüse in kräftiger Soße",
+     "preis": "12,90",
+     "kennzeichen": "vnt",
+     "karvi": false
+    },
+    {
+     "nr": 111,
+     "name": "Mixed Vegetables",
+     "beschreibung": "Gemischtes frisches Gemüse, pikant gewürzt",
+     "preis": "12,90",
+     "kennzeichen": "vn",
+     "karvi": false
+    },
+    {
+     "nr": 112,
+     "name": "Baingan Ka Bharta",
+     "beschreibung": "Frische Auberginen, püriert mit Zwiebeln und Tomaten, kräftig gewürzt",
+     "preis": "12,90",
+     "kennzeichen": "vn",
+     "karvi": false
+    },
+    {
+     "nr": 113,
+     "name": "Aloo Tomaten Curry",
+     "beschreibung": "Kartoffeln mit frischen Tomaten in Currysoße",
+     "preis": "12,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 114,
+     "name": "Aloo Baingan",
+     "beschreibung": "Kartoffeln mit Auberginen in Masalasoße",
+     "preis": "12,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 115,
+     "name": "Dal Tarka",
+     "beschreibung": "Gelbe indische Linsen",
+     "preis": "12,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 116,
+     "name": "Paneer Butter Masala",
+     "beschreibung": "Käse in Masala-Soße",
+     "preis": "12,90",
+     "kennzeichen": "vt",
+     "karvi": false
+    },
+    {
+     "nr": 117,
+     "name": "Mushroom Paneer",
+     "beschreibung": "Käse mit Champignons",
+     "preis": "12,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 97,
+     "name": "Aloo Palak",
+     "beschreibung": "Kartoffeln mit Spinat",
+     "preis": "12,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 98,
+     "name": "Mushroom Bhaji",
+     "beschreibung": "Champignons mit Zwiebeln in würziger Soße",
+     "preis": "12,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 99,
+     "name": "Jeera Aloo",
+     "beschreibung": "Kartoffeln mit Kreuzkümmel",
+     "preis": "12,90",
+     "kennzeichen": "v",
+     "karvi": false
+    }
+   ]
+  },
+  {
+   "id": "reis-spezialitaeten",
+   "name": "Reis-Spezialitäten",
+   "hinweis": "Zubereitet mit Basmati-Reis aus Nordindien.",
+   "posten": [
+    {
+     "nr": 118,
+     "name": "Vegetable Biryani",
+     "beschreibung": "Frisches, gemischtes Gemüse mit Mandeln und Rosinen",
+     "preis": "13,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 119,
+     "name": "Chicken Biryani",
+     "beschreibung": "Hühnerfleisch mit Mandeln und Rosinen",
+     "preis": "14,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 120,
+     "name": "Mutton Biryani",
+     "beschreibung": "Lammfleisch mit Mandeln und Rosinen",
+     "preis": "15,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 121,
+     "name": "Bombay Biryani",
+     "beschreibung": "Mit Hühnerbrust- und Lammstreifen, Shrimps und Nüssen",
+     "preis": "16,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 122,
+     "name": "Jheenga Biryani",
+     "beschreibung": "Riesengarnelen mit Mandeln und Rosinen",
+     "preis": "19,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 123,
+     "name": "Fisch Biryani",
+     "beschreibung": "Fischfilet mit Mandeln und Rosinen",
+     "preis": "17,90",
+     "kennzeichen": "",
+     "karvi": false
+    }
+   ]
+  },
+  {
+   "id": "tandoori-khajana",
+   "name": "Tandoori – Khajana",
+   "hinweis": "Aus dem Holzkohlelehmofen. Mit ofenfrischem Naan, Reis und Soßen serviert.",
+   "posten": [
+    {
+     "nr": 37,
+     "name": "Tandoori Chicken",
+     "beschreibung": "Hähnchen, mariniert nach einem berühmten nordindischen Rezept (mit Knochen)",
+     "preis": "16,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 38,
+     "name": "Chicken Chili Tikka",
+     "beschreibung": "Zartes, mariniertes Hühnerfleisch, gegrillt – Bengali-Art",
+     "preis": "16,90",
+     "kennzeichen": "S",
+     "karvi": false
+    },
+    {
+     "nr": 39,
+     "name": "Chicken Tikka",
+     "beschreibung": "Zarte marinierte Hühnerfleischstücke, gegrillt",
+     "preis": "16,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 41,
+     "name": "Haryali Malai Kebab",
+     "beschreibung": "Zartes Hühnerfleisch in Joghurt mit Spinat-, Minze- und Koriandersoße mariniert, mit Beilage",
+     "preis": "16,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 43,
+     "name": "Vegetable Tandoori",
+     "beschreibung": "Hausgemachter Käse, Blumenkohl, Tomaten, Zwiebeln, Zucchini, Auberginen und Paprika, in Joghurt und Gewürzen eingelegt, am Spieß gegrillt",
+     "preis": "16,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 44,
+     "name": "Fish Tikka",
+     "beschreibung": "Frisches Seelachsfilet, in Joghurt und Gewürzen mariniert, knusprig gegrillt",
+     "preis": "16,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 45,
+     "name": "Jheenga Tandoori",
+     "beschreibung": "Riesengarnelen ohne Schale, in Joghurt und Gewürzen mariniert, knusprig gegrillt",
+     "preis": "19,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 46,
+     "name": "Mixed-Grill-Platte",
+     "beschreibung": "Etwas von allen Tandoori-Köstlichkeiten mit einem Stück Seelachs und einer Garnele",
+     "preis": "19,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 47,
+     "name": "Bombay Teller",
+     "beschreibung": "Gebratenes Hühner- und Lammfleisch mit frischem Gemüse, Reis und Naan",
+     "preis": "16,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 48,
+     "name": "Garlic Chicken Tikka",
+     "beschreibung": "Mariniertes Hühnerbrustfilet in Knoblauch-Joghurt-Soße",
+     "preis": "16,90",
+     "kennzeichen": "",
+     "karvi": false
+    }
+   ]
+  },
+  {
+   "id": "tandoori-brot",
+   "name": "Tandoori-Brot",
+   "hinweis": "Frisch gebackenes Fladenbrot aus dem Holzkohlelehmofen.",
+   "posten": [
+    {
+     "nr": 157,
+     "name": "Naan",
+     "beschreibung": "Ovales Brot aus Hefeteig",
+     "preis": "2,50",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 158,
+     "name": "Butter Naan",
+     "beschreibung": "Ovales Brot aus Hefeteig mit Butter",
+     "preis": "2,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 159,
+     "name": "Garlic Naan",
+     "beschreibung": "Ovales Brot aus Hefeteig mit Knoblauch",
+     "preis": "3,50",
+     "kennzeichen": "t",
+     "karvi": false
+    },
+    {
+     "nr": 160,
+     "name": "Keema Naan",
+     "beschreibung": "Ovales Brot aus Hefeteig, gefüllt mit Hühnerfleisch",
+     "preis": "4,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 161,
+     "name": "Pashawari Naan",
+     "beschreibung": "Ovales süßes Brot aus Hefeteig, gefüllt mit hausgemachtem Käse, Cashewnüssen und Hühnerfleisch",
+     "preis": "4,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 162,
+     "name": "Roti",
+     "beschreibung": "Flaches Vollkornfladenbrot",
+     "preis": "2,50",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 163,
+     "name": "Batura",
+     "beschreibung": "Ovales Brot aus Hefeteig, frittiert",
+     "preis": "3,00",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 164,
+     "name": "Vegetable Paratha",
+     "beschreibung": "Brot, gefüllt mit frischem Gemüse",
+     "preis": "4,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 165,
+     "name": "Paneer Kulcha",
+     "beschreibung": "Hefeteigbrot, gefüllt mit hausgemachtem Käse",
+     "preis": "4,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 166,
+     "name": "Pappad",
+     "beschreibung": "Linsenwaffeln mit 3 verschiedenen Soßen",
+     "preis": "2,50",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 167,
+     "name": "Aloo Paratha",
+     "beschreibung": "",
+     "preis": "4,90",
+     "kennzeichen": "",
+     "karvi": false
+    }
+   ]
+  },
+  {
+   "id": "thalis",
+   "name": "Thalis",
+   "hinweis": "Verschiedene Gerichte auf einem Teller, serviert auf original indischen Platten. Eine Spezialität unseres Chefkochs – lassen Sie sich überraschen.",
+   "posten": [
+    {
+     "nr": 127,
+     "name": "Vegetable Thali",
+     "beschreibung": "3 verschiedene Gemüsegerichte, Raita, Salat, Pappad und Basmati-Reis",
+     "preis": "15,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 128,
+     "name": "Bombay Thali",
+     "beschreibung": "1 Lamm-, 1 Hühnchen-, 1 Entengericht, Raita, Salat, Pappad, Naan und Basmati-Reis",
+     "preis": "16,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 129,
+     "name": "Fish Thali",
+     "beschreibung": "3 verschiedene Fischgerichte, Raita, Salat, Pappad und Basmati-Reis",
+     "preis": "18,90",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 130,
+     "name": "Vegetable Thali Grand (für 2 Personen)",
+     "beschreibung": "Verschiedene Gemüsegerichte, Raita, Salat, Pappad und Basmati-Reis",
+     "preis": "29,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 131,
+     "name": "Bombay Thali Grand (für 2 Personen)",
+     "beschreibung": "Lamm-, Hühnchen- und Entengericht, Raita, Salat, Pappad, Naan und Basmati-Reis",
+     "preis": "32,90",
+     "kennzeichen": "",
+     "karvi": false
+    }
+   ]
+  },
+  {
+   "id": "beilagen",
+   "name": "Beilagen",
+   "hinweis": "Zu allen Speisen zu empfehlen.",
+   "posten": [
+    {
+     "nr": 137,
+     "name": "Plain Dahi",
+     "beschreibung": "Einfacher Joghurt",
+     "preis": "2,20",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 138,
+     "name": "Kheera Ka Raita",
+     "beschreibung": "Gurken-Joghurt",
+     "preis": "2,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 139,
+     "name": "Mixed Raita",
+     "beschreibung": "Joghurt mit Gurken, Zwiebeln, Tomaten und Koriander",
+     "preis": "3,50",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 144,
+     "name": "Basmati-Reis",
+     "beschreibung": "Einfacher Basmati-Reis",
+     "preis": "4,50",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 145,
+     "name": "Mixed Pickles",
+     "beschreibung": "",
+     "preis": "2,50",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": 146,
+     "name": "Extra Soße",
+     "beschreibung": "",
+     "preis": "2,50",
+     "kennzeichen": "",
+     "karvi": false
+    }
+   ]
+  },
+  {
+   "id": "nachspeisen",
+   "name": "Nachspeisen",
+   "hinweis": "",
+   "posten": [
+    {
+     "nr": 177,
+     "name": "Gulab Jamun",
+     "beschreibung": "Bällchen aus Milch und Quark, in Honig gebacken",
+     "preis": "4,90",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 178,
+     "name": "Halwa",
+     "beschreibung": "Gekochter Grieß mit gemahlenen Kokosflocken und Rosinen in Milch und Kokosmilch",
+     "preis": "5,20",
+     "kennzeichen": "v",
+     "karvi": false
+    },
+    {
+     "nr": 179,
+     "name": "Mango Creme",
+     "beschreibung": "Hausgemachte Creme aus Mango, Cashewnüssen, Mandeln und Kokosnuss",
+     "preis": "4,90",
+     "kennzeichen": "v",
+     "karvi": false
+    }
+   ]
+  },
+  {
+   "id": "getraenke",
+   "name": "Getränke",
+   "hinweis": "Alkoholische Getränke nur an Personen ab 18 Jahren.",
+   "posten": [
+    {
+     "nr": null,
+     "name": "Coca-Cola",
+     "beschreibung": "",
+     "preis": "3,50",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": null,
+     "name": "Coca-Cola Zero",
+     "beschreibung": "",
+     "preis": "3,50",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": null,
+     "name": "Fanta",
+     "beschreibung": "",
+     "preis": "3,50",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": null,
+     "name": "Spezi",
+     "beschreibung": "",
+     "preis": "3,50",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": null,
+     "name": "Sprite",
+     "beschreibung": "",
+     "preis": "3,50",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": null,
+     "name": "Wasser",
+     "beschreibung": "",
+     "preis": "3,50",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": null,
+     "name": "Mangosaft",
+     "beschreibung": "",
+     "preis": "4,00",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": null,
+     "name": "Lycheesaft",
+     "beschreibung": "",
+     "preis": "4,00",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": null,
+     "name": "Guavasaft",
+     "beschreibung": "",
+     "preis": "4,00",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": null,
+     "name": "Maracujasaft",
+     "beschreibung": "",
+     "preis": "4,00",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": null,
+     "name": "Mango Lassi",
+     "beschreibung": "",
+     "preis": "7,50",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": null,
+     "name": "Helles",
+     "beschreibung": "",
+     "preis": "3,50",
+     "kennzeichen": "a",
+     "karvi": false
+    },
+    {
+     "nr": null,
+     "name": "Weißbier",
+     "beschreibung": "",
+     "preis": "3,50",
+     "kennzeichen": "a",
+     "karvi": false
+    },
+    {
+     "nr": null,
+     "name": "Dunkelbier",
+     "beschreibung": "",
+     "preis": "3,50",
+     "kennzeichen": "a",
+     "karvi": false
+    },
+    {
+     "nr": null,
+     "name": "Weißbier alkoholfrei",
+     "beschreibung": "",
+     "preis": "3,50",
+     "kennzeichen": "",
+     "karvi": false
+    },
+    {
+     "nr": null,
+     "name": "Leichtes Weißbier alkoholfrei",
+     "beschreibung": "",
+     "preis": "3,50",
+     "kennzeichen": "",
+     "karvi": false
+    }
+   ]
+  },
+  {
+   "id": "wein",
+   "name": "Wein",
+   "hinweis": "Nur an Personen ab 18 Jahren.",
+   "posten": [
+    {
+     "nr": null,
+     "name": "Weißwein 0,75 l",
+     "beschreibung": "",
+     "preis": "12,90",
+     "kennzeichen": "a",
+     "karvi": false
+    },
+    {
+     "nr": null,
+     "name": "Rotwein 0,75 l",
+     "beschreibung": "",
+     "preis": "12,90",
+     "kennzeichen": "a",
+     "karvi": false
+    }
+   ]
+  }
+ ]
+}

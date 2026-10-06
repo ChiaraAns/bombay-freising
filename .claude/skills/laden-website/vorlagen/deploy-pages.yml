@@ -1,0 +1,50 @@
+name: Website auf GitHub Pages ausliefern
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      # Ausgeliefert wird nur, was die Gäste sehen. Notizen (*.md),
+      # Recherche, Werkzeuge und versteckte Ordner bleiben im Repo.
+      - name: Seite zusammenstellen
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          # Seiten und ihre Dateien — bei Bedarf ergänzen.
+          cp *.html _site/
+          shopt -s nullglob
+          for d in css js bilder schrift; do if [ -d "$d" ]; then cp -r "$d" _site/; fi; done
+          for f in *.css *.js *.svg *.ico *.webmanifest; do cp "$f" _site/; done
+          # Sicherheitsnetz: keine Notizen, Skripte oder Quelldaten im Netz.
+          find _site \( -name '*.md' -o -name '*.py' -o -name '*.mjs' -o -name '.DS_Store' \) -delete
+          find _site -mindepth 1 -name '.*' -prune -exec rm -rf {} +
+          touch _site/.nojekyll
+          echo "Ausgeliefert:"; find _site -maxdepth 2 | sort | head -60
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
