@@ -1,6 +1,6 @@
 # Übergabe – Website Restaurant Bombay Freising
 
-Stand 06.10.2026, Branch `claude/add-impeccable-skill` (PR #1).
+Stand 06.10.2026, live auf `main` (PR #1 und #2): https://chiaraans.github.io/bombay-freising/
 
 ## Was gebaut wurde
 
@@ -32,7 +32,7 @@ Warum so: `PRODUCT.md` (Fakten), `DESIGN.md` (Gestaltungssystem), `.impeccable/s
 
 ## Nicht geprüft
 
-- **Live-Auslieferung:** Der Stand liegt auf dem PR-Branch. Live ist er erst nach dem Zusammenführen in `main` **und** nachdem unter *Settings → Pages* die Quelle auf „GitHub Actions“ steht. Danach die Live-URL abrufen.
+- **Live-Seite angesehen:** Ausgeliefert ist sie laut GitHub Actions (Lauf „Website auf GitHub Pages ausliefern“, deploy-pages erfolgreich, Pages-Quelle auf „GitHub Actions“ umgestellt). Aus der Arbeitsumgebung ist `chiaraans.github.io` gesperrt; die Live-URL selbst wurde deshalb nicht abgerufen.
 - Echte Geräte (iPhone/Android), WhatsApp-/Instagram-WebView, Safari.
 - Die Bewegung der Plakette (nur Endzustand in Standbildern gesehen).
 - Ob die Karvi- und App-Links zum richtigen Ziel führen (am Ruhetag lud die Bestellstrecke nicht).
@@ -42,7 +42,8 @@ Warum so: `PRODUCT.md` (Fakten), `DESIGN.md` (Gestaltungssystem), `.impeccable/s
 - **Bühnenfoto beschnitten:** Das Hochformat-Foto im ersten Bildschirm wird per `object-fit: cover` beschnitten (ca. 28 % bei 390 px, ca. 17 % am Desktop). Sonst passten Status, Lieferzeiten, Knopf und Telefon nicht in den ersten Bildschirm (Regel 3 der `CLAUDE.md` hat hier Vorrang). Der Teller bleibt sichtbar; besser wäre ein eigenes, im Lokal aufgenommenes Querformat.
 
 - Richtungsvertrag steht nicht als Kommentar im HTML, sondern in `.impeccable/surfaces/index-html.md`: impeccable verbietet, ihn in ausgelieferte Dateien zu schreiben.
-- Die alte Streichholz-Fassung wurde ersetzt, nicht unter eigenem Pfad parallel gebaut: Der neue Stand lebt bis zur Abnahme auf dem PR-Branch und ist nicht live.
+- Die alte Streichholz-Fassung wurde ersetzt, nicht unter eigenem Pfad parallel gebaut; der Betreiber hat die Veröffentlichung am 06.10.2026 freigegeben.
+- `_config.yml` begrenzt eine Branch-Auslieferung auf die Seitendateien (Sicherheitsnetz, falls die Pages-Quelle je wieder auf „Branch“ steht).
 
 ## Offen beim Restaurant
 
