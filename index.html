@@ -23,12 +23,11 @@
 <a class="skip" href="#inhalt">Zum Inhalt springen</a>
 
 <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
-  <!-- zeichen: Kuppelbogen aus dem Logo, eine Vorlage für alle Einsätze -->
-  <symbol id="bogen" viewBox="0 0 200 92">
-    <path d="M100 4c3 0 5-2.4 5 0 0 3-2.6 4.6-5 7.6-2.4-3-5-4.6-5-7.6 0-2.4 2 0 5 0z" fill="currentColor"/>
-    <path d="M100 13c-12 0-21 9-21 21v6h42v-6c0-12-9-21-21-21z" fill="none" stroke="currentColor" stroke-width="3.2"/>
-    <path d="M74 40h52" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
-    <path d="M6 90C24 56 66 44 100 44s76 12 94 46" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+  <!-- zeichen: Kuppel aus dem Logo; der Bogen darunter ist der Rahmen der Plakette (CSS) -->
+  <symbol id="kuppel" viewBox="0 0 48 32.5">
+    <path d="M24 2c2.4 0 4-1.9 4 0 0 2.4-2.1 3.7-4 6.1-1.9-2.4-4-3.7-4-6.1 0-1.9 1.6 0 4 0z" fill="currentColor"/>
+    <path d="M24 10c-9 0-15.5 6.8-15.5 15.5V31h31v-5.5C39.5 16.8 33 10 24 10z" fill="none" stroke="currentColor" stroke-width="3"/>
+    <path d="M4 31h40" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
   </symbol>
   <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
   <symbol id="i-bag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M5 8h14l-1 13H6L5 8z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M9 8V6a3 3 0 0 1 6 0v2"/></symbol>
@@ -71,7 +70,7 @@
       <p class="unterzeile">Currys und Tandoori aus dem Lehmofen. Zum Essen bei uns, zum Abholen und zum Liefern.</p>
 
       <div class="heute" data-heute>
-        <svg class="heute-bogen" aria-hidden="true"><use href="#bogen"/></svg>
+        <svg class="heute-kuppel" aria-hidden="true"><use href="#kuppel"/></svg>
         <p class="heute-satz" data-heute-satz>Mo und Mi–So 11:30–14:00 und 17:30–22:00</p>
         <p class="heute-zusatz" data-heute-zusatz>Dienstag Ruhetag</p>
       </div>
@@ -88,8 +87,8 @@
 
   <div class="wechsel">
     <section class="beliebt wrap" aria-labelledby="beliebt-titel">
-      <h2 id="beliebt-titel">Das bestellen unsere Gäste am liebsten</h2>
-      <p class="einleitung">Die Auswahl des Restaurants. Jedes Gericht gibt es mild, pikant, scharf oder sehr scharf.</p>
+      <h2 id="beliebt-titel">Beliebt im Bombay</h2>
+      <p class="einleitung">Zehn Gerichte, die das Restaurant selbst empfiehlt. Jedes gibt es mild, pikant, scharf oder sehr scharf.</p>
       <!-- beliebt:anfang -->
       <ol class="beliebt-liste">
         <li><span class="name">Chicken Curry</span><span class="preis">14,90 €</span><span class="text">Zartes Hühnerfleisch in Currysoße mit feinen Gewürzen</span></li>
@@ -120,27 +119,21 @@
   </div>
 
   <section class="kueche wrap" aria-labelledby="kueche-titel">
-    <h2 id="kueche-titel">Aus dem Lehmofen, nach Ihrem Geschmack</h2>
-    <div class="kueche-spalten">
-      <div>
-        <h3>Tandoor</h3>
-        <p>Tandoori-Gerichte und Naan kommen aus dem Holzkohlelehmofen.</p>
-      </div>
-      <div>
-        <h3>Vier Schärfegrade</h3>
-        <p>Jedes Gericht bestellen Sie mild, pikant, scharf oder sehr scharf. Sagen Sie es uns einfach.</p>
-      </div>
-      <div>
-        <h3>Auch ohne Fleisch</h3>
-        <p>Zwanzig vegetarische Gerichte, mehrere davon auch vegan.</p>
-      </div>
+    <figure class="kueche-bild">
+      <img src="img/02-kupferschalen-naan-600.webp" srcset="img/02-kupferschalen-naan-600.webp 600w, img/02-kupferschalen-naan-1200.webp 1200w" sizes="(min-width: 700px) 40vw, 100vw" width="600" height="800" loading="lazy" alt="Gehämmerte Kupferschalen auf Stövchen, daneben Naan im Brotkorb">
+    </figure>
+    <div class="kueche-text">
+      <h2 id="kueche-titel">Aus dem Lehmofen</h2>
+      <p class="kueche-fuehrung">Tandoori-Gerichte und Naan kommen aus dem Holzkohlelehmofen, dem Tandoor: Hähnchen, Fisch, Garnelen und Gemüse, mariniert und gegrillt.</p>
+      <h3>Auch ohne Fleisch</h3>
+      <p>Zwanzig vegetarische Gerichte, mehrere davon auch vegan.</p>
+      <a class="mehr" href="speisekarte.html#tandoori-khajana">Tandoori auf der Karte <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
   </section>
 
   <section class="galerie wrap" aria-labelledby="galerie-titel">
     <h2 id="galerie-titel" class="sr">Fotos aus dem Bombay</h2>
     <ul class="kacheln">
-      <li><button type="button" class="kachel" data-gross="img/02-kupferschalen-naan-1200.webp" data-w="1200" data-h="1600"><img src="img/02-kupferschalen-naan-600.webp" width="600" height="800" loading="lazy" alt="Gehämmerte Kupferschalen auf Stövchen, daneben Naan im Brotkorb"></button></li>
       <li><button type="button" class="kachel" data-gross="img/05-tisch-mehrere-gerichte-1200.webp" data-w="1200" data-h="900"><img src="img/05-tisch-mehrere-gerichte-600.webp" width="600" height="450" loading="lazy" alt="Ein gedeckter Tisch für mehrere: drei Currys in Kupferschälchen, Reis, Naan und Salat"></button></li>
       <li><button type="button" class="kachel" data-gross="img/06-drei-saucen-1200.webp" data-w="1200" data-h="900"><img src="img/06-drei-saucen-600.webp" width="600" height="450" loading="lazy" alt="Drei Soßen in kleinen Metallschälchen auf einer Platte"></button></li>
       <li><button type="button" class="kachel" data-gross="img/07-teller-paisley-decke-1200.webp" data-w="1200" data-h="900"><img src="img/07-teller-paisley-decke-600.webp" width="600" height="450" loading="lazy" alt="Ein Curry mit Reis auf einem Teller, auf einer Tischdecke mit Paisleymuster"></button></li>

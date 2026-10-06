@@ -176,7 +176,7 @@
       aktuell = treffer;
       sprungLeiste.querySelectorAll('a').forEach(function (a) {
         var ist = a.getAttribute('href') === '#' + aktuell;
-        if (ist) { a.setAttribute('aria-current', 'true'); sprungLeiste.scrollTo({ left: a.offsetLeft - sprungLeiste.offsetLeft - 24, behavior: 'smooth' }); }
+        if (ist) { a.setAttribute('aria-current', 'true'); sprungLeiste.scrollTo({ left: a.offsetLeft - sprungLeiste.offsetLeft, behavior: 'smooth' }); }
         else a.removeAttribute('aria-current');
       });
       if (!aktuell) sprungLeiste.scrollTo({ left: 0 });

@@ -13,15 +13,16 @@
 :root {
   /* Raum */
   --ocker: #e2c18a;          /* Wandputz im Licht */
-  --ocker-hell: #f0dcb2;     /* heller Putz: Leseflächen */
+  --ocker-hell: #f0dcb2;     /* heller Putz: nur Eingabefeld und Daumenknopf */
+  --ocker-schatten: #d8b47b; /* Putz im Schatten: abgesetztes Band */
   --ocker-linie: #b98f55;    /* Putz im Schatten: Linien auf Ocker */
   --holz: #2a140c;           /* Stühle, Tische */
   --rot: #a3261a;            /* Polsterbänke, Servietten: Leitfarbe */
   --rot-tief: #7f1b11;
   --kupfer: #b0652e;         /* Handi-Schalen: nur Ornament */
   --kupfer-hell: #d9995e;
-  --gruen-marke: #2f5f2c;
-  --tuerkis-marke: #1f5a4a;
+  --gruen-marke: #2a5427;
+  --tuerkis-marke: #1a4f41;
   --markiert: #fff07a;
   /* Text */
   --text: var(--holz);
@@ -107,12 +108,16 @@ p { margin: 0 0 1em; }
 .buehne h1 { font-size: clamp(2.2rem, 9.4vw, 4.6rem); line-height: 1; margin-bottom: .35em; color: var(--text-hell); }
 .unterzeile { display: none; font-size: 1.15rem; color: var(--text-hell-weich); max-width: 30em; }
 
-/* Kuppelbogen-Plakette: die eigene Idee, auch klein lesbar */
-.heute { display: grid; justify-items: start; margin: 4px 0 12px; }
-.heute-bogen { width: 136px; height: 62px; color: var(--kupfer-hell); margin: 0 0 2px -6px; }
-.heute-satz { margin: 0; font: 1.55rem/1.15 var(--titel); color: var(--text-hell); }
+/* Kuppelbogen-Plakette: die eigene Idee. Kuppel aus dem Logo, der Bogen
+   spannt über den ganzen Satz und setzt an seinen Enden auf. */
+.heute { display: inline-grid; justify-items: center; text-align: center; margin: 2px 0 14px; }
+.heute-kuppel { width: 46px; height: 31px; color: var(--kupfer-hell); margin-bottom: -1px; position: relative; z-index: 1; animation: kuppel .7s var(--aus) .15s backwards; }
+.heute-satz { position: relative; margin: 0; padding: 20px 22px 0; font: 1.55rem/1.15 var(--titel); color: var(--text-hell); }
+.heute-satz::before { content: ""; position: absolute; inset: 0 0 .3em; border: 2px solid var(--kupfer-hell); border-bottom: 0; border-radius: 50% 50% 0 0 / 30px 30px 0 0; pointer-events: none; animation: bogen .8s var(--aus) backwards; }
 .heute-satz b { font-weight: 400; color: var(--kupfer-hell); }
-.heute-zusatz { margin: 2px 0 0; font-size: 1rem; color: var(--text-hell-weich); }
+.heute-zusatz { margin: 6px 0 0; font-size: 1rem; color: var(--text-hell-weich); }
+@keyframes bogen { from { transform: scaleX(.55); opacity: 0; } }
+@keyframes kuppel { from { transform: translateY(-8px); opacity: 0; } }
 .wege { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 0 0 16px; font-weight: 600; font-size: 1rem; color: var(--text-hell); }
 .wege span + span::before { content: ""; display: inline-block; width: 5px; height: 5px; margin: 0 18px 3px -11px; border-radius: 50%; background: var(--kupfer-hell); }
 .handeln { display: grid; gap: 10px; }
@@ -134,7 +139,7 @@ p { margin: 0 0 1em; }
 .beliebt-liste .name { font: 1.35rem/1.2 var(--titel); }
 .beliebt-liste .preis, .posten .preis { font-weight: 700; white-space: nowrap; }
 .beliebt-liste .text { grid-column: 1 / -1; font-size: 1rem; color: var(--text-weich); }
-.mehr { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--rot); }
+.mehr { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--kupfer); }
 .mehr svg, .gruppe-bestellen svg { width: 20px; height: 20px; transition: transform .3s var(--aus); }
 
 .bei-uns { background: var(--holz); color: var(--text-hell); padding-bottom: var(--luft); }
@@ -144,18 +149,19 @@ p { margin: 0 0 1em; }
 .tel--hell { margin-top: 4px; }
 
 /* ---------- Küche ---------- */
-.kueche { padding-block: var(--luft) calc(var(--luft) * .6); }
-.kueche h2 { max-width: 14em; }
-.kueche-spalten { display: grid; gap: 26px; margin-top: 24px; }
-.kueche-spalten > div { padding-top: 18px; border-top: 2px solid var(--kupfer); }
-.kueche-spalten p { margin: 0; color: var(--text-weich); max-width: 26em; }
+.kueche { display: grid; gap: 28px; padding-block: var(--luft) calc(var(--luft) * .6); }
+.kueche-bild { margin: 0; }
+.kueche-bild img { width: 100%; }
+.kueche-fuehrung { font-size: 1.2rem; max-width: 28em; }
+.kueche-text h3 { margin-top: 1.2em; padding-top: 18px; border-top: 2px solid var(--kupfer); font-size: 1.45rem; }
+.kueche-text p:not(.kueche-fuehrung) { color: var(--text-weich); max-width: 28em; }
 
-/* ---------- Galerie ---------- */
+/* ---------- Galerie: drei Querformate, bündige Kanten ---------- */
 .galerie { padding-bottom: calc(var(--luft) * .6); }
-.kacheln { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 10px; }
-.kacheln li { break-inside: avoid; margin-bottom: 10px; }
+.kacheln { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.kacheln li:first-child { grid-column: 1 / -1; }
 .kachel { display: block; width: 100%; padding: 0; border: 0; background: var(--holz); cursor: zoom-in; overflow: hidden; border-radius: 2px; }
-.kachel img { width: 100%; transition: transform .6s var(--aus); }
+.kachel img { width: 100%; aspect-ratio: 4 / 3; transition: transform .6s var(--aus); }
 .bildhinweis { font-size: .88rem; color: var(--text-weich); margin: 6px 0 0; }
 
 .ansicht { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: color-mix(in oklch, var(--holz) 96%, transparent); color: var(--text-hell); }
@@ -176,13 +182,13 @@ p { margin: 0 0 1em; }
 .quelle { font-size: .92rem; color: var(--text-weich); max-width: 44em; }
 
 /* ---------- Besuch ---------- */
-.besuch { background: var(--ocker-hell); padding-block: var(--luft); }
+.besuch { background: var(--ocker-schatten); padding-block: var(--luft); }
 .besuch-spalten { display: grid; gap: 48px; }
 .zeiten { width: 100%; border-collapse: collapse; font-size: 1.05rem; margin-bottom: 14px; }
 .zeiten th, .zeiten td { padding: 11px 0 9px; text-align: left; border-bottom: 1px solid var(--ocker-linie); }
 .zeiten th { font-weight: 600; padding-right: 8px; }
 .zeiten td { text-align: right; padding-left: 12px; white-space: nowrap; }
-.zeiten .ruhetag { color: var(--rot-tief); font-weight: 600; }
+.zeiten .ruhetag { font-weight: 700; }
 .zeiten tr.ist-heute th, .zeiten tr.ist-heute td { color: var(--rot-tief); font-weight: 700; }
 .zeiten tr.ist-heute th::after { content: "heute"; display: inline-block; margin-left: 8px; padding: 2px 8px 0; border-radius: 99px; background: var(--rot); color: var(--text-hell); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; vertical-align: 2px; }
 .adresse { font-style: normal; font-size: 1.2rem; margin-bottom: 18px; }
@@ -205,7 +211,6 @@ p { margin: 0 0 1em; }
 .daumen .knopf { min-height: 52px; padding-inline: 12px; }
 
 /* ---------- Speisekarte ---------- */
-.karte-seite { background: var(--ocker-hell); }
 .karte-kopf { padding-block: 36px 18px; }
 .karte-kopf h1 { font-size: clamp(2.8rem, 12vw, 5rem); margin-bottom: .2em; }
 .karte-kopf p { max-width: 38em; color: var(--text-weich); }
@@ -251,7 +256,7 @@ p { margin: 0 0 1em; }
 .marke-vegan { color: var(--tuerkis-marke); }
 .marke-scharf, .marke-sehr-scharf { color: var(--rot-tief); }
 .marke-ab18 { color: var(--text-weich); }
-.gruppe-bestellen { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin: 14px 0 24px; font-weight: 700; color: var(--rot-tief); text-decoration: none; border-bottom: 2px solid var(--rot); }
+.gruppe-bestellen { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; margin: 14px 0 24px; font-weight: 700; color: var(--text); text-decoration: none; border-bottom: 2px solid var(--kupfer); }
 .leer { padding: 48px 0; text-align: center; }
 .leer p { font: 1.6rem/1.2 var(--titel); }
 /* Filter ohne Skript, per :has() */
@@ -267,7 +272,6 @@ body:has(#f-s:checked) .posten:not([data-s]) { display: none; }
 .legende-spalten p { font-size: 1rem; color: var(--text-weich); }
 
 /* ---------- Rechtstexte ---------- */
-.recht-seite { background: var(--ocker-hell); }
 .recht { max-width: 46rem; padding-block: 40px 72px; line-height: 1.65; }
 .recht h1 { font-size: clamp(2.4rem, 9vw, 3.4rem); }
 .recht h2 { font-size: 1.6rem; margin-top: 1.6em; }
@@ -277,9 +281,9 @@ body:has(#f-s:checked) .posten:not([data-s]) { display: none; }
 /* ---------- ab Tablet ---------- */
 @media (min-width: 700px) {
   .beliebt-liste, .posten-liste { grid-template-columns: 1fr 1fr; }
-  .kueche-spalten { grid-template-columns: repeat(3, 1fr); gap: 40px; }
-  .kacheln { columns: 3; column-gap: 14px; }
-  .kacheln li { margin-bottom: 14px; }
+  .kueche { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 56px; align-items: center; }
+  .kacheln { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .kacheln li:first-child { grid-column: auto; }
   .zitate { grid-template-columns: repeat(3, 1fr); gap: 36px; }
   .besuch-spalten { grid-template-columns: 1.1fr 1fr; gap: 72px; }
   .legende-spalten { grid-template-columns: 1fr 1fr; }
@@ -303,8 +307,9 @@ body:has(#f-s:checked) .posten:not([data-s]) { display: none; }
   .unterzeile { display: block; }
   .handeln { grid-auto-flow: column; justify-content: start; align-items: center; gap: 24px; }
   .handeln .knopf { width: auto; padding-inline: 32px; }
-  .heute-bogen { width: 170px; height: 78px; }
-  .heute-satz { font-size: 2rem; }
+  .heute-satz { font-size: 2rem; padding-inline: 28px; }
+  .heute-satz::before { border-radius: 50% 50% 0 0 / 38px 38px 0 0; }
+  .heute-kuppel { width: 56px; height: 38px; }
   .daumen { display: none; }
   .fuss { padding-bottom: 28px; }
 }
