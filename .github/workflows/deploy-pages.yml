@@ -45,7 +45,7 @@ jobs:
           for d in img fonts; do if [ -d "$d" ]; then cp -r "$d" _site/; fi; done
           for f in *.css *.js *.svg *.png *.ico *.webmanifest; do cp "$f" _site/; done
           # Sicherheitsnetz: keine Notizen, Skripte oder Quelldaten im Netz.
-          find _site \( -name '*.md' -o -name '*.py' -o -name '*.mjs' -o -name '.DS_Store' \) -delete
+          find _site \( -name '*.md' -o -name '*.py' -o -name '*.mjs' -o -name '*.json' -o -name '.DS_Store' \) -delete
           find _site -mindepth 1 -name '.*' -prune -exec rm -rf {} +
           touch _site/.nojekyll
           echo "Ausgeliefert:"; find _site -maxdepth 2 | sort | head -60

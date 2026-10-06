@@ -191,7 +191,7 @@ p { margin: 0 0 1em; }
 /* ---------- Fuß ---------- */
 .fuss { background: var(--holz); color: var(--text-hell-weich); padding: 40px 0 calc(28px + 84px + env(safe-area-inset-bottom)); font-size: 1rem; }
 .fuss-zeile { display: grid; gap: 16px; }
-.fuss p { margin: 0; }
+.fuss-zeile p { margin: 0; }
 .fuss a { color: var(--text-hell); }
 .fuss ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0 18px; }
 .fuss ul a { display: inline-block; padding: 8px 0; }

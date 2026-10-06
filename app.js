@@ -165,17 +165,24 @@
   // Aktuelle Gruppe im Lotsen markieren
   var sprungLeiste = document.querySelector('.gruppen-sprung'), aktuell = null;
   if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (eintraege) {
-      eintraege.forEach(function (e) {
-        if (!e.isIntersecting || e.target.id === aktuell) return;
-        aktuell = e.target.id;
-        sprungLeiste.querySelectorAll('a').forEach(function (a) {
-          var ist = a.getAttribute('href') === '#' + aktuell;
-          if (ist) { a.setAttribute('aria-current', 'true'); sprungLeiste.scrollTo({ left: a.offsetLeft - 24, behavior: 'smooth' }); }
-          else a.removeAttribute('aria-current');
-        });
+    // Markiert wird die oberste Gruppe im Lesebereich unter dem Lotsen
+    var markiere = function () {
+      var grenze = lotse.getBoundingClientRect().bottom + 40, treffer = null;
+      for (var i = 0; i < gruppen.length; i++) {
+        if (gruppen[i].hidden) continue;
+        if (gruppen[i].getBoundingClientRect().top <= grenze) treffer = gruppen[i].id; else break;
+      }
+      if (treffer === aktuell) return;
+      aktuell = treffer;
+      sprungLeiste.querySelectorAll('a').forEach(function (a) {
+        var ist = a.getAttribute('href') === '#' + aktuell;
+        if (ist) { a.setAttribute('aria-current', 'true'); sprungLeiste.scrollTo({ left: a.offsetLeft - sprungLeiste.offsetLeft - 24, behavior: 'smooth' }); }
+        else a.removeAttribute('aria-current');
       });
-    }, { rootMargin: '-35% 0px -60% 0px' });
+      if (!aktuell) sprungLeiste.scrollTo({ left: 0 });
+    };
+    var io = new IntersectionObserver(markiere, { rootMargin: '0px 0px -50% 0px', threshold: [0, 1] });
     gruppen.forEach(function (g) { io.observe(g); });
+    window.addEventListener('scroll', markiere, { passive: true });
   }
 })();
