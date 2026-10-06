@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bombay – Indisches Restaurant in Freising</title>
+  <meta name="description" content="Indisches Restaurant Bombay in Freising: Tandoori aus dem Holzkohlelehmofen, Currys, Thalis und vegetarische Spezialitäten. Finden Sie Ihr Gericht, bestellen Sie online oder reservieren Sie telefonisch.">
+  <meta name="theme-color" content="#0d0907">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Bombay – Startseite"><img src="logo-gold.png" alt="Bombay" width="96" height="44"></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="nav">Menü</button>
+    <nav class="nav" id="nav" aria-label="Hauptnavigation">
+      <a href="speisekarte.html">Speisekarte</a>
+      <a href="index.html#kueche">Küche</a>
+      <a href="index.html#besuch">Öffnungszeiten</a>
+      <a class="btn-nav" href="https://restaurant-bombayfreising.de/bombay-freising/delivery" rel="noopener">Online bestellen</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inhalt">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Wie scharf darf’s heute sein?</h1>
+        <p class="hero-sub">Sagen Sie uns, was Sie mögen. Wir suchen drei Gerichte aus der Karte heraus.</p>
+
+        <form id="finder" onsubmit="return false">
+          <fieldset class="ctl">
+            <legend>Wie scharf?</legend>
+            <div class="pills">
+              <label class="pill"><input type="radio" name="heat" value="0" checked><span>Mild</span></label>
+              <label class="pill"><input type="radio" name="heat" value="1"><span>🌶 Scharf</span></label>
+              <label class="pill"><input type="radio" name="heat" value="2"><span>🌶🌶 Sehr scharf</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="ctl">
+            <legend>Was darf auf den Teller?</legend>
+            <div class="pills">
+              <label class="pill"><input type="radio" name="diet" value="alles" checked><span>Alles</span></label>
+              <label class="pill"><input type="radio" name="diet" value="fleisch"><span>Fleisch</span></label>
+              <label class="pill"><input type="radio" name="diet" value="fisch"><span>Fisch</span></label>
+              <label class="pill"><input type="radio" name="diet" value="veg"><span>Vegetarisch</span></label>
+              <label class="pill"><input type="radio" name="diet" value="vegan"><span>Vegan</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="ctl">
+            <legend>Wie groß ist der Hunger?</legend>
+            <div class="pills">
+              <label class="pill"><input type="radio" name="hunger" value="klein"><span>Kleiner Hunger</span></label>
+              <label class="pill"><input type="radio" name="hunger" value="gross" checked><span>Richtig Hunger</span></label>
+            </div>
+          </fieldset>
+          <p class="hint-line">Mild heißt: auf der Karte nicht als scharf markiert.</p>
+        </form>
+      </div>
+
+      <div>
+        <div class="result-head">
+          <p id="finder-count" aria-live="polite"></p>
+          <button class="reroll" type="button" id="reroll">Noch drei Ideen</button>
+        </div>
+        <div class="picks" id="picks" aria-live="polite"></div>
+        <div class="hero-cta">
+          <a class="btn btn-gold" href="https://restaurant-bombayfreising.de/bombay-freising/delivery" rel="noopener">Online bestellen</a>
+          <a class="btn btn-line" href="speisekarte.html">Ganze Speisekarte</a>
+          <p class="open-badge" data-open-badge><span class="dot" aria-hidden="true"></span><span>Öffnungszeiten siehe unten</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="scal kitchen" id="kueche">
+    <div class="wrap">
+      <h2>Tandoori aus dem Holzkohlelehmofen, Currys aus der Pfanne.</h2>
+      <div class="kitchen-cols">
+        <div><h3>Aus dem Lehmofen</h3><p>Fleisch, Fisch und Gemüse, in Joghurt und Gewürzen mariniert. Dazu ofenfrisches Naan.</p></div>
+        <div><h3>Auch ohne Fleisch</h3><p>Zwanzig vegetarische Spezialitäten, mehrere davon auch vegan.</p></div>
+        <div><h3>Zum Teilen</h3><p>Thalis auf original indischen Platten, auch für zwei Personen. Eine Spezialität unseres Chefkochs.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scal favs">
+    <div class="wrap">
+      <h2>Das bestellen unsere Gäste am liebsten.</h2>
+      <ul class="rows" id="fav-rows"></ul>
+      <p class="center"><a class="btn btn-pink" href="speisekarte.html">Komplette Speisekarte</a></p>
+    </div>
+  </section>
+
+  <section class="scal order" id="bestellen">
+    <div class="wrap order-grid">
+      <div>
+        <h2>Zum Mitnehmen oder Liefern</h2>
+        <p>Bestellen Sie online über unser Bestellportal.</p>
+        <a class="btn btn-ink" href="https://restaurant-bombayfreising.de/bombay-freising/delivery" rel="noopener">Jetzt bestellen</a>
+      </div>
+      <div>
+        <h2>Einen Tisch reservieren</h2>
+        <p>Rufen Sie uns während der Öffnungszeiten an. Wir freuen uns auf Sie.</p>
+        <a class="phone" href="tel:+4981614965102">08161 4965102</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="scal visit-sec" id="besuch">
+    <div class="wrap visit">
+      <div>
+        <h2>Öffnungszeiten</h2>
+        <table class="hours">
+          <caption class="skip">Öffnungszeiten</caption>
+          <tr data-day="1"><th scope="row">Montag</th><td>11:30–14:00 und 17:30–22:00</td></tr>
+          <tr data-day="2"><th scope="row">Dienstag</th><td class="closed">Ruhetag</td></tr>
+          <tr data-day="3"><th scope="row">Mittwoch</th><td>11:30–14:00 und 17:30–22:00</td></tr>
+          <tr data-day="4"><th scope="row">Donnerstag</th><td>11:30–14:00 und 17:30–22:00</td></tr>
+          <tr data-day="5"><th scope="row">Freitag</th><td>11:30–14:00 und 17:30–22:00</td></tr>
+          <tr data-day="6"><th scope="row">Samstag</th><td>11:30–14:00 und 17:30–22:00</td></tr>
+          <tr data-day="0"><th scope="row">Sonntag</th><td>11:30–14:00 und 17:30–22:00</td></tr>
+        </table>
+      </div>
+      <div>
+        <h2>So finden Sie uns</h2>
+        <address class="address">
+          <strong>Bombay – Indisches Restaurant</strong><br>
+          Obere Hauptstraße 67<br>
+          85354 Freising
+        </address>
+        <div class="visit-actions">
+          <a class="btn btn-pink" href="https://www.google.com/maps/search/?api=1&amp;query=Obere+Hauptstra%C3%9Fe+67+85354+Freising" rel="noopener">Route planen</a>
+          <a class="btn btn-line" href="tel:+4981614965102">Anrufen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer scal" style="--bg: var(--coal)">
+  <div class="wrap">
+    <div class="cols">
+      <div><img src="logo-gold.png" alt="Bombay" width="124" height="54"><p>Indisches Restaurant in Freising.</p></div>
+      <div><h4>Besuch</h4><p>Obere Hauptstraße 67<br>85354 Freising<br><a href="tel:+4981614965102">08161 4965102</a></p></div>
+      <div><h4>Seiten</h4><ul><li><a href="speisekarte.html">Speisekarte</a></li><li><a href="https://restaurant-bombayfreising.de/bombay-freising/delivery" rel="noopener">Online bestellen</a></li><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li></ul></div>
+    </div>
+    <p class="legal">© 2026 Bombay Freising. Informationen zu Allergenen und Zusatzstoffen erhalten Sie bei unserem Service.</p>
+  </div>
+</footer>
+
+<script src="menu.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
