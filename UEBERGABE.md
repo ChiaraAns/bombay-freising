@@ -18,12 +18,13 @@ Warum so: `PRODUCT.md` (Fakten), `DESIGN.md` (Gestaltungssystem), `.impeccable/s
 |---|---|
 | Aufnahmen 1440 und 390, mittags und abends, angesehen | ja, `.impeccable/review/` (nicht im Repo) |
 | Überbreite 390 und 360 (`breite.mjs`) | `"ok": true` für Startseite und Speisekarte |
-| Kontrast (`kontrast.mjs`) | alle geprüften Textstellen über der Grenze; eine Meldung am © bei 390 px war die feste Daumenleiste während der Messung (der Fuß hält 112 px Abstand) |
+| Kontrast (`kontrast.mjs`) | alle geprüften Textstellen über der Grenze. Zwei Meldungen bei 390 px (Uhrzeit in der Plakette, ©) entstehen, weil das Skript dort misst, wo die feste Daumenleiste liegt; Gegenprobe mit ausgeblendeter Leiste: beide auf Holz `#2a140c`, 9,9:1 bzw. 10,2:1 |
 | Konsole | leer |
 | Verhalten | Filter + Merken, Suche, Leerzustand + Zurücksetzen, Fotoansicht (Pfeile, Esc, Fokus zurück), Menü (Esc), ohne Skript: Gruppen offen, Filter per `:has()` |
 | Kein Foto doppelt | geprüft mittags und abends |
 | Bildherkunft | alle Raster mit eingebetteter Herkunft (`embed-prompt --scan`: 0 fehlend) |
-| Unabhängiger Abschlussprüfer (impeccable) | zwei Runden; acht Nachbesserungen umgesetzt, sieben bewertet als behoben, die achte ist `DESIGN.md` |
+| Unabhängiger Abschlussprüfer (impeccable) | Urteil „fix“ mit acht Nachbesserungen; Punkte 1–7 als behoben bewertet, Punkt 8 (Begründungen in `DESIGN.md`) danach erledigt, aber nicht erneut vom Prüfer bewertet |
+| `DESIGN.md` + `.impeccable/design.json` | vom impeccable-Documenter aus dem gebauten Stand; drei dabei gemeldete Abweichungen behoben (Kupfer als Textfarbe, Übergänge nur noch `transform`/`opacity`, Lotse per `transform`), Schriftgrößen und Bogenradien als Token |
 
 ### Detektor-Meldungen, die bleiben (begründet)
 
@@ -37,6 +38,8 @@ Warum so: `PRODUCT.md` (Fakten), `DESIGN.md` (Gestaltungssystem), `.impeccable/s
 - Ob die Karvi- und App-Links zum richtigen Ziel führen (am Ruhetag lud die Bestellstrecke nicht).
 
 ## Abweichungen von der Norm
+
+- **Bühnenfoto beschnitten:** Das Hochformat-Foto im ersten Bildschirm wird per `object-fit: cover` beschnitten (ca. 28 % bei 390 px, ca. 17 % am Desktop). Sonst passten Status, Lieferzeiten, Knopf und Telefon nicht in den ersten Bildschirm (Regel 3 der `CLAUDE.md` hat hier Vorrang). Der Teller bleibt sichtbar; besser wäre ein eigenes, im Lokal aufgenommenes Querformat.
 
 - Richtungsvertrag steht nicht als Kommentar im HTML, sondern in `.impeccable/surfaces/index-html.md`: impeccable verbietet, ihn in ausgelieferte Dateien zu schreiben.
 - Die alte Streichholz-Fassung wurde ersetzt, nicht unter eigenem Pfad parallel gebaut: Der neue Stand lebt bis zur Abnahme auf dem PR-Branch und ist nicht live.
