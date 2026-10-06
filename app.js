@@ -21,18 +21,18 @@
   function status() {
     var n = berlinNow(), today = HOURS[n.day] || [];
     for (var i = 0; i < today.length; i++) {
-      if (n.min >= toMin(today[i][0]) && n.min < toMin(today[i][1])) return { open: true, text: 'Jetzt geöffnet bis ' + today[i][1] + ' Uhr' };
+      if (n.min >= toMin(today[i][0]) && n.min < toMin(today[i][1])) return { open: true, text: 'Geöffnet bis ' + today[i][1] };
     }
     for (var s = 0; s < 8; s++) {
       var d = (n.day + s) % 7, slots = HOURS[d] || [];
       for (var j = 0; j < slots.length; j++) {
         if (s === 0 && toMin(slots[j][0]) <= n.min) continue;
-        var when = s === 0 ? 'heute' : s === 1 ? 'morgen' : 'am ' + DAYNAMES[d];
-        var lead = HOURS[n.day] === null ? 'Heute Ruhetag, wir öffnen ' : 'Gerade geschlossen, wir öffnen ';
-        return { open: false, text: lead + when + ' um ' + slots[j][0] + ' Uhr' };
+        var when = s === 0 ? 'heute' : s === 1 ? 'morgen' : DAYNAMES[d].slice(0, 2) + '.';
+        var lead = HOURS[n.day] === null ? 'Ruhetag · ' : 'Zu · ';
+        return { open: false, text: lead + when + ' ' + slots[j][0] };
       }
     }
-    return { open: false, text: 'Gerade geschlossen' };
+    return { open: false, text: 'Geschlossen' };
   }
 
   var badge = document.querySelector('[data-open-badge]');
@@ -40,6 +40,7 @@
     var st = status();
     badge.classList.add(st.open ? 'is-open' : 'is-closed');
     badge.querySelector('span:last-child').textContent = st.text;
+    badge.setAttribute('title', st.text);
   }
   var row = document.querySelector('.hours tr[data-day="' + berlinNow().day + '"]');
   if (row) row.classList.add('today');
@@ -47,11 +48,18 @@
   /* ---------- Navigation (mobil) ---------- */
   var toggle = document.querySelector('.menu-toggle'), nav = document.querySelector('.nav');
   if (toggle && nav) {
-    toggle.addEventListener('click', function () {
-      var open = nav.classList.toggle('open');
+    function setNav(open) {
+      nav.classList.toggle('open', open);
       toggle.setAttribute('aria-expanded', open);
+    }
+    toggle.addEventListener('click', function () { setNav(!nav.classList.contains('open')); });
+    nav.addEventListener('click', function (e) { if (e.target.tagName === 'A') setNav(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('open')) { setNav(false); toggle.focus(); }
     });
-    nav.addEventListener('click', function (e) { if (e.target.tagName === 'A') nav.classList.remove('open'); });
+    document.addEventListener('click', function (e) {
+      if (nav.classList.contains('open') && !nav.contains(e.target) && e.target !== toggle) setNav(false);
+    });
   }
 
   if (typeof MENU === 'undefined') return;
@@ -74,12 +82,16 @@
   });
   function byNr(nr) { return POOL.filter(function (d) { return d.nr === nr; })[0]; }
 
+  document.querySelectorAll('[data-menu-count]').forEach(function (el) {
+    el.textContent = 'Inhalt: ' + POOL.length + ' Gerichte & Getränke';
+  });
+
   /* ---------- Startseite: beliebte Gerichte ---------- */
   var favBox = document.getElementById('fav-rows');
   if (favBox) {
     favBox.innerHTML = [57, 58, 51, 104, 107, 159].map(function (nr) {
       var d = byNr(nr); if (!d) return '';
-      return '<li class="row"><span class="nm"><b>' + esc(d.name) + '</b><small>' + esc(d.desc) + '</small></span><span class="lead" aria-hidden="true"></span><span class="pr">' + esc(d.price) + ' €</span></li>';
+      return '<li class="row"><b>' + esc(d.name) + '</b><span class="pr">' + esc(d.price) + ' €</span><small>' + esc(d.desc) + '</small></li>';
     }).join('');
   }
 
@@ -137,14 +149,26 @@
       }
       countEl.textContent = list.length + (list.length === 1 ? ' passendes Gericht' : ' passende Gerichte') + ' auf der Karte';
       picksEl.innerHTML = picks.map(function (d) {
-        return '<article class="pick">' + (d.nr ? '<span class="nr">Nr. ' + d.nr + '</span>' : '') +
-          '<h3>' + esc(d.name) + '</h3>' + '<div>' + tagsHtml(d.tags.replace('t', '')) + '</div>' +
-          '<p>' + esc(d.desc) + '</p><span class="price">' + esc(d.price) + ' €</span>' +
-          '<a class="btn btn-ink" href="' + ORDER_URL + '" rel="noopener">Bestellen</a></article>';
+        var tags = tagsHtml(d.tags.replace('t', ''));
+        return '<article class="pick">' + (d.nr ? '<span class="nr">No. ' + d.nr + '</span>' : '') +
+          '<h3>' + esc(d.name) + '</h3>' + (tags ? '<div class="tags">' + tags + '</div>' : '') +
+          '<p>' + esc(d.desc) + '</p>' +
+          '<div class="pick-foot"><span class="seal price" aria-label="Preis ' + esc(d.price) + ' Euro">' + esc(d.price) + '<br>€</span>' +
+          '<a class="btn btn--indigo" href="' + ORDER_URL + '" rel="noopener" aria-label="' + esc(d.name) + ' bestellen">Bestellen</a></div></article>';
       }).join('');
+      picksEl.scrollLeft = 0;
     }
+    finder.addEventListener('submit', function (e) { e.preventDefault(); });
     finder.addEventListener('change', render);
-    rerollEl.addEventListener('click', render);
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    rerollEl.addEventListener('click', function () {
+      if (reduce) { render(); return; }
+      // Signatur: Schublade raus, neue Schachtel rein
+      picksEl.classList.remove('is-sliding'); void picksEl.offsetWidth;
+      picksEl.classList.add('is-sliding');
+      setTimeout(render, 240);
+    });
+    picksEl.addEventListener('animationend', function () { picksEl.classList.remove('is-sliding'); });
     render();
   }
 
@@ -152,20 +176,22 @@
   var list = document.getElementById('menu-list');
   if (list) {
     list.innerHTML = MENU.map(function (c) {
-      return '<section class="cat" id="' + c.id + '" data-cat><h2>' + esc(c.name) + '</h2>' +
-        (c.note ? '<p class="cat-note">' + esc(c.note) + '</p>' : '') +
+      return '<section class="cat" id="' + c.id + '" data-cat><div class="cat-head"><h2>' + esc(c.name) + '</h2>' +
+        (c.note ? '<p class="cat-note">' + esc(c.note) + '</p>' : '') + '</div>' +
         '<ul class="dishes">' + c.items.map(function (d) {
           var hay = ((d[0] || '') + ' ' + d[1] + ' ' + d[2]).toLowerCase();
-          return '<li class="dish" data-hay="' + esc(hay) + '" data-tags="' + d[4] + '"><h3>' + (d[0] ? '<span class="nr">' + d[0] + '</span>' : '') + esc(d[1]) + tagsHtml(d[4]) + '</h3>' +
-            (d[2] ? '<p>' + esc(d[2]) + '</p>' : '') + '<span class="price">' + esc(d[3]) + ' €</span></li>';
+          return '<li class="dish' + (d[0] ? '' : ' no-nr') + '" data-hay="' + esc(hay) + '" data-tags="' + d[4] + '">' +
+            (d[0] ? '<span class="nr">' + d[0] + '</span>' : '') + '<h3>' + esc(d[1]) + tagsHtml(d[4]) + '</h3>' +
+            '<span class="price">' + esc(d[3]) + ' €</span>' + (d[2] ? '<p>' + esc(d[2]) + '</p>' : '') + '</li>';
         }).join('') + '</ul></section>';
     }).join('');
 
     document.getElementById('cat-chips').innerHTML = MENU.map(function (c) { return '<a class="chip" href="#' + c.id + '">' + esc(c.name) + '</a>'; }).join('');
 
     var q = document.getElementById('q'), state = { v: false, n: false, s: false }, empty = document.getElementById('empty');
+    var countEl2 = document.getElementById('count');
     function apply() {
-      var term = q.value.trim().toLowerCase(), any = false;
+      var term = q.value.trim().toLowerCase(), any = false, total = 0;
       document.querySelectorAll('[data-cat]').forEach(function (sec) {
         var shown = 0;
         sec.querySelectorAll('.dish').forEach(function (li) {
@@ -176,14 +202,52 @@
           li.hidden = !ok; if (ok) shown++;
         });
         sec.hidden = shown === 0; if (shown) any = true;
+        total += shown;
       });
       empty.style.display = any ? 'none' : 'block';
+      var filtered = term || state.v || state.n || state.s;
+      if (countEl2) countEl2.textContent = filtered ? total + (total === 1 ? ' Gericht' : ' Gerichte') : '';
+      document.querySelectorAll('#cat-chips a').forEach(function (a) {
+        a.hidden = document.getElementById(a.getAttribute('href').slice(1)).hidden;
+      });
     }
-    q.addEventListener('input', apply);
+    document.getElementById('reset').addEventListener('click', function () {
+      q.value = '';
+      Object.keys(state).forEach(function (k) { state[k] = false; });
+      document.querySelectorAll('[data-filter]').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+      apply(); q.focus();
+    });
+
+    /* aktuelle Kategorie in der Leiste markieren */
+    var chipBox = document.getElementById('cat-chips'), current = null;
+    function markChip(id) {
+      if (id === current) return;
+      current = id;
+      chipBox.querySelectorAll('a').forEach(function (a) {
+        var on = a.getAttribute('href') === '#' + id;
+        if (on) {
+          a.setAttribute('aria-current', 'true');
+          chipBox.scrollTo({ left: a.offsetLeft - chipBox.offsetLeft - 40, behavior: 'smooth' });
+        } else a.removeAttribute('aria-current');
+      });
+    }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) markChip(en.target.id); });
+      }, { rootMargin: '-40% 0px -55% 0px' });
+      document.querySelectorAll('[data-cat]').forEach(function (sec) { io.observe(sec); });
+    }
+    // nach Suche/Filter an den Anfang der Karte springen, falls schon weiter unten
+    function toTop() {
+      var bar = document.querySelector('.toolbar').getBoundingClientRect().bottom;
+      var top = list.getBoundingClientRect().top;
+      if (top < bar) window.scrollBy({ top: top - bar, behavior: 'instant' });
+    }
+    q.addEventListener('input', function () { apply(); toTop(); });
     document.querySelectorAll('[data-filter]').forEach(function (b) {
       b.addEventListener('click', function () {
         var k = b.dataset.filter; state[k] = !state[k];
-        b.setAttribute('aria-pressed', state[k]); apply();
+        b.setAttribute('aria-pressed', state[k]); apply(); toTop();
       });
     });
   }

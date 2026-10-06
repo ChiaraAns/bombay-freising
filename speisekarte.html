@@ -2,31 +2,40 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Speisekarte – Bombay Freising</title>
   <meta name="description" content="Die Speisekarte des indischen Restaurants Bombay in Freising: Vorspeisen, Currys, Tandoori, Biryani, Thalis, vegetarische und vegane Gerichte mit Preisen.">
-  <meta name="theme-color" content="#0d0907">
+  <meta name="theme-color" content="#1d2766">
   <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preload" href="fonts/rozha-one.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/hind-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="skip" href="#karte">Zur Speisekarte springen</a>
 
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="index.html" aria-label="Bombay – Startseite"><img src="logo-gold.png" alt="Bombay" width="96" height="44"></a>
-    <button class="menu-toggle" aria-expanded="false" aria-controls="nav">Menü</button>
+<svg width="0" height="0" class="defs" aria-hidden="true" focusable="false">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M5 8h14l-1 13H6L5 8z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="index.html" aria-label="Bombay – Startseite"><img src="logo-gold.png" alt="Bombay" width="88" height="40"></a>
+    <p class="status" data-open-badge><span class="dot" aria-hidden="true"></span><span>Öffnungszeiten</span></p>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav">Menü</button>
     <nav class="nav" id="nav" aria-label="Hauptnavigation">
-      <a href="index.html#kueche">Küche</a>
       <a href="speisekarte.html" aria-current="page">Speisekarte</a>
-      <a href="index.html#besuch">Öffnungszeiten</a>
-      <a class="btn-nav" href="https://restaurant-bombayfreising.de/bombay-freising/delivery" rel="noopener">Online bestellen</a>
+      <a href="index.html#kueche">Küche</a>
+      <a href="index.html#besuch">Zeiten &amp; Anfahrt</a>
+      <a class="nav-order" href="https://restaurant-bombayfreising.de/bombay-freising/delivery" rel="noopener">Online bestellen</a>
     </nav>
   </div>
 </header>
 
-<div class="page-hero">
-  <div class="wrap">
+<div class="wrap">
+  <div class="label label--saffron page-head">
     <h1>Speisekarte</h1>
     <p>Von Vorspeisen über Tandoori und Currys bis zu Thalis und Nachspeisen. Alle Preise in Euro inkl. MwSt.</p>
   </div>
@@ -34,35 +43,42 @@
 
 <div class="toolbar">
   <div class="wrap">
-    <input class="search" id="q" type="search" placeholder="Gericht oder Zutat suchen, z. B. Paneer, Lamm, 57 …" aria-label="Speisekarte durchsuchen" autocomplete="off">
+    <div class="search-box">
+      <svg aria-hidden="true"><use href="#i-search"/></svg>
+      <input class="search" id="q" type="search" placeholder="Gericht oder Zutat, z. B. Paneer, Lamm, 57" aria-label="Speisekarte durchsuchen" autocomplete="off" enterkeyhint="search">
+    </div>
     <div class="filters" role="group" aria-label="Filter">
-      <span>Filter:</span>
       <button class="chip" type="button" data-filter="v" aria-pressed="false">Vegetarisch</button>
       <button class="chip" type="button" data-filter="n" aria-pressed="false">Vegan erhältlich</button>
       <button class="chip" type="button" data-filter="s" aria-pressed="false">Scharf</button>
+      <span class="count" id="count" aria-live="polite"></span>
     </div>
-    <nav class="chips" id="cat-chips" aria-label="Kategorien"></nav>
+    <nav class="cats" id="cat-chips" aria-label="Kategorien"></nav>
   </div>
 </div>
 
-<main id="karte">
-  <div class="wrap">
-    <div id="menu-list"></div>
-    <p class="empty" id="empty">Nichts gefunden. Probieren Sie einen anderen Suchbegriff.</p>
-    <p class="hint">Informationen zu Allergenen und Zusatzstoffen erhalten Sie bei unserem Service – bitte sprechen Sie uns an. Bestellen können Sie <a href="https://restaurant-bombayfreising.de/bombay-freising/delivery" rel="noopener">online zum Abholen oder Liefern</a> oder telefonisch unter <a href="tel:+4981614965102">08161 4965102</a>.</p>
+<main id="karte" class="wrap">
+  <div id="menu-list"></div>
+  <div class="label label--paper empty" id="empty">
+    <p>Dazu haben wir nichts auf der Karte.</p>
+    <button class="btn btn--indigo" type="button" id="reset">Suche und Filter zurücksetzen</button>
   </div>
+  <p class="label label--paper hint">Informationen zu Allergenen und Zusatzstoffen erhalten Sie bei unserem Service. Bitte sprechen Sie uns an. Bestellen können Sie <a href="https://restaurant-bombayfreising.de/bombay-freising/delivery" rel="noopener">online zum Abholen oder Liefern</a> oder telefonisch unter <a href="tel:+4981614965102">08161 4965102</a>.</p>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="cols">
-      <div><img src="logo-gold.png" alt="Bombay" width="124" height="54"><p>Indisches Restaurant in Freising.</p></div>
-      <div><h4>Besuch</h4><p>Obere Hauptstraße 67<br>85354 Freising<br><a href="tel:+4981614965102">08161 4965102</a></p></div>
-      <div><h4>Seiten</h4><ul><li><a href="index.html">Startseite</a></li><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li></ul></div>
-    </div>
-    <p class="legal">© 2026 Bombay Freising</p>
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div><img src="logo-gold.png" alt="Bombay" width="110" height="50"><p>Indisches Restaurant in Freising.</p><p class="count" data-menu-count></p></div>
+    <div><h2>Besuch</h2><p>Obere Hauptstraße 67<br>85354 Freising<br><a href="tel:+4981614965102">08161 4965102</a></p></div>
+    <div><h2>Seiten</h2><ul><li><a href="index.html">Startseite</a></li><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li></ul></div>
   </div>
+  <p class="wrap legal">© 2026 Bombay Freising</p>
 </footer>
+
+<nav class="strike" aria-label="Schnellzugriff">
+  <a class="btn btn--saffron" href="https://restaurant-bombayfreising.de/bombay-freising/delivery" rel="noopener"><svg aria-hidden="true"><use href="#i-bag"/></svg>Online bestellen</a>
+  <a class="btn btn--paper" href="tel:+4981614965102"><svg aria-hidden="true"><use href="#i-phone"/></svg>Anrufen</a>
+</nav>
 
 <script src="menu.js"></script>
 <script src="app.js"></script>
