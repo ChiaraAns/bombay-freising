@@ -1,6 +1,6 @@
 ---
 name: Restaurant Bombay Freising
-description: Das Bombay bei Tageslicht – heller Steinputz, Schrift in dunklem Holz, gesperrte Versalien, eine Zeile Handschrift, Kupfer als feine Linie und als die eine Lampe; die Stimmen als ein dunkles Band.
+description: Das Bombay bei Tageslicht – heller Steinputz, Schrift in dunklem Holz, gesperrte Versalien, Handschrift als Akzent, Kupfer als feine Linie und als die eine Lampe; die Stimmen als ein dunkles Band.
 colors:
   grund: "#f7f5f2"
   grund-tief: "#eeeae3"
@@ -19,6 +19,7 @@ colors:
   linie-kupfer: "rgba(176, 116, 64, 0.55)"
   schein: "rgba(176, 116, 64, 0.3)"
   glanz: "rgba(176, 116, 64, 0.16)"
+  bogen-fond: "#e9d8cb"
   schleier: "rgba(33, 23, 15, 0.4)"
   band: "#231a13"
   band-tafel: "#2d231b"
@@ -49,9 +50,9 @@ typography:
     fontWeight: 300
     lineHeight: 1
     fontFeature: "\"lnum\", \"tnum\""
-  uhr-zahl:
+  bon-zahl:
     fontFamily: "Josefin Sans, Futura, system-ui, sans-serif"
-    fontSize: "clamp(2.4rem, 2rem + 2vw, 3.2rem)"
+    fontSize: "clamp(2.2rem, 1.9rem + 1.4vw, 2.9rem)"
     fontWeight: 300
     lineHeight: 1
     fontFeature: "\"lnum\", \"tnum\""
@@ -121,12 +122,27 @@ typography:
     lineHeight: 1.3
     letterSpacing: "0.14em"
     fontFeature: "\"lnum\", \"tnum\""
-  uhr-satz:
+  bon-satz:
     fontFamily: "Josefin Sans, Futura, system-ui, sans-serif"
-    fontSize: "clamp(1.05rem, .95rem + .6vw, 1.3rem)"
+    fontSize: "clamp(1.2rem, 1.1rem + .5vw, 1.45rem)"
+    fontWeight: 300
+    lineHeight: 1.35
+  bon-zeile:
+    fontFamily: "Josefin Sans, Futura, system-ui, sans-serif"
+    fontSize: "1.02rem"
     fontWeight: 400
-    lineHeight: 1.4
-    letterSpacing: "0.08em"
+    fontFeature: "\"lnum\", \"tnum\""
+  wort:
+    fontFamily: "Josefin Sans, Futura, system-ui, sans-serif"
+    fontSize: "1.1rem"
+    fontWeight: 400
+    letterSpacing: "0.04em"
+  etikett:
+    fontFamily: "Josefin Sans, Futura, system-ui, sans-serif"
+    fontSize: ".9rem"
+    fontWeight: 400
+    lineHeight: 1.3
+    letterSpacing: "0.1em"
   body:
     fontFamily: "Hind, Segoe UI, system-ui, sans-serif"
     fontSize: "1.0625rem"
@@ -236,6 +252,13 @@ components:
     rounded: "{rounded.pille}"
     padding: "4px 22px 0"
     height: "42px"
+  button-band:
+    backgroundColor: "transparent"
+    textColor: "{colors.band-tinte}"
+    typography: "{typography.label}"
+    rounded: "{rounded.pille}"
+    padding: "4px 26px 0"
+    height: "50px"
   button-dazu:
     backgroundColor: "{colors.tafel}"
     textColor: "{colors.tinte}"
@@ -311,10 +334,37 @@ components:
     backgroundColor: "{colors.tafel}"
     textColor: "{colors.tinte-leise}"
     padding: "30px 24px 22px"
-  uhr-wahl:
+  uhr-karte:
     backgroundColor: "{colors.tafel}"
     textColor: "{colors.tinte-leise}"
-    padding: "24px 20px 20px"
+    padding: "26px 20px 22px"
+  wort:
+    backgroundColor: "transparent"
+    textColor: "{colors.tinte-still}"
+    typography: "{typography.wort}"
+    height: "44px"
+  wort-gewaehlt:
+    backgroundColor: "transparent"
+    textColor: "{colors.tinte}"
+  buch-zeit:
+    backgroundColor: "transparent"
+    textColor: "{colors.tinte-leise}"
+    typography: "{typography.bon-zeile}"
+    height: "44px"
+  buch-zeit-gewaehlt:
+    backgroundColor: "transparent"
+    textColor: "{colors.tinte}"
+  bon:
+    backgroundColor: "{colors.tafel}"
+    textColor: "{colors.tinte-leise}"
+    typography: "{typography.bon-zeile}"
+    padding: "34px 24px 32px"
+  etikett:
+    backgroundColor: "{colors.tafel}"
+    textColor: "{colors.tinte}"
+    typography: "{typography.etikett}"
+    rounded: "{rounded.feld}"
+    padding: "11px 15px 10px"
   zitat-karte:
     backgroundColor: "{colors.band-tafel}"
     textColor: "{colors.band-tinte}"
