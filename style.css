@@ -31,7 +31,8 @@
   --linie-feld: color-mix(in oklch, var(--tinte) 52%, transparent);  /* Rand von Eingabefeldern, mind. 3:1 */
   --linie-kupfer: color-mix(in oklch, var(--kupfer) 55%, transparent);
   --schein: color-mix(in oklch, var(--kupfer) 30%, transparent);
-  --glanz: color-mix(in oklch, var(--kupfer) 16%, transparent);   /* einmaliger Lichtstreif der App-Tafeln */
+  --glanz: color-mix(in oklch, var(--kupfer) 16%, transparent);   /* Lichtstreif der App-Tafeln, Schatten des Bons */
+  --band-hof: color-mix(in oklch, var(--band-kupfer) 14%, transparent); /* Hover der Linien-Pille im Band */
   --schleier: color-mix(in oklch, var(--tinte) 40%, transparent); /* hinter dem Bestellzettel */
   /* Das eine dunkle Band: Holz am Abend (Stimmen) */
   --band: #231a13;
@@ -111,7 +112,7 @@ h3 { font: 400 1.15rem/1.3 var(--versal); letter-spacing: .14em; text-transform:
 @media (hover: hover) and (pointer: fine) {
   .knopf--lampe:hover { background: var(--lampe-hell); border-color: var(--lampe-hell); }
   .knopf--linie:hover { border-color: var(--kupfer); color: var(--kupfer-schrift); }
-  .knopf--band:hover { background: color-mix(in oklch, var(--band-kupfer) 14%, transparent); }
+  .knopf--band:hover { background: var(--band-hof); }
   .nav a:hover, .fuss ul a:hover { color: var(--kupfer-schrift); }
   .mehr:hover svg { transform: translateX(4px); }
   .app-knopf:hover { border-color: var(--kupfer); transform: translateY(-2px); }
@@ -153,7 +154,7 @@ h3 { font: 400 1.15rem/1.3 var(--versal); letter-spacing: .14em; text-transform:
 .bogen-kante { position: absolute; inset: -9px; width: calc(100% + 18px); max-width: none; height: calc(100% + 18px); fill: none; stroke: var(--kupfer); stroke-width: 1.2; filter: drop-shadow(0 0 8px var(--schein)); pointer-events: none; }
 @keyframes auftritt { from { opacity: 0; transform: scale(1.04); } }
 /* Preisschild am Bogen: das Gericht im Bild, ein Tipp legt es auf den Zettel */
-.etikett { position: absolute; left: -12%; bottom: 3%; display: grid; gap: 1px; padding: 11px 15px 10px; background: var(--tafel); border-radius: var(--ecke-feld); box-shadow: 0 12px 26px -10px var(--schein); color: var(--tinte); text-decoration: none; transform: rotate(-3deg); animation: etikett .7s var(--aus) .45s backwards; }
+.etikett { position: absolute; left: -12%; bottom: 3%; display: grid; gap: 1px; padding: 11px 15px 10px; background: var(--tafel); border-radius: var(--ecke-feld); box-shadow: 0 12px 26px -10px var(--schein); color: var(--tinte); text-decoration: none; transform: rotate(-3deg); animation: etikett .7s var(--aus) .9s backwards; }
 .etikett-hand { font: 400 1.15rem/1 var(--hand); color: var(--kupfer-schrift); }
 .etikett-name { font: 400 .9rem/1.3 var(--versal); letter-spacing: .1em; text-transform: uppercase; }
 .etikett-zeile { display: flex; align-items: center; gap: 10px; min-height: 24px; }
@@ -221,7 +222,7 @@ h3 { font: 400 1.15rem/1.3 var(--versal); letter-spacing: .14em; text-transform:
 .kueche-text h3 { margin-top: 1.6em; padding-top: 20px; border-top: 1px solid var(--linie); }
 .kueche-text h3 + p { margin-top: .6em; max-width: 28em; }
 
-/* Galerie: drei Querformate, bündig */
+/* Kachel: Foto, das sich in der Bildansicht vergrößern lässt */
 .kachel { display: block; padding: 0; border: 0; background: var(--tafel); cursor: zoom-in; overflow: hidden; }
 .kachel img { transition: transform .7s var(--aus); }
 .bildhinweis { font-size: var(--gr-klein); color: var(--tinte-still); margin: 8px 0 0; }
@@ -485,7 +486,9 @@ body:has(#f-s:checked) .posten:not([data-s]) { display: none; }
   .kueche-bilder { gap: 12px; }
   .kueche-bilder .kachel--hoch { flex-grow: .75; }
   .kueche-bilder .kachel--quer { flex-grow: 1.333; }
-  .kueche-bilder .kachel img { height: auto; aspect-ratio: auto; }
+  .kueche-bilder .kachel img { height: auto; }
+  .kueche-bilder .kachel--hoch img { aspect-ratio: 3 / 4; }
+  .kueche-bilder .kachel--quer img { aspect-ratio: 4 / 3; }
   .zitate { grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .knopf--band { width: auto; margin-left: auto; }
   .schalen-liste { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
