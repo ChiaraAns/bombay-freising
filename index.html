@@ -38,6 +38,8 @@
   <symbol id="i-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></symbol>
   <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
   <symbol id="i-handy" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5v6.5M9.3 11.6 12 14.3l2.7-2.7M10.5 18.5h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="stern" viewBox="0 0 24 24"><path d="M12 2.8l2.85 5.8 6.4.93-4.63 4.5 1.1 6.37L12 17.4l-5.72 3l1.1-6.37-4.63-4.5 6.4-.93z"/></symbol>
+  <linearGradient id="stern-halb"><stop offset=".5" class="stern-voll"/><stop offset=".5" class="stern-leer"/></linearGradient>
   <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15a.8.8 0 0 0 1.2.7l12-7.5a.8.8 0 0 0 0-1.4l-12-7.5A.8.8 0 0 0 7 4.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
 </svg>
 
@@ -83,8 +85,13 @@
     </div>
 
     <figure class="bogen">
-      <img id="buehnen-bild" src="img/08-chicken-tikka-700.webp" srcset="img/08-chicken-tikka-700.webp 700w, img/08-chicken-tikka-1050.webp 1050w" sizes="(min-width: 900px) 420px, 54vw" width="700" height="933" alt="Chicken Tikka: gegrillte, marinierte Hühnerstücke am Spieß mit roten Zwiebeln, Limette und Minz-Dip auf einem weißen Teller" fetchpriority="high">
+      <img id="buehnen-bild" src="img/09-chicken-tikka-warm-640.webp" srcset="img/09-chicken-tikka-warm-640.webp 640w, img/09-chicken-tikka-warm-960.webp 960w" sizes="(min-width: 900px) 480px, 60vw" width="640" height="853" alt="Chicken Tikka aus dem Lehmofen: gegrillte, marinierte Hühnerstücke mit Koriander, roten Zwiebeln, Limette und Minz-Dip" fetchpriority="high">
       <svg class="bogen-kante" viewBox="0 0 300 400" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M1.5 398.5V138C1.5 78 70 70 150 2c80 68 148.5 76 148.5 136v260.5z" vector-effect="non-scaling-stroke"/></svg>
+      <a class="etikett" href="speisekarte.html?dazu=39" aria-label="Chicken Tikka, 16,90 Euro: auf den Bestellzettel legen">
+        <span class="etikett-hand" aria-hidden="true">frisch aus dem Lehmofen</span>
+        <span class="etikett-name">Chicken Tikka</span>
+        <span class="etikett-zeile"><span class="etikett-preis">16,90 €</span><span class="etikett-dazu"><svg aria-hidden="true"><use href="#i-plus"/></svg>Auf den Zettel</span></span>
+      </a>
     </figure>
   </section>
 
@@ -128,10 +135,10 @@
     <p class="hand">Ein Tipp, und es liegt auf dem Zettel.</p>
     <!-- schalen:anfang -->
       <ul class="schalen-liste">
-        <li><a class="schale" href="speisekarte.html?dazu=57"><span class="schale-bild"><img src="img/schale-butter-chicken-360.webp" srcset="img/schale-butter-chicken-360.webp 360w, img/schale-butter-chicken-640.webp 640w" sizes="(min-width: 900px) 240px, 42vw" width="360" height="360" loading="lazy" alt=""></span><span class="schale-name">Butter Chicken</span><span class="schale-preis">14,90 €</span><span class="schale-dazu"><svg aria-hidden="true"><use href="#i-plus"/></svg>Auf den Zettel</span></a></li>
-        <li><a class="schale" href="speisekarte.html?dazu=109"><span class="schale-bild"><img src="img/schale-karahi-paneer-360.webp" srcset="img/schale-karahi-paneer-360.webp 360w, img/schale-karahi-paneer-640.webp 640w" sizes="(min-width: 900px) 240px, 42vw" width="360" height="360" loading="lazy" alt=""></span><span class="schale-name">Karahi Paneer</span><span class="schale-preis">12,90 €</span><span class="schale-dazu"><svg aria-hidden="true"><use href="#i-plus"/></svg>Auf den Zettel</span></a></li>
-        <li><a class="schale" href="speisekarte.html?dazu=108"><span class="schale-bild"><img src="img/schale-dal-makhni-360.webp" srcset="img/schale-dal-makhni-360.webp 360w, img/schale-dal-makhni-640.webp 640w" sizes="(min-width: 900px) 240px, 42vw" width="360" height="360" loading="lazy" alt=""></span><span class="schale-name">Dal Makhni</span><span class="schale-preis">12,90 €</span><span class="schale-dazu"><svg aria-hidden="true"><use href="#i-plus"/></svg>Auf den Zettel</span></a></li>
-        <li><a class="schale" href="speisekarte.html?dazu=92"><span class="schale-bild"><img src="img/schale-jheenga-curry-360.webp" srcset="img/schale-jheenga-curry-360.webp 360w, img/schale-jheenga-curry-640.webp 640w" sizes="(min-width: 900px) 240px, 42vw" width="360" height="360" loading="lazy" alt=""></span><span class="schale-name">Jheenga Curry</span><span class="schale-preis">16,90 €</span><span class="schale-dazu"><svg aria-hidden="true"><use href="#i-plus"/></svg>Auf den Zettel</span></a></li>
+        <li><a class="schale" href="speisekarte.html?dazu=57"><span class="schale-bild"><img src="img/schale-butter-chicken-360.webp" srcset="img/schale-butter-chicken-360.webp 360w, img/schale-butter-chicken-640.webp 640w" sizes="(min-width: 900px) 300px, 50vw" width="360" height="360" loading="lazy" alt=""></span><span class="schale-name">Butter Chicken</span><span class="schale-preis">14,90 €</span><span class="schale-dazu"><svg aria-hidden="true"><use href="#i-plus"/></svg>Auf den Zettel</span></a></li>
+        <li><a class="schale" href="speisekarte.html?dazu=109"><span class="schale-bild"><img src="img/schale-karahi-paneer-360.webp" srcset="img/schale-karahi-paneer-360.webp 360w, img/schale-karahi-paneer-640.webp 640w" sizes="(min-width: 900px) 300px, 50vw" width="360" height="360" loading="lazy" alt=""></span><span class="schale-name">Karahi Paneer</span><span class="schale-preis">12,90 €</span><span class="schale-dazu"><svg aria-hidden="true"><use href="#i-plus"/></svg>Auf den Zettel</span></a></li>
+        <li><a class="schale" href="speisekarte.html?dazu=108"><span class="schale-bild"><img src="img/schale-dal-makhni-360.webp" srcset="img/schale-dal-makhni-360.webp 360w, img/schale-dal-makhni-640.webp 640w" sizes="(min-width: 900px) 300px, 50vw" width="360" height="360" loading="lazy" alt=""></span><span class="schale-name">Dal Makhni</span><span class="schale-preis">12,90 €</span><span class="schale-dazu"><svg aria-hidden="true"><use href="#i-plus"/></svg>Auf den Zettel</span></a></li>
+        <li><a class="schale" href="speisekarte.html?dazu=92"><span class="schale-bild"><img src="img/schale-jheenga-curry-360.webp" srcset="img/schale-jheenga-curry-360.webp 360w, img/schale-jheenga-curry-640.webp 640w" sizes="(min-width: 900px) 300px, 50vw" width="360" height="360" loading="lazy" alt=""></span><span class="schale-name">Jheenga Curry</span><span class="schale-preis">16,90 €</span><span class="schale-dazu"><svg aria-hidden="true"><use href="#i-plus"/></svg>Auf den Zettel</span></a></li>
       </ul>
     <!-- schalen:ende -->
   </section>
@@ -140,44 +147,54 @@
     <div class="uhr-kopf">
       <h2 id="uhr-titel">Essensuhr</h2>
       <p class="hand">Wann soll es schmecken?</p>
-      <p class="einleitung">Wählen Sie, wann Sie essen möchten. Wir sagen Ihnen, bis wann Sie bestellen sollten.</p>
+      <p class="einleitung">Sagen Sie uns, wann Sie essen möchten. Wir schreiben Ihnen auf, bis wann Sie bestellen sollten.</p>
     </div>
 
     <div class="uhr-raster">
-      <form class="uhr-wahl" id="uhr" novalidate>
-        <div class="uhr-gruppe" role="radiogroup" aria-label="Wie möchten Sie essen?">
-          <label class="schalter"><input type="radio" name="weg" value="abholen" checked><span>Abholen</span></label>
-          <label class="schalter"><input type="radio" name="weg" value="liefern"><span>Liefern lassen</span></label>
-          <label class="schalter"><input type="radio" name="weg" value="lokal"><span>Bei uns essen</span></label>
-        </div>
-        <div class="uhr-gruppe" role="radiogroup" aria-label="Tag">
-          <label class="schalter"><input type="radio" name="tag" value="0" checked><span data-tag-name="0">Heute</span></label>
-          <label class="schalter"><input type="radio" name="tag" value="1"><span data-tag-name="1">Morgen</span></label>
-        </div>
-        <label class="uhr-zeit" for="uhr-zeit">
-          <span class="uhr-zeit-name">Essen um</span>
-          <output id="uhr-zeit-wert" for="uhr-zeit">12:30</output>
-        </label>
-        <input type="range" id="uhr-zeit" min="690" max="1320" step="15" value="750" aria-valuetext="12:30 Uhr">
-        <div class="uhr-skala" aria-hidden="true"><span>11:30</span><span>14:00</span><span>17:30</span><span>22:00</span></div>
+      <form class="uhr-karte" id="uhr" novalidate>
+        <fieldset class="uhr-frage">
+          <legend>Wie möchten Sie essen?</legend>
+          <div class="worte">
+            <label class="wort"><input type="radio" name="weg" value="abholen" checked><span>Abholen</span></label>
+            <label class="wort"><input type="radio" name="weg" value="liefern"><span>Liefern lassen</span></label>
+            <label class="wort"><input type="radio" name="weg" value="lokal"><span>Bei uns essen</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="uhr-frage">
+          <legend>An welchem Tag?</legend>
+          <div class="worte">
+            <label class="wort"><input type="radio" name="tag" value="0" checked><span data-tag-name="0">Heute</span></label>
+            <label class="wort"><input type="radio" name="tag" value="1"><span data-tag-name="1">Morgen</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="uhr-frage">
+          <legend>Um wie viel Uhr?</legend>
+          <div class="buch">
+            <div class="buch-seite"><p class="buch-kopf" aria-hidden="true">Mittags</p><div class="buch-zeiten" data-buch="0"></div></div>
+            <div class="buch-seite"><p class="buch-kopf" aria-hidden="true">Abends</p><div class="buch-zeiten" data-buch="1"></div></div>
+          </div>
+        </fieldset>
       </form>
 
-      <div class="uhr-ergebnis">
-        <svg class="zifferblatt" id="zifferblatt" viewBox="0 0 320 190" aria-hidden="true" focusable="false"></svg>
-        <p class="uhr-satz" id="uhr-satz" aria-live="polite"></p>
-        <p class="uhr-zusatz" id="uhr-zusatz"></p>
-        <div class="uhr-knoepfe">
+      <div class="bon-schatten">
+        <div class="bon">
+          <svg class="bon-kuppel" aria-hidden="true"><use href="#kuppel"/></svg>
+          <p class="bon-kopf"><span>Bombay · Essensuhr</span><span id="uhr-datum"></span></p>
+          <div class="bon-inhalt" id="uhr-satz" aria-live="polite"></div>
+          <p class="uhr-zusatz" id="uhr-zusatz"></p>
           <a class="knopf knopf--lampe" id="uhr-handeln" href="speisekarte.html">Zum Bestellzettel</a>
+          <p class="bon-fuss">Richtwerte: Abholung ca. 30 min, Lieferung ca. 60 min. Geliefert und abgeholt wird zu den Öffnungszeiten.</p>
         </div>
-        <p class="klein">Richtwerte: Abholung ca. 30 min, Lieferung ca. 60 min. Geliefert und abgeholt wird zu den Öffnungszeiten.</p>
       </div>
     </div>
     <noscript><p class="klein">Die Essensuhr braucht JavaScript. Öffnungszeiten stehen weiter unten.</p></noscript>
   </section>
 
   <section class="kueche wrap" aria-labelledby="kueche-titel">
-    <figure class="kueche-bild">
-      <img src="img/02-kupferschalen-naan-600.webp" srcset="img/02-kupferschalen-naan-600.webp 600w, img/02-kupferschalen-naan-1200.webp 1200w" sizes="(min-width: 700px) 40vw, 100vw" width="600" height="800" loading="lazy" alt="Gehämmerte Kupferschalen auf Stövchen, daneben Naan im Brotkorb">
+    <figure class="kueche-bilder">
+      <button type="button" class="kachel kachel--hoch" data-gross="img/02-kupferschalen-naan-1200.webp" data-w="1200" data-h="1600"><img src="img/02-kupferschalen-naan-600.webp" srcset="img/02-kupferschalen-naan-600.webp 600w, img/02-kupferschalen-naan-1200.webp 1200w" sizes="(min-width: 900px) 260px, 46vw" width="600" height="800" loading="lazy" alt="Gehämmerte Kupferschalen auf Stövchen, daneben Naan im Brotkorb"></button>
+      <button type="button" class="kachel kachel--quer" data-gross="img/05-tisch-mehrere-gerichte-1200.webp" data-w="1200" data-h="900"><img src="img/05-tisch-mehrere-gerichte-600.webp" srcset="img/05-tisch-mehrere-gerichte-600.webp 600w, img/05-tisch-mehrere-gerichte-1200.webp 1200w" sizes="(min-width: 900px) 460px, 46vw" width="600" height="450" loading="lazy" alt="Ein gedeckter Tisch für mehrere: drei Currys in Kupferschälchen, Reis, Naan und Salat"></button>
+      <figcaption class="bildhinweis">Fotos: Gäste des Bombay. Antippen zum Vergrößern.</figcaption>
     </figure>
     <div class="kueche-text">
       <h2 id="kueche-titel">Lehmofen</h2>
@@ -189,26 +206,20 @@
     </div>
   </section>
 
-  <section class="galerie wrap" aria-labelledby="galerie-titel">
-    <h2 id="galerie-titel" class="sr">Fotos aus dem Bombay</h2>
-    <ul class="kacheln">
-      <li><button type="button" class="kachel" data-gross="img/05-tisch-mehrere-gerichte-1200.webp" data-w="1200" data-h="900"><img src="img/05-tisch-mehrere-gerichte-600.webp" width="600" height="450" loading="lazy" alt="Ein gedeckter Tisch für mehrere: drei Currys in Kupferschälchen, Reis, Naan und Salat"></button></li>
-      <li><button type="button" class="kachel" data-gross="img/06-drei-saucen-1200.webp" data-w="1200" data-h="900"><img src="img/06-drei-saucen-600.webp" width="600" height="450" loading="lazy" alt="Drei Soßen in kleinen Metallschälchen auf einer Platte"></button></li>
-      <li><button type="button" class="kachel" data-gross="img/07-teller-paisley-decke-1200.webp" data-w="1200" data-h="900"><img src="img/07-teller-paisley-decke-600.webp" width="600" height="450" loading="lazy" alt="Ein Curry mit Reis auf einem Teller, auf einer Tischdecke mit Paisleymuster"></button></li>
-    </ul>
-    <p class="bildhinweis">Fotos: Gäste des Bombay.</p>
-  </section>
-
   <section class="stimmen wrap" aria-labelledby="stimmen-titel">
     <h2 id="stimmen-titel">Stimmen</h2>
     <p class="hand">Was Gäste bei Google schreiben.</p>
-    <p class="note"><span class="note-zahl">4,5</span><span class="note-text">von 5 Sternen<br>417 Bewertungen</span></p>
+    <div class="note">
+      <span class="note-zahl">4,5</span>
+      <p class="note-text"><span class="sterne" role="img" aria-label="4,5 von 5 Sternen"><svg aria-hidden="true"><use href="#stern"/></svg><svg aria-hidden="true"><use href="#stern"/></svg><svg aria-hidden="true"><use href="#stern"/></svg><svg aria-hidden="true"><use href="#stern"/></svg><svg class="stern--halb" aria-hidden="true"><use href="#stern"/></svg></span><span>417 Bewertungen</span></p>
+      <a class="knopf knopf--band" href="https://www.google.com/maps/search/?api=1&amp;query=Restaurant+Bombay+Obere+Hauptstra%C3%9Fe+67+85354+Freising" rel="noopener" aria-label="Selbst bewerten: öffnet das Bombay bei Google Maps">Selbst bewerten<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
     <ul class="zitate">
       <li><blockquote>„Sehr gutes Essen, kurze Wartezeiten, Bedienung sehr freundlich und zuvorkommend.“</blockquote></li>
       <li><blockquote>„Sehr schmackhafte, günstige und reichhaltige Gerichte zum Mittagstisch“</blockquote></li>
       <li><blockquote>„Die Hauptspeise besaß genügend Reis für die Fleisch/Soßen Portion.“</blockquote></li>
     </ul>
-    <p class="quelle">417 Bewertungen im Google-Unternehmensprofil, Stand 06.10.2026. Auszüge ohne Namen. Wir prüfen nicht, ob die Bewertungen von Gästen stammen, die bei uns gegessen haben.</p>
+    <p class="quelle">417 Bewertungen im Google-Unternehmensprofil, Stand 06.10.2026. „Selbst bewerten“ öffnet unser Profil bei Google Maps, dort steht „Rezension schreiben“. Auszüge ohne Namen. Wir prüfen nicht, ob die Bewertungen von Gästen stammen, die bei uns gegessen haben.</p>
   </section>
 
   <section class="besuch" id="besuch" aria-labelledby="zeiten-titel">

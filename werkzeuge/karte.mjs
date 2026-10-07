@@ -108,7 +108,7 @@ const schalenHtml = `      <ul class="schalen-liste">\n` + SCHALEN.map(([nr, bil
   const p = alleposten.get(nr);
   if (!p) { console.error(`Schale ${bild}: Nummer ${nr} fehlt in der Karte.`); process.exit(1); }
   return `        <li><a class="schale" href="speisekarte.html?dazu=${nr}">` +
-    `<span class="schale-bild"><img src="img/schale-${bild}-360.webp" srcset="img/schale-${bild}-360.webp 360w, img/schale-${bild}-640.webp 640w" sizes="(min-width: 900px) 240px, 42vw" width="360" height="360" loading="lazy" alt=""></span>` +
+    `<span class="schale-bild"><img src="img/schale-${bild}-360.webp" srcset="img/schale-${bild}-360.webp 360w, img/schale-${bild}-640.webp 640w" sizes="(min-width: 900px) 300px, 50vw" width="360" height="360" loading="lazy" alt=""></span>` +
     `<span class="schale-name">${esc(p.name)}</span><span class="schale-preis">${p.preis} €</span>` +
     `<span class="schale-dazu"><svg aria-hidden="true"><use href="#i-plus"/></svg>Auf den Zettel</span></a></li>`;
 }).join('\n') + `\n      </ul>`;

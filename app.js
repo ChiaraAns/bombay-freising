@@ -114,92 +114,95 @@
   /* ---------- Essensuhr: bis wann bestellen, damit es zur Wunschzeit schmeckt ---------- */
   var uhr = document.getElementById('uhr');
   if (uhr) {
-    var regler = document.getElementById('uhr-zeit'), zeitWert = document.getElementById('uhr-zeit-wert');
     var satz2 = document.getElementById('uhr-satz'), zusatz2 = document.getElementById('uhr-zusatz');
-    var handeln = document.getElementById('uhr-handeln'), blatt = document.getElementById('zifferblatt');
-    var VON = 660, BIS = 1350; // Zifferblatt 11:00 bis 22:30
+    var handeln = document.getElementById('uhr-handeln'), datum = document.getElementById('uhr-datum');
+    var bon = document.querySelector('.bon');
     var hhmm = function (m) { m = ((m % 1440) + 1440) % 1440; return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); };
-    var gewaehlt = function (name) { return uhr.querySelector('input[name="' + name + '"]:checked').value; };
+    var gewaehlt = function (name) { var el = uhr.querySelector('input[name="' + name + '"]:checked'); return el ? el.value : null; };
     var heuteNr = jetzt().tag;
+    var tagKurz = function (plus) { return TAGE[(heuteNr + plus) % 7].slice(0, 2) + '.'; };
 
     document.querySelectorAll('[data-tag-name]').forEach(function (el) {
-      var d = (heuteNr + +el.dataset.tagName) % 7;
-      el.textContent = (+el.dataset.tagName === 0 ? 'Heute' : 'Morgen') + ' · ' + TAGE[d].slice(0, 2) + '.';
+      el.textContent = (+el.dataset.tagName === 0 ? 'Heute' : 'Morgen') + ', ' + tagKurz(+el.dataset.tagName);
     });
 
-    // Startwert: nächste sinnvolle Essenszeit
-    (function () {
-      var n = jetzt(), ziel = Math.ceil((n.min + 45) / 15) * 15, slots = ZEITEN[n.tag] || [];
-      var passt = slots.some(function (s) { return ziel >= minuten(s[0]) && ziel <= minuten(s[1]); });
-      if (!passt) ziel = n.min < minuten('14:00') ? 750 : 1140;
-      // Heute Ruhetag oder schon Schluss: gleich auf morgen stellen
-      if (!slots.length || n.min + 30 > minuten(slots[slots.length - 1][1])) {
-        uhr.querySelector('input[name="tag"][value="1"]').checked = true; ziel = 750;
+    // Reservierungsbuch: halbstündlich, mittags und abends
+    [MITTAG, ABEND].forEach(function (slot, i) {
+      var h = '';
+      for (var m = minuten(slot[0]); m <= minuten(slot[1]); m += 30) {
+        h += '<label class="zeit"><input type="radio" name="zeit" value="' + m + '" aria-label="' + hhmm(m) + ' Uhr"><span aria-hidden="true">' + hhmm(m) + '</span></label>';
       }
-      regler.value = Math.min(1320, Math.max(690, ziel));
+      uhr.querySelector('[data-buch="' + i + '"]').innerHTML = h;
+    });
+    var zeitFelder = Array.prototype.slice.call(uhr.querySelectorAll('input[name="zeit"]'));
+
+    // Was heute schon vorbei ist, wird durchgestrichen; am Ruhetag alles
+    function buchStellen() {
+      var plus = +gewaehlt('tag'), offen = !!ZEITEN[(heuteNr + plus) % 7], n = jetzt().min;
+      zeitFelder.forEach(function (f) { f.disabled = !offen || (plus === 0 && +f.value <= n); });
+      var wahl = uhr.querySelector('input[name="zeit"]:checked');
+      if (wahl && wahl.disabled) { wahl.checked = false; wahl = null; }
+      if (!wahl) {
+        // Vorschlag: die erste Zeit, die zum Abholen sicher klappt (Bestellung erst ab Öffnung, heute mit etwas Luft)
+        var klappt = function (f) {
+          var m = +f.value, start = minuten(m >= minuten(ABEND[0]) ? ABEND[0] : MITTAG[0]);
+          return !f.disabled && m - VORLAUF.abholen >= start && (plus > 0 || m >= n + 45);
+        };
+        var erste = zeitFelder.filter(klappt)[0] || zeitFelder.filter(function (f) { return !f.disabled; })[0];
+        if (erste) erste.checked = true;
+      }
+    }
+
+    // Startwert: heute Ruhetag oder schon Schluss, dann gleich morgen
+    (function () {
+      var n = jetzt(), slots = ZEITEN[n.tag] || [];
+      if (!slots.length || n.min + 30 > minuten(slots[slots.length - 1][1])) uhr.querySelector('input[name="tag"][value="1"]').checked = true;
+      buchStellen();
     })();
 
-    function punkt(m, r) { var w = Math.PI - (m - VON) / (BIS - VON) * Math.PI; return [160 + r * Math.cos(w), 170 - r * Math.sin(w)]; }
-    function bogenPfad(a, b, r) { var p = punkt(a, r), q = punkt(b, r); return 'M' + p[0].toFixed(1) + ' ' + p[1].toFixed(1) + 'A' + r + ' ' + r + ' 0 0 1 ' + q[0].toFixed(1) + ' ' + q[1].toFixed(1); }
-
-    function zeichneBlatt(tag, essen, bestellen) {
-      var ns = 'http://www.w3.org/2000/svg', h = '';
-      h += '<path class="blatt-grund" d="' + bogenPfad(VON, BIS, 140) + '"/>';
-      (ZEITEN[tag] || []).forEach(function (s) { h += '<path class="blatt-offen" d="' + bogenPfad(minuten(s[0]), minuten(s[1]), 140) + '"/>'; });
-      ['11:30', '14:00', '17:30', '22:00'].forEach(function (t) { var p = punkt(minuten(t), 120); h += '<text class="blatt-zahl" x="' + p[0].toFixed(1) + '" y="' + (p[1] + 4).toFixed(1) + '">' + t + '</text>'; });
-      if (bestellen !== null && bestellen >= VON && bestellen < essen) h += '<path class="blatt-vorlauf" d="' + bogenPfad(bestellen, essen, 156) + '"/>';
-      if (+gewaehlt('tag') === 0) { var n = jetzt().min; if (n >= VON && n <= BIS) { var a = punkt(n, 128), b = punkt(n, 152); h += '<line class="blatt-jetzt" x1="' + a[0].toFixed(1) + '" y1="' + a[1].toFixed(1) + '" x2="' + b[0].toFixed(1) + '" y2="' + b[1].toFixed(1) + '"/>'; } }
-      var z = punkt(essen, 140), m = punkt(essen, 0);
-      h += '<line class="blatt-zeiger" x1="' + m[0].toFixed(1) + '" y1="' + m[1].toFixed(1) + '" x2="' + z[0].toFixed(1) + '" y2="' + z[1].toFixed(1) + '"/>';
-      h += '<circle class="blatt-knopf" cx="' + z[0].toFixed(1) + '" cy="' + z[1].toFixed(1) + '" r="7"/>';
-      h += '<circle class="blatt-mitte" cx="160" cy="170" r="4"/>';
-      blatt.innerHTML = h;
+    function zeile(name, wert, gross) {
+      return '<p class="bon-zeile' + (gross ? ' bon-zeile--gross' : '') + '"><span>' + name + '</span><i aria-hidden="true"></i><b>' + wert + '</b></p>';
     }
 
     function rechnen() {
-      var weg = gewaehlt('weg'), plus = +gewaehlt('tag'), tag = (heuteNr + plus) % 7, essen = +regler.value;
-      var t = hhmm(essen); zeitWert.textContent = t; regler.setAttribute('aria-valuetext', t + ' Uhr');
-      var slots = ZEITEN[tag], bestellen = null, s = '', z = '';
-      handeln.href = weg === 'lokal' ? TEL : 'speisekarte.html?weg=' + weg + '&wann=' + plus + '-' + essen;
+      var weg = gewaehlt('weg'), plus = +gewaehlt('tag'), tag = (heuteNr + plus) % 7, wert = gewaehlt('zeit');
+      var essen = wert === null ? null : +wert, t = essen === null ? '' : hhmm(essen);
+      var slots = ZEITEN[tag], s = '', z = '';
+      datum.textContent = (plus === 0 ? 'Heute, ' : 'Morgen, ') + TAGE[tag];
+      handeln.href = weg === 'lokal' ? TEL : 'speisekarte.html?weg=' + weg + (essen === null ? '' : '&wann=' + plus + '-' + essen);
       handeln.textContent = weg === 'lokal' ? 'Tisch reservieren' : 'Zum Bestellzettel';
       if (!slots) {
         var naechster = (tag + 1) % 7;
-        s = TAGE[tag] + ' ist Ruhetag.'; z = 'Ab ' + TAGE[naechster] + ' 11:30 sind wir wieder da.';
+        s = '<p class="bon-satz">' + TAGE[tag] + ' ist Ruhetag.</p>'; z = 'Ab ' + TAGE[naechster] + ' 11:30 sind wir wieder da.';
+      } else if (essen === null) {
+        s = '<p class="bon-satz">Heute ist die Küche zu.</p>'; z = 'Wählen Sie oben „Morgen“.';
+      } else if (weg === 'lokal') {
+        s = zeile('Tisch für', t, true); z = 'Rufen Sie uns an: 08161 4965102, während der Öffnungszeiten.';
       } else {
         var slot = slots.filter(function (x) { return essen >= minuten(x[0]) && essen <= minuten(x[1]); })[0];
-        if (!slot) {
-          var spaeter = slots.filter(function (x) { return minuten(x[0]) > essen; })[0];
-          s = 'Um ' + t + ' ist die Küche zu.'; z = spaeter ? 'Ab ' + spaeter[0] + ' Uhr geht es weiter. Schieben Sie die Uhr dorthin.' : 'Heute ist danach Schluss.';
-        } else if (weg === 'lokal') {
-          s = 'Tisch für ' + t + ' Uhr reservieren.'; z = 'Rufen Sie uns an: 08161 4965102, während der Öffnungszeiten.';
+        var bestellen = essen - VORLAUF[weg], n = jetzt(), heute = plus === 0;
+        var essenWort = weg === 'abholen' ? 'Abholen um' : 'Lieferung gegen';
+        if (heute && bestellen < n.min) {
+          var frueh = Math.ceil((n.min + VORLAUF[weg]) / 5) * 5;
+          var offen = slots.some(function (x) { return frueh >= minuten(x[0]) && frueh <= minuten(x[1]); });
+          var weiter = slots.filter(function (x) { return minuten(x[0]) > n.min; })[0];
+          s = '<p class="bon-satz">Für ' + t + ' ist es zu knapp.</p>';
+          z = offen ? 'Frühestens um ' + hhmm(frueh) + ' Uhr, wenn Sie jetzt bestellen.'
+            : weiter ? 'Bestellungen nehmen wir ab ' + weiter[0] + ' Uhr wieder an.'
+            : 'Heute ist die Küche zu. Wählen Sie oben „Morgen“.';
+        } else if (bestellen < minuten(slot[0])) {
+          // Vor der Öffnung nimmt niemand Bestellungen an
+          s = '<p class="bon-satz">Für ' + t + ' ist es zu knapp.</p>';
+          z = 'Bestellungen nehmen wir ab ' + slot[0] + ' Uhr an, fertig frühestens um ' + hhmm(minuten(slot[0]) + VORLAUF[weg]) + ' Uhr.';
         } else {
-          bestellen = essen - VORLAUF[weg];
-          var n = jetzt(), heute = plus === 0;
-          if (heute && bestellen < n.min) {
-            var frueh = Math.ceil((n.min + VORLAUF[weg]) / 5) * 5;
-            var offen = slots.some(function (x) { return frueh >= minuten(x[0]) && frueh <= minuten(x[1]); });
-            var weiter = slots.filter(function (x) { return minuten(x[0]) > n.min; })[0];
-            s = 'Für ' + t + ' ist es zu knapp.';
-            z = offen ? 'Frühestens um ' + hhmm(frueh) + ' Uhr, wenn Sie jetzt bestellen.'
-              : weiter ? 'Bestellungen nehmen wir ab ' + weiter[0] + ' Uhr wieder an.'
-              : 'Heute ist die Küche zu. Stellen Sie die Uhr auf morgen.';
-            bestellen = null;
-          } else if (bestellen < minuten(slot[0])) {
-            // Vor der Öffnung nimmt niemand Bestellungen an
-            s = 'Für ' + t + ' ist es zu knapp.';
-            z = 'Bestellungen nehmen wir ab ' + slot[0] + ' Uhr an, fertig frühestens um ' + hhmm(minuten(slot[0]) + VORLAUF[weg]) + ' Uhr.';
-            bestellen = null;
-          } else {
-            s = 'Bestellen bis <b>' + hhmm(bestellen) + '</b>, ' + (weg === 'abholen' ? 'abholen um ' : 'Lieferung gegen ') + t + '.';
-            z = heute && bestellen - n.min <= 60 ? 'Noch ' + (bestellen - n.min) + ' Minuten Zeit zum Aussuchen.' : 'Den Bestellzettel können Sie schon zusammenstellen.';
-          }
+          s = zeile('Bestellen bis', hhmm(bestellen), true) + zeile(essenWort, t);
+          z = heute && bestellen - n.min <= 60 ? 'Noch ' + (bestellen - n.min) + ' Minuten Zeit zum Aussuchen.' : 'Den Bestellzettel können Sie schon zusammenstellen.';
         }
       }
       satz2.innerHTML = s; zusatz2.textContent = z;
-      zeichneBlatt(tag, essen, bestellen);
+      bon.classList.remove('neu'); void bon.offsetWidth; bon.classList.add('neu');
     }
-    uhr.addEventListener('input', rechnen);
-    uhr.addEventListener('change', rechnen);
+    uhr.addEventListener('change', function (e) { if (e.target.name === 'tag') buchStellen(); rechnen(); });
     uhr.addEventListener('submit', function (e) { e.preventDefault(); });
     rechnen();
   }
