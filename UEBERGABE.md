@@ -26,7 +26,18 @@ Warum so: `PRODUCT.md` (Fakten), `DESIGN.md` (Gestaltungssystem), `.impeccable/s
 | Unabhängiger Abschlussprüfer (impeccable) | Urteil „fix“ mit acht Nachbesserungen; Punkte 1–7 als behoben bewertet, Punkt 8 (Begründungen in `DESIGN.md`) danach erledigt, aber nicht erneut vom Prüfer bewertet |
 | `DESIGN.md` + `.impeccable/design.json` | vom impeccable-Documenter aus dem gebauten Stand; drei dabei gemeldete Abweichungen behoben (Kupfer als Textfarbe, Übergänge nur noch `transform`/`opacity`, Lotse per `transform`), Schriftgrößen und Bogenradien als Token |
 
-### Detektor-Meldungen, die bleiben (begründet)
+### Detektor gegen die gerenderten Seiten (07.10.2026)
+
+Der Detektor findet in dieser Umgebung von selbst keinen Browser und gibt dann trotzdem `[]` aus (Fehler nur auf stderr). Ältere `[]`-Angaben für URL-Prüfungen sind deshalb nicht belastbar. Richtig so:
+
+```sh
+printf '#!/bin/sh\nexec /opt/pw-browsers/chromium-1194/chrome-linux/chrome --no-sandbox "$@"\n' > /tmp/chrome-ns.sh && chmod +x /tmp/chrome-ns.sh
+IMPECCABLE_BROWSER=/tmp/chrome-ns.sh .claude/skills/impeccable/scripts/impeccable detect --json --viewport 390x844 http://localhost:8099/index.html …
+```
+
+Ergebnis am 07.10.2026 nach den Korrekturen (Versalien-Länge, Zeilenlängen, Markierungs-Abstände, Zeilenhöhe, Grund `#f7f5f2`): `[]` bei 390 × 844 und 1440 × 900 für alle vier Seiten.
+
+### Detektor-Meldungen, die früher blieben (begründet)
 
 - `cramped-padding` auf `.buehne`, `.bei-uns`, `.besuch`, `.lotse`: Das sind randlose Bänder; Fotos laufen absichtlich bis an den Rand, die Texte sitzen in `.wrap` mit Seitenrand (16–40 px).
 

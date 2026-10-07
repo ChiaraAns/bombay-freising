@@ -8,7 +8,7 @@ Stand 06.10.2026. Bis zur Antwort steht auf der Seite nichts Geratenes; unklare 
 2. **Fotos:** Alle sieben Fotos haben Gäste aufgenommen. Einwilligung der Fotografierenden einholen oder einen Fototermin im Lokal machen.
 3. **Impressum:** Rechtsform (Einzelunternehmen?), USt-IdNr. (falls vorhanden), aktuelle E-Mail-Adresse bestätigen. Handelsregister prüfen.
 4. **Bestellweg (geändert 07.10.2026):** Auf Wunsch der Betreiberin bestellt man jetzt direkt auf der Seite: Gerichte auf den Bestellzettel, dann Anruf oder WhatsApp. Die Seite leitet nicht mehr zu Karvi weiter; nur die Bombay-App (App Store, Google Play) bleibt verlinkt. Offen:
-   - **WhatsApp-Nummer** des Restaurants. Bis sie in `app.js` (`WHATSAPP`) steht, gibt es nur „Anrufen“ und „Kopieren“. Danach den WhatsApp-Absatz in `datenschutz.html` sichtbar machen (`hidden` entfernen).
+   - **WhatsApp-Nummer:** Eingetragen ist vorerst die Festnetznummer 08161 4965102 (`WHATSAPP` in `app.js`), weil keine andere bekannt ist. **Bitte prüfen, ob diese Nummer bei WhatsApp (Business) eingerichtet ist.** Sonst meldet WhatsApp „Nummer ungültig“ und die Bestellung kommt nicht an. Dann die richtige Handynummer eintragen oder den Wert leeren (dann nur Anrufen/Kopieren) und den WhatsApp-Absatz in `datenschutz.html` wieder verbergen.
    - Wer im Laden liest WhatsApp-Bestellungen, und wie bestätigt das Restaurant sie?
    - **Bezahlung** bei Abholung und Lieferung (bar, Karte?). Die Seite sagt dazu bisher nichts.
    - Das ältere order-smart-System kündigen oder abschalten. Lieferando wird nicht verlinkt.

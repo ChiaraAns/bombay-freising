@@ -8,9 +8,10 @@
   var TAGE = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
   var VORLAUF = { abholen: 30, liefern: 60 }; // Richtwerte des Restaurants in Minuten
   var TEL = 'tel:+4981614965102';
-  // WhatsApp-Nummer des Restaurants, international ohne + und Leerzeichen (z. B. '49170…').
-  // Leer lassen, solange sie nicht bestätigt ist: Dann gibt es nur „Anrufen“.
-  var WHATSAPP = '';
+  // WhatsApp-Nummer des Restaurants, international ohne + und Leerzeichen.
+  // Vorerst die Festnetznummer (Wunsch der Betreiberin, 07.10.2026); ob sie WhatsApp hat, ist offen (ABNAHME.md).
+  // Leer lassen schaltet WhatsApp ab: Dann gibt es nur „Anrufen“ und „Kopieren“.
+  var WHATSAPP = '4981614965102';
 
   function minuten(t) { var p = t.split(':'); return +p[0] * 60 + +p[1]; }
   function jetzt() {
