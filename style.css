@@ -53,6 +53,7 @@
   --luft: clamp(64px, 10vw, 128px);
   --kopf-hoehe: 62px;
   --pille: 999px;
+  --bogen: 26px;             /* Scheitelhöhe des Kuppelbogens über dem Status */
   --aus: cubic-bezier(.16, 1, .3, 1);
   --ein: cubic-bezier(.55, 0, 1, .45);
   --fokus: var(--kupfer-hell);
@@ -102,7 +103,7 @@ h3 { font: 400 1.15rem/1.3 var(--versal); letter-spacing: .14em; text-transform:
 
 /* ---------- Kopfleiste, weicht beim Runterscrollen aus ---------- */
 .kopf { position: sticky; top: 0; z-index: 80; height: var(--kopf-hoehe); background: color-mix(in oklch, var(--nacht) 94%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--linie); transition: transform .35s var(--aus); }
-.kopf.weg { transform: translateY(-100%); transition-timing-function: var(--ein); transition-duration: .25s; }
+.kopf.weg { transform: translateY(-100%); transition-timing-function: var(--ein); transition-duration: .3s; }
 .kopf-zeile { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 100%; }
 .marke { display: block; padding: 6px 0; }
 .menu-knopf { min-height: 42px; padding: 4px 18px 0; border: 1px solid var(--linie-stark); border-radius: var(--pille); background: transparent; color: var(--tinte); font: 400 var(--gr-mini) var(--versal); letter-spacing: .2em; text-transform: uppercase; cursor: pointer; }
@@ -132,7 +133,7 @@ h3 { font: 400 1.15rem/1.3 var(--versal); letter-spacing: .14em; text-transform:
 .heute { order: 4; display: grid; justify-items: center; text-align: center; margin: 0 auto 14px; }
 .heute-kuppel { width: 40px; height: 27px; color: var(--kupfer); margin-bottom: -1px; position: relative; z-index: 1; animation: kuppel .7s var(--aus) .15s backwards; }
 .heute-satz { position: relative; margin: 0; padding: 17px 22px 0; font: 400 .98rem/1.3 var(--versal); letter-spacing: .14em; text-transform: uppercase; color: var(--tinte); }
-.heute-satz::before { content: ""; position: absolute; inset: 0 0 .35em; border: 1px solid var(--linie-kupfer); border-bottom: 0; border-radius: 50% 50% 0 0 / 26px 26px 0 0; pointer-events: none; animation: bogen .8s var(--aus) backwards; }
+.heute-satz::before { content: ""; position: absolute; inset: 0 0 .35em; border: 1px solid var(--linie-kupfer); border-bottom: 0; border-radius: 50% 50% 0 0 / var(--bogen) var(--bogen) 0 0; pointer-events: none; animation: bogen .8s var(--aus) backwards; }
 .heute-satz b { font-weight: 400; color: var(--kupfer-hell); }
 .heute-zusatz { margin: 8px 0 0; font-size: var(--gr-klein); color: var(--tinte-still); }
 @keyframes bogen { from { transform: scaleX(.55); opacity: 0; } }
@@ -196,7 +197,7 @@ h3 { font: 400 1.15rem/1.3 var(--versal); letter-spacing: .14em; text-transform:
 .stimmen { width: 100%; max-width: none; margin-top: calc(var(--luft) * .5); padding: var(--luft) max(var(--rand), (100% - 1160px) / 2); background: var(--decke); color: var(--decke-still); --fokus: var(--decke-tinte); }
 .stimmen h2 { color: var(--decke-tinte); }
 .stimmen h2::after { background: var(--decke-tinte); }
-.stimmen .hand { color: #7a5230; }
+.stimmen .hand { color: var(--decke-still); }
 .note { display: flex; align-items: center; gap: 18px; margin: 10px 0 30px; padding-bottom: 26px; border-bottom: 1px solid var(--decke-linie); }
 .note-zahl { font: 300 clamp(3.4rem, 2.6rem + 3vw, 4.6rem)/1 var(--versal); color: var(--decke-tinte); }
 .note-text { font: 400 var(--gr-mini)/1.7 var(--versal); letter-spacing: .2em; text-transform: uppercase; color: var(--decke-still); padding-top: 4px; }
@@ -215,7 +216,7 @@ h3 { font: 400 1.15rem/1.3 var(--versal); letter-spacing: .14em; text-transform:
 .zeiten td { text-align: right; padding-left: 12px; white-space: nowrap; }
 .zeiten .ruhetag { color: var(--tinte-still); }
 .zeiten tr.ist-heute th, .zeiten tr.ist-heute td { color: var(--kupfer-hell); }
-.zeiten tr.ist-heute th::after { content: "heute"; display: inline-block; margin-left: 10px; padding: 4px 9px 1px; border: 1px solid var(--kupfer); border-radius: var(--pille); font: 400 .66rem/1 var(--versal); letter-spacing: .18em; text-transform: uppercase; vertical-align: 2px; }
+.zeiten tr.ist-heute th::after { content: "heute"; display: inline-block; margin-left: 10px; padding: 4px 9px 1px; border: 1px solid var(--kupfer); border-radius: var(--pille); font: 400 .72rem/1 var(--versal); letter-spacing: .16em; text-transform: uppercase; vertical-align: 2px; }
 .adresse { font-style: normal; font-size: 1.1rem; color: var(--tinte); margin: 6px 0 20px; }
 .aktionen { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
 
@@ -232,7 +233,7 @@ h3 { font: 400 1.15rem/1.3 var(--versal); letter-spacing: .14em; text-transform:
 /* ---------- Daumenleiste (Handy) ---------- */
 .daumen { position: fixed; z-index: 70; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 10px; padding: 10px var(--rand) calc(10px + env(safe-area-inset-bottom)); background: color-mix(in oklch, var(--nacht-tief) 94%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-top: 1px solid var(--linie); transform: translateY(110%); transition: transform .35s var(--aus); }
 .daumen.da { transform: none; }
-.daumen.da.weg { transform: translateY(110%); transition-timing-function: var(--ein); transition-duration: .25s; }
+.daumen.da.weg { transform: translateY(110%); transition-timing-function: var(--ein); transition-duration: .3s; }
 .daumen .knopf { min-height: 48px; min-width: 0; padding-inline: 8px; letter-spacing: .12em; }
 
 /* ---------- Speisekarte ---------- */
@@ -242,7 +243,7 @@ h3 { font: 400 1.15rem/1.3 var(--versal); letter-spacing: .14em; text-transform:
 .karte-kopf p:not(.hand) { max-width: 38em; }
 .karte-kopf b { color: var(--tinte); font-weight: 600; }
 .lotse { position: sticky; top: var(--kopf-hoehe); z-index: 60; background: color-mix(in oklch, var(--nacht-tief) 96%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); padding: 12px 0 8px; border-block: 1px solid var(--linie); transition: transform .35s var(--aus); }
-.lotse.oben { transform: translateY(calc(-1 * var(--kopf-hoehe))); transition-timing-function: var(--ein); transition-duration: .25s; }
+.lotse.oben { transform: translateY(calc(-1 * var(--kopf-hoehe))); transition-timing-function: var(--ein); transition-duration: .3s; }
 .suche { position: relative; }
 .suche svg { position: absolute; left: 16px; top: 50%; width: 18px; height: 18px; transform: translateY(-50%); color: var(--kupfer); pointer-events: none; }
 .suche input { width: 100%; min-height: 46px; padding: 10px 18px 8px 46px; border: 1px solid var(--linie-stark); border-radius: var(--pille); background: var(--tafel); color: var(--tinte); font: 400 1rem var(--lauf); }
@@ -252,7 +253,8 @@ h3 { font: 400 1.15rem/1.3 var(--versal); letter-spacing: .14em; text-transform:
 .schalter { position: relative; flex: none; }
 .schalter input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
 .schalter span { display: inline-flex; align-items: center; min-height: 38px; padding: 4px 16px 0; border: 1px solid var(--linie-stark); border-radius: var(--pille); font: 400 .72rem var(--versal); letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; color: var(--tinte-leise); }
-.schalter input:checked + span { border-color: var(--kupfer); background: var(--kupfer); color: var(--nacht); }
+.schalter input:checked + span { border-color: var(--kupfer); color: var(--kupfer-hell); }
+.schalter input:checked + span::before { content: ""; width: 6px; height: 6px; margin: -3px 8px 0 -4px; border-radius: 50%; background: var(--kupfer); }
 .schalter input:focus-visible + span { outline: 2px solid var(--kupfer-hell); outline-offset: 3px; }
 .zaehler { flex: none; margin-left: auto; padding-left: 6px; font-size: var(--gr-klein); color: var(--tinte); white-space: nowrap; }
 .gruppen-sprung { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; margin-top: 6px; }
@@ -276,12 +278,12 @@ h3 { font: 400 1.15rem/1.3 var(--versal); letter-spacing: .14em; text-transform:
 .posten .text { grid-column: -3 / -2; font-size: var(--gr-klein); color: var(--tinte-still); }
 .posten:not(:has(.nr)) .text { grid-column: 1 / 2; }
 .marken { display: inline-flex; flex-wrap: wrap; gap: 4px 6px; margin-left: 8px; vertical-align: 1px; }
-.marken span { padding: 3px 8px 0; border: 1px solid; border-radius: var(--pille); font: 400 .66rem/1.4 var(--versal); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+.marken span { padding: 3px 8px 0; border: 1px solid; border-radius: var(--pille); font: 400 .72rem/1.4 var(--versal); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
 .marke-veg { color: var(--gruen); border-color: var(--gruen); }
 .marke-vegan { color: var(--tuerkis); border-color: var(--tuerkis); }
 .marke-scharf, .marke-sehr-scharf { color: var(--chili); border-color: var(--chili); }
 .marke-ab18 { color: var(--tinte-still); border-color: var(--tinte-still); }
-.gruppe-bestellen { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin: 16px 0 26px; padding-top: 3px; font: 400 var(--gr-mini) var(--versal); letter-spacing: .18em; text-transform: uppercase; color: var(--kupfer-hell); text-decoration: none; }
+.gruppe-bestellen { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin: 16px 0 26px; padding-top: 3px; font: 400 1rem var(--versal); letter-spacing: .04em; color: var(--kupfer-hell); text-decoration: none; border-bottom: 1px solid var(--linie-kupfer); }
 .leer { padding: 56px 0; text-align: center; }
 .leer p { font: 400 var(--gr-hand)/1.2 var(--hand); color: var(--kupfer-hell); }
 /* Filter ohne Skript, per :has() */

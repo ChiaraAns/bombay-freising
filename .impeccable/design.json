@@ -1,329 +1,492 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-06T20:13:31+00:00",
+  "generatedAt": "2026-10-07T00:00:00+00:00",
   "title": "Design System: Restaurant Bombay Freising",
   "extensions": {
     "colorMeta": {
-      "ocker": {
+      "nacht": {
         "role": "neutral",
-        "displayName": "Ockerputz",
-        "canonical": "#e2c18a",
-        "oklch": "oklch(82.7% 0.081 80.0)",
+        "displayName": "Nachtholz",
+        "canonical": "#16110e",
+        "oklch": "oklch(18.3% 0.010 52.8)",
         "tonalRamp": [
-          "#110a01",
-          "#312207",
-          "#543e13",
-          "#795c26",
-          "#9c7d48",
-          "#c0a06a",
-          "#dfc59b",
-          "#feecce"
+          "#0f0a07",
+          "#28231f",
+          "#443e3b",
+          "#635c58",
+          "#827c78",
+          "#a49d99",
+          "#cac2be",
+          "#f4ede8"
         ]
       },
-      "ocker-hell": {
+      "nacht-tief": {
         "role": "neutral",
-        "displayName": "Heller Putz",
-        "canonical": "#f0dcb2",
-        "oklch": "oklch(90.0% 0.059 85.5)",
+        "displayName": "Tiefes Holz",
+        "canonical": "#0f0b09",
+        "oklch": "oklch(15.4% 0.008 48.5)",
         "tonalRamp": [
-          "#0f0b03",
-          "#2c2411",
-          "#4e4022",
-          "#705f39",
-          "#928059",
-          "#b6a37b",
-          "#d7c8a7",
-          "#f8edd7"
+          "#0e0a08",
+          "#272321",
+          "#443f3c",
+          "#625c5a",
+          "#827c79",
+          "#a39d9a",
+          "#c9c3bf",
+          "#f3edea"
         ]
       },
-      "ocker-schatten": {
+      "tafel": {
         "role": "neutral",
-        "displayName": "Putz im Schatten",
-        "canonical": "#d8b47b",
-        "oklch": "oklch(78.9% 0.085 78.5)",
+        "displayName": "Tafel",
+        "canonical": "#1e1814",
+        "oklch": "oklch(21.5% 0.012 55.6)",
         "tonalRamp": [
-          "#110a01",
-          "#322205",
-          "#563d0f",
-          "#7b5b21",
-          "#9e7c44",
-          "#c29f66",
-          "#e1c598",
-          "#ffeccd"
+          "#0f0a07",
+          "#29231e",
+          "#453e3a",
+          "#635c57",
+          "#837b76",
+          "#a59d97",
+          "#cbc2bd",
+          "#f5ede7"
         ]
       },
-      "ocker-linie": {
+      "tinte": {
         "role": "neutral",
-        "displayName": "Putzlinie",
-        "canonical": "#b98f55",
-        "oklch": "oklch(67.7% 0.091 74.2)",
+        "displayName": "Tinte",
+        "canonical": "#f2e9dc",
+        "oklch": "oklch(93.8% 0.020 77.3)",
         "tonalRamp": [
-          "#120901",
-          "#342103",
-          "#593b09",
-          "#80581b",
-          "#a37a40",
-          "#c79d62",
-          "#e6c395",
-          "#ffeacb"
+          "#100a03",
+          "#292319",
+          "#463f34",
+          "#645c51",
+          "#847c70",
+          "#a59d91",
+          "#cbc3b6",
+          "#f6ede0"
         ]
       },
-      "holz": {
+      "tinte-leise": {
         "role": "neutral",
-        "displayName": "Dunkles Holz",
-        "canonical": "#2a140c",
-        "oklch": "oklch(22.1% 0.039 40.6)",
+        "displayName": "Leise Tinte",
+        "canonical": "#d9cdbb",
+        "oklch": "oklch(85.3% 0.028 78.2)",
         "tonalRamp": [
-          "#100907",
-          "#2f211d",
-          "#513c35",
-          "#755a50",
-          "#987b71",
-          "#bc9d93",
-          "#dcc3ba",
-          "#fceae4"
+          "#110901",
+          "#2b2214",
+          "#483e2f",
+          "#665c4c",
+          "#877c6b",
+          "#a89d8c",
+          "#cec2b1",
+          "#f9edda"
         ]
       },
-      "rot": {
-        "role": "primary",
-        "displayName": "Bankrot",
-        "canonical": "#a3261a",
-        "oklch": "oklch(47.1% 0.163 29.9)",
+      "tinte-still": {
+        "role": "neutral",
+        "displayName": "Stille Tinte",
+        "canonical": "#b3a591",
+        "oklch": "oklch(72.8% 0.032 76.9)",
         "tonalRamp": [
-          "#1d0201",
-          "#480a05",
-          "#7a180f",
-          "#aa2e21",
-          "#d25443",
-          "#fa7865",
-          "#ffa897",
-          "#ffd9cc"
-        ]
-      },
-      "rot-tief": {
-        "role": "primary",
-        "displayName": "Tiefes Bankrot",
-        "canonical": "#7f1b11",
-        "oklch": "oklch(39.3% 0.136 30.0)",
-        "tonalRamp": [
-          "#1a0402",
-          "#44120c",
-          "#72241a",
-          "#a03b2f",
-          "#c75e4f",
-          "#ee8271",
-          "#ffaf9f",
-          "#ffddd1"
+          "#130900",
+          "#2d2211",
+          "#4a3e2c",
+          "#685c49",
+          "#887b68",
+          "#aa9c88",
+          "#d0c2ad",
+          "#fbecd7"
         ]
       },
       "kupfer": {
-        "role": "secondary",
-        "displayName": "Kupfer",
-        "canonical": "#b0652e",
-        "oklch": "oklch(58.2% 0.119 53.9)",
+        "role": "primary",
+        "displayName": "Handi-Kupfer",
+        "canonical": "#d39a66",
+        "oklch": "oklch(73.0% 0.097 62.8)",
         "tonalRamp": [
-          "#170600",
-          "#3d1a00",
-          "#683000",
-          "#934b0b",
-          "#b86d36",
-          "#de8f5a",
-          "#fab98f",
-          "#ffe4c7"
+          "#230000",
+          "#421400",
+          "#623100",
+          "#835019",
+          "#a6703c",
+          "#c9915d",
+          "#f1b782",
+          "#ffe1ab"
         ]
       },
       "kupfer-hell": {
-        "role": "secondary",
-        "displayName": "Helles Kupfer",
-        "canonical": "#d9995e",
-        "oklch": "oklch(73.3% 0.108 62.5)",
+        "role": "primary",
+        "displayName": "Laternen-Messing",
+        "canonical": "#e6b98a",
+        "oklch": "oklch(81.5% 0.081 67.5)",
         "tonalRamp": [
-          "#150700",
-          "#3a1d00",
-          "#623500",
-          "#8b510c",
-          "#b07337",
-          "#d5955a",
-          "#f2bd90",
-          "#ffe7c7"
+          "#1f0100",
+          "#3c1900",
+          "#5b3601",
+          "#7c5427",
+          "#9d7447",
+          "#c09567",
+          "#e8bb8c",
+          "#ffe5b5"
         ]
       },
-      "text-weich": {
+      "linie": {
         "role": "neutral",
-        "displayName": "Gedämpftes Holz",
-        "canonical": "#5d3d28",
-        "oklch": "oklch(39.2% 0.056 53.7)",
+        "displayName": "Linie",
+        "canonical": "color-mix(in oklch, var(--tinte) 14%, transparent)",
+        "resolved": "color-mix(in oklch, #f2e9dc 14%, transparent)",
+        "oklch": "oklch(93.8% 0.020 77.3)",
         "tonalRamp": [
-          "#110905",
-          "#312116",
-          "#553b2b",
-          "#7b5943",
-          "#9d7a63",
-          "#c29c85",
-          "#e1c2af",
-          "#ffeadc"
+          "#100a03",
+          "#292319",
+          "#463f34",
+          "#645c51",
+          "#847c70",
+          "#a59d91",
+          "#cbc3b6",
+          "#f6ede0"
         ]
       },
-      "text-hell": {
+      "linie-stark": {
         "role": "neutral",
-        "displayName": "Heller Putz-Text",
-        "canonical": "#f3dfb6",
-        "oklch": "oklch(91.0% 0.058 85.0)",
+        "displayName": "Starke Linie",
+        "canonical": "color-mix(in oklch, var(--tinte) 32%, transparent)",
+        "resolved": "color-mix(in oklch, #f2e9dc 32%, transparent)",
+        "oklch": "oklch(93.8% 0.020 77.3)",
         "tonalRamp": [
-          "#0f0b03",
-          "#2c2411",
-          "#4e4023",
-          "#705f3a",
-          "#92805a",
-          "#b6a37c",
-          "#d7c7a8",
-          "#f8edd7"
+          "#100a03",
+          "#292319",
+          "#463f34",
+          "#645c51",
+          "#847c70",
+          "#a59d91",
+          "#cbc3b6",
+          "#f6ede0"
         ]
       },
-      "text-hell-weich": {
-        "role": "neutral",
-        "displayName": "Gedämpfter Putz-Text",
-        "canonical": "#d9c39b",
-        "oklch": "oklch(82.6% 0.059 82.4)",
+      "linie-kupfer": {
+        "role": "primary",
+        "displayName": "Kupferkante",
+        "canonical": "color-mix(in oklch, var(--kupfer) 55%, transparent)",
+        "resolved": "color-mix(in oklch, #d39a66 55%, transparent)",
+        "oklch": "oklch(73.0% 0.097 62.8)",
         "tonalRamp": [
-          "#0f0a03",
-          "#2d2311",
-          "#4f4023",
-          "#725e39",
-          "#947f59",
-          "#b7a27b",
-          "#d8c7a8",
-          "#f9edd7"
+          "#230000",
+          "#421400",
+          "#623100",
+          "#835019",
+          "#a6703c",
+          "#c9915d",
+          "#f1b782",
+          "#ffe1ab"
         ]
       },
-      "gruen-marke": {
-        "role": "neutral",
-        "displayName": "Kennzeichen-Grün",
-        "canonical": "#2a5427",
-        "oklch": "oklch(40.3% 0.086 142.5)",
+      "schein": {
+        "role": "primary",
+        "displayName": "Kupferschein",
+        "canonical": "color-mix(in oklch, var(--kupfer) 38%, transparent)",
+        "resolved": "color-mix(in oklch, #d39a66 38%, transparent)",
+        "oklch": "oklch(73.0% 0.097 62.8)",
         "tonalRamp": [
-          "#050e04",
-          "#162b14",
-          "#2a4b28",
-          "#436e3f",
-          "#639060",
-          "#86b381",
-          "#b0d5ac",
-          "#ddf7da"
+          "#230000",
+          "#421400",
+          "#623100",
+          "#835019",
+          "#a6703c",
+          "#c9915d",
+          "#f1b782",
+          "#ffe1ab"
         ]
       },
-      "tuerkis-marke": {
-        "role": "neutral",
-        "displayName": "Kennzeichen-Türkis",
-        "canonical": "#1a4f41",
-        "oklch": "oklch(38.8% 0.061 172.5)",
+      "decke": {
+        "role": "tertiary",
+        "displayName": "Tischdecke",
+        "canonical": "#efe8dd",
+        "oklch": "oklch(93.3% 0.017 79.3)",
         "tonalRamp": [
-          "#030e0a",
-          "#112b23",
-          "#234b3f",
-          "#396d5e",
-          "#5b8f7e",
-          "#7db2a1",
-          "#aad4c6",
-          "#d9f6ec"
+          "#0f0a04",
+          "#28231b",
+          "#443f36",
+          "#635d53",
+          "#837c72",
+          "#a49d93",
+          "#cac3b8",
+          "#f5ede2"
+        ]
+      },
+      "decke-tafel": {
+        "role": "tertiary",
+        "displayName": "Gestärktes Leinen",
+        "canonical": "#f8f4ee",
+        "oklch": "oklch(96.9% 0.009 78.3)",
+        "tonalRamp": [
+          "#0d0b07",
+          "#26241f",
+          "#423f3a",
+          "#605d58",
+          "#807d77",
+          "#a19e98",
+          "#c7c3be",
+          "#f2eee8"
+        ]
+      },
+      "decke-tinte": {
+        "role": "tertiary",
+        "displayName": "Dunkle Tinte",
+        "canonical": "#2a1d14",
+        "oklch": "oklch(24.4% 0.026 55.8)",
+        "tonalRamp": [
+          "#130802",
+          "#2e2118",
+          "#4b3c33",
+          "#6a5a50",
+          "#8a7a6f",
+          "#ac9b8f",
+          "#d2c0b4",
+          "#fdeade"
+        ]
+      },
+      "decke-still": {
+        "role": "tertiary",
+        "displayName": "Stille Decken-Tinte",
+        "canonical": "#5b4a3a",
+        "oklch": "oklch(42.2% 0.034 65.0)",
+        "tonalRamp": [
+          "#150800",
+          "#302012",
+          "#4d3c2d",
+          "#6b5a49",
+          "#8c7968",
+          "#ae9b89",
+          "#d4c0ae",
+          "#ffead7"
+        ]
+      },
+      "decke-linie": {
+        "role": "tertiary",
+        "displayName": "Deckenfalte",
+        "canonical": "#d6cab8",
+        "oklch": "oklch(84.4% 0.028 78.2)",
+        "tonalRamp": [
+          "#120901",
+          "#2b2214",
+          "#483e2f",
+          "#665c4c",
+          "#877c6b",
+          "#a89d8b",
+          "#cec2b0",
+          "#f9edda"
+        ]
+      },
+      "gruen": {
+        "role": "functional",
+        "displayName": "Grün (vegetarisch)",
+        "canonical": "#9cc99a",
+        "oklch": "oklch(79.1% 0.081 143.7)",
+        "tonalRamp": [
+          "#001200",
+          "#032d05",
+          "#224a22",
+          "#40693f",
+          "#5f8a5e",
+          "#80ac7e",
+          "#a5d2a3",
+          "#cffdcc"
+        ]
+      },
+      "tuerkis": {
+        "role": "functional",
+        "displayName": "Türkis (vegan)",
+        "canonical": "#8cc5b4",
+        "oklch": "oklch(77.9% 0.064 174.1)",
+        "tonalRamp": [
+          "#001309",
+          "#002d22",
+          "#0e4b3d",
+          "#32695b",
+          "#528a7a",
+          "#74ac9b",
+          "#99d2c1",
+          "#c3fdeb"
+        ]
+      },
+      "chili": {
+        "role": "functional",
+        "displayName": "Chili (scharf)",
+        "canonical": "#e59a7c",
+        "oklch": "oklch(75.4% 0.100 42.6)",
+        "tonalRamp": [
+          "#280000",
+          "#480900",
+          "#692a0b",
+          "#8b482d",
+          "#af684c",
+          "#d3896c",
+          "#fcaf90",
+          "#ffd9b9"
         ]
       },
       "markiert": {
-        "role": "neutral",
-        "displayName": "Markierung (Arbeitsmarke)",
+        "role": "functional",
+        "displayName": "Markierung (offene Stelle)",
         "canonical": "#fff07a",
         "oklch": "oklch(94.4% 0.140 102.1)",
         "tonalRamp": [
-          "#0f0b00",
-          "#2d2500",
-          "#4f4200",
-          "#726200",
-          "#948400",
-          "#b7a727",
-          "#d7cc74",
-          "#f8f1b6"
+          "#170700",
+          "#312300",
+          "#4d4000",
+          "#6c5f00",
+          "#8c7f0e",
+          "#ada13d",
+          "#d3c766",
+          "#fef290"
         ]
       }
     },
     "typographyMeta": {
       "display": {
-        "displayName": "Display (Rozha One)",
-        "purpose": "Titel der Bühne; Speisekarte und Rechtstexte mit eigener clamp-Größe."
+        "displayName": "Display",
+        "purpose": "Nur der Name „Bombay“ auf der Bühne, gesperrte Versalien."
+      },
+      "display-karte": {
+        "displayName": "Display Karte",
+        "purpose": "Seitentitel der Speisekarte."
+      },
+      "display-zahl": {
+        "displayName": "Display Zahl",
+        "purpose": "Bewertungsnote im Abschnitt Stimmen."
       },
       "headline": {
-        "displayName": "Abschnittstitel",
-        "purpose": "h2 der Abschnitte und Gruppentitel der Speisekarte."
+        "displayName": "Headline",
+        "purpose": "Abschnittsüberschriften mit 56-px-Kupferlinie darunter."
+      },
+      "headline-recht": {
+        "displayName": "Headline Recht",
+        "purpose": "Seitentitel Impressum und Datenschutz."
+      },
+      "headline-gruppe": {
+        "displayName": "Headline Gruppe",
+        "purpose": "Aufklappbare Gruppen der Speisekarte, ohne Linie."
+      },
+      "hand": {
+        "displayName": "Hand",
+        "purpose": "Eine Allura-Zeile unter der Überschrift, Laternen-Messing."
       },
       "title": {
-        "displayName": "Zwischentitel",
-        "purpose": "h3, z. B. über einer Kupferlinie in „Aus dem Lehmofen“."
+        "displayName": "Title",
+        "purpose": "Zwischenüberschriften."
       },
-      "plakette": {
-        "displayName": "Plakettensatz",
-        "purpose": "Live-Status in der Kuppelbogen-Plakette; Desktop 2rem."
+      "title-klein": {
+        "displayName": "Title klein",
+        "purpose": "Überschriften der Legende."
       },
-      "gericht": {
-        "displayName": "Gerichtname der Auswahl",
-        "purpose": "Namen in „Beliebt im Bombay“, Zitate, Leer-Meldung."
+      "title-recht": {
+        "displayName": "Title Recht",
+        "purpose": "Zwischenüberschriften der Rechtstexte."
+      },
+      "zitat": {
+        "displayName": "Zitat",
+        "purpose": "Gästezitate auf der Tischdecke."
+      },
+      "status": {
+        "displayName": "Status",
+        "purpose": "„Heute geöffnet bis …“ in der Kuppel-Plakette."
       },
       "body": {
-        "displayName": "Lauftext (Hind)",
-        "purpose": "Fließtext, 28–46em Zeilenlänge."
+        "displayName": "Body",
+        "purpose": "Lauftext, Hind."
       },
-      "posten": {
-        "displayName": "Posten der Speisekarte",
-        "purpose": "Gerichtnamen in langen Listen, Hind 700."
+      "body-fuehrung": {
+        "displayName": "Führung",
+        "purpose": "Einstiegssatz im Abschnitt Küche."
       },
-      "knopf": {
-        "displayName": "Knopf",
-        "purpose": "Beschriftung aller Knöpfe; Bühne 1,15rem."
+      "body-adresse": {
+        "displayName": "Adresse",
+        "purpose": "Anschrift in der Besuchstafel."
+      },
+      "gericht": {
+        "displayName": "Gericht",
+        "purpose": "Gerichtnamen und Preise."
+      },
+      "body-tabelle": {
+        "displayName": "Tabelle",
+        "purpose": "Öffnungszeiten, Suchfeld."
+      },
+      "body-klein": {
+        "displayName": "Klein",
+        "purpose": "Beschreibungen, Hinweise, Lieferzeile."
+      },
+      "body-fein": {
+        "displayName": "Fein",
+        "purpose": "Copyright im Fuß."
       },
       "label": {
-        "displayName": "Bedienelement",
-        "purpose": "Filter, Gruppensprung, Navigation, Wege-Zeile."
+        "displayName": "Label",
+        "purpose": "Knöpfe, Desktop-Navigation, Mehr-Verweise, Fußverweise."
+      },
+      "label-nav": {
+        "displayName": "Label Nav",
+        "purpose": "Aufgeklappte Handy-Navigation."
+      },
+      "label-schalter": {
+        "displayName": "Label Schalter",
+        "purpose": "Filterschalter und Gruppensprung der Speisekarte."
+      },
+      "label-schmal": {
+        "displayName": "Label schmal",
+        "purpose": "Feste Navigation unter 390 px."
+      },
+      "label-marke": {
+        "displayName": "Label Marke",
+        "purpose": "Kennzeichen-Pillen und „heute“-Etikett."
       }
     },
-    "shadows": [],
-    "surfaces": [
+    "shadows": [
       {
-        "name": "schleier",
-        "value": "linear-gradient(to bottom, color-mix(in oklch, var(--holz) 0%, transparent) 0%, color-mix(in oklch, var(--holz) 55%, transparent) 55%, var(--holz) 100%)",
-        "purpose": "Holz-Schleier unter dem Bühnenfoto am Handy (untere 38 %); Desktop seitlich 22 % von Holz nach transparent."
+        "name": "kupferschein",
+        "value": "filter: drop-shadow(0 0 8px var(--schein))",
+        "purpose": "Nur auf der Kielbogenkante des Bühnenfotos."
       }
     ],
     "motion": [
       {
         "name": "aus",
         "value": "cubic-bezier(.16, 1, .3, 1)",
-        "purpose": "Auftritt, Hover, Plakette; bremst aus. 0,3–0,9 s."
+        "purpose": "Ease-out für alle Ein- und Zustandsbewegungen, 0,3–0,9 s, nur transform/opacity."
       },
       {
-        "name": "ein",
-        "value": "cubic-bezier(.55, 0, 1, .45)",
-        "purpose": "Abgang der Leisten beim Ausweichen, 0,25 s; beschleunigt."
+        "name": "knopf-druck",
+        "value": "transform .3s var(--aus)",
+        "purpose": "Knopf skaliert beim Drücken auf 0,97."
       },
       {
-        "name": "bogen",
-        "value": "scaleX(.55)→1, opacity 0→1, .8s aus",
-        "purpose": "Einzige Ladebewegung: der Plakettenbogen öffnet sich."
+        "name": "leiste",
+        "value": "transform .35s var(--aus)",
+        "purpose": "Kopfleiste, Lotse und Daumenleiste erscheinen."
       },
       {
-        "name": "kuppel",
-        "value": "translateY(-8px)→0, opacity 0→1, .7s aus, .15s Verzug",
-        "purpose": "Kuppel senkt sich auf den Bogen."
+        "name": "kachel-zoom",
+        "value": "transform .7s var(--aus)",
+        "purpose": "Galeriebild beim Hover auf 1,03."
       },
       {
-        "name": "leisten-hysterese",
-        "value": "6px, ab 120px Scrolltiefe",
-        "purpose": "Kopf- und Daumenleiste weichen beim Runterscrollen aus, kommen beim Hochscrollen zurück."
+        "name": "bogen-auftritt",
+        "value": "bogen .8s var(--aus); kuppel .7s var(--aus) .15s",
+        "purpose": "Kuppel-Plakette einmal beim Laden."
       },
       {
-        "name": "reduzierte-bewegung",
-        "value": "prefers-reduced-motion: reduce → animation/transition none, scroll-behavior auto",
-        "purpose": "Alle Bewegung aus."
+        "name": "reduziert",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "Alle Animationen und Übergänge aus, kein weiches Scrollen."
       }
     ],
     "breakpoints": [
+      {
+        "name": "schmal",
+        "value": "max-width: 389px"
+      },
       {
         "name": "tablet",
         "value": "700px"
@@ -333,152 +496,154 @@
         "value": "900px"
       }
     ],
-    "focus": [
-      {
-        "name": "fokus-hell",
-        "value": "3px solid var(--rot), offset 3px",
-        "purpose": "Fokus auf Ockergrund."
-      },
-      {
-        "name": "fokus-dunkel",
-        "value": "3px solid var(--kupfer-hell), offset 3px",
-        "purpose": "Fokus auf Holzflächen (Kopf, Bühne, Bei uns, Fuß, Daumenleiste, Lotse, Fotoansicht)."
-      }
-    ]
+    "shapes": {
+      "kielbogen": "path M0 400V138C0 78 70 70 150 0c80 70 150 78 150 138v262z (viewBox 0 0 300 400), Maske des Bühnenfotos; Kante 1,2 px Kupfer, 9 px außen",
+      "kuppelbogen": "border-radius: 50% 50% 0 0 / 26px 26px 0 0, 1 px linie-kupfer"
+    },
+    "backdrop": "color-mix 94–96 % nacht/nacht-tief, backdrop-filter: blur(10px) für Kopf, Lotse, Daumenleiste"
   },
   "components": [
     {
-      "name": "Hauptknopf „Online bestellen“",
+      "name": "Lampe (Online bestellen)",
       "kind": "button",
-      "refersTo": "knopf-rot",
-      "description": "Die eine Lampe: einziger in Bankrot gefüllter Knopf, in Bühne und Daumenleiste.",
-      "html": "<a class=\"ds-knopf ds-knopf--rot\" href=\"#\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\" d=\"M5 8h14l-1 13H6L5 8z\"/><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" d=\"M9 8V6a3 3 0 0 1 6 0v2\"/></svg>Online bestellen</a>",
-      "css": ".ds-knopf { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 12px 24px 10px; border: 2px solid transparent; border-radius: var(--rund, 6px); font: 700 1.08rem/1.1 var(--lauf, Hind, sans-serif); text-decoration: none; cursor: pointer; transition: transform .3s cubic-bezier(.16,1,.3,1); } .ds-knopf svg { width: 22px; height: 22px; margin-top: -3px; } .ds-knopf:active { transform: scale(.97); } .ds-knopf:focus-visible { outline: 3px solid var(--rot, #a3261a); outline-offset: 3px; } .ds-knopf--rot { background: var(--rot, #a3261a); color: var(--text-hell, #f3dfb6); } .ds-knopf--rot:hover { background: var(--rot-tief, #7f1b11); }"
+      "refersTo": "button-lampe",
+      "description": "Der eine gefüllte Knopf: nur „Online bestellen“.",
+      "html": "<a class=\"ds-knopf ds-knopf--lampe\" href=\"#\">Online bestellen</a>",
+      "css": ".ds-knopf { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 4px 26px 0; border: 1px solid var(--linie-stark); border-radius: var(--pille); background: transparent; color: var(--tinte); font-family: var(--versal); font-size: var(--gr-mini); letter-spacing: .2em; text-transform: uppercase; line-height: 1; text-decoration: none; white-space: nowrap; transition: transform .3s var(--aus); } .ds-knopf:active { transform: scale(.97); } .ds-knopf:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; } .ds-knopf--lampe { border-color: var(--kupfer); background: var(--kupfer); color: var(--nacht); } .ds-knopf--lampe:hover { background: var(--kupfer-hell); border-color: var(--kupfer-hell); }"
     },
     {
-      "name": "Linienknopf",
+      "name": "Linien-Pille",
       "kind": "button",
-      "refersTo": "knopf-linie",
-      "description": "Nebenaktionen auf hellem Grund (Route planen, Anrufen); Hover füllt mit Holz.",
-      "html": "<div style=\"background:#d8b47b;padding:16px\"><a class=\"ds-knopf ds-knopf--linie\" href=\"#\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\" d=\"M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z\"/><circle cx=\"12\" cy=\"10\" r=\"2.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/></svg>Route planen</a></div>",
-      "css": ".ds-knopf { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 12px 24px 10px; border: 2px solid transparent; border-radius: var(--rund, 6px); font: 700 1.08rem/1.1 var(--lauf, Hind, sans-serif); text-decoration: none; cursor: pointer; transition: transform .3s cubic-bezier(.16,1,.3,1); } .ds-knopf svg { width: 22px; height: 22px; margin-top: -3px; } .ds-knopf:active { transform: scale(.97); } .ds-knopf:focus-visible { outline: 3px solid var(--rot, #a3261a); outline-offset: 3px; } .ds-knopf--linie { border-color: currentColor; background: transparent; color: var(--holz, #2a140c); } .ds-knopf--linie:hover { background: var(--holz, #2a140c); color: var(--text-hell, #f3dfb6); border-color: var(--holz, #2a140c); }"
+      "refersTo": "button-linie",
+      "description": "Jeder andere Knopf: Telefon, Route, Anrufen.",
+      "html": "<a class=\"ds-knopf-linie\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2\"/></svg>08161 4965102</a>",
+      "css": ".ds-knopf-linie { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 4px 26px 0; border: 1px solid var(--linie-stark); border-radius: var(--pille); background: transparent; color: var(--tinte); font-family: var(--versal); font-size: var(--gr-mini); letter-spacing: .2em; text-transform: uppercase; line-height: 1; text-decoration: none; white-space: nowrap; transition: transform .3s var(--aus); } .ds-knopf-linie svg { margin-top: -4px; } .ds-knopf-linie:hover { border-color: var(--kupfer); color: var(--kupfer-hell); } .ds-knopf-linie:active { transform: scale(.97); } .ds-knopf-linie:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; }"
     },
     {
-      "name": "Kuppelbogen-Plakette",
-      "kind": "custom",
-      "refersTo": "plakette",
-      "description": "Signatur: Kuppel aus dem Logo auf einem Kupferbogen, der den Live-Status überspannt; einzige Ladebewegung.",
-      "html": "<div style=\"background:#2a140c;padding:32px 24px\"><div class=\"ds-heute\"><svg class=\"ds-kuppel\" viewBox=\"0 0 48 32.5\" aria-hidden=\"true\"><path d=\"M24 2c2.4 0 4-1.9 4 0 0 2.4-2.1 3.7-4 6.1-1.9-2.4-4-3.7-4-6.1 0-1.9 1.6 0 4 0z\" fill=\"currentColor\"/><path d=\"M24 10c-9 0-15.5 6.8-15.5 15.5V31h31v-5.5C39.5 16.8 33 10 24 10z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"/><path d=\"M4 31h40\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg><p class=\"ds-heute-satz\">Heute geöffnet bis <b>22:00</b></p><p class=\"ds-heute-zusatz\">Wieder morgen ab 11:30</p></div></div>",
-      "css": ".ds-heute { display: inline-grid; justify-items: center; text-align: center; } .ds-kuppel { width: 46px; height: 31px; color: var(--kupfer-hell, #d9995e); margin-bottom: -1px; position: relative; z-index: 1; animation: ds-kuppel .7s cubic-bezier(.16,1,.3,1) .15s backwards; } .ds-heute-satz { position: relative; margin: 0; padding: 20px 22px 0; font: 1.55rem/1.15 var(--titel, \"Rozha One\", Georgia, serif); color: var(--text-hell, #f3dfb6); font-variant-numeric: lining-nums tabular-nums; } .ds-heute-satz::before { content: \"\"; position: absolute; inset: 0 0 .3em; border: 2px solid var(--kupfer-hell, #d9995e); border-bottom: 0; border-radius: 50% 50% 0 0 / 30px 30px 0 0; animation: ds-bogen .8s cubic-bezier(.16,1,.3,1) backwards; } .ds-heute-satz b { font-weight: 400; } .ds-heute-zusatz { margin: 6px 0 0; font: 1rem var(--lauf, Hind, sans-serif); color: var(--text-hell-weich, #d9c39b); } @keyframes ds-bogen { from { transform: scaleX(.55); opacity: 0; } } @keyframes ds-kuppel { from { transform: translateY(-8px); opacity: 0; } } @media (prefers-reduced-motion: reduce) { .ds-kuppel, .ds-heute-satz::before { animation: none; } }"
-    },
-    {
-      "name": "Menülisten-Zeile",
-      "kind": "card",
-      "refersTo": "posten",
-      "description": "Wie die Karte am Tisch: Nummer, Name, Preis rechts bündig, Beschreibung, Kennzeichen, 1-px-Putzlinie.",
-      "html": "<ul class=\"ds-posten-liste\"><li class=\"ds-posten\"><span class=\"ds-nr\">15</span><span class=\"ds-name\">Vegetable Pakora</span><span class=\"ds-preis\">5,90 €</span><span class=\"ds-text\">Frisches, gemischtes Gemüse <span class=\"ds-marke ds-marke--veg\">vegetarisch</span></span></li><li class=\"ds-posten\"><span class=\"ds-nr\">18</span><span class=\"ds-name\">Fish Pakora</span><span class=\"ds-preis\">5,90 €</span><span class=\"ds-text\">Zartes Seelachsfilet</span></li></ul>",
-      "css": ".ds-posten-liste { list-style: none; margin: 0; padding: 0 16px; background: var(--ocker, #e2c18a); color: var(--holz, #2a140c); font-family: var(--lauf, Hind, sans-serif); } .ds-posten { display: grid; grid-template-columns: 2.6em 1fr auto; gap: 2px 16px; align-items: baseline; padding: 14px 0 12px; border-bottom: 1px solid var(--ocker-linie, #b98f55); } .ds-nr { font-size: .95rem; font-weight: 600; color: var(--text-weich, #5d3d28); font-variant-numeric: lining-nums tabular-nums; } .ds-name { font-weight: 700; font-size: 1.12rem; line-height: 1.3; } .ds-preis { font-weight: 700; white-space: nowrap; font-variant-numeric: lining-nums tabular-nums; } .ds-text { grid-column: 2 / 3; font-size: 1rem; color: var(--text-weich, #5d3d28); } .ds-marke { margin-left: 8px; padding: 1px 8px 0; border: 1px solid currentColor; border-radius: 99px; font-size: .74rem; font-weight: 700; letter-spacing: .03em; } .ds-marke--veg { color: var(--gruen-marke, #2a5427); }"
-    },
-    {
-      "name": "Suchfeld des Lotsen",
-      "kind": "input",
-      "refersTo": "suchfeld",
-      "description": "Heller Putz auf Holz, Lupe links, ohne Rand.",
-      "html": "<div style=\"background:#2a140c;padding:12px\"><label class=\"ds-suche\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"10.5\" cy=\"10.5\" r=\"6.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\"/><path d=\"m15.5 15.5 5 5\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\"/></svg><input type=\"search\" placeholder=\"Gericht, Zutat oder Nummer\" aria-label=\"Speisekarte durchsuchen\"></label></div>",
-      "css": ".ds-suche { position: relative; display: block; } .ds-suche svg { position: absolute; left: 14px; top: 50%; width: 20px; height: 20px; transform: translateY(-50%); color: var(--text-weich, #5d3d28); pointer-events: none; } .ds-suche input { width: 100%; box-sizing: border-box; min-height: 46px; padding: 10px 14px 7px 44px; border: 0; border-radius: var(--rund, 6px); background: var(--ocker-hell, #f0dcb2); color: var(--holz, #2a140c); font: 400 1.05rem var(--lauf, Hind, sans-serif); } .ds-suche input::placeholder { color: var(--text-weich, #5d3d28); } .ds-suche input:focus-visible { outline: 3px solid var(--kupfer-hell, #d9995e); outline-offset: 2px; }"
-    },
-    {
-      "name": "Filter-Schalter",
+      "name": "Filterschalter",
       "kind": "chip",
       "refersTo": "schalter",
-      "description": "Pillen im Lotsen; aktiv hell gefüllt mit Holztext.",
-      "html": "<div class=\"ds-filter\"><label class=\"ds-schalter\"><input type=\"checkbox\" checked><span>Vegetarisch</span></label><label class=\"ds-schalter\"><input type=\"checkbox\"><span>Vegan möglich</span></label><label class=\"ds-schalter\"><input type=\"checkbox\"><span>Üblich scharf</span></label></div>",
-      "css": ".ds-filter { display: flex; gap: 8px; padding: 12px; background: var(--holz, #2a140c); color: var(--text-hell, #f3dfb6); font-family: var(--lauf, Hind, sans-serif); } .ds-schalter { position: relative; } .ds-schalter input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; } .ds-schalter span { display: inline-flex; align-items: center; min-height: 40px; padding: 6px 14px 4px; border: 1.5px solid color-mix(in oklch, #f3dfb6 40%, transparent); border-radius: 99px; font-weight: 600; font-size: .98rem; white-space: nowrap; } .ds-schalter input:checked + span { background: var(--text-hell, #f3dfb6); color: var(--holz, #2a140c); border-color: var(--text-hell, #f3dfb6); } .ds-schalter input:focus-visible + span { outline: 3px solid var(--kupfer-hell, #d9995e); outline-offset: 2px; } .ds-schalter input:hover + span { border-color: var(--text-hell, #f3dfb6); }"
+      "description": "Filter der Speisekarte; aktiv kupfergefüllt als Zustand.",
+      "html": "<span class=\"ds-schalter\">Vegetarisch</span> <span class=\"ds-schalter ds-schalter--an\">Vegan</span>",
+      "css": ".ds-schalter { display: inline-flex; align-items: center; min-height: 38px; padding: 4px 16px 0; border: 1px solid var(--linie-stark); border-radius: var(--pille); font: 400 .72rem var(--versal); letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; color: var(--tinte-leise); } .ds-schalter--an { border-color: var(--kupfer); background: var(--kupfer); color: var(--nacht); }"
     },
     {
-      "name": "Kopfleiste",
-      "kind": "nav",
-      "refersTo": "kopfleiste",
-      "description": "Holzleiste mit Kupferkante, Textlinks, Telefon im Kupferrahmen; weicht beim Runterscrollen aus.",
-      "html": "<header class=\"ds-kopf\"><span class=\"ds-logo\">Bombay</span><nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">Speisekarte</a><a href=\"#\">Bei uns</a><a href=\"#\">Zeiten &amp; Anfahrt</a><a class=\"ds-nav-tel\" href=\"#\">08161 4965102</a></nav></header>",
-      "css": ".ds-kopf { display: flex; align-items: center; justify-content: space-between; height: 68px; padding: 0 24px; background: var(--holz, #2a140c); color: var(--text-hell, #f3dfb6); border-bottom: 1px solid color-mix(in oklch, #b0652e 60%, transparent); font-family: var(--lauf, Hind, sans-serif); } .ds-logo { font: 1.5rem var(--titel, \"Rozha One\", Georgia, serif); } .ds-nav { display: flex; align-items: center; gap: 6px; } .ds-nav a { padding: 10px 12px; color: var(--text-hell, #f3dfb6); font-weight: 600; text-decoration: none; } .ds-nav a:focus-visible { outline: 3px solid var(--kupfer-hell, #d9995e); outline-offset: 3px; } .ds-nav-tel { margin-left: 8px; border: 1.5px solid var(--kupfer-hell, #d9995e); border-radius: var(--rund, 6px); }"
+      "name": "Kennzeichen",
+      "kind": "chip",
+      "refersTo": "marke",
+      "description": "Kleine Konturpille für vegetarisch, vegan, scharf.",
+      "html": "<span class=\"ds-marke ds-marke--veg\">veg.</span> <span class=\"ds-marke ds-marke--vegan\">vegan</span> <span class=\"ds-marke ds-marke--scharf\">scharf</span>",
+      "css": ".ds-marke { display: inline-block; padding: 3px 8px 0; border: 1px solid; border-radius: var(--pille); font: 400 .72rem/1.4 var(--versal); letter-spacing: .08em; text-transform: uppercase; } .ds-marke--veg { color: var(--gruen); } .ds-marke--vegan { color: var(--tuerkis); } .ds-marke--scharf { color: var(--chili); }"
     },
     {
-      "name": "Daumenleiste",
+      "name": "Suchfeld",
+      "kind": "input",
+      "refersTo": "suchfeld",
+      "description": "Suche der Speisekarte, Pille auf Tafel mit Kupfer-Lupe.",
+      "html": "<label class=\"ds-suche\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"6\"/><path d=\"m20 20-4.5-4.5\"/></svg><input type=\"search\" placeholder=\"Gericht oder Zutat suchen\" aria-label=\"Speisekarte durchsuchen\"></label>",
+      "css": ".ds-suche { position: relative; display: block; } .ds-suche svg { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--kupfer); pointer-events: none; } .ds-suche input { width: 100%; min-height: 46px; padding: 10px 18px 8px 46px; border: 1px solid var(--linie-stark); border-radius: var(--pille); background: var(--tafel); color: var(--tinte); font: 400 1rem var(--lauf); } .ds-suche input::placeholder { color: var(--tinte-still); } .ds-suche input:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; }"
+    },
+    {
+      "name": "Navigation",
       "kind": "nav",
-      "refersTo": "daumenleiste",
-      "description": "Handy: roter Hauptknopf plus Putzknopf „Anrufen“, erscheint nach der Bühne, weicht beim Runterscrollen aus.",
-      "html": "<nav class=\"ds-daumen\" aria-label=\"Schnellzugriff\"><a class=\"ds-knopf ds-knopf--rot\" href=\"#\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\" d=\"M5 8h14l-1 13H6L5 8z\"/><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" d=\"M9 8V6a3 3 0 0 1 6 0v2\"/></svg>Online bestellen</a><a class=\"ds-knopf ds-knopf--putz\" href=\"#\">Anrufen</a></nav>",
-      "css": ".ds-knopf { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 12px 24px 10px; border: 2px solid transparent; border-radius: var(--rund, 6px); font: 700 1.08rem/1.1 var(--lauf, Hind, sans-serif); text-decoration: none; cursor: pointer; transition: transform .3s cubic-bezier(.16,1,.3,1); } .ds-knopf svg { width: 22px; height: 22px; margin-top: -3px; } .ds-knopf:active { transform: scale(.97); } .ds-knopf:focus-visible { outline: 3px solid var(--rot, #a3261a); outline-offset: 3px; } .ds-daumen { display: grid; grid-template-columns: 1.5fr 1fr; gap: 10px; padding: 10px 16px; background: var(--holz, #2a140c); border-top: 1px solid var(--kupfer, #b0652e); } .ds-daumen .ds-knopf { padding-inline: 12px; } .ds-knopf--rot { background: var(--rot, #a3261a); color: var(--text-hell, #f3dfb6); } .ds-knopf--rot:hover { background: var(--rot-tief, #7f1b11); } .ds-knopf--putz { background: var(--ocker-hell, #f0dcb2); color: var(--holz, #2a140c); } .ds-daumen .ds-knopf:focus-visible { outline-color: var(--kupfer-hell, #d9995e); }"
+      "refersTo": "menu-knopf",
+      "description": "Desktop-Navigation in gesperrten Versalien, Telefon als Kupferkanten-Pille.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">Start</a><a href=\"#\">Speisekarte</a><a href=\"#\">Besuch</a><a class=\"ds-nav-tel\" href=\"#\">08161 4965102</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 4px; background: var(--nacht); padding: 12px; } .ds-nav a { padding: 12px 12px 8px; color: var(--tinte); font: 400 var(--gr-mini) var(--versal); letter-spacing: .2em; text-transform: uppercase; text-decoration: none; } .ds-nav a:hover, .ds-nav a[aria-current=\"page\"] { color: var(--kupfer-hell); } .ds-nav a:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; } .ds-nav .ds-nav-tel { margin-left: 10px; padding: 11px 18px 8px; border: 1px solid var(--linie-kupfer); border-radius: var(--pille); color: var(--kupfer-hell); }"
+    },
+    {
+      "name": "Tafel",
+      "kind": "card",
+      "refersTo": "tafel",
+      "description": "Besuchsinfos auf Tafelgrund mit Haarlinie, eckig.",
+      "html": "<div class=\"ds-tafel\"><h3>Öffnungszeiten</h3><p>Mo und Mi–So 11:30–14:00 und 17:30–22:00</p></div>",
+      "css": ".ds-tafel { padding: 30px 24px 22px; background: var(--tafel); border: 1px solid var(--linie); color: var(--tinte-leise); font: 400 var(--gr-lauf)/1.65 var(--lauf); } .ds-tafel h3 { margin: 0 0 .6em; font: 400 1.15rem/1.3 var(--versal); letter-spacing: .14em; text-transform: uppercase; color: var(--tinte); } .ds-tafel p { margin: 0; font-variant-numeric: lining-nums tabular-nums; }"
+    },
+    {
+      "name": "Zitatkarte",
+      "kind": "card",
+      "refersTo": "zitat-karte",
+      "description": "Gästezitat auf gestärktem Leinen, nur im Abschnitt Stimmen.",
+      "html": "<div class=\"ds-decke\"><blockquote class=\"ds-zitat\">Sehr freundlich, das Essen kam heiß und schnell.</blockquote></div>",
+      "css": ".ds-decke { background: var(--decke); padding: 24px; } .ds-zitat { margin: 0; padding: 26px 24px 20px; background: var(--decke-tafel); border: 1px solid var(--decke-linie); font: 300 1.2rem/1.5 var(--versal); color: var(--decke-tinte); }"
+    },
+    {
+      "name": "Kuppel-Plakette",
+      "kind": "custom",
+      "refersTo": "status",
+      "description": "Kuppel aus dem Logo über einem flachen Kupferbogen mit dem Öffnungsstatus.",
+      "html": "<div class=\"ds-heute\"><svg class=\"ds-kuppel\" viewBox=\"0 0 40 27\" aria-hidden=\"true\"><path d=\"M20 3c-8 0-14 6-14 14v9h28v-9c0-8-6-14-14-14z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\"/></svg><p class=\"ds-heute-satz\">Heute geöffnet bis <b>22:00</b></p></div>",
+      "css": ".ds-heute { display: inline-grid; justify-items: center; text-align: center; background: var(--nacht); padding: 16px; } .ds-kuppel { width: 40px; height: 27px; color: var(--kupfer); margin-bottom: -1px; position: relative; z-index: 1; } .ds-heute-satz { position: relative; margin: 0; padding: 17px 26px 0; font: 400 .98rem/1.3 var(--versal); letter-spacing: .14em; text-transform: uppercase; color: var(--tinte); font-variant-numeric: lining-nums tabular-nums; } .ds-heute-satz::before { content: \"\"; position: absolute; inset: 0 0 .35em; border: 1px solid var(--linie-kupfer); border-bottom: 0; border-radius: 50% 50% 0 0 / 26px 26px 0 0; } .ds-heute-satz b { font-weight: 400; color: var(--kupfer-hell); }"
     }
   ],
   "narrative": {
-    "northStar": "Der Gastraum in der Oberen Hauptstraße",
-    "overview": "Die Seite ist das Lokal selbst: Grund aus Ockerputz, Text und Abendflächen aus dunklem Holz, das Rot der Polsterbänke als einzige Lampe, gehämmertes Kupfer nur als Linie. Alle Farben stammen aus den Gästefotos des Gastraums (Messung „Laden lesen“ in `recherche/bombay.md`) und sind am Bildschirm angenähert; keine davon verschwände mit einem Lieferanten. Die eigene Idee ist die Kuppelbogen-Plakette: die Kuppel aus dem Logo und ein Bogen, der den Live-Satz „Heute geöffnet bis …“ überspannt.\n\nDie Richtung ist vom Betreiber gepinnt, nicht gewürfelt: Das Startpaket (`CLAUDE.md`, `recherche/vision.md`) verlangt Farbe aus dem Raum, die Abstimmung vom 06.10.2026 legt die Leitfarbe auf das Rot der Bänke fest. Es gab keinen Seed-Roll. Die vorherige Streichholz-Richtung (Seed 36bb5d45) ist verworfen und gilt nicht mehr. Abgelehnt sind ausdrücklich die Lieferportal-Maske (Gold auf dunklem Gewürzfoto) und die Vorlage Creme–Serife–Terrakotta.\n\nDie Dichte folgt der Tageszeit: mittags zuerst die Auswahl mit Preisen, abends zuerst der Raum. Kanten sind 1–2 px Linien, keine Karten-Raster, keine Schatten. Bewegung ist knapp und bremst aus.",
+    "northStar": "Das Bombay am Abend",
+    "overview": "Ein durchgehender Grund aus dunklem Holz, darauf leise gesperrte Versalien, eine Zeile Handschrift und Kupfer, das wie die Kante einer Handi-Schale oder einer Sternlaterne im Licht steht. Die Seite fließt ohne wechselnde Farbbänder von oben nach unten; nur die Stimmen der Gäste liegen auf einem hellen Abschnitt im Ton einer Tischdecke, als eine einzige Pause.\n\nDer Eindruck folgt einer Vorlage der Betreiberin (dunkel, fließend, gesperrte Versalien, Handschrift als Akzent, Goldkante). Sie hat am 07.10.2026 die früheren Paletten Ocker/Rot und Tischdecken-Weiß abgelehnt. Die Vorlage bestimmt den Eindruck, nicht das Material: Das Material kommt aus dem Lokal. Dunkles Holz ist der Grund, Kupfer und Messing stammen von den Handi-Schalen und den Sternlaternen, der Kielbogen des Bühnenfotos ist aus den Bögen des Taj-Mahal-Wandbilds im Gastraum abgeleitet, die Kuppel über dem Öffnungsstatus aus dem Logo. Es gibt keinen Seed-Roll; die Welt ist aus Vorlage und Laden gebaut.\n\nDie Dichte ist ruhig: viel Luft zwischen den Abschnitten, feine 1-px-Linien statt Flächen, Fotos in ihrem eigenen Seitenverhältnis. Abgelehnt sind schwere Display-Schrift, wechselnde Farbbänder und die Maske eines Lieferportals.",
     "keyCharacteristics": [
-      "Ockerputz als Grund, dunkles Holz als Anker- und Abendfläche, abgesetztes Schattenputz-Band für „Besuch“.",
-      "Bankrot leuchtet nur im Hauptknopf „Online bestellen“ (Bühne und Daumenleiste) und im Heute-Signal.",
-      "Kupfer erscheint nur als Linie: Bogen, Kuppel, Trenner, Unterstriche, Leistenkanten.",
-      "Rozha One für Titel und Gerichtnamen, Hind für Text, beide lokal (OFL).",
-      "Echte Gästefotos im eigenen Format, mittags und abends getauscht.",
-      "Mobil zuerst; Leisten weichen beim Runterscrollen aus."
+      "Ein dunkler Holzgrund über die ganze Seite, ein heller Abschnitt (Stimmen).",
+      "Gesperrte Versalien in Josefin Sans 300 für Namen und Überschriften, Allura als eine Zeile Handschrift, Hind als Lauftext.",
+      "Kupfer als Haarlinie, als Handschrift-Akzent und als die eine gefüllte Lampe „Online bestellen“.",
+      "Bühnenfoto im Kielbogen mit Kupferkante, im nativen Hochformat 3:4.",
+      "Schmale Pillenknöpfe mit 1-px-Kante."
     ],
     "rules": [
       {
-        "name": "The Eine-Lampe Rule",
-        "body": "Gefüllt mit Bankrot wird pro Knopfgruppe genau ein Element: „Online bestellen“. Alle anderen Knöpfe sind Linie, heller Putz oder Text. Leuchten zwei, führt keiner.",
+        "name": "The One Lamp Rule",
+        "body": "Kupfer füllt unter den Handlungsknöpfen genau eine Fläche: „Online bestellen“. Jeder andere Knopf ist eine Linien-Pille. Steht in einer Knopfgruppe ein zweiter gefüllter Knopf, ist das ein Fehler. Gefüllte Filterschalter der Speisekarte sind ein Zustand („aktiv“), keine Lampe.",
         "section": "colors"
       },
       {
-        "name": "The Kupfer-ist-Linie Rule",
-        "body": "Kupfer ist Ornament der Handi-Schalen: Bogen, Kuppel, Trenner, Rahmen, Unterstrich. Nie Fläche, nie Knopffüllung.",
+        "name": "The Hairline Copper Rule",
+        "body": "Außerhalb der Lampe erscheint Kupfer nur als Linie (1 px), als Symbolstrich, als Punkt oder als Handschrift. Keine Kupferflächen, keine Kupferbänder.",
         "section": "colors"
       },
       {
-        "name": "The Raum-Probe Rule",
-        "body": "Eine neue Farbe muss im Gastraum oder auf seinem Geschirr nachgemessen sein. Lieferdienst-Orange, Gold und Karvi-Pink gehören nicht dazu.",
+        "name": "The One Tablecloth Rule",
+        "body": "Es gibt genau einen hellen Abschnitt, die Stimmen. Er überdeckt die volle Breite und hat seine eigenen Tinten; dunkle Tokens werden dort nicht benutzt.",
         "section": "colors"
       },
       {
-        "name": "The Preis-steht-gerade Rule",
-        "body": "Preise, Uhrzeiten, Nummern und der Plakettensatz setzen `lining-nums tabular-nums`, damit Spalten bündig stehen.",
+        "name": "The Material Test",
+        "body": "Eine neue Farbe muss im Lokal zu finden sein (Holz, Kupfer, Messing, Leinen). Verschwände sie mit einem Lieferanten, gehört sie nicht hierher.",
+        "section": "colors"
+      },
+      {
+        "name": "The Light Caps Rule",
+        "body": "Überschriften sind Versalien in Gewicht 300 mit weiter Sperrung (0,12–0,3 em). Keine fette Display-Schrift.",
         "section": "typography"
       },
       {
-        "name": "The Zwei-Schriften Rule",
-        "body": "Rozha One nur in Gewicht 400 und nur für Titel, Plakette, Gerichtnamen der Auswahl und Zitate; alles Bedienbare ist Hind.",
+        "name": "The One Script Line Rule",
+        "body": "Allura erscheint höchstens einmal pro Abschnitt, als ganze kurze Zeile unter der Überschrift, nie in Knöpfen, Navigation oder Fließtext.",
         "section": "typography"
       },
       {
-        "name": "The Kein-Schatten Rule",
-        "body": "Keine `box-shadow`, kein Leuchten. Was vorne liegt, ist dunkler oder durch eine Kupferlinie getrennt.",
-        "section": "elevation"
+        "name": "The Lining Figures Rule",
+        "body": "Preise, Zeiten, Nummern, Status und Note stehen in Tabellenziffern (`lining-nums tabular-nums`).",
+        "section": "typography"
       },
       {
-        "name": "The Schleier-schützt-nur-Text Rule",
-        "body": "Der Schleier deckt nur die Zone hinter dem Text (Handy unten 38 %, Desktop seitlich 22 %); das Gericht bleibt offen.",
+        "name": "The No-Shadow Rule",
+        "body": "Karten, Knöpfe und Leisten werfen keine Schatten. Der einzige Schein gehört dem Kielbogen.",
         "section": "elevation"
       }
     ],
     "dos": [
-      "Do Bankrot (`rot`) nur für „Online bestellen“ und das Heute-Signal einsetzen; jede andere Aktion ist Linie, heller Putz oder Text.",
-      "Do Kupfer als 1–2-px-Linie führen: Bogen, Trenner, Unterstrich, Leistenkante, Rahmen.",
-      "Do die Kuppelbogen-Plakette als einzige Signatur und einzige Ladebewegung behalten; sie muss auch als Favicon lesbar bleiben.",
-      "Do Fotos im eigenen Format zeigen; auf Desktop die Bühne teilen (Foto 52vw rechts, Text links auf Holz), statt ein Hochformat quer zu ziehen.",
-      "Do mittags die Auswahl und abends den Raum zuerst zeigen, mit getauschtem Bühnenfoto.",
-      "Do Leisten beim Runterscrollen ausweichen lassen (6 px Hysterese) und beim Hochscrollen zurückholen.",
-      "Do Speisekarten-HTML nur über `node werkzeuge/karte.mjs` aus `daten/speisekarte.json` erzeugen.",
-      "Do neue Werte nur als Token in `:root` anlegen."
+      "**Do** halte den Grund durchgehend dunkel (nacht) und setze genau einen hellen Abschnitt (decke) für die Stimmen.",
+      "**Do** fülle nur „Online bestellen“ mit Kupfer; alle anderen Knöpfe sind Linien-Pillen (The One Lamp Rule).",
+      "**Do** nutze Kupfer sonst nur als 1-px-Linie, Symbolstrich, Punkt oder Handschrift.",
+      "**Do** setze unter jede Abschnittsüberschrift eine 56 px lange Kupferlinie und höchstens eine Allura-Zeile.",
+      "**Do** zeige Fotos in ihrem nativen Seitenverhältnis; das Bühnenfoto als 3:4-Hochformat im 3:4-Kielbogen.",
+      "**Do** bewege nur `transform` und `opacity`, mit `ease-out` (aus) zwischen 0,3 und 0,9 s, höchstens drei Dinge gleichzeitig, und schalte bei `prefers-reduced-motion` alles ab.",
+      "**Do** lege jeden Gestaltungswert als Token in `:root` an."
     ],
     "donts": [
-      "Don't einen zweiten Knopf in Bankrot füllen.",
-      "Don't Kupfer als Fläche, Knopffüllung oder Hintergrund einsetzen.",
-      "Don't Gold auf dunklem Gewürzfoto (Lieferportal-Maske) oder Creme–Serife–Terrakotta verwenden.",
-      "Don't Schatten, Karten-Raster oder Kästen um Gerichte setzen; Zeilen trennen sich durch Linien.",
-      "Don't ein Foto mit erzwungenem `aspect-ratio` und `object-fit: cover` auf ein fremdes Format beschneiden oder über seine Vorlage strecken.",
-      "Don't dasselbe Foto zweimal auf einer Seite zeigen.",
-      "Don't Breite, Höhe, Ränder oder Farben animieren; nur `transform` und `opacity`.",
-      "Don't auf die verworfene Streichholz-Richtung (Seed 36bb5d45) zurückgreifen."
+      "**Don't** bringe Ocker, Rot oder Tischdecken-Weiß als Flächen- oder Bandfarbe zurück; die Betreiberin hat diese Paletten am 07.10.2026 abgelehnt. Das Rot der Bänke bleibt in den Fotos.",
+      "**Don't** setze einen zweiten gefüllten Knopf in dieselbe Knopfgruppe.",
+      "**Don't** verwende fette oder schwere Display-Schrift; Überschriften bleiben Josefin Sans 300.",
+      "**Don't** beschneide oder strecke ein Foto über seine Vorlage; kein Foto zweimal auf einer Seite.",
+      "**Don't** wechsle Abschnitte in farbigen Bändern ab und baue keine Lieferportal-Maske nach.",
+      "**Don't** nutze Schatten auf Karten oder Knöpfen; der einzige Schein gehört der Kielbogenkante."
     ]
   }
 }
