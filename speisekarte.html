@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Speisekarte – Restaurant Bombay Freising</title>
   <meta name="description" content="Die Speisekarte des Restaurants Bombay in Freising: Vorspeisen, Currys, Tandoori, Biryani, Thalis, vegetarische und vegane Gerichte mit Preisen. Jedes Gericht in vier Schärfegraden.">
-  <meta name="theme-color" content="#2a140c">
+  <meta name="theme-color" content="#16110e">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon.png" type="image/png">
-  <link rel="preload" href="fonts/rozha-one.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/josefin-300.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/hind-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -38,6 +38,7 @@
 <main id="karte">
   <div class="wrap karte-kopf">
     <h1>Speisekarte</h1>
+    <p class="hand">Mild, pikant, scharf oder sehr scharf.</p>
     <p>Jedes Gericht gibt es <b>mild, pikant, scharf oder sehr scharf</b>. Sagen Sie bei der Bestellung, wie Sie es mögen. Die Markierung „scharf“ zeigt nur die übliche Zubereitung. Alle Preise in Euro inkl. MwSt.</p>
   </div>
 
@@ -47,13 +48,12 @@
         <svg aria-hidden="true"><use href="#i-search"/></svg>
         <input id="q" type="search" placeholder="Gericht, Zutat oder Nummer" aria-label="Speisekarte durchsuchen" autocomplete="off" enterkeyhint="search">
       </div>
-      <fieldset class="filter">
-        <legend class="sr">Filter</legend>
+      <div class="filter" role="group" aria-label="Filter">
         <label class="schalter"><input type="checkbox" id="f-v" data-filter="v"><span>Vegetarisch</span></label>
         <label class="schalter"><input type="checkbox" id="f-n" data-filter="n"><span>Vegan möglich</span></label>
         <label class="schalter"><input type="checkbox" id="f-s" data-filter="s"><span>Üblich scharf</span></label>
         <output class="zaehler" id="zaehler" aria-live="polite"></output>
-      </fieldset>
+      </div>
       <nav class="gruppen-sprung" aria-label="Gruppen der Speisekarte">
 <!-- sprung:anfang -->
         <a href="#warme-vorspeisen">Warme Vorspeisen</a>
@@ -378,8 +378,8 @@
 </footer>
 
 <nav class="daumen" aria-label="Schnellzugriff" data-weicht data-daumen>
-  <a class="knopf knopf--rot" href="https://bombayrestaurant-freising.de/order_type" rel="noopener"><svg aria-hidden="true"><use href="#i-bag"/></svg>Online bestellen</a>
-  <a class="knopf knopf--putz" href="tel:+4981614965102" aria-label="Anrufen: 08161 4965102"><svg aria-hidden="true"><use href="#i-phone"/></svg>Anrufen</a>
+  <a class="knopf knopf--lampe" href="https://bombayrestaurant-freising.de/order_type" rel="noopener"><svg aria-hidden="true"><use href="#i-bag"/></svg>Online bestellen</a>
+  <a class="knopf knopf--linie" href="tel:+4981614965102" aria-label="Anrufen: 08161 4965102"><svg aria-hidden="true"><use href="#i-phone"/></svg>Anrufen</a>
 </nav>
 
 <script src="app.js"></script>
