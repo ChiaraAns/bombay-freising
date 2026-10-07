@@ -6,7 +6,8 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const wurzel = join(dirname(fileURLToPath(import.meta.url)), '..');
-const BESTELLEN = 'https://bombayrestaurant-freising.de/order_type';
+// Gruppen ohne Schärfegrad auf dem Bestellzettel (Brot, Beilagen, Süßes, Getränke)
+const OHNE_SCHAERFE = new Set(['salate', 'tandoori-brot', 'beilagen', 'nachspeisen', 'getraenke', 'wein']);
 const KENNZEICHEN = {
   v: ['vegetarisch', 'veg'],
   n: ['vegan möglich', 'vegan'],
@@ -48,22 +49,25 @@ if (fehler.length) {
 function marken(k) {
   return [...k].filter((x) => KENNZEICHEN[x]).map((x) => `<span class="marke-${KENNZEICHEN[x][1]}">${KENNZEICHEN[x][0]}</span>`).join('');
 }
-function attribute(p) {
+function attribute(p, g, i) {
   const k = p.kennzeichen || '';
-  let a = '';
+  let a = ` data-id="${p.nr ?? `${g.id}-${i + 1}`}" data-preis="${p.preis}"`;
+  if (!OHNE_SCHAERFE.has(g.id)) a += ' data-schaerfe';
   if (k.includes('v')) a += ' data-v';
   if (k.includes('n')) a += ' data-n';
   if (/[sS]/.test(k)) a += ' data-s';
   const such = [p.nr ?? '', p.name, p.beschreibung].join(' ').toLowerCase();
   return a + ` data-such="${esc(such)}"`;
 }
-function zeile(p) {
+function zeile(p, g, i) {
   const m = marken(p.kennzeichen || '');
-  return `      <li class="posten"${attribute(p)}>` +
+  return `      <li class="posten"${attribute(p, g, i)}>` +
     (p.nr != null ? `<span class="nr">${p.nr}</span>` : '') +
     `<span class="name">${esc(p.name)}</span>` +
     `<span class="preis">${p.preis} €</span>` +
     (p.beschreibung || m ? `<span class="text">${esc(p.beschreibung || '')}${m ? `<span class="marken">${m}</span>` : ''}</span>` : '') +
+    // Ohne Skript bleibt der Knopf verborgen; dann gilt das Telefon
+    `<button class="dazu" type="button" hidden aria-label="${esc(p.name)} auf den Bestellzettel"><svg aria-hidden="true"><use href="#i-plus"/></svg><span class="dazu-zahl"></span></button>` +
     `</li>`;
 }
 
@@ -72,8 +76,7 @@ const karte = daten.gruppen.map((g) => {
   return `    <details class="gruppe" id="${g.id}" open>\n` +
     `      <summary><h2>${esc(g.name)}</h2><span class="anzahl">${n} Posten</span></summary>\n` +
     (g.hinweis ? `      <p class="gruppe-hinweis">${esc(g.hinweis)}</p>\n` : '') +
-    `      <ul class="posten-liste">\n${g.posten.map(zeile).join('\n')}\n      </ul>\n` +
-    `      <a class="gruppe-bestellen" href="${BESTELLEN}" rel="noopener">${esc(g.name)} online bestellen<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>\n` +
+    `      <ul class="posten-liste">\n${g.posten.map((p, i) => zeile(p, g, i)).join('\n')}\n      </ul>\n` +
     `    </details>`;
 }).join('\n');
 

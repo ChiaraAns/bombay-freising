@@ -6,6 +6,11 @@
   var MITTAG = ['11:30', '14:00'], ABEND = ['17:30', '22:00'];
   var ZEITEN = { 0: [MITTAG, ABEND], 1: [MITTAG, ABEND], 2: null, 3: [MITTAG, ABEND], 4: [MITTAG, ABEND], 5: [MITTAG, ABEND], 6: [MITTAG, ABEND] };
   var TAGE = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+  var VORLAUF = { abholen: 30, liefern: 60 }; // Richtwerte des Restaurants in Minuten
+  var TEL = 'tel:+4981614965102';
+  // WhatsApp-Nummer des Restaurants, international ohne + und Leerzeichen (z. B. '49170…').
+  // Leer lassen, solange sie nicht bestätigt ist: Dann gibt es nur „Anrufen“.
+  var WHATSAPP = '';
 
   function minuten(t) { var p = t.split(':'); return +p[0] * 60 + +p[1]; }
   function jetzt() {
@@ -23,7 +28,7 @@
   }
   function zustand() {
     var n = jetzt(), heute = ZEITEN[n.tag];
-    if (!heute) return { satz: 'Heute Ruhetag, ' + naechsteOeffnung(n), zusatz: 'Online vorbestellen ist möglich.' };
+    if (!heute) return { satz: 'Heute Ruhetag, ' + naechsteOeffnung(n), zusatz: 'Den Bestellzettel können Sie schon zusammenstellen.' };
     for (var i = 0; i < heute.length; i++) {
       var von = minuten(heute[i][0]), bis = minuten(heute[i][1]);
       if (n.min >= von && n.min < bis) {
@@ -33,10 +38,10 @@
       if (n.min < von) {
         return i === 0
           ? { satz: 'Heute geöffnet ab <b>' + heute[0][0] + '</b>', zusatz: heute[0].join('–') + ' und ' + heute[1].join('–') }
-          : { satz: 'Mittagspause, ab <b>' + heute[i][0] + '</b> wieder geöffnet', zusatz: 'Online vorbestellen ist möglich.' };
+          : { satz: 'Mittagspause, ab <b>' + heute[i][0] + '</b> wieder geöffnet', zusatz: 'Den Bestellzettel können Sie schon zusammenstellen.' };
       }
     }
-    return { satz: 'Heute geschlossen, ' + naechsteOeffnung(n), zusatz: 'Online vorbestellen ist möglich.' };
+    return { satz: 'Heute geschlossen, ' + naechsteOeffnung(n), zusatz: 'Den Bestellzettel können Sie schon zusammenstellen.' };
   }
 
   var satz = document.querySelector('[data-heute-satz]');
@@ -108,8 +113,6 @@
   /* ---------- Essensuhr: bis wann bestellen, damit es zur Wunschzeit schmeckt ---------- */
   var uhr = document.getElementById('uhr');
   if (uhr) {
-    var VORLAUF = { abholen: 30, liefern: 60 };
-    var BESTELLEN_URL = 'https://bombayrestaurant-freising.de/order_type', TEL = 'tel:+4981614965102';
     var regler = document.getElementById('uhr-zeit'), zeitWert = document.getElementById('uhr-zeit-wert');
     var satz2 = document.getElementById('uhr-satz'), zusatz2 = document.getElementById('uhr-zusatz');
     var handeln = document.getElementById('uhr-handeln'), blatt = document.getElementById('zifferblatt');
@@ -156,12 +159,11 @@
       var weg = gewaehlt('weg'), plus = +gewaehlt('tag'), tag = (heuteNr + plus) % 7, essen = +regler.value;
       var t = hhmm(essen); zeitWert.textContent = t; regler.setAttribute('aria-valuetext', t + ' Uhr');
       var slots = ZEITEN[tag], bestellen = null, s = '', z = '';
-      handeln.href = weg === 'lokal' ? TEL : BESTELLEN_URL;
-      handeln.textContent = weg === 'lokal' ? 'Tisch reservieren' : 'Online bestellen';
-      handeln.removeAttribute('target');
+      handeln.href = weg === 'lokal' ? TEL : 'speisekarte.html?weg=' + weg + '&wann=' + plus + '-' + essen;
+      handeln.textContent = weg === 'lokal' ? 'Tisch reservieren' : 'Zum Bestellzettel';
       if (!slots) {
         var naechster = (tag + 1) % 7;
-        s = TAGE[tag] + ' ist Ruhetag.'; z = 'Ab ' + TAGE[naechster] + ' 11:30 sind wir wieder da. Online vorbestellen geht trotzdem.';
+        s = TAGE[tag] + ' ist Ruhetag.'; z = 'Ab ' + TAGE[naechster] + ' 11:30 sind wir wieder da.';
       } else {
         var slot = slots.filter(function (x) { return essen >= minuten(x[0]) && essen <= minuten(x[1]); })[0];
         if (!slot) {
@@ -178,12 +180,17 @@
             var weiter = slots.filter(function (x) { return minuten(x[0]) > n.min; })[0];
             s = 'Für ' + t + ' ist es zu knapp.';
             z = offen ? 'Frühestens um ' + hhmm(frueh) + ' Uhr, wenn Sie jetzt bestellen.'
-              : weiter ? 'Frühestens ab ' + weiter[0] + ' Uhr. Online vorbestellen geht schon jetzt.'
+              : weiter ? 'Bestellungen nehmen wir ab ' + weiter[0] + ' Uhr wieder an.'
               : 'Heute ist die Küche zu. Stellen Sie die Uhr auf morgen.';
+            bestellen = null;
+          } else if (bestellen < minuten(slot[0])) {
+            // Vor der Öffnung nimmt niemand Bestellungen an
+            s = 'Für ' + t + ' ist es zu knapp.';
+            z = 'Bestellungen nehmen wir ab ' + slot[0] + ' Uhr an, fertig frühestens um ' + hhmm(minuten(slot[0]) + VORLAUF[weg]) + ' Uhr.';
             bestellen = null;
           } else {
             s = 'Bestellen bis <b>' + hhmm(bestellen) + '</b>, ' + (weg === 'abholen' ? 'abholen um ' : 'Lieferung gegen ') + t + '.';
-            z = bestellen < minuten(slot[0]) ? 'Das ist vor der Öffnung um ' + slot[0] + ' Uhr: einfach online vorbestellen.' : (heute && bestellen - n.min <= 60 ? 'Noch ' + (bestellen - n.min) + ' Minuten Zeit zum Aussuchen.' : 'Online können Sie schon jetzt vorbestellen.');
+            z = heute && bestellen - n.min <= 60 ? 'Noch ' + (bestellen - n.min) + ' Minuten Zeit zum Aussuchen.' : 'Den Bestellzettel können Sie schon zusammenstellen.';
           }
         }
       }
@@ -194,6 +201,223 @@
     uhr.addEventListener('change', rechnen);
     uhr.addEventListener('submit', function (e) { e.preventDefault(); });
     rechnen();
+  }
+
+  /* ---------- Bestellzettel: Gerichte sammeln, als fertigen Text per WhatsApp oder Telefon schicken ---------- */
+  var zettel = document.getElementById('zettel');
+  if (zettel && zettel.showModal) {
+    var SCHAERFE = ['mild', 'pikant', 'scharf', 'sehr scharf'], ABLAGE = 'bombay-zettel';
+    var liste = document.getElementById('zettel-liste'), leerHinweis = document.getElementById('zettel-leer');
+    var summeAus = document.getElementById('zettel-summe'), wann = document.getElementById('zettel-wann');
+    var feldName = document.getElementById('zettel-name'), feldTel = document.getElementById('zettel-tel');
+    var feldAdresse = document.getElementById('zettel-adresse'), adresseFeld = document.getElementById('zettel-adresse-feld');
+    var feldNotiz = document.getElementById('zettel-notiz'), vorschau = document.getElementById('zettel-vorschau');
+    var meldung = document.getElementById('zettel-meldung'), hinweis = document.getElementById('zettel-hinweis');
+    var knopfWa = document.getElementById('zettel-whatsapp'), knopfAnruf = document.getElementById('zettel-anruf');
+    var knopfKopie = document.getElementById('zettel-kopieren');
+    var aufKnoepfe = document.querySelectorAll('[data-zettel-auf]'), staende = document.querySelectorAll('[data-zettel-stand]');
+    var posten = {}, auswahl = [];
+
+    // Karte einlesen: ein Eintrag je Gericht
+    document.querySelectorAll('.posten[data-id]').forEach(function (li) {
+      var nr = li.querySelector('.nr');
+      posten[li.dataset.id] = { li: li, name: li.querySelector('.name').textContent, nr: nr ? nr.textContent : '', cent: Math.round(parseFloat(li.dataset.preis.replace(',', '.')) * 100), schaerfe: li.hasAttribute('data-schaerfe') };
+      var b = li.querySelector('.dazu');
+      b.hidden = false;
+      b.addEventListener('click', function () { dazu(li.dataset.id); });
+    });
+    var euro = function (c) { return (c / 100).toFixed(2).replace('.', ',') + ' €'; };
+
+    try {
+      auswahl = (JSON.parse(localStorage.getItem(ABLAGE) || '[]') || []).filter(function (z) { return posten[z.id] && z.n > 0; });
+    } catch (e) { auswahl = []; }
+    function sichern() { try { localStorage.setItem(ABLAGE, JSON.stringify(auswahl)); } catch (e) { /* ohne Speicher geht es auch */ } }
+
+    function dazu(id) {
+      var z = auswahl.filter(function (x) { return x.id === id; })[0];
+      if (z) z.n++;
+      else auswahl.push({ id: id, n: 1, s: posten[id].schaerfe ? 'mild' : '' });
+      sichern(); zeichnen();
+      aufKnoepfe.forEach(function (k) { k.classList.remove('stups'); void k.offsetWidth; k.classList.add('stups'); });
+      if (daumen) daumen.classList.remove('weg');
+      meldeKarte(posten[id].name + ' ist auf dem Bestellzettel.');
+    }
+    // Ansage für Screenreader, ohne den Dialog zu öffnen
+    var ansage = document.createElement('p');
+    ansage.className = 'sr'; ansage.setAttribute('role', 'status');
+    document.body.appendChild(ansage);
+    function meldeKarte(t) { ansage.textContent = ''; setTimeout(function () { ansage.textContent = t; }, 30); }
+
+    // Zeitauswahl: bald möglichst, sonst Viertelstunden in den Öffnungszeiten von heute und dem nächsten offenen Tag
+    function zeiten() {
+      var weg = gewaehltZ(), n = jetzt(), alt = wann.value, html = '', tage = 0;
+      for (var plus = 0; plus < 7 && tage < 2; plus++) {
+        var tag = (n.tag + plus) % 7, slots = ZEITEN[tag], opts = '';
+        if (!slots) continue;
+        slots.forEach(function (sl) {
+          var von = minuten(sl[0]) + VORLAUF[weg], bis = minuten(sl[1]);
+          if (plus === 0) von = Math.max(von, Math.ceil((n.min + VORLAUF[weg]) / 15) * 15);
+          for (var m = Math.ceil(von / 15) * 15; m <= bis; m += 15) opts += '<option value="' + plus + '-' + m + '">' + hhmmZ(m) + ' Uhr</option>';
+        });
+        if (!opts) continue;
+        var name = plus === 0 ? 'Heute' : plus === 1 ? 'Morgen, ' + TAGE[tag] : TAGE[tag];
+        html += '<optgroup label="' + name + '">' + opts + '</optgroup>';
+        tage++;
+      }
+      var offen = (ZEITEN[n.tag] || []).some(function (sl) { return n.min >= minuten(sl[0]) && n.min + VORLAUF[weg] <= minuten(sl[1]); });
+      wann.innerHTML = (offen ? '<option value="bald">So bald wie möglich (ca. ' + VORLAUF[weg] + ' min)</option>' : '') + html;
+      if (alt && wann.querySelector('option[value="' + alt + '"]')) wann.value = alt;
+    }
+    function hhmmZ(m) { return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); }
+    function gewaehltZ() { return zettel.querySelector('input[name="zettel-weg"]:checked').value; }
+    function wannText() {
+      var o = wann.selectedOptions[0];
+      if (!o) return '';
+      if (o.value === 'bald') return 'so bald wie möglich';
+      return o.parentNode.label.replace(/^Morgen, /, 'morgen, ').replace(/^Heute/, 'heute') + ', ' + o.textContent;
+    }
+
+    function zeichnen() {
+      var summe = 0, stueck = 0;
+      liste.innerHTML = '';
+      auswahl.forEach(function (z, i) {
+        var p = posten[z.id], li = document.createElement('li');
+        summe += p.cent * z.n; stueck += z.n;
+        li.className = 'zeile';
+        li.innerHTML =
+          '<p class="zeile-name">' + (p.nr ? '<span class="nr">' + p.nr + '</span>' : '') + '<span></span></p>' +
+          '<p class="zeile-preis preis">' + euro(p.cent * z.n) + '</p>' +
+          '<div class="zeile-wahl">' +
+            '<div class="menge"><button type="button" data-schritt="-1"><svg aria-hidden="true"><use href="#i-minus"/></svg></button>' +
+            '<output>' + z.n + '</output>' +
+            '<button type="button" data-schritt="1"><svg aria-hidden="true"><use href="#i-plus"/></svg></button></div>' +
+            (p.schaerfe ? '<select>' + SCHAERFE.map(function (s) { return '<option' + (s === z.s ? ' selected' : '') + '>' + s + '</option>'; }).join('') + '</select>' : '') +
+          '</div>';
+        li.querySelector('.zeile-name span:last-child').textContent = p.name;
+        var minus = li.querySelector('[data-schritt="-1"]'), plusK = li.querySelector('[data-schritt="1"]');
+        minus.setAttribute('aria-label', (z.n === 1 ? 'Entfernen: ' : 'Eins weniger: ') + p.name);
+        plusK.setAttribute('aria-label', 'Eins mehr: ' + p.name);
+        li.querySelector('output').setAttribute('aria-label', z.n + ' Stück');
+        li.querySelectorAll('[data-schritt]').forEach(function (b) {
+          b.addEventListener('click', function () {
+            z.n += +b.dataset.schritt;
+            if (z.n < 1) auswahl.splice(auswahl.indexOf(z), 1);
+            sichern(); zeichnen();
+            var naechster = liste.querySelectorAll('.zeile')[Math.min(i, auswahl.length - 1)];
+            (naechster ? naechster.querySelector('[data-schritt="' + b.dataset.schritt + '"]') || naechster.querySelector('button') : feldName).focus();
+          });
+        });
+        var sel = li.querySelector('select');
+        if (sel) {
+          sel.setAttribute('aria-label', 'Schärfe für ' + p.name);
+          sel.addEventListener('change', function () { z.s = sel.value; sichern(); text(); });
+        }
+        liste.appendChild(li);
+      });
+      leerHinweis.hidden = auswahl.length > 0;
+      summeAus.textContent = euro(summe);
+      summeAus.parentNode.hidden = !auswahl.length;
+      staende.forEach(function (st) { st.textContent = stueck ? euro(summe) : ''; });
+      aufKnoepfe.forEach(function (k) { k.setAttribute('aria-label', 'Bestellzettel öffnen' + (stueck ? ', ' + stueck + (stueck === 1 ? ' Gericht, ' : ' Gerichte, ') + euro(summe) : ', noch leer')); });
+      // Zahl am Plus in der Karte
+      Object.keys(posten).forEach(function (id) {
+        var n = auswahl.reduce(function (a, z) { return a + (z.id === id ? z.n : 0); }, 0), b = posten[id].li.querySelector('.dazu');
+        b.querySelector('.dazu-zahl').textContent = n || '';
+        b.classList.toggle('drauf', n > 0);
+        b.setAttribute('aria-label', posten[id].name + (n ? ' noch einmal auf den Bestellzettel (' + n + ' drauf)' : ' auf den Bestellzettel'));
+      });
+      text();
+    }
+
+    function text() {
+      var weg = gewaehltZ(), summe = 0, zeilen = [];
+      auswahl.forEach(function (z) {
+        var p = posten[z.id]; summe += p.cent * z.n;
+        zeilen.push(z.n + '× ' + (p.nr ? p.nr + ' ' : '') + p.name + (z.s ? ' (' + z.s + ')' : '') + ' – ' + euro(p.cent * z.n));
+      });
+      var t = ['Bestellung für Restaurant Bombay', (weg === 'liefern' ? 'Liefern' : 'Abholen') + ': ' + wannText(), ''].concat(zeilen, ['', 'Summe laut Karte: ' + euro(summe), '']);
+      t.push('Name: ' + (feldName.value.trim() || '–'));
+      if (feldTel.value.trim()) t.push('Telefon: ' + feldTel.value.trim());
+      if (weg === 'liefern') t.push('Adresse: ' + (feldAdresse.value.trim().replace(/\s*\n\s*/g, ', ') || '–'));
+      if (feldNotiz.value.trim()) t.push('Anmerkung: ' + feldNotiz.value.trim());
+      var s = t.join('\n');
+      vorschau.textContent = s;
+      if (WHATSAPP) knopfWa.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(s);
+      return s;
+    }
+
+    // Fehlt etwas Wichtiges? Dann sagen, was, und dorthin springen
+    function fehlt() {
+      if (!auswahl.length) return { t: 'Der Bestellzettel ist noch leer.' };
+      if (!wann.value) return { t: 'Heute und morgen ist keine Zeit mehr frei. Rufen Sie uns gern an.' };
+      if (!feldName.value.trim()) return { t: 'Bitte noch Ihren Namen eintragen.', f: feldName };
+      if (gewaehltZ() === 'liefern' && !feldAdresse.value.trim()) return { t: 'Bitte noch die Lieferadresse eintragen.', f: feldAdresse };
+      return null;
+    }
+    function pruefen(e) {
+      var f = fehlt();
+      meldung.textContent = f ? f.t : '';
+      meldung.classList.toggle('ist-fehler', !!f);
+      if (f) { e.preventDefault(); if (f.f) { f.f.setAttribute('aria-invalid', 'true'); f.f.focus(); } }
+      return !f;
+    }
+    [feldName, feldAdresse].forEach(function (f) { f.addEventListener('input', function () { f.removeAttribute('aria-invalid'); }); });
+
+    // Ein Lampenknopf: WhatsApp, wenn die Nummer bestätigt ist, sonst der Anruf
+    if (WHATSAPP) {
+      knopfWa.hidden = false;
+      knopfAnruf.classList.replace('knopf--lampe', 'knopf--linie');
+      knopfWa.addEventListener('click', function (e) { if (pruefen(e)) meldung.textContent = 'WhatsApp öffnet sich mit Ihrer Bestellung. Bitte dort noch auf Senden tippen.'; });
+    }
+    knopfAnruf.addEventListener('click', function () {
+      // Beim Anruf bleibt der Zettel offen zum Vorlesen
+      meldung.classList.remove('ist-fehler');
+      meldung.textContent = auswahl.length ? 'Lesen Sie uns den Zettel einfach vor.' : '';
+    });
+    knopfKopie.addEventListener('click', function (e) {
+      if (!pruefen(e)) return;
+      var s = text(), fertig = function () { meldung.textContent = 'Text kopiert. Sie können ihn jetzt einfügen und schicken.'; };
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(s).then(fertig, function () { zeigeText(); });
+      else zeigeText();
+    });
+    function zeigeText() {
+      var d = zettel.querySelector('.zettel-text'); d.open = true;
+      var r = document.createRange(); r.selectNodeContents(vorschau);
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      meldung.textContent = 'Der Text ist markiert. Bitte selbst kopieren.';
+    }
+
+    function hinweisSetzen() {
+      var n = jetzt(), offen = (ZEITEN[n.tag] || []).some(function (sl) { return n.min >= minuten(sl[0]) && n.min < minuten(sl[1]); });
+      hinweis.textContent = (offen ? '' : 'Gerade ist geschlossen; telefonisch erreichen Sie uns zu den Öffnungszeiten. ') +
+        'Die Bestellung gilt, sobald das Restaurant sie bestätigt hat. Preise laut Karte' + (gewaehltZ() === 'liefern' ? '; ob wir zu Ihnen liefern, klären wir dabei.' : '.');
+    }
+
+    zettel.querySelectorAll('input[name="zettel-weg"]').forEach(function (r) {
+      r.addEventListener('change', function () { adresseFeld.hidden = gewaehltZ() !== 'liefern'; zeiten(); hinweisSetzen(); text(); });
+    });
+    [wann, feldName, feldTel, feldAdresse, feldNotiz].forEach(function (f) { f.addEventListener('input', text); f.addEventListener('change', text); });
+    zettel.querySelector('form').addEventListener('submit', function (e) { e.preventDefault(); });
+
+    var ausloeserZ = null;
+    function oeffnen() {
+      ausloeserZ = document.activeElement;
+      zeiten(); hinweisSetzen(); text();
+      meldung.textContent = ''; meldung.classList.remove('ist-fehler');
+      zettel.showModal();
+      document.documentElement.classList.add('zettel-offen');
+    }
+    zettel.querySelector('.zettel-zu').addEventListener('click', function () { zettel.close(); });
+    zettel.addEventListener('click', function (e) { if (e.target === zettel) zettel.close(); });
+    zettel.addEventListener('close', function () { document.documentElement.classList.remove('zettel-offen'); if (ausloeserZ) ausloeserZ.focus(); });
+    aufKnoepfe.forEach(function (k) { k.hidden = false; k.addEventListener('click', oeffnen); });
+
+    // Aus der Essensuhr: ?weg=liefern&wann=0-750
+    var par = new URLSearchParams(location.search);
+    if (par.get('weg') === 'liefern') { zettel.querySelector('input[value="liefern"]').checked = true; adresseFeld.hidden = false; }
+    zeiten();
+    if (par.get('wann') && wann.querySelector('option[value="' + par.get('wann') + '"]')) wann.value = par.get('wann');
+    zeichnen();
   }
 
   /* ---------- Speisekarte ---------- */
