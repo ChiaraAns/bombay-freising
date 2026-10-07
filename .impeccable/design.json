@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-07T06:13:10.503Z",
+  "generatedAt": "2026-10-07T06:56:59.313Z",
   "title": "Design System: Restaurant Bombay Freising",
   "extensions": {
     "colorMeta": {
       "grund": {
         "role": "neutral",
         "displayName": "Steinputz",
-        "canonical": "#f7f5f1",
+        "canonical": "#f7f5f2",
         "oklch": "oklch(97.1% 0.006 84.6)",
         "tonalRamp": [
           "#0c0b09",
@@ -216,6 +216,24 @@
         "source": "color-mix(in oklch, var(--tinte) 28%, transparent)",
         "note": "Im Stylesheet als color-mix über #21170f geführt; canonical ist der aufgelöste Wert."
       },
+      "linie-feld": {
+        "role": "neutral",
+        "displayName": "Feldlinie",
+        "canonical": "rgba(33, 23, 15, 0.52)",
+        "oklch": "oklch(21.5% 0.022 59.9)",
+        "tonalRamp": [
+          "#120903",
+          "#2c2219",
+          "#493d34",
+          "#675b51",
+          "#8a7d73",
+          "#ac9f94",
+          "#d3c4b9",
+          "#faebe0"
+        ],
+        "source": "color-mix(in oklch, var(--tinte) 52%, transparent)",
+        "note": "Rand von Eingabefeldern, mindestens 3:1; canonical ist der aufgelöste Wert."
+      },
       "linie-kupfer": {
         "role": "primary",
         "displayName": "Kupferkante",
@@ -251,6 +269,42 @@
         ],
         "source": "color-mix(in oklch, var(--kupfer) 30%, transparent)",
         "note": "Im Stylesheet als color-mix über #b07440 geführt; canonical ist der aufgelöste Wert."
+      },
+      "glanz": {
+        "role": "primary",
+        "displayName": "Messingglanz",
+        "canonical": "rgba(176, 116, 64, 0.16)",
+        "oklch": "oklch(61.1% 0.102 60.0)",
+        "tonalRamp": [
+          "#150700",
+          "#381c01",
+          "#603301",
+          "#864e15",
+          "#ac713d",
+          "#d0925e",
+          "#f8b883",
+          "#feeadb"
+        ],
+        "source": "color-mix(in oklch, var(--kupfer) 16%, transparent)",
+        "note": "Nur der einmalige Lichtstreif über den App-Tafeln."
+      },
+      "schleier": {
+        "role": "neutral",
+        "displayName": "Schleier",
+        "canonical": "rgba(33, 23, 15, 0.4)",
+        "oklch": "oklch(21.5% 0.022 59.9)",
+        "tonalRamp": [
+          "#120903",
+          "#2c2219",
+          "#493d34",
+          "#675b51",
+          "#8a7d73",
+          "#ac9f94",
+          "#d3c4b9",
+          "#faebe0"
+        ],
+        "source": "color-mix(in oklch, var(--tinte) 40%, transparent)",
+        "note": "Hinter dem offenen Bestellzettel (::backdrop)."
       },
       "band": {
         "role": "tertiary",
@@ -458,6 +512,14 @@
         "displayName": "Title Recht",
         "purpose": "Zwischenüberschriften der Rechtstexte."
       },
+      "title-zettel": {
+        "displayName": "Title Zettel",
+        "purpose": "Kopf des Bestellzettels, ohne Kupferlinie."
+      },
+      "summe": {
+        "displayName": "Summe",
+        "purpose": "Summe auf dem Bestellzettel, Tabellenziffern."
+      },
       "zitat": {
         "displayName": "Zitat",
         "purpose": "Gästezitate im Band."
@@ -517,6 +579,10 @@
       "label-marke": {
         "displayName": "Label Marke",
         "purpose": "Kennzeichen-Pillen und „heute“-Etikett."
+      },
+      "label-app": {
+        "displayName": "Label App",
+        "purpose": "Store-Name auf den App-Tafeln."
       }
     },
     "shadows": [
@@ -571,6 +637,31 @@
         "name": "reduziert",
         "value": "prefers-reduced-motion: reduce",
         "purpose": "Alle Animationen und Übergänge aus, kein weiches Scrollen."
+      },
+      {
+        "name": "zettel-auf",
+        "value": "zettel-auf .45s var(--aus); Handy translateY(24px), Desktop translateX(32px), mit opacity",
+        "purpose": "Bestellzettel öffnet sich."
+      },
+      {
+        "name": "glanz",
+        "value": "glanz .9s var(--aus) 1.1s forwards; zweite Tafel 1.3s",
+        "purpose": "Einmaliger Lichtstreif (transform) über die App-Tafeln nach dem Laden."
+      },
+      {
+        "name": "stups",
+        "value": "stups .45s var(--aus), scale 1.05",
+        "purpose": "Bestellzettel-Lampe nach jedem Plus."
+      },
+      {
+        "name": "plus-druck",
+        "value": "transform .3s var(--aus), scale .92",
+        "purpose": "Plus-Kreis beim Drücken; Plakette blendet mit auf .3s ein."
+      },
+      {
+        "name": "app-hover",
+        "value": "transform .3s var(--aus), translateY(-2px)",
+        "purpose": "App-Tafel beim Hover (nur Zeigegerät)."
       }
     ],
     "breakpoints": [
@@ -592,24 +683,44 @@
       "kuppelbogen": "border-radius: 50% 50% 0 0 / 26px 26px 0 0, 1 px linie-kupfer",
       "zifferblatt": "oberer Halbkreis, Mitte 160/170, Radius 140 im viewBox 0 0 320 190; 11:00 links, 22:30 rechts; Vorlaufbogen Radius 156, Ziffern Radius 120"
     },
-    "backdrop": "color-mix 94–96 % grund/grund-tief, backdrop-filter: blur(10px) für Kopf, Lotse, Daumenleiste"
+    "backdrop": "color-mix 94–96 % grund/grund-tief, backdrop-filter: blur(10px) für Kopf, Lotse, Daumenleiste; Bestellzettel: ::backdrop var(--schleier), ohne Unschärfe",
+    "assets": {
+      "pfeil": "url(\"data:image/svg+xml,…M1 1.5 6 6.5l5-5…stroke='%23b07440'…\") – Kupferpfeil (12 × 8, 1,5 px) der Auswahlfelder, als Token --pfeil in :root",
+      "bogen-form": "Kielbogen-Maske als Token --bogen-form in :root"
+    }
   },
   "components": [
     {
       "name": "Lampe",
       "kind": "button",
       "refersTo": "button-lampe",
-      "description": "Die eine gefüllte Haupthandlung einer Knopfgruppe, meist „Online bestellen“.",
-      "html": "<a class=\"ds-knopf ds-knopf--lampe\" href=\"#\">Online bestellen</a>",
+      "description": "Die eine gefüllte Haupthandlung einer Knopfgruppe: „Jetzt bestellen“, „Zum Bestellzettel“, „Bestellzettel“, im Zettel „Anrufen“ oder „Per WhatsApp schicken“.",
+      "html": "<a class=\"ds-knopf ds-knopf--lampe\" href=\"#\">Jetzt bestellen</a>",
       "css": ".ds-knopf { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 4px 26px 0; border: 1px solid var(--linie-stark); border-radius: var(--pille); background: transparent; color: var(--tinte); font: 400 var(--gr-mini)/1 var(--versal); letter-spacing: .2em; text-transform: uppercase; text-decoration: none; white-space: nowrap; cursor: pointer; transition: transform .3s var(--aus); } .ds-knopf:active { transform: scale(.97); } .ds-knopf:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; } .ds-knopf--lampe { border-color: var(--lampe); background: var(--lampe); color: var(--auf-lampe); } .ds-knopf--lampe:hover { background: var(--lampe-hell); border-color: var(--lampe-hell); }"
     },
     {
       "name": "Linien-Pille",
       "kind": "button",
       "refersTo": "button-linie",
-      "description": "Jeder andere Knopf: Telefon, Route, Anrufen, Zurücksetzen.",
+      "description": "Jeder andere Knopf: Telefon, Route, Anrufen, Kopieren.",
       "html": "<a class=\"ds-knopf-linie\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\" d=\"M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z\"/></svg>08161 4965102</a>",
       "css": ".ds-knopf-linie { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 4px 26px 0; border: 1px solid var(--linie-stark); border-radius: var(--pille); background: transparent; color: var(--tinte); font: 400 var(--gr-mini)/1 var(--versal); letter-spacing: .2em; text-transform: uppercase; text-decoration: none; white-space: nowrap; cursor: pointer; transition: transform .3s var(--aus); } .ds-knopf-linie svg { margin-top: -4px; } .ds-knopf-linie:hover { border-color: var(--kupfer); color: var(--kupfer-schrift); } .ds-knopf-linie:active { transform: scale(.97); } .ds-knopf-linie:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; }"
+    },
+    {
+      "name": "Plus-Kreis",
+      "kind": "button",
+      "refersTo": "button-dazu",
+      "description": "Neben jedem Gericht der Speisekarte: legt es auf den Bestellzettel; mit Gericht drauf Kupferkante und Plakette.",
+      "html": "<button class=\"ds-dazu\" type=\"button\" aria-label=\"Gericht auf den Bestellzettel\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12h14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"/></svg></button> <button class=\"ds-dazu ds-dazu--drauf\" type=\"button\" aria-label=\"Gericht noch einmal auf den Bestellzettel (2 drauf)\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12h14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"/></svg><span class=\"ds-dazu-zahl\">2</span></button>",
+      "css": ".ds-dazu { position: relative; display: inline-grid; place-items: center; width: 44px; height: 44px; margin: 8px; padding: 0; border: 1px solid var(--linie-stark); border-radius: 50%; background: var(--tafel); color: var(--tinte); cursor: pointer; transition: transform .3s var(--aus); } .ds-dazu:hover { border-color: var(--kupfer); color: var(--kupfer-schrift); } .ds-dazu:active { transform: scale(.92); } .ds-dazu:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; } .ds-dazu--drauf { border-color: var(--kupfer); color: var(--kupfer-schrift); } .ds-dazu-zahl { position: absolute; top: -7px; right: -7px; min-width: 20px; height: 20px; padding: 3px 5px 0; border: 1px solid var(--kupfer); border-radius: var(--pille); background: var(--tafel); color: var(--kupfer-schrift); font: 600 .72rem/1.2 var(--lauf); font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "App-Tafel",
+      "kind": "custom",
+      "refersTo": "app-knopf",
+      "description": "Zwei weiße Tafeln mit Kupferkante unter den Bühnenknöpfen; einmal zieht der Messingglanz darüber.",
+      "html": "<div class=\"ds-apps\"><p class=\"ds-apps-titel\">Die Bombay-App</p><a class=\"ds-app\" href=\"#\" aria-label=\"Bombay-App im App Store laden\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"6.5\" y=\"2.5\" width=\"11\" height=\"19\" rx=\"2.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"/><path d=\"M12 7.5v6.5M9.3 11.6 12 14.3l2.7-2.7M10.5 18.5h3\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg><span><small>Laden im</small>App Store</span></a></div>",
+      "css": ".ds-apps { display: grid; justify-items: start; gap: 12px; } .ds-apps-titel { display: flex; align-items: center; gap: 14px; margin: 0; padding-top: 3px; font: 400 var(--gr-mini) var(--versal); letter-spacing: .24em; text-transform: uppercase; color: var(--kupfer-schrift); } .ds-apps-titel::after { content: \"\"; width: 28px; height: 1px; margin-top: -3px; background: var(--kupfer); } .ds-app { position: relative; display: flex; align-items: center; gap: 12px; min-height: 58px; padding: 8px 16px; overflow: hidden; border: 1px solid var(--linie-kupfer); border-radius: 16px; background: var(--tafel); color: var(--tinte); text-decoration: none; transition: transform .3s var(--aus); } .ds-app svg { width: 24px; height: 24px; flex: none; color: var(--kupfer); } .ds-app span { display: grid; gap: 3px; padding-top: 3px; font: 400 1.02rem/1.05 var(--versal); letter-spacing: .06em; white-space: nowrap; } .ds-app small { font: 400 .72rem/1 var(--versal); letter-spacing: .16em; text-transform: uppercase; color: var(--tinte-still); } .ds-app::after { content: \"\"; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 35%, var(--glanz) 50%, transparent 65%); transform: translateX(-110%); animation: ds-glanz .9s var(--aus) 1.1s forwards; pointer-events: none; } @keyframes ds-glanz { to { transform: translateX(110%); } } .ds-app:hover { border-color: var(--kupfer); transform: translateY(-2px); } .ds-app:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; } @media (prefers-reduced-motion: reduce) { .ds-app, .ds-app::after { animation: none; transition: none; } }"
     },
     {
       "name": "Schalter",
@@ -633,7 +744,15 @@
       "refersTo": "suchfeld",
       "description": "Suche der Speisekarte, Pille auf Tafel mit Kupfer-Lupe.",
       "html": "<label class=\"ds-suche\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"6\"/><path d=\"m20 20-4.5-4.5\"/></svg><input type=\"search\" placeholder=\"Gericht oder Zutat suchen\" aria-label=\"Speisekarte durchsuchen\"></label>",
-      "css": ".ds-suche { position: relative; display: block; } .ds-suche svg { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--kupfer); pointer-events: none; } .ds-suche input { width: 100%; min-height: 46px; padding: 10px 18px 8px 46px; border: 1px solid var(--linie-stark); border-radius: var(--pille); background: var(--tafel); color: var(--tinte); font: 400 1rem var(--lauf); } .ds-suche input::placeholder { color: var(--tinte-still); } .ds-suche input:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; }"
+      "css": ".ds-suche { position: relative; display: block; } .ds-suche svg { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--kupfer); pointer-events: none; } .ds-suche input { width: 100%; min-height: 46px; padding: 10px 18px 8px 46px; border: 1px solid var(--linie-feld); border-radius: var(--pille); background: var(--tafel); color: var(--tinte); font: 400 1rem var(--lauf); } .ds-suche input::placeholder { color: var(--tinte-still); } .ds-suche input:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; }"
+    },
+    {
+      "name": "Zettel-Feld",
+      "kind": "input",
+      "refersTo": "feld",
+      "description": "Felder des Bestellzettels auf der Feldtafel: Label darüber, Feldlinie, sanfte Ecke; Auswahl als Pille mit Kupferpfeil.",
+      "html": "<div class=\"ds-felder\"><label class=\"ds-feld\"><span>Name</span><input type=\"text\" autocomplete=\"name\"></label><label class=\"ds-feld\"><span>Wann?</span><select><option>Heute 18:30</option></select></label></div>",
+      "css": ".ds-felder { display: grid; gap: 16px; padding: 22px 20px; background: var(--tafel); border: 1px solid var(--linie); } .ds-feld { display: grid; gap: 6px; } .ds-feld > span { padding-top: 2px; font: 400 var(--gr-mini) var(--versal); letter-spacing: .18em; text-transform: uppercase; color: var(--tinte-still); } .ds-feld input { width: 100%; min-height: 46px; padding: 11px 14px 9px; border: 1px solid var(--linie-feld); border-radius: 12px; background: var(--grund); color: var(--tinte); font: 400 1rem/1.4 var(--lauf); } .ds-feld select { width: 100%; min-height: 44px; padding: 2px 38px 0 16px; border: 1px solid var(--linie-feld); border-radius: var(--pille); background: var(--grund) var(--pfeil) right 14px center / 12px no-repeat; color: var(--tinte); font: 400 1rem var(--lauf); letter-spacing: .04em; -webkit-appearance: none; appearance: none; } .ds-feld input:focus-visible, .ds-feld select:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; } .ds-feld [aria-invalid=\"true\"] { border-color: var(--chili); }"
     },
     {
       "name": "Navigation",
@@ -678,24 +797,25 @@
   ],
   "narrative": {
     "northStar": "Das Bombay bei Tageslicht",
-    "overview": "Ein durchgehender heller Grund wie Steinputz in der Altstadt am Mittag, darauf Schrift in dunklem Holz, leise gesperrte Versalien, eine Zeile Handschrift und Kupfer, das wie die Kante einer Handi-Schale oder einer Sternlaterne im Licht steht. Inhalte liegen auf weißen Tafeln mit Haarlinie. Die Seite fließt ohne wechselnde Farbbänder von oben nach unten; nur die Stimmen der Gäste liegen auf einem einzigen dunklen Band aus Holz am Abend, als Pause.\n\nDer Eindruck folgt einer Vorlage der Betreiberin (ruhig, fließend, gesperrte Versalien, Handschrift als Akzent, feine Metallkante). Ocker/Rot hat sie abgelehnt; am 07.10.2026 hat sie die helle Fassung gewünscht: heller Grund, weiße Tafeln, dunkle Tinte, nur die Stimmen dunkel. Das Material kommt aus dem Lokal: dunkles Holz als Schrift und als Band, Kupfer und Messing von den Handi-Schalen und den Sternlaternen, der Kielbogen des Bühnenfotos aus den Bögen des Taj-Mahal-Wandbilds im Gastraum, die Kuppel über dem Öffnungsstatus aus dem Logo.\n\nDie Dichte ist ruhig: viel Luft zwischen den Abschnitten, feine 1-px-Linien statt Flächen, Fotos in ihrem eigenen Seitenverhältnis. Abgelehnt sind schwere Display-Schrift, wechselnde Farbbänder und die Maske eines Lieferportals.",
+    "overview": "Ein durchgehender heller Grund wie Steinputz in der Altstadt am Mittag, darauf Schrift in dunklem Holz, leise gesperrte Versalien, eine Zeile Handschrift und Kupfer, das wie die Kante einer Handi-Schale oder einer Sternlaterne im Licht steht. Inhalte liegen auf weißen Tafeln mit Haarlinie. Die Seite fließt ohne wechselnde Farbbänder von oben nach unten; nur die Stimmen der Gäste liegen auf einem einzigen dunklen Band aus Holz am Abend, als Pause.\n\nDer Eindruck folgt einer Vorlage der Betreiberin (ruhig, fließend, gesperrte Versalien, Handschrift als Akzent, feine Metallkante). Ocker/Rot hat sie abgelehnt; am 07.10.2026 hat sie die helle Fassung gewünscht: heller Grund, weiße Tafeln, dunkle Tinte, nur die Stimmen dunkel. Das Material kommt aus dem Lokal: dunkles Holz als Schrift und als Band, Kupfer und Messing von den Handi-Schalen und den Sternlaternen, der Kielbogen des Bühnenfotos aus den Bögen des Taj-Mahal-Wandbilds im Gastraum, die Kuppel über dem Öffnungsstatus aus dem Logo.\n\nDie Dichte ist ruhig: viel Luft zwischen den Abschnitten, feine 1-px-Linien statt Flächen, Fotos in ihrem eigenen Seitenverhältnis. Abgelehnt sind schwere Display-Schrift, wechselnde Farbbänder und die Maske eines Lieferportals. Bestellt wird darum nicht über ein fremdes Portal, sondern auf einem eigenen Bestellzettel im selben Material: Plus am Gericht, weißer Zettel, eine Lampe zum Abschicken.",
     "keyCharacteristics": [
       "Ein heller Grund über die ganze Seite, weiße Tafeln, ein dunkles Band (Stimmen).",
       "Gesperrte Versalien in Josefin Sans 300 für Namen und Überschriften, Allura als eine Zeile Handschrift, Hind als Lauftext.",
       "Kupfer als Haarlinie, Bogen und Punkt, Kupferbraun als Handschrift- und Akzentschrift, und als die eine gefüllte Lampe je Knopfgruppe.",
       "Bühnenfoto im Kielbogen mit Kupferkante, im nativen Hochformat 3:4.",
       "Schmale Pillenknöpfe mit 1-px-Kante.",
-      "Die Essensuhr: ein halbrundes Zifferblatt der Öffnungszeiten als eigene Funktion der Startseite."
+      "Die Essensuhr: ein halbrundes Zifferblatt der Öffnungszeiten als eigene Funktion der Startseite.",
+      "Der Bestellzettel: ein Plus-Kreis an jedem Gericht, der Zettel als Dialog (Handy ganze Fläche, Desktop Seitenpaneel), abgeschickt per Anruf oder WhatsApp."
     ],
     "rules": [
       {
         "name": "The One Lamp Rule",
-        "body": "Jede Knopfgruppe hat höchstens eine gefüllte Lampe, die Haupthandlung der Gruppe: „Online bestellen“, in der Essensuhr bei „Bei uns essen“ stattdessen „Tisch reservieren“. Jeder andere Knopf ist eine Linien-Pille. Aktive Schalter sind ein Zustand (Kupferkante, Punkt, Kupferbraun-Schrift), keine Lampe und keine Fläche.",
+        "body": "Jede Knopfgruppe hat höchstens eine gefüllte Lampe, die Haupthandlung der Gruppe: auf der Bühne „Jetzt bestellen“ (zur Speisekarte), in der Daumenleiste der Startseite „Bestellen“, in der Essensuhr „Zum Bestellzettel“ (bei „Bei uns essen“ stattdessen „Tisch reservieren“, ruft an), auf der Speisekarte „Bestellzettel“ mit der Summe (Handy in der Daumenleiste, Desktop am Ende der Filterzeile im Lotsen), im Fuß des Bestellzettels „Anrufen“ – sobald die WhatsApp-Nummer gesetzt ist, wird „Per WhatsApp schicken“ die Lampe und „Anrufen“ eine Linien-Pille. Jeder andere Knopf ist eine Linien-Pille, auch „Kopieren“. Aktive Schalter sind ein Zustand (Kupferkante, Punkt, Kupferbraun-Schrift), keine Lampe und keine Fläche; Plus-Kreise und App-Tafeln sind Tafeln mit Kante, keine Lampen.",
         "section": "colors"
       },
       {
         "name": "The Hairline Copper Rule",
-        "body": "Außerhalb der Lampe erscheint Kupfer nur als Linie, Bogen, Symbolstrich, Punkt oder Schrift. Keine Kupferflächen, keine Kupferbänder. Der dickste Strich ist der 5-px-Öffnungsbogen des Zifferblatts.",
+        "body": "Außerhalb der Lampe erscheint Kupfer nur als Linie, Bogen, Symbolstrich, Punkt, Kontur oder Schrift. Keine Kupferflächen, keine Kupferbänder; die einzige Ausnahme ist der einmal vorbeiziehende Messingglanz (glanz) der App-Tafeln. Der dickste Strich ist der 5-px-Öffnungsbogen des Zifferblatts.",
         "section": "colors"
       },
       {
@@ -720,7 +840,7 @@
       },
       {
         "name": "The Lining Figures Rule",
-        "body": "Preise, Zeiten, Nummern, Status, Essenszeit und Note stehen in Tabellenziffern (`lining-nums tabular-nums`).",
+        "body": "Preise, Zeiten, Nummern, Status, Essenszeit, Note, Summe, Menge und Plakettenzahl stehen in Tabellenziffern (`lining-nums tabular-nums`).",
         "section": "typography"
       },
       {
@@ -736,6 +856,8 @@
       "**Do** setze unter jede Abschnittsüberschrift eine 56 px lange Kupferlinie und höchstens eine Allura-Zeile.",
       "**Do** zeige Fotos in ihrem nativen Seitenverhältnis; das Bühnenfoto als 3:4-Hochformat im 3:4-Kielbogen.",
       "**Do** bewege nur `transform` und `opacity`, mit `ease-out` (aus) zwischen 0,3 und 0,9 s, höchstens drei Dinge gleichzeitig, und schalte bei `prefers-reduced-motion` alles ab.",
+      "**Do** umrande jedes Eingabefeld mit der Feldlinie (linie-feld), damit es mindestens 3 : 1 erreicht.",
+      "**Do** lass neue Knöpfe ohne Lampe als Tafel oder Kreis mit 1-px-Kante auftreten (Plus-Kreis, App-Tafel), nicht als zweite Fläche.",
       "**Do** lege jeden Gestaltungswert als Token in `:root` an."
     ],
     "donts": [
@@ -744,7 +866,9 @@
       "**Don't** setze Handi-Kupfer (kupfer) als Schriftfarbe auf hellen Grund; dafür gibt es Kupferbraun.",
       "**Don't** verwende fette oder schwere Display-Schrift; Überschriften bleiben Josefin Sans 300.",
       "**Don't** beschneide oder strecke ein Foto über seine Vorlage; kein Foto zweimal auf einer Seite.",
-      "**Don't** wechsle Abschnitte in farbigen Bändern ab und baue keine Lieferportal-Maske nach.",
+      "**Don't** wechsle Abschnitte in farbigen Bändern ab und baue keine Lieferportal-Maske nach; bestellt wird auf dem eigenen Bestellzettel.",
+      "**Don't** lass den Messingglanz stehen oder wiederholen; er zieht einmal nach dem Laden über die App-Tafeln.",
+      "**Don't** setze den Titelstil der App-Tafel (kleine Kupferversalien zwischen Linien) als Dachzeile über Abschnittsüberschriften.",
       "**Don't** nutze Schatten auf Karten oder Knöpfen; Schein gehört nur Kielbogen und Essensuhr."
     ]
   }

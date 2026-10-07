@@ -7,7 +7,7 @@ Statische Seite (HTML, CSS, Vanilla JS), ohne Build, ausgeliefert über GitHub P
 |---|---|
 | Preise, Gerichte, Kennzeichen | `daten/speisekarte.json`, danach `node werkzeuge/karte.mjs` (macht der Deploy-Workflow auch selbst) |
 | Öffnungszeiten | `app.js` (oben) **und** die Tabelle in `index.html` |
-| WhatsApp-Nummer für Bestellungen | `app.js` oben, `WHATSAPP` (leer = nur Anrufen/Kopieren); dann in `datenschutz.html` den WhatsApp-Absatz einblenden |
+| WhatsApp-Nummer für Bestellungen | `app.js` oben, `WHATSAPP` (leer = nur Anrufen/Kopieren; dann in `datenschutz.html` den WhatsApp-Absatz verbergen) |
 | Gestaltung | `style.css` (alle Werte als Token in `:root`) |
 | Impressum, Datenschutz | `impressum.html`, `datenschutz.html` – gelb markierte Stellen vor dem Livegang ausfüllen |
 
