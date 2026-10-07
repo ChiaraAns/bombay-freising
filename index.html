@@ -122,6 +122,55 @@
     </section>
   </div>
 
+  <section class="tischrunde wrap" id="tischrunde" aria-labelledby="runde-titel">
+    <div class="runde-kopf">
+      <h2 id="runde-titel">Tischrunde</h2>
+      <p class="hand">Wir decken für Sie ein.</p>
+      <p class="einleitung">Sagen Sie uns, wie viele mitessen. Wir stellen aus der Karte einen Tisch zum Teilen zusammen, den Sie mit Ihren Leuten teilen oder gleich bestellen können.</p>
+    </div>
+
+    <form class="runde-wahl" id="runde" novalidate>
+      <div class="zaehlwerk">
+        <span class="zaehlwerk-name" id="l-personen">Personen</span>
+        <div class="zaehlwerk-knoepfe" role="group" aria-labelledby="l-personen">
+          <button type="button" class="rund" data-schritt="personen" data-wert="-1" aria-label="Eine Person weniger">−</button>
+          <output id="personen" aria-live="polite">4</output>
+          <button type="button" class="rund" data-schritt="personen" data-wert="1" aria-label="Eine Person mehr">+</button>
+        </div>
+      </div>
+      <div class="zaehlwerk">
+        <span class="zaehlwerk-name" id="l-veg">davon vegetarisch</span>
+        <div class="zaehlwerk-knoepfe" role="group" aria-labelledby="l-veg">
+          <button type="button" class="rund" data-schritt="veg" data-wert="-1" aria-label="Eine vegetarische Person weniger">−</button>
+          <output id="veg" aria-live="polite">1</output>
+          <button type="button" class="rund" data-schritt="veg" data-wert="1" aria-label="Eine vegetarische Person mehr">+</button>
+        </div>
+      </div>
+      <div class="runde-schalter">
+        <label class="schalter"><input type="checkbox" id="r-vorspeisen" checked><span>Vorspeisen zum Teilen</span></label>
+        <label class="schalter"><input type="checkbox" id="r-thali"><span>Thali für zwei</span></label>
+      </div>
+    </form>
+
+    <div class="runde-tisch">
+      <svg class="platte" id="platte" viewBox="0 0 320 320" role="img" aria-labelledby="platte-titel">
+        <title id="platte-titel">Thali-Platte mit den vorgeschlagenen Gerichten</title>
+      </svg>
+      <div class="runde-liste">
+        <ol id="runde-liste" aria-live="polite"></ol>
+        <p class="runde-summe"><span>Summe laut Karte</span><b id="runde-summe">–</b></p>
+        <p class="klein">Ein Vorschlag aus unserer Karte, Richtwert; es gelten die Preise beim Bestellen. Die meisten Hauptgerichte kommen mit Naan, Reis und Soßen. Jedes Gericht gibt es mild, pikant, scharf oder sehr scharf.</p>
+        <div class="runde-knoepfe">
+          <button type="button" class="knopf knopf--linie" id="runde-mischen">Neu mischen</button>
+          <button type="button" class="knopf knopf--linie" id="runde-teilen">Liste teilen</button>
+          <a class="knopf knopf--lampe" href="https://bombayrestaurant-freising.de/order_type" rel="noopener">Online bestellen</a>
+        </div>
+        <p class="runde-meldung" id="runde-meldung" role="status"></p>
+      </div>
+    </div>
+    <noscript><p class="klein">Die Tischrunde braucht JavaScript. Die ganze Auswahl finden Sie auf der <a href="speisekarte.html">Speisekarte</a>.</p></noscript>
+  </section>
+
   <section class="kueche wrap" aria-labelledby="kueche-titel">
     <figure class="kueche-bild">
       <img src="img/02-kupferschalen-naan-600.webp" srcset="img/02-kupferschalen-naan-600.webp 600w, img/02-kupferschalen-naan-1200.webp 1200w" sizes="(min-width: 700px) 40vw, 100vw" width="600" height="800" loading="lazy" alt="Gehämmerte Kupferschalen auf Stövchen, daneben Naan im Brotkorb">
@@ -219,6 +268,7 @@
   <button type="button" class="ansicht-nach" aria-label="Nächstes Foto"><svg aria-hidden="true"><use href="#i-right"/></svg></button>
 </dialog>
 
+<script src="karte.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
