@@ -54,6 +54,7 @@ Die Website ersetzt das Durcheinander aus zwei Bestellseiten. Sie zeigt das Loka
 
 - Sieben ausgewählte Gästefotos (`bilder/auswahl/`, EXIF/GPS entfernt) — für den Entwurf; für die Live-Seite Einwilligung oder eigene Aufnahmen nötig.
 - Einziges Raumfoto: `04-gastraum-wandbild` (Taj-Mahal-Wandbild, rote Bänke, Sternlaternen).
+- Gerichtfotos der bisherigen Website bombayrestaurant-freising.de (Chicken Tikka; freigestellte Schalen Butter Chicken, Karahi Paneer, Dal Makhni, Jheenga Curry, Mango Chicken, Rogan Josh, Fisch Chili), auf Wunsch der Betreiberin eingesetzt (07.10.2026); Rechte offen (`ABNAHME.md`).
 - Echte Speisekarte (`daten/speisekarte.json`, 17 Gruppen, 141 Posten), Allergenlegende, Bewertungsauszüge ohne Namen.
 - Nicht vorhanden und nicht zu erfinden: Mittagstisch-/Buffetpreis und -zeiten, Fotos von Inhaber/Küche, Liefergebiet, Rabatte, „frisch“/„hausgemacht“-Aussagen über die Karte hinaus.
 

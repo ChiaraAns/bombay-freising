@@ -111,6 +111,8 @@ h3 { font: 400 1.15rem/1.3 var(--versal); letter-spacing: .14em; text-transform:
   .app-knopf:hover { border-color: var(--kupfer); transform: translateY(-2px); }
   .dazu:hover { border-color: var(--kupfer); color: var(--kupfer-schrift); }
   .kachel:hover img { transform: scale(1.03); }
+  .schale:hover .schale-bild img { transform: rotate(-8deg) scale(1.03); }
+  .schale:hover .schale-dazu { border-color: var(--kupfer); color: var(--kupfer-schrift); }
 }
 
 /* ---------- Kopfleiste, weicht beim Runterscrollen aus ---------- */
@@ -214,6 +216,18 @@ h3 { font: 400 1.15rem/1.3 var(--versal); letter-spacing: .14em; text-transform:
 .ansicht-vor { left: 12px; bottom: 16px; }
 .ansicht-nach { right: 12px; bottom: 16px; }
 @keyframes auf { from { opacity: 0; } }
+
+/* ---------- Schalen aus der Karte: freigestellt auf einem Kupferring ---------- */
+.schalen { padding-block: calc(var(--luft) * .55); }
+.schalen-liste { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 14px; margin: 28px 0 0; padding: 0; }
+.schale { display: grid; justify-items: center; gap: 4px; text-align: center; color: var(--tinte); text-decoration: none; }
+.schale-bild { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 1; margin-bottom: 10px; }
+.schale-bild::before { content: ""; position: absolute; inset: 4%; border: 1px solid var(--linie-kupfer); border-radius: 50%; background: var(--tafel); }
+.schale-bild img { position: relative; width: 86%; height: 86%; object-fit: contain; transition: transform .7s var(--aus); }
+.schale-name { font-weight: 600; font-size: 1.02rem; line-height: 1.3; }
+.schale-preis { font-size: var(--gr-klein); color: var(--tinte-still); font-variant-numeric: lining-nums tabular-nums; }
+.schale-dazu { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; margin-top: 4px; padding: 3px 10px 0; white-space: nowrap; border: 1px solid var(--linie-stark); border-radius: var(--pille); font: 400 .72rem var(--versal); letter-spacing: .08em; text-transform: uppercase; color: var(--tinte-leise); }
+.schale-dazu svg { width: 15px; height: 15px; margin-top: -3px; }
 
 /* ---------- Essensuhr ---------- */
 .essensuhr { padding-block: calc(var(--luft) * .55); }
@@ -376,7 +390,8 @@ html.zettel-offen { overflow: hidden; }
 .gruppe { border-bottom: 1px solid var(--linie); scroll-margin-top: calc(var(--kopf-hoehe) + 180px); }
 .gruppe summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 28px 0 20px; cursor: pointer; list-style: none; }
 .gruppe summary::-webkit-details-marker { display: none; }
-.gruppe summary h2 { font-size: clamp(1.05rem, .9rem + 1.2vw, 1.6rem); letter-spacing: .14em; }
+.gruppe-bild { flex: none; width: 56px; height: 56px; margin: -10px -2px -10px -4px; object-fit: contain; }
+.gruppe summary h2 { margin-right: auto; font-size: clamp(1.05rem, .9rem + 1.2vw, 1.6rem); letter-spacing: .14em; }
 .gruppe summary h2::after { display: none; }
 .anzahl { flex: none; display: inline-flex; align-items: center; gap: 12px; font-size: var(--gr-klein); color: var(--tinte-still); }
 .anzahl::after { content: ""; width: 8px; height: 8px; border: solid var(--kupfer); border-width: 0 1px 1px 0; transform: rotate(45deg) translateY(-3px); transition: transform .3s var(--aus); }
@@ -431,6 +446,8 @@ body:has(#f-s:checked) .posten:not([data-s]) { display: none; }
   .kacheln { grid-template-columns: repeat(3, 1fr); gap: 14px; }
   .kacheln li:first-child { grid-column: auto; }
   .zitate { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .schalen-liste { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+  .schale-dazu { padding-inline: 14px; letter-spacing: .14em; }
   .uhr-raster { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 48px; align-items: center; }
   .besuch-spalten { grid-template-columns: 1.1fr 1fr; gap: 18px; }
   .besuch-spalten > div { padding: 40px 36px 30px; }
@@ -469,6 +486,7 @@ body:has(#f-s:checked) .posten:not([data-s]) { display: none; }
 @media (max-width: 389px) {
   .handeln { grid-template-columns: 1fr; }
   .app-knopf { gap: 9px; padding-inline: 12px; }
+  .gruppe-bild { display: none; }
   .app-knopf span { font-size: .95rem; letter-spacing: .03em; }
   .nav--fest a { padding-inline: 5px; letter-spacing: .06em; font-size: .7rem; }
 }

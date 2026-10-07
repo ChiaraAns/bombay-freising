@@ -419,6 +419,13 @@
     zeiten();
     if (par.get('wann') && wann.querySelector('option[value="' + par.get('wann') + '"]')) wann.value = par.get('wann');
     zeichnen();
+    // Von der Startseite: ?dazu=57 legt das Gericht auf den Zettel und zeigt ihn
+    if (par.get('dazu') && posten[par.get('dazu')]) {
+      dazu(par.get('dazu'));
+      par.delete('dazu');
+      history.replaceState(null, '', location.pathname + (par.toString() ? '?' + par : '') + location.hash);
+      oeffnen();
+    }
   }
 
   /* ---------- Speisekarte ---------- */
