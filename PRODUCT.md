@@ -47,7 +47,7 @@ Die Website ersetzt das Durcheinander aus zwei Bestellseiten. Sie zeigt das Loka
 ## Brand Commitments
 
 - Name „Bombay“, Logo: Schriftzug unter einem Kuppelbogen (Werbegrafik des Inhabers in Magenta; im Repo als Freisteller `logo-gold.png`, auf der Seite einfarbig eingefärbt).
-- **Gestaltung nach der Vorlage der Betreiberin (07.10.2026):** dunkel, ruhig und fließend, gesperrte Versalien, eine Handschriftzeile, feine Metalllinien. Ocker/Rot und Tischdecken-Weiß hat sie abgelehnt. Das Material bleibt das des Lokals: dunkles Holz, Kupfer und Messing der Handi-Schalen und Laternen, Kielbogen nach dem Taj-Mahal-Wandbild, Kuppel aus dem Logo.
+- **Gestaltung nach der Vorlage der Betreiberin (07.10.2026):** ruhig und fließend, gesperrte Versalien, eine Handschriftzeile, feine Metalllinien. Ocker/Rot hat sie abgelehnt; auf ihren Wunsch hell (07.10.2026): heller Grund, weiße Tafeln, dunkle Tinte, nur die Stimmen als ein dunkles Band. Das Material bleibt das des Lokals: Kupfer und Messing der Handi-Schalen und Laternen, Kielbogen nach dem Taj-Mahal-Wandbild, Kuppel aus dem Logo.
 - Ansprache: höflich mit „Sie“, kurz und konkret, Deutsch.
 
 ## Evidence on Hand

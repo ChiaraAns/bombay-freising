@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Bombay – Indisches Restaurant in Freising</title>
   <meta name="description" content="Restaurant Bombay, Obere Hauptstraße 67 in Freising: indische Currys und Tandoori aus dem Lehmofen. Heute geöffnet? Online bestellen zum Abholen oder Liefern, Tisch telefonisch reservieren.">
-  <meta name="theme-color" content="#16110e">
+  <meta name="theme-color" content="#f7f5f1">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="preload" href="fonts/josefin-300.woff2" as="font" type="font/woff2" crossorigin>
@@ -122,53 +122,43 @@
     </section>
   </div>
 
-  <section class="tischrunde wrap" id="tischrunde" aria-labelledby="runde-titel">
-    <div class="runde-kopf">
-      <h2 id="runde-titel">Tischrunde</h2>
-      <p class="hand">Wir decken für Sie ein.</p>
-      <p class="einleitung">Sagen Sie uns, wie viele mitessen. Wir stellen aus der Karte einen Tisch zum Teilen zusammen, den Sie mit Ihren Leuten teilen oder gleich bestellen können.</p>
+  <section class="essensuhr wrap" id="essensuhr" aria-labelledby="uhr-titel">
+    <div class="uhr-kopf">
+      <h2 id="uhr-titel">Essensuhr</h2>
+      <p class="hand">Wann soll es schmecken?</p>
+      <p class="einleitung">Wählen Sie, wann Sie essen möchten. Wir sagen Ihnen, bis wann Sie bestellen sollten.</p>
     </div>
 
-    <form class="runde-wahl" id="runde" novalidate>
-      <div class="zaehlwerk">
-        <span class="zaehlwerk-name" id="l-personen">Personen</span>
-        <div class="zaehlwerk-knoepfe" role="group" aria-labelledby="l-personen">
-          <button type="button" class="rund" data-schritt="personen" data-wert="-1" aria-label="Eine Person weniger">−</button>
-          <output id="personen" aria-live="polite">4</output>
-          <button type="button" class="rund" data-schritt="personen" data-wert="1" aria-label="Eine Person mehr">+</button>
+    <div class="uhr-raster">
+      <form class="uhr-wahl" id="uhr" novalidate>
+        <div class="uhr-gruppe" role="radiogroup" aria-label="Wie möchten Sie essen?">
+          <label class="schalter"><input type="radio" name="weg" value="abholen" checked><span>Abholen</span></label>
+          <label class="schalter"><input type="radio" name="weg" value="liefern"><span>Liefern lassen</span></label>
+          <label class="schalter"><input type="radio" name="weg" value="lokal"><span>Bei uns essen</span></label>
         </div>
-      </div>
-      <div class="zaehlwerk">
-        <span class="zaehlwerk-name" id="l-veg">davon vegetarisch</span>
-        <div class="zaehlwerk-knoepfe" role="group" aria-labelledby="l-veg">
-          <button type="button" class="rund" data-schritt="veg" data-wert="-1" aria-label="Eine vegetarische Person weniger">−</button>
-          <output id="veg" aria-live="polite">1</output>
-          <button type="button" class="rund" data-schritt="veg" data-wert="1" aria-label="Eine vegetarische Person mehr">+</button>
+        <div class="uhr-gruppe" role="radiogroup" aria-label="Tag">
+          <label class="schalter"><input type="radio" name="tag" value="0" checked><span data-tag-name="0">Heute</span></label>
+          <label class="schalter"><input type="radio" name="tag" value="1"><span data-tag-name="1">Morgen</span></label>
         </div>
-      </div>
-      <div class="runde-schalter">
-        <label class="schalter"><input type="checkbox" id="r-vorspeisen" checked><span>Vorspeisen zum Teilen</span></label>
-        <label class="schalter"><input type="checkbox" id="r-thali"><span>Thali für zwei</span></label>
-      </div>
-    </form>
+        <label class="uhr-zeit" for="uhr-zeit">
+          <span class="uhr-zeit-name">Essen um</span>
+          <output id="uhr-zeit-wert" for="uhr-zeit">12:30</output>
+        </label>
+        <input type="range" id="uhr-zeit" min="690" max="1320" step="15" value="750" aria-valuetext="12:30 Uhr">
+        <div class="uhr-skala" aria-hidden="true"><span>11:30</span><span>14:00</span><span>17:30</span><span>22:00</span></div>
+      </form>
 
-    <div class="runde-tisch">
-      <svg class="platte" id="platte" viewBox="0 0 320 320" role="img" aria-labelledby="platte-titel">
-        <title id="platte-titel">Thali-Platte mit den vorgeschlagenen Gerichten</title>
-      </svg>
-      <div class="runde-liste">
-        <ol id="runde-liste" aria-live="polite"></ol>
-        <p class="runde-summe"><span>Summe laut Karte</span><b id="runde-summe">–</b></p>
-        <p class="klein">Ein Vorschlag aus unserer Karte, Richtwert; es gelten die Preise beim Bestellen. Die meisten Hauptgerichte kommen mit Naan, Reis und Soßen. Jedes Gericht gibt es mild, pikant, scharf oder sehr scharf.</p>
-        <div class="runde-knoepfe">
-          <button type="button" class="knopf knopf--linie" id="runde-mischen">Neu mischen</button>
-          <button type="button" class="knopf knopf--linie" id="runde-teilen">Liste teilen</button>
-          <a class="knopf knopf--lampe" href="https://bombayrestaurant-freising.de/order_type" rel="noopener">Online bestellen</a>
+      <div class="uhr-ergebnis">
+        <svg class="zifferblatt" id="zifferblatt" viewBox="0 0 320 190" aria-hidden="true" focusable="false"></svg>
+        <p class="uhr-satz" id="uhr-satz" aria-live="polite"></p>
+        <p class="uhr-zusatz" id="uhr-zusatz"></p>
+        <div class="uhr-knoepfe">
+          <a class="knopf knopf--lampe" id="uhr-handeln" href="https://bombayrestaurant-freising.de/order_type" rel="noopener">Online bestellen</a>
         </div>
-        <p class="runde-meldung" id="runde-meldung" role="status"></p>
+        <p class="klein">Richtwerte: Abholung ca. 30 min, Lieferung ca. 60 min. Geliefert und abgeholt wird zu den Öffnungszeiten. Online vorbestellen ist möglich.</p>
       </div>
     </div>
-    <noscript><p class="klein">Die Tischrunde braucht JavaScript. Die ganze Auswahl finden Sie auf der <a href="speisekarte.html">Speisekarte</a>.</p></noscript>
+    <noscript><p class="klein">Die Essensuhr braucht JavaScript. Öffnungszeiten stehen weiter unten.</p></noscript>
   </section>
 
   <section class="kueche wrap" aria-labelledby="kueche-titel">
@@ -268,7 +258,6 @@
   <button type="button" class="ansicht-nach" aria-label="Nächstes Foto"><svg aria-hidden="true"><use href="#i-right"/></svg></button>
 </dialog>
 
-<script src="karte.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
