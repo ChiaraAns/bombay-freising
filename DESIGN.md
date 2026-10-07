@@ -1,11 +1,11 @@
 ---
 name: Restaurant Bombay Freising
-description: Der Gastraum in der Oberen Hauptstraße als Website – Ockerputz, rote Bänke, dunkles Holz, Kupferschalen.
+description: Der Gastraum in der Oberen Hauptstraße als Website – weiße Tischdecken, rote Bänke und Servietten, dunkles Holz, Kupferschalen.
 colors:
-  ocker: "#e2c18a"
-  ocker-hell: "#f0dcb2"
-  ocker-schatten: "#d8b47b"
-  ocker-linie: "#b98f55"
+  decke: "#fafaf8"
+  decke-hell: "#ffffff"
+  decke-schatten: "#efede8"
+  decke-linie: "#dad5cc"
   holz: "#2a140c"
   rot: "#a3261a"
   rot-tief: "#7f1b11"
@@ -106,7 +106,7 @@ components:
   knopf-rot-hover:
     backgroundColor: "{colors.rot-tief}"
   knopf-putz:
-    backgroundColor: "{colors.ocker-hell}"
+    backgroundColor: "{colors.decke-hell}"
     textColor: "{colors.holz}"
     typography: "{typography.knopf}"
     rounded: "{rounded.rund}"
@@ -139,7 +139,7 @@ components:
     backgroundColor: "{colors.text-hell}"
     textColor: "{colors.holz}"
   suchfeld:
-    backgroundColor: "{colors.ocker-hell}"
+    backgroundColor: "{colors.decke-hell}"
     textColor: "{colors.holz}"
     rounded: "{rounded.rund}"
     padding: "10px 14px 7px 44px"
@@ -162,14 +162,14 @@ components:
 
 **Creative North Star: "Der Gastraum in der Oberen Hauptstraße"**
 
-Die Seite ist das Lokal selbst: Grund aus Ockerputz, Text und Abendflächen aus dunklem Holz, das Rot der Polsterbänke als einzige Lampe, gehämmertes Kupfer nur als Linie. Alle Farben stammen aus den Gästefotos des Gastraums (Messung „Laden lesen“ in `recherche/bombay.md`) und sind am Bildschirm angenähert; keine davon verschwände mit einem Lieferanten. Die eigene Idee ist die Kuppelbogen-Plakette: die Kuppel aus dem Logo und ein Bogen, der den Live-Satz „Heute geöffnet bis …“ überspannt.
+Die Seite ist das Lokal selbst: Grund aus dem Weiß der Tischdecken, Text und Abendflächen aus dunklem Holz, das Rot der Polsterbänke als einzige Lampe, gehämmertes Kupfer nur als Linie. Alle Farben stammen aus den Gästefotos des Gastraums (Messung „Laden lesen“ in `recherche/bombay.md`) und sind am Bildschirm angenähert; keine davon verschwände mit einem Lieferanten. Die eigene Idee ist die Kuppelbogen-Plakette: die Kuppel aus dem Logo und ein Bogen, der den Live-Satz „Heute geöffnet bis …“ überspannt.
 
 Die Richtung ist vom Betreiber gepinnt, nicht gewürfelt: Das Startpaket (`CLAUDE.md`, `recherche/vision.md`) verlangt Farbe aus dem Raum, die Abstimmung vom 06.10.2026 legt die Leitfarbe auf das Rot der Bänke fest. Es gab keinen Seed-Roll. Die vorherige Streichholz-Richtung (Seed 36bb5d45) ist verworfen und gilt nicht mehr. Abgelehnt sind ausdrücklich die Lieferportal-Maske (Gold auf dunklem Gewürzfoto) und die Vorlage Creme–Serife–Terrakotta.
 
 Die Dichte folgt der Tageszeit: mittags zuerst die Auswahl mit Preisen, abends zuerst der Raum. Kanten sind 1–2 px Linien, keine Karten-Raster, keine Schatten. Bewegung ist knapp und bremst aus.
 
 **Key Characteristics:**
-- Ockerputz als Grund, dunkles Holz als Anker- und Abendfläche, abgesetztes Schattenputz-Band für „Besuch“.
+- Weiß der Tischdecken als Grund, dunkles Holz als Anker- und Abendfläche, abgesetztes Schattenband für „Besuch“.
 - Bankrot leuchtet nur im Hauptknopf „Online bestellen“ (Bühne und Daumenleiste) und im Heute-Signal.
 - Kupfer erscheint nur als Linie: Bogen, Kuppel, Trenner, Unterstriche, Leistenkanten.
 - Rozha One für Titel und Gerichtnamen, Hind für Text, beide lokal (OFL).
@@ -178,7 +178,7 @@ Die Dichte folgt der Tageszeit: mittags zuerst die Auswahl mit Preisen, abends z
 
 ## Colors
 
-Warme Erdtöne aus Putz und Holz, ein gesättigtes Bankrot als einzige Lampe, Kupfer als Ornamentlinie.
+Das Weiß der Tischdecken und dunkles Holz, ein gesättigtes Bankrot als einzige Lampe, Kupfer als Ornamentlinie.
 
 ### Primary
 - **Bankrot** (`rot`): Füllung des einen Hauptknopfs „Online bestellen“ in Bühne und Daumenleiste, die Heute-Marke in der Öffnungszeiten-Tabelle und das Favicon. Funktional außerdem Fokusring, Textauswahl und Schreibmarke auf hellem Grund.
@@ -189,19 +189,19 @@ Warme Erdtöne aus Putz und Holz, ein gesättigtes Bankrot als einzige Lampe, Ku
 - **Helles Kupfer** (`kupfer-hell`): Kupfer auf Holz: Kuppel und Bogen der Plakette, Punkte zwischen „Lieferung“ und „Abholung“, Rahmen von Menü-, Telefon- und Fotoansicht-Knopf, Markierung der aktuellen Gruppe im Lotsen, Fokusring auf dunklem Grund.
 
 ### Neutral
-- **Ockerputz** (`ocker`): Seitengrund, Wandputz im Licht.
-- **Heller Putz** (`ocker-hell`): nur Suchfeld, Daumenknopf „Anrufen“ und Sprunglink.
-- **Putz im Schatten** (`ocker-schatten`): das abgesetzte Band „Öffnungszeiten / So finden Sie uns“.
-- **Putzlinie** (`ocker-linie`): 1-px-Zeilenlinien auf Ocker (Gerichtlisten, Zeiten-Tabelle).
+- **Tischdecke** (`decke`): Seitengrund, das Weiß der gedeckten Tische.
+- **Reines Weiß** (`decke-hell`): nur Suchfeld, Daumenknopf „Anrufen“ und Sprunglink.
+- **Tischdecke im Schatten** (`decke-schatten`): das abgesetzte Band „Öffnungszeiten / So finden Sie uns“.
+- **Tischdeckenfalte** (`decke-linie`): 1-px-Zeilenlinien auf hellem Grund (Gerichtlisten, Zeiten-Tabelle).
 - **Dunkles Holz** (`holz`): Text auf hellem Grund, Kopfleiste, Bühne, Abschnitt „Bei uns“, Lotse, Daumenleiste, Fuß, Fotoansicht, `theme-color`.
-- **Gedämpftes Holz** (`text-weich`): Beschreibungen, Nummern, Hinweise auf Ocker (5,65:1).
+- **Gedämpftes Holz** (`text-weich`): Beschreibungen, Nummern, Hinweise auf hellem Grund (9,4:1).
 - **Heller Putz-Text** (`text-hell`): Text auf Holz und Rot; Logo-Einfärbung.
 - **Gedämpfter Putz-Text** (`text-hell-weich`): Nebentext auf Holz.
 - **Kennzeichen-Grün / -Türkis** (`gruen-marke`, `tuerkis-marke`): ausschließlich Text und Rand der Kennzeichen „vegetarisch“ und „vegan möglich“.
 - **Markierung** (`markiert`): Arbeitsmarke für offene Angaben in den Rechtstexten, kein Gestaltungswert; fällt weg, sobald `ABNAHME.md` geklärt ist.
 
 ### Named Rules
-**The Eine-Lampe Rule.** Gefüllt mit Bankrot wird pro Knopfgruppe genau ein Element: „Online bestellen“. Alle anderen Knöpfe sind Linie, heller Putz oder Text. Leuchten zwei, führt keiner.
+**The Eine-Lampe Rule.** Gefüllt mit Bankrot wird pro Knopfgruppe genau ein Element: „Online bestellen“. Alle anderen Knöpfe sind Linie, Weiß oder Text. Leuchten zwei, führt keiner.
 
 **The Kupfer-ist-Linie Rule.** Kupfer ist Ornament der Handi-Schalen: Bogen, Kuppel, Trenner, Rahmen, Unterstrich. Nie Fläche, nie Knopffüllung.
 
@@ -243,11 +243,11 @@ Mobil zuerst, eine Spalte innerhalb `rand`; Inhalt in einer Spalte von höchsten
 
 **Tageszeit-Wechsel.** Ein Inline-Skript setzt `data-zeit` nach Freisinger Uhrzeit (ab 16 Uhr „abend“). Mittags: Bühnenfoto Thali-Platte (01), danach zuerst „Beliebt im Bombay“. Abends: Thali am dunklen Tisch (03), und der Abschnitt „Bei uns“ rückt vor die Auswahl.
 
-**Flächenfolge Startseite:** Holz (Bühne) → Ocker (Auswahl) / Holz (Bei uns) → Ocker (Küche, Galerie, Stimmen) → Schattenputz (Besuch) → Holz (Fuß).
+**Flächenfolge Startseite:** Holz (Bühne) → Tischdecke (Auswahl) / Holz (Bei uns) → Tischdecke (Küche, Galerie, Stimmen) → Schattenband (Besuch) → Holz (Fuß).
 
 ## Elevation & Depth
 
-Flach, ohne einen einzigen Schatten. Tiefe entsteht aus Tonstufen des Raums (Ocker → Schattenputz → Holz) und aus dem Holz-Schleier über dem Bühnenfoto (`--schleier`: transparent → 55 % Holz bei 55 % → Holz). Leisten über Inhalt (Kopf, Lotse, Daumenleiste) setzen sich mit Holzfläche und einer 1-px-Kupferkante ab, nicht mit Schatten.
+Flach, ohne einen einzigen Schatten. Tiefe entsteht aus Tonstufen des Raums (Tischdecke → Schattenband → Holz) und aus dem Holz-Schleier über dem Bühnenfoto (`--schleier`: transparent → 55 % Holz bei 55 % → Holz). Leisten über Inhalt (Kopf, Lotse, Daumenleiste) setzen sich mit Holzfläche und einer 1-px-Kupferkante ab, nicht mit Schatten.
 
 ### Named Rules
 **The Kein-Schatten Rule.** Keine `box-shadow`, kein Leuchten. Was vorne liegt, ist dunkler oder durch eine Kupferlinie getrennt.
@@ -265,7 +265,7 @@ Ruhig und handfest, Mindesthöhe 52 px (Bühne 56 px), Symbol 22 px links.
 - **Shape:** leicht gerundet (`rund`), 2-px-Rand.
 - **Hauptknopf (`knopf-rot`):** Bankrot mit hellem Putz-Text, nur „Online bestellen“. Hover (nur Zeigegeräte): tiefes Bankrot. Druck: `scale(.97)`.
 - **Linienknopf (`knopf-linie`):** Rand in Textfarbe, transparent; Hover füllt mit Holz. Für „Route planen“ und „Anrufen“ im Besuch-Band.
-- **Putzknopf (`knopf-putz`):** heller Putz mit Holztext, nur „Anrufen“ in der Daumenleiste neben dem roten Knopf.
+- **Weißer Knopf (`knopf-putz`):** Weiß mit Holztext, nur „Anrufen“ in der Daumenleiste neben dem roten Knopf.
 - **Textlinks mit Pfeil („mehr“, Gruppe bestellen):** Hind 700, 2-px-Kupferunterstrich, Pfeil rückt beim Hover 4 px vor.
 - **Telefonzeile:** kein Knopf, sondern Hörer-Symbol in hellem Kupfer plus Nummer in 700, 44 px hoch.
 
@@ -273,12 +273,12 @@ Ruhig und handfest, Mindesthöhe 52 px (Bühne 56 px), Symbol 22 px links.
 Die eigene Idee der Seite. Kuppel-Symbol aus dem Logo (46 × 31 px, Desktop 56 × 38 px, helles Kupfer) sitzt auf dem Scheitel eines 2-px-Kupferbogens, der den ganzen Statussatz überspannt. Der Satz wird von `app.js` live aus den Öffnungszeiten gesetzt („Heute geöffnet bis 22:00“, „Mittagspause, ab 17:30 wieder geöffnet“, „Heute Ruhetag, morgen ab 11:30“), darunter eine Zusatzzeile. Ohne Skript steht der vollständige Wochenplan darin. Einzige Ladebewegung der Seite: der Bogen öffnet sich aus `scaleX(.55)` (0,8 s), die Kuppel senkt sich 8 px ein (0,7 s, 0,15 s später). Klein funktioniert die Form als Favicon (Kuppel und Bogen hell auf Bankrot).
 
 ### Menülisten-Zeilen
-Wie die Karte am Tisch: Name links, Preis rechts bündig (700, tabellarische Ziffern), Beschreibung darunter in gedämpftem Holz, 1-px-Putzlinie als Zeilenende. In „Beliebt“ steht der Name in Rozha One, in der Speisekarte in Hind 700 mit Nummernspalte (2,6em). Ab 700 px zwei Spalten mit 56 px Abstand.
+Wie die Karte am Tisch: Name links, Preis rechts bündig (700, tabellarische Ziffern), Beschreibung darunter in gedämpftem Holz, 1-px-Tischdeckenlinie als Zeilenende. In „Beliebt“ steht der Name in Rozha One, in der Speisekarte in Hind 700 mit Nummernspalte (2,6em). Ab 700 px zwei Spalten mit 56 px Abstand.
 - **Kennzeichen:** Pillen mit 1-px-Rand in der Textfarbe (vegetarisch grün, vegan türkis, scharf tiefes Bankrot, ab 18 gedämpft), 0,74rem, 700.
 
 ### Lotse (Suche und Filter der Speisekarte)
 Klebt unter der Kopfleiste auf Holz mit Kupferkante; rückt nach oben, wenn die Kopfleiste ausweicht.
-- **Suchfeld:** heller Putz, ohne Rand, Lupe links, 46 px hoch.
+- **Suchfeld:** Weiß, ohne Rand, Lupe links, 46 px hoch.
 - **Filter-Schalter:** Pillen mit 1,5-px-Rand in hellem Putz-Text (40 %), aktiv hell gefüllt mit Holztext; „Vegetarisch“, „Vegan möglich“, „Üblich scharf“. Wirken ohne Skript über `:has()`, gemerkt in `localStorage`.
 - **Zähler:** Trefferzahl rechts, `aria-live`.
 - **Gruppensprung:** waagerecht wischbare Leiste; die Gruppe im Lesebereich bekommt einen 2-px-Unterstrich in hellem Kupfer und scrollt mit.
@@ -287,14 +287,14 @@ Klebt unter der Kopfleiste auf Holz mit Kupferkante; rückt nach oben, wenn die 
 Jede Gruppe ist ein `details` mit 2-px-Kupferkante unten; Titel links, „N Posten“ und ein Winkel rechts, der sich beim Öffnen dreht. Am Handy starten die Gruppen geschlossen (Übersicht), ohne Skript und ab 700 px offen. Jede Gruppe endet mit „[Gruppe] online bestellen“. Das HTML der Karte (Gruppen, Sprungleiste, Auswahl „Beliebt“) wird von `werkzeuge/karte.mjs` aus `daten/speisekarte.json` erzeugt und zwischen Kommentarmarken geschrieben; es wird nie von Hand bearbeitet.
 
 ### Öffnungszeiten-Tabelle
-Zeilen mit 1-px-Putzlinie, Zeiten rechts bündig. Die heutige Zeile wird per Skript in tiefem Bankrot hervorgehoben und erhält die Heute-Marke: Pille in Bankrot, „HEUTE“ in Versalien (0,72rem, +0,06em).
+Zeilen mit 1-px-Tischdeckenlinie, Zeiten rechts bündig. Die heutige Zeile wird per Skript in tiefem Bankrot hervorgehoben und erhält die Heute-Marke: Pille in Bankrot, „HEUTE“ in Versalien (0,72rem, +0,06em).
 
 ### Galerie und Fotoansicht
 Drei Querformate; Handy erste Kachel über die volle Breite, darunter zwei; ab 700 px drei nebeneinander, 14 px Abstand. Kacheln ohne Symbol und Text, 4:3 wie ihre Vorlagen (1200 × 900). Hover: Bild skaliert auf 1,03 (0,6 s). Klick öffnet einen `dialog` auf 96 % Holz mit Bild im eigenen Format, runden Knöpfen (Schließen, Zurück, Weiter; Rahmen helles Kupfer), Pfeiltasten, Esc und Fokus-Rückkehr zur Kachel. Darunter der Nachweis „Fotos: Gäste des Bombay.“
 
 ### Navigation und Leisten
 - **Kopfleiste:** Holz, 60 px (Desktop 68 px), Logo als einfarbige Maske in hellem Putz-Text, 1-px-Kupferkante. Handy: „Menü“-Knopf mit Kupferrand, darunter klappt eine Holzliste auf (Esc und Außenklick schließen). Desktop: Textlinks (Hover helles Kupfer) und die Telefonnummer im Kupferrahmen.
-- **Daumenleiste (Handy):** fest am unteren Rand, roter Hauptknopf (1,5fr) und Putzknopf „Anrufen“ (1fr); erscheint erst, wenn der Hauptknopf der Bühne aus dem Bild ist.
+- **Daumenleiste (Handy):** fest am unteren Rand, roter Hauptknopf (1,5fr) und Weißer Knopf „Anrufen“ (1fr); erscheint erst, wenn der Hauptknopf der Bühne aus dem Bild ist.
 - **Ausweichen:** Kopfleiste und Daumenleiste weichen beim Runterscrollen (ab 120 px) aus und kommen beim Hochscrollen zurück, mit 6 px Hysterese. Bei offenem Menü bleibt alles stehen.
 
 ### Bewegung
@@ -311,7 +311,7 @@ Drei Querformate; Handy erste Kachel über die volle Breite, darunter zwei; ab 7
 ## Do's and Don'ts
 
 ### Do:
-- **Do** Bankrot (`rot`) nur für „Online bestellen“ und das Heute-Signal einsetzen; jede andere Aktion ist Linie, heller Putz oder Text.
+- **Do** Bankrot (`rot`) nur für „Online bestellen“ und das Heute-Signal einsetzen; jede andere Aktion ist Linie, Weiß oder Text.
 - **Do** Kupfer als 1–2-px-Linie führen: Bogen, Trenner, Unterstrich, Leistenkante, Rahmen.
 - **Do** die Kuppelbogen-Plakette als einzige Signatur und einzige Ladebewegung behalten; sie muss auch als Favicon lesbar bleiben.
 - **Do** Fotos im eigenen Format zeigen; auf Desktop die Bühne teilen (Foto 52vw rechts, Text links auf Holz), statt ein Hochformat quer zu ziehen.

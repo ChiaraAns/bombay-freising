@@ -4,68 +4,68 @@
   "title": "Design System: Restaurant Bombay Freising",
   "extensions": {
     "colorMeta": {
-      "ocker": {
+      "decke": {
         "role": "neutral",
-        "displayName": "Ockerputz",
-        "canonical": "#e2c18a",
-        "oklch": "oklch(82.7% 0.081 80.0)",
+        "displayName": "Tischdecke",
+        "canonical": "#fafaf8",
+        "oklch": "oklch(98.5% 0.003 106.4)",
         "tonalRamp": [
-          "#110a01",
-          "#312207",
-          "#543e13",
-          "#795c26",
-          "#9c7d48",
-          "#c0a06a",
-          "#dfc59b",
-          "#feecce"
+          "#0b0b08",
+          "#272722",
+          "#454541",
+          "#666661",
+          "#898984",
+          "#aeaea9",
+          "#d5d5cf",
+          "#f6f5f0"
         ]
       },
-      "ocker-hell": {
+      "decke-hell": {
         "role": "neutral",
-        "displayName": "Heller Putz",
-        "canonical": "#f0dcb2",
-        "oklch": "oklch(90.0% 0.059 85.5)",
+        "displayName": "Reines Weiß",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#100a03",
+          "#2c251b",
+          "#4b4439",
+          "#6c6559",
+          "#90887c",
+          "#b5ada0",
+          "#dbd3c6",
+          "#fcf4e6"
+        ]
+      },
+      "decke-schatten": {
+        "role": "neutral",
+        "displayName": "Tischdecke im Schatten",
+        "canonical": "#efede8",
+        "oklch": "oklch(94.6% 0.007 88.6)",
         "tonalRamp": [
           "#0f0b03",
-          "#2c2411",
-          "#4e4022",
-          "#705f39",
-          "#928059",
-          "#b6a37b",
-          "#d7c8a7",
-          "#f8edd7"
+          "#2b261b",
+          "#4a4538",
+          "#6b6659",
+          "#8e897b",
+          "#b3ae9f",
+          "#dad4c5",
+          "#fbf5e6"
         ]
       },
-      "ocker-schatten": {
+      "decke-linie": {
         "role": "neutral",
-        "displayName": "Putz im Schatten",
-        "canonical": "#d8b47b",
-        "oklch": "oklch(78.9% 0.085 78.5)",
+        "displayName": "Tischdeckenfalte",
+        "canonical": "#dad5cc",
+        "oklch": "oklch(87.4% 0.013 82.4)",
         "tonalRamp": [
-          "#110a01",
-          "#322205",
-          "#563d0f",
-          "#7b5b21",
-          "#9e7c44",
-          "#c29f66",
-          "#e1c598",
-          "#ffeccd"
-        ]
-      },
-      "ocker-linie": {
-        "role": "neutral",
-        "displayName": "Putzlinie",
-        "canonical": "#b98f55",
-        "oklch": "oklch(67.7% 0.091 74.2)",
-        "tonalRamp": [
-          "#120901",
-          "#342103",
-          "#593b09",
-          "#80581b",
-          "#a37a40",
-          "#c79d62",
-          "#e6c395",
-          "#ffeacb"
+          "#110a00",
+          "#2e2515",
+          "#4d4433",
+          "#6f6553",
+          "#928875",
+          "#b7ad99",
+          "#ded3bf",
+          "#fff4df"
         ]
       },
       "holz": {
@@ -337,7 +337,7 @@
       {
         "name": "fokus-hell",
         "value": "3px solid var(--rot), offset 3px",
-        "purpose": "Fokus auf Ockergrund."
+        "purpose": "Fokus auf hellem Grund."
       },
       {
         "name": "fokus-dunkel",
@@ -360,7 +360,7 @@
       "kind": "button",
       "refersTo": "knopf-linie",
       "description": "Nebenaktionen auf hellem Grund (Route planen, Anrufen); Hover füllt mit Holz.",
-      "html": "<div style=\"background:#d8b47b;padding:16px\"><a class=\"ds-knopf ds-knopf--linie\" href=\"#\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\" d=\"M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z\"/><circle cx=\"12\" cy=\"10\" r=\"2.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/></svg>Route planen</a></div>",
+      "html": "<div style=\"background:#efede8;padding:16px\"><a class=\"ds-knopf ds-knopf--linie\" href=\"#\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\" d=\"M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z\"/><circle cx=\"12\" cy=\"10\" r=\"2.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/></svg>Route planen</a></div>",
       "css": ".ds-knopf { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 12px 24px 10px; border: 2px solid transparent; border-radius: var(--rund, 6px); font: 700 1.08rem/1.1 var(--lauf, Hind, sans-serif); text-decoration: none; cursor: pointer; transition: transform .3s cubic-bezier(.16,1,.3,1); } .ds-knopf svg { width: 22px; height: 22px; margin-top: -3px; } .ds-knopf:active { transform: scale(.97); } .ds-knopf:focus-visible { outline: 3px solid var(--rot, #a3261a); outline-offset: 3px; } .ds-knopf--linie { border-color: currentColor; background: transparent; color: var(--holz, #2a140c); } .ds-knopf--linie:hover { background: var(--holz, #2a140c); color: var(--text-hell, #f3dfb6); border-color: var(--holz, #2a140c); }"
     },
     {
@@ -375,9 +375,9 @@
       "name": "Menülisten-Zeile",
       "kind": "card",
       "refersTo": "posten",
-      "description": "Wie die Karte am Tisch: Nummer, Name, Preis rechts bündig, Beschreibung, Kennzeichen, 1-px-Putzlinie.",
+      "description": "Wie die Karte am Tisch: Nummer, Name, Preis rechts bündig, Beschreibung, Kennzeichen, 1-px-Tischdeckenlinie.",
       "html": "<ul class=\"ds-posten-liste\"><li class=\"ds-posten\"><span class=\"ds-nr\">15</span><span class=\"ds-name\">Vegetable Pakora</span><span class=\"ds-preis\">5,90 €</span><span class=\"ds-text\">Frisches, gemischtes Gemüse <span class=\"ds-marke ds-marke--veg\">vegetarisch</span></span></li><li class=\"ds-posten\"><span class=\"ds-nr\">18</span><span class=\"ds-name\">Fish Pakora</span><span class=\"ds-preis\">5,90 €</span><span class=\"ds-text\">Zartes Seelachsfilet</span></li></ul>",
-      "css": ".ds-posten-liste { list-style: none; margin: 0; padding: 0 16px; background: var(--ocker, #e2c18a); color: var(--holz, #2a140c); font-family: var(--lauf, Hind, sans-serif); } .ds-posten { display: grid; grid-template-columns: 2.6em 1fr auto; gap: 2px 16px; align-items: baseline; padding: 14px 0 12px; border-bottom: 1px solid var(--ocker-linie, #b98f55); } .ds-nr { font-size: .95rem; font-weight: 600; color: var(--text-weich, #5d3d28); font-variant-numeric: lining-nums tabular-nums; } .ds-name { font-weight: 700; font-size: 1.12rem; line-height: 1.3; } .ds-preis { font-weight: 700; white-space: nowrap; font-variant-numeric: lining-nums tabular-nums; } .ds-text { grid-column: 2 / 3; font-size: 1rem; color: var(--text-weich, #5d3d28); } .ds-marke { margin-left: 8px; padding: 1px 8px 0; border: 1px solid currentColor; border-radius: 99px; font-size: .74rem; font-weight: 700; letter-spacing: .03em; } .ds-marke--veg { color: var(--gruen-marke, #2a5427); }"
+      "css": ".ds-posten-liste { list-style: none; margin: 0; padding: 0 16px; background: var(--decke, #fafaf8); color: var(--holz, #2a140c); font-family: var(--lauf, Hind, sans-serif); } .ds-posten { display: grid; grid-template-columns: 2.6em 1fr auto; gap: 2px 16px; align-items: baseline; padding: 14px 0 12px; border-bottom: 1px solid var(--decke-linie, #dad5cc); } .ds-nr { font-size: .95rem; font-weight: 600; color: var(--text-weich, #5d3d28); font-variant-numeric: lining-nums tabular-nums; } .ds-name { font-weight: 700; font-size: 1.12rem; line-height: 1.3; } .ds-preis { font-weight: 700; white-space: nowrap; font-variant-numeric: lining-nums tabular-nums; } .ds-text { grid-column: 2 / 3; font-size: 1rem; color: var(--text-weich, #5d3d28); } .ds-marke { margin-left: 8px; padding: 1px 8px 0; border: 1px solid currentColor; border-radius: 99px; font-size: .74rem; font-weight: 700; letter-spacing: .03em; } .ds-marke--veg { color: var(--gruen-marke, #2a5427); }"
     },
     {
       "name": "Suchfeld des Lotsen",
@@ -385,7 +385,7 @@
       "refersTo": "suchfeld",
       "description": "Heller Putz auf Holz, Lupe links, ohne Rand.",
       "html": "<div style=\"background:#2a140c;padding:12px\"><label class=\"ds-suche\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"10.5\" cy=\"10.5\" r=\"6.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\"/><path d=\"m15.5 15.5 5 5\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\"/></svg><input type=\"search\" placeholder=\"Gericht, Zutat oder Nummer\" aria-label=\"Speisekarte durchsuchen\"></label></div>",
-      "css": ".ds-suche { position: relative; display: block; } .ds-suche svg { position: absolute; left: 14px; top: 50%; width: 20px; height: 20px; transform: translateY(-50%); color: var(--text-weich, #5d3d28); pointer-events: none; } .ds-suche input { width: 100%; box-sizing: border-box; min-height: 46px; padding: 10px 14px 7px 44px; border: 0; border-radius: var(--rund, 6px); background: var(--ocker-hell, #f0dcb2); color: var(--holz, #2a140c); font: 400 1.05rem var(--lauf, Hind, sans-serif); } .ds-suche input::placeholder { color: var(--text-weich, #5d3d28); } .ds-suche input:focus-visible { outline: 3px solid var(--kupfer-hell, #d9995e); outline-offset: 2px; }"
+      "css": ".ds-suche { position: relative; display: block; } .ds-suche svg { position: absolute; left: 14px; top: 50%; width: 20px; height: 20px; transform: translateY(-50%); color: var(--text-weich, #5d3d28); pointer-events: none; } .ds-suche input { width: 100%; box-sizing: border-box; min-height: 46px; padding: 10px 14px 7px 44px; border: 0; border-radius: var(--rund, 6px); background: var(--decke-hell, #ffffff); color: var(--holz, #2a140c); font: 400 1.05rem var(--lauf, Hind, sans-serif); } .ds-suche input::placeholder { color: var(--text-weich, #5d3d28); } .ds-suche input:focus-visible { outline: 3px solid var(--kupfer-hell, #d9995e); outline-offset: 2px; }"
     },
     {
       "name": "Filter-Schalter",
@@ -407,16 +407,16 @@
       "name": "Daumenleiste",
       "kind": "nav",
       "refersTo": "daumenleiste",
-      "description": "Handy: roter Hauptknopf plus Putzknopf „Anrufen“, erscheint nach der Bühne, weicht beim Runterscrollen aus.",
+      "description": "Handy: roter Hauptknopf plus Weißer Knopf „Anrufen“, erscheint nach der Bühne, weicht beim Runterscrollen aus.",
       "html": "<nav class=\"ds-daumen\" aria-label=\"Schnellzugriff\"><a class=\"ds-knopf ds-knopf--rot\" href=\"#\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\" d=\"M5 8h14l-1 13H6L5 8z\"/><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" d=\"M9 8V6a3 3 0 0 1 6 0v2\"/></svg>Online bestellen</a><a class=\"ds-knopf ds-knopf--putz\" href=\"#\">Anrufen</a></nav>",
-      "css": ".ds-knopf { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 12px 24px 10px; border: 2px solid transparent; border-radius: var(--rund, 6px); font: 700 1.08rem/1.1 var(--lauf, Hind, sans-serif); text-decoration: none; cursor: pointer; transition: transform .3s cubic-bezier(.16,1,.3,1); } .ds-knopf svg { width: 22px; height: 22px; margin-top: -3px; } .ds-knopf:active { transform: scale(.97); } .ds-knopf:focus-visible { outline: 3px solid var(--rot, #a3261a); outline-offset: 3px; } .ds-daumen { display: grid; grid-template-columns: 1.5fr 1fr; gap: 10px; padding: 10px 16px; background: var(--holz, #2a140c); border-top: 1px solid var(--kupfer, #b0652e); } .ds-daumen .ds-knopf { padding-inline: 12px; } .ds-knopf--rot { background: var(--rot, #a3261a); color: var(--text-hell, #f3dfb6); } .ds-knopf--rot:hover { background: var(--rot-tief, #7f1b11); } .ds-knopf--putz { background: var(--ocker-hell, #f0dcb2); color: var(--holz, #2a140c); } .ds-daumen .ds-knopf:focus-visible { outline-color: var(--kupfer-hell, #d9995e); }"
+      "css": ".ds-knopf { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 12px 24px 10px; border: 2px solid transparent; border-radius: var(--rund, 6px); font: 700 1.08rem/1.1 var(--lauf, Hind, sans-serif); text-decoration: none; cursor: pointer; transition: transform .3s cubic-bezier(.16,1,.3,1); } .ds-knopf svg { width: 22px; height: 22px; margin-top: -3px; } .ds-knopf:active { transform: scale(.97); } .ds-knopf:focus-visible { outline: 3px solid var(--rot, #a3261a); outline-offset: 3px; } .ds-daumen { display: grid; grid-template-columns: 1.5fr 1fr; gap: 10px; padding: 10px 16px; background: var(--holz, #2a140c); border-top: 1px solid var(--kupfer, #b0652e); } .ds-daumen .ds-knopf { padding-inline: 12px; } .ds-knopf--rot { background: var(--rot, #a3261a); color: var(--text-hell, #f3dfb6); } .ds-knopf--rot:hover { background: var(--rot-tief, #7f1b11); } .ds-knopf--putz { background: var(--decke-hell, #ffffff); color: var(--holz, #2a140c); } .ds-daumen .ds-knopf:focus-visible { outline-color: var(--kupfer-hell, #d9995e); }"
     }
   ],
   "narrative": {
     "northStar": "Der Gastraum in der Oberen Hauptstraße",
-    "overview": "Die Seite ist das Lokal selbst: Grund aus Ockerputz, Text und Abendflächen aus dunklem Holz, das Rot der Polsterbänke als einzige Lampe, gehämmertes Kupfer nur als Linie. Alle Farben stammen aus den Gästefotos des Gastraums (Messung „Laden lesen“ in `recherche/bombay.md`) und sind am Bildschirm angenähert; keine davon verschwände mit einem Lieferanten. Die eigene Idee ist die Kuppelbogen-Plakette: die Kuppel aus dem Logo und ein Bogen, der den Live-Satz „Heute geöffnet bis …“ überspannt.\n\nDie Richtung ist vom Betreiber gepinnt, nicht gewürfelt: Das Startpaket (`CLAUDE.md`, `recherche/vision.md`) verlangt Farbe aus dem Raum, die Abstimmung vom 06.10.2026 legt die Leitfarbe auf das Rot der Bänke fest. Es gab keinen Seed-Roll. Die vorherige Streichholz-Richtung (Seed 36bb5d45) ist verworfen und gilt nicht mehr. Abgelehnt sind ausdrücklich die Lieferportal-Maske (Gold auf dunklem Gewürzfoto) und die Vorlage Creme–Serife–Terrakotta.\n\nDie Dichte folgt der Tageszeit: mittags zuerst die Auswahl mit Preisen, abends zuerst der Raum. Kanten sind 1–2 px Linien, keine Karten-Raster, keine Schatten. Bewegung ist knapp und bremst aus.",
+    "overview": "Die Seite ist das Lokal selbst: Grund aus dem Weiß der Tischdecken, Text und Abendflächen aus dunklem Holz, das Rot der Polsterbänke als einzige Lampe, gehämmertes Kupfer nur als Linie. Alle Farben stammen aus den Gästefotos des Gastraums (Messung „Laden lesen“ in `recherche/bombay.md`) und sind am Bildschirm angenähert; keine davon verschwände mit einem Lieferanten. Die eigene Idee ist die Kuppelbogen-Plakette: die Kuppel aus dem Logo und ein Bogen, der den Live-Satz „Heute geöffnet bis …“ überspannt.\n\nDie Richtung ist vom Betreiber gepinnt, nicht gewürfelt: Das Startpaket (`CLAUDE.md`, `recherche/vision.md`) verlangt Farbe aus dem Raum, die Abstimmung vom 06.10.2026 legt die Leitfarbe auf das Rot der Bänke fest. Es gab keinen Seed-Roll. Die vorherige Streichholz-Richtung (Seed 36bb5d45) ist verworfen und gilt nicht mehr. Abgelehnt sind ausdrücklich die Lieferportal-Maske (Gold auf dunklem Gewürzfoto) und die Vorlage Creme–Serife–Terrakotta.\n\nDie Dichte folgt der Tageszeit: mittags zuerst die Auswahl mit Preisen, abends zuerst der Raum. Kanten sind 1–2 px Linien, keine Karten-Raster, keine Schatten. Bewegung ist knapp und bremst aus.",
     "keyCharacteristics": [
-      "Ockerputz als Grund, dunkles Holz als Anker- und Abendfläche, abgesetztes Schattenputz-Band für „Besuch“.",
+      "Weiß der Tischdecken als Grund, dunkles Holz als Anker- und Abendfläche, abgesetztes Schattenband für „Besuch“.",
       "Bankrot leuchtet nur im Hauptknopf „Online bestellen“ (Bühne und Daumenleiste) und im Heute-Signal.",
       "Kupfer erscheint nur als Linie: Bogen, Kuppel, Trenner, Unterstriche, Leistenkanten.",
       "Rozha One für Titel und Gerichtnamen, Hind für Text, beide lokal (OFL).",
@@ -426,7 +426,7 @@
     "rules": [
       {
         "name": "The Eine-Lampe Rule",
-        "body": "Gefüllt mit Bankrot wird pro Knopfgruppe genau ein Element: „Online bestellen“. Alle anderen Knöpfe sind Linie, heller Putz oder Text. Leuchten zwei, führt keiner.",
+        "body": "Gefüllt mit Bankrot wird pro Knopfgruppe genau ein Element: „Online bestellen“. Alle anderen Knöpfe sind Linie, Weiß oder Text. Leuchten zwei, führt keiner.",
         "section": "colors"
       },
       {
@@ -461,7 +461,7 @@
       }
     ],
     "dos": [
-      "Do Bankrot (`rot`) nur für „Online bestellen“ und das Heute-Signal einsetzen; jede andere Aktion ist Linie, heller Putz oder Text.",
+      "Do Bankrot (`rot`) nur für „Online bestellen“ und das Heute-Signal einsetzen; jede andere Aktion ist Linie, Weiß oder Text.",
       "Do Kupfer als 1–2-px-Linie führen: Bogen, Trenner, Unterstrich, Leistenkante, Rahmen.",
       "Do die Kuppelbogen-Plakette als einzige Signatur und einzige Ladebewegung behalten; sie muss auch als Favicon lesbar bleiben.",
       "Do Fotos im eigenen Format zeigen; auf Desktop die Bühne teilen (Foto 52vw rechts, Text links auf Holz), statt ein Hochformat quer zu ziehen.",
