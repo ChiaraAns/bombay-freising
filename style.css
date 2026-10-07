@@ -193,6 +193,39 @@ h3 { font: 400 1.15rem/1.3 var(--versal); letter-spacing: .14em; text-transform:
 .ansicht-nach { right: 12px; bottom: 16px; }
 @keyframes auf { from { opacity: 0; } }
 
+/* ---------- Tischrunde: Thali-Platte zum Teilen ---------- */
+.tischrunde { padding-block: calc(var(--luft) * .55); }
+.runde-wahl { display: grid; gap: 14px; margin: 26px 0 30px; padding: 22px 20px; background: var(--tafel); border: 1px solid var(--linie); }
+.zaehlwerk { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--linie); }
+.zaehlwerk-name { font: 400 var(--gr-mini) var(--versal); letter-spacing: .18em; text-transform: uppercase; color: var(--tinte); padding-top: 3px; }
+.zaehlwerk-knoepfe { display: flex; align-items: center; gap: 6px; }
+.zaehlwerk output { min-width: 2.2ch; text-align: center; font: 300 1.9rem/1 var(--versal); color: var(--tinte); font-variant-numeric: lining-nums tabular-nums; padding-top: 4px; }
+.rund { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid var(--linie-stark); border-radius: 50%; background: transparent; color: var(--tinte); font: 300 1.4rem/1 var(--versal); cursor: pointer; transition: transform .3s var(--aus); }
+.rund:active { transform: scale(.94); }
+.rund:disabled { opacity: .35; cursor: default; }
+.runde-schalter { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 2px; }
+.runde-tisch { display: grid; gap: 28px; }
+.platte { width: min(100%, 340px); margin-inline: auto; overflow: visible; }
+.platte-rand { fill: var(--tafel); stroke: var(--kupfer); stroke-width: 1; filter: drop-shadow(0 0 10px var(--schein)); }
+.platte-innen { fill: none; stroke: var(--linie-kupfer); stroke-width: 1; }
+.schale-kreis { fill: var(--nacht); stroke: var(--kupfer); stroke-width: 1.2; }
+.schale-fuellung { fill: none; stroke: var(--linie-kupfer); stroke-width: 1; }
+.schale-zahl, .platte-mitte { fill: var(--tinte); font: 400 15px var(--versal); text-anchor: middle; letter-spacing: .05em; }
+.platte-mitte { fill: var(--tinte-still); font-size: 13px; letter-spacing: .2em; text-transform: uppercase; }
+.schale-g { transform-box: fill-box; transform-origin: center; animation: schale .5s var(--aus) backwards; }
+@keyframes schale { from { opacity: 0; transform: scale(.6); } }
+.runde-liste ol { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linie); counter-reset: none; }
+.runde-liste li { display: grid; grid-template-columns: 30px 1fr auto; gap: 12px; align-items: baseline; padding: 12px 0 10px; border-bottom: 1px solid var(--linie); }
+.runde-liste .schale { display: grid; place-items: center; width: 26px; height: 26px; border: 1px solid var(--kupfer); border-radius: 50%; font: 400 .78rem/1 var(--versal); color: var(--kupfer-hell); padding-top: 3px; align-self: center; }
+.runde-liste .name { font-weight: 600; color: var(--tinte); line-height: 1.35; }
+.runde-liste small { display: block; font-weight: 400; font-size: var(--gr-klein); color: var(--tinte-still); }
+.runde-liste .preis { font-weight: 600; color: var(--tinte); white-space: nowrap; }
+.runde-summe { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 14px 0 10px; }
+.runde-summe span { font: 400 var(--gr-mini) var(--versal); letter-spacing: .18em; text-transform: uppercase; color: var(--tinte-still); }
+.runde-summe b { font: 300 1.9rem/1 var(--versal); color: var(--kupfer-hell); font-variant-numeric: lining-nums tabular-nums; }
+.runde-knoepfe { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.runde-meldung { min-height: 1.5em; margin: 10px 0 0; font-size: var(--gr-klein); color: var(--kupfer-hell); }
+
 /* ---------- Stimmen: der helle Abschnitt (Tischdecke) ---------- */
 .stimmen { width: 100%; max-width: none; margin-top: calc(var(--luft) * .5); padding: var(--luft) max(var(--rand), (100% - 1160px) / 2); background: var(--decke); color: var(--decke-still); --fokus: var(--decke-tinte); }
 .stimmen h2 { color: var(--decke-tinte); }
@@ -314,6 +347,9 @@ body:has(#f-s:checked) .posten:not([data-s]) { display: none; }
   .kacheln { grid-template-columns: repeat(3, 1fr); gap: 14px; }
   .kacheln li:first-child { grid-column: auto; }
   .zitate { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .runde-wahl { grid-template-columns: 1fr 1fr; column-gap: 36px; }
+  .runde-schalter { grid-column: 1 / -1; }
+  .runde-tisch { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 56px; align-items: start; }
   .besuch-spalten { grid-template-columns: 1.1fr 1fr; gap: 18px; }
   .besuch-spalten > div { padding: 40px 36px 30px; }
   .legende-spalten { grid-template-columns: 1fr 1fr; }

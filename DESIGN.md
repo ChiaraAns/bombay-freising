@@ -397,3 +397,7 @@ Hochformatiges Essensfoto (3:4) im Kielbogen mit Kupferkante und Schein; mittags
 - **Don't** beschneide oder strecke ein Foto über seine Vorlage; kein Foto zweimal auf einer Seite.
 - **Don't** wechsle Abschnitte in farbigen Bändern ab und baue keine Lieferportal-Maske nach.
 - **Don't** nutze Schatten auf Karten oder Knöpfen; der einzige Schein gehört der Kielbogenkante.
+
+## Tischrunde (Startseite)
+
+Die eigene Funktion der Seite: Gäste wählen Personen und davon vegetarisch (runde 44-px-Zählknöpfe, Josefin 300 für die Zahl), dazu die Schalter „Vorspeisen zum Teilen“ und „Thali für zwei“. Daraus entsteht ein Vorschlag aus der echten Karte (`karte.js`, erzeugt von `werkzeuge/karte.mjs`): ein Hauptgericht pro Person aus wechselnden Gruppen, Thali für zwei zählt doppelt, etwa eine Vorspeise je zwei Personen, bei lauter Vegetariern nur Vegetarisches. Gezeigt als Thali-Platte (SVG): Tafel-Kreis mit Kupferkante und Laternen-Schein, Kupferschälchen mit Nummer, Hauptgerichte außen, Vorspeisen innen; die Schälchen erscheinen nacheinander (0,5 s, ease-out, 90 ms Versatz, bei reduzierter Bewegung sofort). Daneben die nummerierte Liste mit Preisen, „Summe laut Karte“ in Kupfer als Richtwert, und die Knopfgruppe „Neu mischen“ · „Liste teilen“ (Teilen-Funktion des Geräts, sonst Zwischenablage) · „Online bestellen“ als einzige Lampe der Gruppe. Nichts wird gespeichert oder übertragen.

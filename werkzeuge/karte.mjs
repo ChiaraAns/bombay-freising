@@ -96,5 +96,10 @@ function einsetzen(datei, marke, inhalt) {
 einsetzen('speisekarte.html', 'karte', karte);
 einsetzen('speisekarte.html', 'sprung', sprung);
 einsetzen('index.html', 'beliebt', beliebtHtml);
+// Kompakte Karte für die Tischrunde auf der Startseite (window.BOMBAY_KARTE)
+const kompakt = daten.gruppen.flatMap((g) => g.posten.map((p) => ({ g: g.id, nr: p.nr, name: p.name, preis: p.preis, k: p.kennzeichen || '', zwei: /für 2 Personen/i.test(p.name + ' ' + p.beschreibung) })));
+writeFileSync(join(wurzel, 'karte.js'),
+  '// Automatisch erzeugt von werkzeuge/karte.mjs aus daten/speisekarte.json, nicht von Hand ändern.\n' +
+  'window.BOMBAY_KARTE = ' + JSON.stringify({ stand: daten.stand, posten: kompakt }) + ';\n');
 const alle = daten.gruppen.reduce((s, g) => s + g.posten.length, 0);
 console.log(`Speisekarte geschrieben: ${daten.gruppen.length} Gruppen, ${alle} Posten, ${beliebt.length} beliebt.`);
