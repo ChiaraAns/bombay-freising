@@ -47,7 +47,7 @@ Die Website ersetzt das Durcheinander aus zwei Bestellseiten. Sie zeigt das Loka
 ## Brand Commitments
 
 - Name „Bombay“, Logo: Schriftzug unter einem Kuppelbogen (Werbegrafik des Inhabers in Magenta; im Repo als Freisteller `logo-gold.png`, auf der Seite einfarbig eingefärbt).
-- **Leitfarbe: Rot der Polsterbänke und Servietten** (Betreiber, 06.10.2026). Kupfer der Handi-Schalen nur als Ornament. Farben, Schrift und Material kommen aus dem Raum, nicht aus einer Vorlage.
+- **Gestaltung nach der Vorlage der Betreiberin (07.10.2026):** dunkel, ruhig und fließend, gesperrte Versalien, eine Handschriftzeile, feine Metalllinien. Ocker/Rot und Tischdecken-Weiß hat sie abgelehnt. Das Material bleibt das des Lokals: dunkles Holz, Kupfer und Messing der Handi-Schalen und Laternen, Kielbogen nach dem Taj-Mahal-Wandbild, Kuppel aus dem Logo.
 - Ansprache: höflich mit „Sie“, kurz und konkret, Deutsch.
 
 ## Evidence on Hand

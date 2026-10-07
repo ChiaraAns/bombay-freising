@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Bombay – Indisches Restaurant in Freising</title>
   <meta name="description" content="Restaurant Bombay, Obere Hauptstraße 67 in Freising: indische Currys und Tandoori aus dem Lehmofen. Heute geöffnet? Online bestellen zum Abholen oder Liefern, Tisch telefonisch reservieren.">
-  <meta name="theme-color" content="#2a140c">
+  <meta name="theme-color" content="#16110e">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon.png" type="image/png">
-  <link rel="preload" href="fonts/rozha-one.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/josefin-300.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/hind-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
   <script>
@@ -53,20 +53,9 @@
 
 <main id="inhalt">
   <section class="buehne" aria-labelledby="titel">
-    <figure class="buehne-bild">
-      <img id="buehnen-bild" src="img/01-thali-platte-700.webp" srcset="img/01-thali-platte-700.webp 700w, img/01-thali-platte-1300.webp 1300w" sizes="(min-width: 900px) 52vw, 100vw" width="700" height="933" alt="Eine Thali-Platte mit mehreren Schälchen, Reis, Naan und Pappad auf einem Tisch im Bombay" fetchpriority="high">
-      <script>
-        if (document.documentElement.dataset.zeit === 'abend') {
-          var b = document.getElementById('buehnen-bild');
-          b.srcset = 'img/03-thali-dunkler-tisch-700.webp 700w, img/03-thali-dunkler-tisch-1300.webp 1300w';
-          b.src = 'img/03-thali-dunkler-tisch-700.webp';
-          b.alt = 'Eine Thali-Platte mit Kupferschälchen, Reis und Naan auf einem dunklen Tisch im Bombay';
-        }
-      </script>
-    </figure>
-
     <div class="buehne-text">
-      <h1 id="titel">Indisch essen in der Freisinger Altstadt</h1>
+      <h1 id="titel"><span class="name">Bombay</span><span class="zusatz">Indisches Restaurant · Freising</span></h1>
+      <p class="hand">Willkommen in der Altstadt.</p>
       <p class="unterzeile">Currys und Tandoori aus dem Lehmofen. Zum Essen bei uns, zum Abholen und zum Liefern.</p>
 
       <div class="heute" data-heute>
@@ -78,16 +67,30 @@
       <p class="wege"><span>Lieferung ca. 60 min</span> <span>Abholung ca. 30 min</span></p>
 
       <div class="handeln">
-        <a class="knopf knopf--rot" href="https://bombayrestaurant-freising.de/order_type" rel="noopener" data-bestellen><svg aria-hidden="true"><use href="#i-bag"/></svg>Online bestellen</a>
-        <a class="tel" href="tel:+4981614965102"><svg aria-hidden="true"><use href="#i-phone"/></svg><span>Tisch reservieren: <b>08161 4965102</b></span></a>
+        <a class="knopf knopf--lampe" href="https://bombayrestaurant-freising.de/order_type" rel="noopener" data-bestellen>Online bestellen</a>
+        <a class="knopf knopf--linie" href="tel:+4981614965102" aria-label="Tisch reservieren: 08161 4965102"><svg aria-hidden="true"><use href="#i-phone"/></svg>08161 4965102</a>
       </div>
       <p class="apps">Auch als App: <a href="https://apps.apple.com/de/app/bombay-restaurant-freising/id6504758170" rel="noopener">iPhone</a> · <a href="https://play.google.com/store/apps/details?id=com.de.bombay.resto" rel="noopener">Android</a></p>
     </div>
+
+    <figure class="bogen">
+      <img id="buehnen-bild" src="img/01-thali-platte-700.webp" srcset="img/01-thali-platte-700.webp 700w, img/01-thali-platte-1300.webp 1300w" sizes="(min-width: 900px) 34vw, 80vw" width="700" height="933" alt="Eine Thali-Platte mit mehreren Schälchen, Reis, Naan und Pappad auf einem Tisch im Bombay" fetchpriority="high">
+      <script>
+        if (document.documentElement.dataset.zeit === 'abend') {
+          var b = document.getElementById('buehnen-bild');
+          b.srcset = 'img/03-thali-dunkler-tisch-700.webp 700w, img/03-thali-dunkler-tisch-1300.webp 1300w';
+          b.src = 'img/03-thali-dunkler-tisch-700.webp';
+          b.alt = 'Eine Thali-Platte mit Kupferschälchen, Reis und Naan auf einem dunklen Tisch im Bombay';
+        }
+      </script>
+      <svg class="bogen-kante" viewBox="0 0 300 400" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M1.5 398.5V138C1.5 78 70 70 150 2c80 68 148.5 76 148.5 136v260.5z" vector-effect="non-scaling-stroke"/></svg>
+    </figure>
   </section>
 
   <div class="wechsel">
     <section class="beliebt wrap" aria-labelledby="beliebt-titel">
-      <h2 id="beliebt-titel">Beliebt im Bombay</h2>
+      <h2 id="beliebt-titel">Beliebt</h2>
+      <p class="hand">Empfohlen vom Haus.</p>
       <p class="einleitung">Zehn Gerichte, die das Restaurant selbst empfiehlt. Jedes gibt es mild, pikant, scharf oder sehr scharf.</p>
       <!-- beliebt:anfang -->
       <ol class="beliebt-liste">
@@ -111,7 +114,8 @@
         <img src="img/04-gastraum-wandbild-900.webp" srcset="img/04-gastraum-wandbild-900.webp 900w, img/04-gastraum-wandbild-1800.webp 1800w" sizes="100vw" width="900" height="506" loading="lazy" alt="Der Gastraum: ockerfarbene Wände, ein Wandbild des Taj Mahal, rote Polsterbänke, rote Servietten und Sternlaternen an der Decke">
       </figure>
       <div class="wrap raum-text">
-        <h2 id="raum-titel">Bei uns in der Oberen Hauptstraße</h2>
+        <h2 id="raum-titel">Bei uns</h2>
+        <p class="hand">In der Oberen Hauptstraße.</p>
         <p>Farbige Räume mit dem Taj-Mahal-Wandbild, roten Bänken und Sternlaternen. Dazu eine Terrasse und WLAN.</p>
         <a class="tel tel--hell" href="tel:+4981614965102"><svg aria-hidden="true"><use href="#i-phone"/></svg><span>Tisch reservieren: <b>08161 4965102</b></span></a>
       </div>
@@ -123,7 +127,8 @@
       <img src="img/02-kupferschalen-naan-600.webp" srcset="img/02-kupferschalen-naan-600.webp 600w, img/02-kupferschalen-naan-1200.webp 1200w" sizes="(min-width: 700px) 40vw, 100vw" width="600" height="800" loading="lazy" alt="Gehämmerte Kupferschalen auf Stövchen, daneben Naan im Brotkorb">
     </figure>
     <div class="kueche-text">
-      <h2 id="kueche-titel">Aus dem Lehmofen</h2>
+      <h2 id="kueche-titel">Lehmofen</h2>
+      <p class="hand">Tandoori und Naan.</p>
       <p class="kueche-fuehrung">Tandoori-Gerichte und Naan kommen aus dem Holzkohlelehmofen, dem Tandoor: Hähnchen, Fisch, Garnelen und Gemüse, mariniert und gegrillt.</p>
       <h3>Auch ohne Fleisch</h3>
       <p>Zwanzig vegetarische Gerichte, mehrere davon auch vegan.</p>
@@ -142,7 +147,9 @@
   </section>
 
   <section class="stimmen wrap" aria-labelledby="stimmen-titel">
-    <h2 id="stimmen-titel">4,5 von 5 Sternen bei Google</h2>
+    <h2 id="stimmen-titel">Stimmen</h2>
+    <p class="hand">Was Gäste bei Google schreiben.</p>
+    <p class="note"><span class="note-zahl">4,5</span><span class="note-text">von 5 Sternen<br>417 Bewertungen</span></p>
     <ul class="zitate">
       <li><blockquote>„Sehr gutes Essen, kurze Wartezeiten, Bedienung sehr freundlich und zuvorkommend.“</blockquote></li>
       <li><blockquote>„Sehr schmackhafte, günstige und reichhaltige Gerichte zum Mittagstisch“</blockquote></li>
@@ -154,7 +161,7 @@
   <section class="besuch" id="besuch" aria-labelledby="zeiten-titel">
     <div class="wrap besuch-spalten">
       <div>
-        <h2 id="zeiten-titel">Öffnungszeiten</h2>
+        <h2 id="zeiten-titel">Zeiten</h2>
         <table class="zeiten">
           <caption class="sr">Öffnungszeiten mit Mittagspause</caption>
           <thead class="sr"><tr><th scope="col">Tag</th><th scope="col">Mittag</th><th scope="col">Abend</th></tr></thead>
@@ -171,7 +178,7 @@
         <p class="klein">Mittagspause 14:00–17:30. Geliefert wird zu den Öffnungszeiten.</p>
       </div>
       <div>
-        <h2>So finden Sie uns</h2>
+        <h2>Anfahrt</h2>
         <address class="adresse">
           Restaurant Bombay<br>
           Obere Hauptstraße 67<br>
@@ -202,8 +209,8 @@
 </footer>
 
 <nav class="daumen" aria-label="Schnellzugriff" data-weicht data-daumen>
-  <a class="knopf knopf--rot" href="https://bombayrestaurant-freising.de/order_type" rel="noopener"><svg aria-hidden="true"><use href="#i-bag"/></svg>Online bestellen</a>
-  <a class="knopf knopf--putz" href="tel:+4981614965102" aria-label="Anrufen: 08161 4965102"><svg aria-hidden="true"><use href="#i-phone"/></svg>Anrufen</a>
+  <a class="knopf knopf--lampe" href="https://bombayrestaurant-freising.de/order_type" rel="noopener"><svg aria-hidden="true"><use href="#i-bag"/></svg>Online bestellen</a>
+  <a class="knopf knopf--linie" href="tel:+4981614965102" aria-label="Anrufen: 08161 4965102"><svg aria-hidden="true"><use href="#i-phone"/></svg>Anrufen</a>
 </nav>
 
 <dialog class="ansicht" aria-label="Foto">
