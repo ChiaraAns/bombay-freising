@@ -6,7 +6,7 @@ Stand 06.10.2026, live auf `main` (PR #1 und #2): https://chiaraans.github.io/bo
 
 | Seite | Inhalt |
 |---|---|
-| `index.html` | Erster Bildschirm: Foto (mittags Thali, abends Thali am dunklen Tisch), „Heute geöffnet bis …“ in der Kuppelbogen-Plakette, Lieferung ca. 60 min · Abholung ca. 30 min, **ein** Knopf „Online bestellen“ (Karvi), Telefon zum Reservieren, App-Links. Danach mittags zuerst „Beliebt im Bombay“, abends zuerst der Gastraum. Lehmofen, Fotos, Google-Bewertungen mit Hinweis nach § 5b UWG, Öffnungszeiten mit Mittagspause und „heute“, Anfahrt, Barrierefreiheit. |
+| `index.html` | Erster Bildschirm: Foto (mittags Thali, abends Thali am dunklen Tisch), „Heute geöffnet bis …“ in der Kuppelbogen-Plakette, Lieferung ca. 60 min · Abholung ca. 30 min, **ein** Knopf „Online bestellen“ (Karvi), Telefon zum Reservieren, App-Links. Danach mittags zuerst „Beliebt im Bombay“, abends zuerst der Gastraum. **Essensuhr**: Abholen/Liefern/bei uns essen, heute/morgen, Wunschzeit am Regler; sagt, bis wann man bestellen muss (Richtwerte 30/60 min, Öffnungszeiten aus `app.js`), rechnet nur im Browser. Lehmofen, Fotos, Google-Bewertungen mit Hinweis nach § 5b UWG, Öffnungszeiten mit Mittagspause und „heute“, Anfahrt, Barrierefreiheit. |
 | `speisekarte.html` | 17 Gruppen, 141 Posten, generiert aus `daten/speisekarte.json`. Suche, Filter (vegetarisch, vegan möglich, üblich scharf; gemerkt, funktionieren auch ohne Skript), Gruppen aufklappbar (am Handy zu), „… online bestellen“ am Ende jeder Gruppe, Hinweis auf die vier Schärfegrade, Allergenlegende im Wortlaut. |
 | `impressum.html`, `datenschutz.html` | Mit den Angaben aus dem Paket; Offenes gelb markiert. |
 

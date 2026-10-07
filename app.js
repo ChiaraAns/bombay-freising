@@ -105,133 +105,95 @@
     ansicht.addEventListener('close', function () { if (ausloeser) ausloeser.focus(); });
   }
 
-  /* ---------- Tischrunde: ein Tisch zum Teilen aus der echten Karte ---------- */
-  var runde = document.getElementById('runde');
-  if (runde && window.BOMBAY_KARTE) {
-    var KARTE = window.BOMBAY_KARTE.posten;
-    var BESTELLEN = 'https://bombayrestaurant-freising.de/order_type';
-    var FLEISCH_GRUPPEN = ['huehnerfleisch-spezialitaeten', 'lamm-spezialitaeten', 'tandoori-khajana', 'enten-spezialitaeten', 'fisch-spezialitaeten', 'reis-spezialitaeten'];
-    var VEG_GRUPPEN = ['vegetarische-spezialitaeten', 'tandoori-khajana', 'reis-spezialitaeten'];
-    var zweier = function (x) { return !!x.zwei; };
-    var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
-    var zustand = { personen: 4, veg: 1 };
-    var ausgabe = { personen: document.getElementById('personen'), veg: document.getElementById('veg') };
-    var platte = document.getElementById('platte'), liste = document.getElementById('runde-liste');
-    var summeEl = document.getElementById('runde-summe'), meldung = document.getElementById('runde-meldung');
-    var mitVorspeisen = document.getElementById('r-vorspeisen'), mitThali = document.getElementById('r-thali');
-    var ruhig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var aktuell = [];
+  /* ---------- Essensuhr: bis wann bestellen, damit es zur Wunschzeit schmeckt ---------- */
+  var uhr = document.getElementById('uhr');
+  if (uhr) {
+    var VORLAUF = { abholen: 30, liefern: 60 };
+    var BESTELLEN_URL = 'https://bombayrestaurant-freising.de/order_type', TEL = 'tel:+4981614965102';
+    var regler = document.getElementById('uhr-zeit'), zeitWert = document.getElementById('uhr-zeit-wert');
+    var satz2 = document.getElementById('uhr-satz'), zusatz2 = document.getElementById('uhr-zusatz');
+    var handeln = document.getElementById('uhr-handeln'), blatt = document.getElementById('zifferblatt');
+    var VON = 660, BIS = 1350; // Zifferblatt 11:00 bis 22:30
+    var hhmm = function (m) { m = ((m % 1440) + 1440) % 1440; return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); };
+    var gewaehlt = function (name) { return uhr.querySelector('input[name="' + name + '"]:checked').value; };
+    var heuteNr = jetzt().tag;
 
-    var cent = function (p) { return Math.round(parseFloat(p.replace(',', '.')) * 100); };
-    var euro = function (c) { return (c / 100).toFixed(2).replace('.', ',') + ' €'; };
-    var mischen = function (l) { l = l.slice(); for (var i = l.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = l[i]; l[i] = l[j]; l[j] = t; } return l; };
-    // Beliebte (Auswahl des Restaurants) leicht bevorzugen, ohne die Mischung zu verlieren
-    var gewichtet = function (l) { return mischen(l).sort(function (x, y) { return (y.k.indexOf('t') > -1 && Math.random() < .6) - (x.k.indexOf('t') > -1 && Math.random() < .6); }); };
-    var istVeg = function (p) { return p.k.indexOf('v') > -1; };
-
-    function zusammenstellen() {
-      var p = zustand.personen, veg = zustand.veg, fleisch = p - veg, gewaehlt = [], vergeben = {};
-      var nimm = function (posten, art) { vergeben[posten.name] = 1; gewaehlt.push({ p: posten, art: art }); };
-      var frei = function (l) { return l.filter(function (x) { return !vergeben[x.name]; }); };
-
-      if (mitThali.checked && p >= 2) {
-        var thalis = KARTE.filter(function (x) { return x.g === 'thalis' && zweier(x); });
-        var thali = veg >= 2 ? thalis.filter(istVeg)[0] : fleisch >= 2 ? thalis.filter(function (x) { return !istVeg(x); })[0] : null;
-        if (thali) { nimm(thali, 'haupt'); if (istVeg(thali)) veg -= 2; else fleisch -= 2; }
-      }
-      // Fleisch und Fisch: reihum aus verschiedenen Gruppen
-      var gruppen = mischen(FLEISCH_GRUPPEN), i = 0, versuche = 0;
-      while (fleisch > 0 && versuche < 40) {
-        var g = gruppen[i++ % gruppen.length]; versuche++;
-        var kandidat = gewichtet(frei(KARTE.filter(function (x) { return x.g === g && !istVeg(x) && !zweier(x); })))[0];
-        if (kandidat) { nimm(kandidat, 'haupt'); fleisch--; }
-      }
-      var vegPool = gewichtet(frei(KARTE.filter(function (x) { return VEG_GRUPPEN.indexOf(x.g) > -1 && istVeg(x); })));
-      while (veg > 0 && vegPool.length) { nimm(vegPool.shift(), 'haupt'); veg--; }
-
-      var vorspeisen = [];
-      if (mitVorspeisen.checked) {
-        var alleVeg = zustand.veg === zustand.personen;
-        var pool = gewichtet(KARTE.filter(function (x) { return x.g === 'warme-vorspeisen' && (!alleVeg || istVeg(x)) && (zustand.personen >= 2 || !zweier(x)); }));
-        var anzahl = Math.ceil(zustand.personen / 2);
-        while (anzahl > 0 && pool.length) { var v = pool.shift(); vorspeisen.push({ p: v, art: 'vor' }); anzahl -= zweier(v) ? 2 : 1; }
-      }
-      aktuell = vorspeisen.concat(gewaehlt);
-      zeigen();
-    }
-
-    function zeigen() {
-      var summe = 0;
-      liste.innerHTML = aktuell.map(function (e, n) {
-        summe += cent(e.p.preis);
-        var hinweis = zweier(e.p) ? '' : e.art === 'vor' ? 'zum Teilen' : istVeg(e.p) ? 'vegetarisch' : '';
-        return '<li class="' + (e.art === 'vor' ? 'ist-vor' : '') + '"><span class="schale">' + (n + 1) + '</span><span class="name">' + esc(e.p.name) +
-          (hinweis ? ' <small>' + hinweis + '</small>' : '') + '</span><span class="preis">' + esc(e.p.preis) + ' €</span></li>';
-      }).join('');
-      summeEl.textContent = euro(summe);
-      zeichnen();
-      meldung.textContent = '';
-    }
-
-    // Thali-Platte: Hauptgerichte im äußeren Ring, Vorspeisen innen
-    function zeichnen() {
-      var ns = 'http://www.w3.org/2000/svg', titel = platte.querySelector('title');
-      platte.innerHTML = ''; platte.appendChild(titel);
-      var kreis = function (cx, cy, r, cls) { var c = document.createElementNS(ns, 'circle'); c.setAttribute('cx', cx); c.setAttribute('cy', cy); c.setAttribute('r', r); c.setAttribute('class', cls); return c; };
-      platte.appendChild(kreis(160, 160, 154, 'platte-rand'));
-      platte.appendChild(kreis(160, 160, 144, 'platte-innen'));
-      var haupt = [], vor = [];
-      aktuell.forEach(function (e, n) { (e.art === 'vor' ? vor : haupt).push(n); });
-      var ring = function (nummern, radius, maxR) {
-        var n = nummern.length; if (!n) return;
-        var r = n === 1 ? maxR : Math.min(maxR, radius * Math.sin(Math.PI / n) - 5);
-        nummern.forEach(function (nr, j) {
-          var w = -Math.PI / 2 + j * 2 * Math.PI / n, x = 160 + (n === 1 ? 0 : radius * Math.cos(w)), y = 160 + (n === 1 ? 0 : radius * Math.sin(w));
-          var gr = document.createElementNS(ns, 'g'); gr.setAttribute('class', 'schale-g');
-          if (!ruhig) gr.style.animationDelay = (j * 90) + 'ms';
-          gr.appendChild(kreis(x, y, r, 'schale-kreis'));
-          gr.appendChild(kreis(x, y, Math.max(r - 5, 4), 'schale-fuellung'));
-          var t = document.createElementNS(ns, 'text'); t.setAttribute('x', x); t.setAttribute('y', y + 5); t.setAttribute('class', 'schale-zahl'); t.textContent = nr + 1;
-          gr.appendChild(t); platte.appendChild(gr);
-        });
-      };
-      var mitte = haupt.length && vor.length;
-      ring(haupt, mitte ? 108 : 96, 34);
-      ring(vor, mitte ? 46 : 70, mitte ? 20 : 30);
-      if (!vor.length) {
-        var t = document.createElementNS(ns, 'text'); t.setAttribute('x', 160); t.setAttribute('y', 168); t.setAttribute('class', 'platte-mitte');
-        t.textContent = zustand.personen === 1 ? '1 Person' : zustand.personen + ' Personen'; platte.appendChild(t);
-      }
-    }
-
-    function aendern(was, d) {
-      if (was === 'personen') zustand.personen = Math.min(12, Math.max(1, zustand.personen + d));
-      else zustand.veg = Math.min(zustand.personen, Math.max(0, zustand.veg + d));
-      zustand.veg = Math.min(zustand.veg, zustand.personen);
-      ausgabe.personen.textContent = zustand.personen; ausgabe.veg.textContent = zustand.veg;
-      runde.querySelectorAll('[data-schritt]').forEach(function (b) {
-        var w = +b.dataset.wert, ziel = b.dataset.schritt;
-        b.disabled = ziel === 'personen' ? (w < 0 ? zustand.personen <= 1 : zustand.personen >= 12) : (w < 0 ? zustand.veg <= 0 : zustand.veg >= zustand.personen);
-      });
-      zusammenstellen();
-    }
-    runde.querySelectorAll('[data-schritt]').forEach(function (b) { b.addEventListener('click', function () { aendern(b.dataset.schritt, +b.dataset.wert); }); });
-    mitVorspeisen.addEventListener('change', zusammenstellen);
-    mitThali.addEventListener('change', zusammenstellen);
-    document.getElementById('runde-mischen').addEventListener('click', zusammenstellen);
-
-    document.getElementById('runde-teilen').addEventListener('click', function () {
-      var p = zustand.personen, zeilen = ['Unsere Tischrunde im Bombay Freising (' + p + (p === 1 ? ' Person' : ' Personen') + (zustand.veg ? ', davon ' + zustand.veg + ' vegetarisch' : '') + '):'];
-      aktuell.forEach(function (e) { zeilen.push('• ' + e.p.name + (e.p.nr ? ' (Nr. ' + e.p.nr + ')' : '') + ' – ' + e.p.preis + ' €'); });
-      zeilen.push('Summe laut Karte: ' + summeEl.textContent, 'Jedes Gericht gibt es mild, pikant, scharf oder sehr scharf.', 'Bestellen: ' + BESTELLEN);
-      var text = zeilen.join('\n');
-      if (navigator.share) {
-        navigator.share({ title: 'Tischrunde im Bombay', text: text }).catch(function () {});
-      } else if (navigator.clipboard) {
-        navigator.clipboard.writeText(text).then(function () { meldung.textContent = 'Liste kopiert. Jetzt einfach in den Gruppenchat einfügen.'; }, function () { meldung.textContent = 'Kopieren nicht möglich.'; });
-      } else meldung.textContent = 'Teilen ist in diesem Browser nicht möglich.';
+    document.querySelectorAll('[data-tag-name]').forEach(function (el) {
+      var d = (heuteNr + +el.dataset.tagName) % 7;
+      el.textContent = (+el.dataset.tagName === 0 ? 'Heute' : 'Morgen') + ' · ' + TAGE[d].slice(0, 2) + '.';
     });
-    aendern('personen', 0);
+
+    // Startwert: nächste sinnvolle Essenszeit
+    (function () {
+      var n = jetzt(), ziel = Math.ceil((n.min + 45) / 15) * 15, slots = ZEITEN[n.tag] || [];
+      var passt = slots.some(function (s) { return ziel >= minuten(s[0]) && ziel <= minuten(s[1]); });
+      if (!passt) ziel = n.min < minuten('14:00') ? 750 : 1140;
+      // Heute Ruhetag oder schon Schluss: gleich auf morgen stellen
+      if (!slots.length || n.min + 30 > minuten(slots[slots.length - 1][1])) {
+        uhr.querySelector('input[name="tag"][value="1"]').checked = true; ziel = 750;
+      }
+      regler.value = Math.min(1320, Math.max(690, ziel));
+    })();
+
+    function punkt(m, r) { var w = Math.PI - (m - VON) / (BIS - VON) * Math.PI; return [160 + r * Math.cos(w), 170 - r * Math.sin(w)]; }
+    function bogenPfad(a, b, r) { var p = punkt(a, r), q = punkt(b, r); return 'M' + p[0].toFixed(1) + ' ' + p[1].toFixed(1) + 'A' + r + ' ' + r + ' 0 0 1 ' + q[0].toFixed(1) + ' ' + q[1].toFixed(1); }
+
+    function zeichneBlatt(tag, essen, bestellen) {
+      var ns = 'http://www.w3.org/2000/svg', h = '';
+      h += '<path class="blatt-grund" d="' + bogenPfad(VON, BIS, 140) + '"/>';
+      (ZEITEN[tag] || []).forEach(function (s) { h += '<path class="blatt-offen" d="' + bogenPfad(minuten(s[0]), minuten(s[1]), 140) + '"/>'; });
+      ['11:30', '14:00', '17:30', '22:00'].forEach(function (t) { var p = punkt(minuten(t), 120); h += '<text class="blatt-zahl" x="' + p[0].toFixed(1) + '" y="' + (p[1] + 4).toFixed(1) + '">' + t + '</text>'; });
+      if (bestellen !== null && bestellen >= VON && bestellen < essen) h += '<path class="blatt-vorlauf" d="' + bogenPfad(bestellen, essen, 156) + '"/>';
+      if (+gewaehlt('tag') === 0) { var n = jetzt().min; if (n >= VON && n <= BIS) { var a = punkt(n, 128), b = punkt(n, 152); h += '<line class="blatt-jetzt" x1="' + a[0].toFixed(1) + '" y1="' + a[1].toFixed(1) + '" x2="' + b[0].toFixed(1) + '" y2="' + b[1].toFixed(1) + '"/>'; } }
+      var z = punkt(essen, 140), m = punkt(essen, 0);
+      h += '<line class="blatt-zeiger" x1="' + m[0].toFixed(1) + '" y1="' + m[1].toFixed(1) + '" x2="' + z[0].toFixed(1) + '" y2="' + z[1].toFixed(1) + '"/>';
+      h += '<circle class="blatt-knopf" cx="' + z[0].toFixed(1) + '" cy="' + z[1].toFixed(1) + '" r="7"/>';
+      h += '<circle class="blatt-mitte" cx="160" cy="170" r="4"/>';
+      blatt.innerHTML = h;
+    }
+
+    function rechnen() {
+      var weg = gewaehlt('weg'), plus = +gewaehlt('tag'), tag = (heuteNr + plus) % 7, essen = +regler.value;
+      var t = hhmm(essen); zeitWert.textContent = t; regler.setAttribute('aria-valuetext', t + ' Uhr');
+      var slots = ZEITEN[tag], bestellen = null, s = '', z = '';
+      handeln.href = weg === 'lokal' ? TEL : BESTELLEN_URL;
+      handeln.textContent = weg === 'lokal' ? 'Tisch reservieren' : 'Online bestellen';
+      handeln.removeAttribute('target');
+      if (!slots) {
+        var naechster = (tag + 1) % 7;
+        s = TAGE[tag] + ' ist Ruhetag.'; z = 'Ab ' + TAGE[naechster] + ' 11:30 sind wir wieder da. Online vorbestellen geht trotzdem.';
+      } else {
+        var slot = slots.filter(function (x) { return essen >= minuten(x[0]) && essen <= minuten(x[1]); })[0];
+        if (!slot) {
+          var spaeter = slots.filter(function (x) { return minuten(x[0]) > essen; })[0];
+          s = 'Um ' + t + ' ist die Küche zu.'; z = spaeter ? 'Ab ' + spaeter[0] + ' Uhr geht es weiter. Schieben Sie die Uhr dorthin.' : 'Heute ist danach Schluss.';
+        } else if (weg === 'lokal') {
+          s = 'Tisch für ' + t + ' Uhr reservieren.'; z = 'Rufen Sie uns an: 08161 4965102, während der Öffnungszeiten.';
+        } else {
+          bestellen = essen - VORLAUF[weg];
+          var n = jetzt(), heute = plus === 0;
+          if (heute && bestellen < n.min) {
+            var frueh = Math.ceil((n.min + VORLAUF[weg]) / 5) * 5;
+            var offen = slots.some(function (x) { return frueh >= minuten(x[0]) && frueh <= minuten(x[1]); });
+            var weiter = slots.filter(function (x) { return minuten(x[0]) > n.min; })[0];
+            s = 'Für ' + t + ' ist es zu knapp.';
+            z = offen ? 'Frühestens um ' + hhmm(frueh) + ' Uhr, wenn Sie jetzt bestellen.'
+              : weiter ? 'Frühestens ab ' + weiter[0] + ' Uhr. Online vorbestellen geht schon jetzt.'
+              : 'Heute ist die Küche zu. Stellen Sie die Uhr auf morgen.';
+            bestellen = null;
+          } else {
+            s = 'Bestellen bis <b>' + hhmm(bestellen) + '</b>, ' + (weg === 'abholen' ? 'abholen um ' : 'Lieferung gegen ') + t + '.';
+            z = bestellen < minuten(slot[0]) ? 'Das ist vor der Öffnung um ' + slot[0] + ' Uhr: einfach online vorbestellen.' : (heute && bestellen - n.min <= 60 ? 'Noch ' + (bestellen - n.min) + ' Minuten Zeit zum Aussuchen.' : 'Online können Sie schon jetzt vorbestellen.');
+          }
+        }
+      }
+      satz2.innerHTML = s; zusatz2.textContent = z;
+      zeichneBlatt(tag, essen, bestellen);
+    }
+    uhr.addEventListener('input', rechnen);
+    uhr.addEventListener('change', rechnen);
+    uhr.addEventListener('submit', function (e) { e.preventDefault(); });
+    rechnen();
   }
 
   /* ---------- Speisekarte ---------- */
