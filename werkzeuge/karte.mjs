@@ -6,6 +6,9 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const wurzel = join(dirname(fileURLToPath(import.meta.url)), '..');
+// Freigestellte Schalen von der bisherigen Restaurant-Website (Herkunft: img/*.json)
+const SCHALEN = [[57, 'butter-chicken'], [109, 'karahi-paneer'], [108, 'dal-makhni'], [92, 'jheenga-curry']];
+const GRUPPEN_BILD = { 'huehnerfleisch-spezialitaeten': 'mango-chicken', 'lamm-spezialitaeten': 'rogan-josh', 'fisch-spezialitaeten': 'fisch-chili', 'vegetarische-spezialitaeten': 'karahi-paneer' };
 // Gruppen ohne Schärfegrad auf dem Bestellzettel (Brot, Beilagen, Süßes, Getränke)
 const OHNE_SCHAERFE = new Set(['salate', 'tandoori-brot', 'beilagen', 'nachspeisen', 'getraenke', 'wein']);
 const KENNZEICHEN = {
@@ -74,7 +77,7 @@ function zeile(p, g, i) {
 const karte = daten.gruppen.map((g) => {
   const n = g.posten.length;
   return `    <details class="gruppe" id="${g.id}" open>\n` +
-    `      <summary><h2>${esc(g.name)}</h2><span class="anzahl">${n} Posten</span></summary>\n` +
+    `      <summary>${GRUPPEN_BILD[g.id] ? `<img class="gruppe-bild" src="img/schale-${GRUPPEN_BILD[g.id]}-168.webp" width="56" height="56" loading="lazy" alt="">` : ''}<h2>${esc(g.name)}</h2><span class="anzahl">${n} Posten</span></summary>\n` +
     (g.hinweis ? `      <p class="gruppe-hinweis">${esc(g.hinweis)}</p>\n` : '') +
     `      <ul class="posten-liste">\n${g.posten.map((p, i) => zeile(p, g, i)).join('\n')}\n      </ul>\n` +
     `    </details>`;
@@ -99,5 +102,16 @@ function einsetzen(datei, marke, inhalt) {
 einsetzen('speisekarte.html', 'karte', karte);
 einsetzen('speisekarte.html', 'sprung', sprung);
 einsetzen('index.html', 'beliebt', beliebtHtml);
+
+const alleposten = new Map(daten.gruppen.flatMap((g) => g.posten.filter((p) => p.nr != null).map((p) => [p.nr, p])));
+const schalenHtml = `      <ul class="schalen-liste">\n` + SCHALEN.map(([nr, bild]) => {
+  const p = alleposten.get(nr);
+  if (!p) { console.error(`Schale ${bild}: Nummer ${nr} fehlt in der Karte.`); process.exit(1); }
+  return `        <li><a class="schale" href="speisekarte.html?dazu=${nr}">` +
+    `<span class="schale-bild"><img src="img/schale-${bild}-360.webp" srcset="img/schale-${bild}-360.webp 360w, img/schale-${bild}-640.webp 640w" sizes="(min-width: 900px) 240px, 42vw" width="360" height="360" loading="lazy" alt=""></span>` +
+    `<span class="schale-name">${esc(p.name)}</span><span class="schale-preis">${p.preis} €</span>` +
+    `<span class="schale-dazu"><svg aria-hidden="true"><use href="#i-plus"/></svg>Auf den Zettel</span></a></li>`;
+}).join('\n') + `\n      </ul>`;
+einsetzen('index.html', 'schalen', schalenHtml);
 const alle = daten.gruppen.reduce((s, g) => s + g.posten.length, 0);
 console.log(`Speisekarte geschrieben: ${daten.gruppen.length} Gruppen, ${alle} Posten, ${beliebt.length} beliebt.`);

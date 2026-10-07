@@ -36,6 +36,7 @@
   <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
   <symbol id="i-left" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></symbol>
   <symbol id="i-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
   <symbol id="i-handy" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5v6.5M9.3 11.6 12 14.3l2.7-2.7M10.5 18.5h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15a.8.8 0 0 0 1.2.7l12-7.5a.8.8 0 0 0 0-1.4l-12-7.5A.8.8 0 0 0 7 4.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
 </svg>
@@ -82,15 +83,7 @@
     </div>
 
     <figure class="bogen">
-      <img id="buehnen-bild" src="img/01-thali-platte-700.webp" srcset="img/01-thali-platte-700.webp 700w, img/01-thali-platte-1300.webp 1300w" sizes="(min-width: 900px) 34vw, 80vw" width="700" height="933" alt="Eine Thali-Platte mit mehreren Schälchen, Reis, Naan und Pappad auf einem Tisch im Bombay" fetchpriority="high">
-      <script>
-        if (document.documentElement.dataset.zeit === 'abend') {
-          var b = document.getElementById('buehnen-bild');
-          b.srcset = 'img/03-thali-dunkler-tisch-700.webp 700w, img/03-thali-dunkler-tisch-1300.webp 1300w';
-          b.src = 'img/03-thali-dunkler-tisch-700.webp';
-          b.alt = 'Eine Thali-Platte mit Kupferschälchen, Reis und Naan auf einem dunklen Tisch im Bombay';
-        }
-      </script>
+      <img id="buehnen-bild" src="img/08-chicken-tikka-700.webp" srcset="img/08-chicken-tikka-700.webp 700w, img/08-chicken-tikka-1050.webp 1050w" sizes="(min-width: 900px) 420px, 54vw" width="700" height="933" alt="Chicken Tikka: gegrillte, marinierte Hühnerstücke am Spieß mit roten Zwiebeln, Limette und Minz-Dip auf einem weißen Teller" fetchpriority="high">
       <svg class="bogen-kante" viewBox="0 0 300 400" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M1.5 398.5V138C1.5 78 70 70 150 2c80 68 148.5 76 148.5 136v260.5z" vector-effect="non-scaling-stroke"/></svg>
     </figure>
   </section>
@@ -129,6 +122,19 @@
       </div>
     </section>
   </div>
+
+  <section class="schalen wrap" aria-labelledby="schalen-titel">
+    <h2 id="schalen-titel">Aus der Karte</h2>
+    <p class="hand">Ein Tipp, und es liegt auf dem Zettel.</p>
+    <!-- schalen:anfang -->
+      <ul class="schalen-liste">
+        <li><a class="schale" href="speisekarte.html?dazu=57"><span class="schale-bild"><img src="img/schale-butter-chicken-360.webp" srcset="img/schale-butter-chicken-360.webp 360w, img/schale-butter-chicken-640.webp 640w" sizes="(min-width: 900px) 240px, 42vw" width="360" height="360" loading="lazy" alt=""></span><span class="schale-name">Butter Chicken</span><span class="schale-preis">14,90 €</span><span class="schale-dazu"><svg aria-hidden="true"><use href="#i-plus"/></svg>Auf den Zettel</span></a></li>
+        <li><a class="schale" href="speisekarte.html?dazu=109"><span class="schale-bild"><img src="img/schale-karahi-paneer-360.webp" srcset="img/schale-karahi-paneer-360.webp 360w, img/schale-karahi-paneer-640.webp 640w" sizes="(min-width: 900px) 240px, 42vw" width="360" height="360" loading="lazy" alt=""></span><span class="schale-name">Karahi Paneer</span><span class="schale-preis">12,90 €</span><span class="schale-dazu"><svg aria-hidden="true"><use href="#i-plus"/></svg>Auf den Zettel</span></a></li>
+        <li><a class="schale" href="speisekarte.html?dazu=108"><span class="schale-bild"><img src="img/schale-dal-makhni-360.webp" srcset="img/schale-dal-makhni-360.webp 360w, img/schale-dal-makhni-640.webp 640w" sizes="(min-width: 900px) 240px, 42vw" width="360" height="360" loading="lazy" alt=""></span><span class="schale-name">Dal Makhni</span><span class="schale-preis">12,90 €</span><span class="schale-dazu"><svg aria-hidden="true"><use href="#i-plus"/></svg>Auf den Zettel</span></a></li>
+        <li><a class="schale" href="speisekarte.html?dazu=92"><span class="schale-bild"><img src="img/schale-jheenga-curry-360.webp" srcset="img/schale-jheenga-curry-360.webp 360w, img/schale-jheenga-curry-640.webp 640w" sizes="(min-width: 900px) 240px, 42vw" width="360" height="360" loading="lazy" alt=""></span><span class="schale-name">Jheenga Curry</span><span class="schale-preis">16,90 €</span><span class="schale-dazu"><svg aria-hidden="true"><use href="#i-plus"/></svg>Auf den Zettel</span></a></li>
+      </ul>
+    <!-- schalen:ende -->
+  </section>
 
   <section class="essensuhr wrap" id="essensuhr" aria-labelledby="uhr-titel">
     <div class="uhr-kopf">

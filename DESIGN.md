@@ -518,7 +518,13 @@ Zwei weiße Tafeln mit sanfter Ecke und Kupferkante: Kupfer-Symbol (24 px) links
 Kuppel aus dem Logo über einem flachen Kupferbogen, darin der Status in Versalien; die Uhrzeit steht in Kupferbraun. Bogen und Kuppel erscheinen einmal beim Laden (0,8 s / 0,7 s, aus).
 
 ### Kielbogen-Bühne (Signatur)
-Hochformatiges Essensfoto (3:4) im Kielbogen mit Kupferkante und Schein; mittags das Thali auf hellem, abends auf dunklem Tisch.
+Hochformatiges Essensfoto (3:4) im Kielbogen mit Kupferkante und Schein: Chicken Tikka auf weißem Teller (Foto der bisherigen Restaurant-Website), mittags und abends dasselbe; am Handy 54 vw breit.
+
+### Schalen aus der Karte (Startseite)
+Vier freigestellte Schalen der bisherigen Restaurant-Website (Butter Chicken, Karahi Paneer, Dal Makhni, Jheenga Curry) auf je einem Tafel-Kreis mit 1-px-Kupferkante; Griffe dürfen über den Ring ragen. Darunter Name (Hind 600), Preis in stiller Tinte und eine Linien-Pille „+ Auf den Zettel“ (keine Lampe). Handy 2 × 2, ab 700 px eine Reihe aus vier. Ein Tipp öffnet die Speisekarte mit dem Gericht auf dem Bestellzettel (`?dazu=<Nr>`). Name und Preis schreibt `werkzeuge/karte.mjs` aus der Karte. Hover (Zeigegerät): Schale dreht sich um −8° (0,7 s, aus).
+
+### Gruppenbild (Speisekarte)
+Vier Gruppen tragen eine kleine freigestellte Schale (56 px) vor dem Titel: Fisch, Hühnerfleisch, Lamm, Vegetarisch. Keine Schale doppelt auf einer Seite.
 
 ### Essensuhr (Signatur, Startseite)
 Die eigene Funktion der Startseite: Gäste wählen, wann sie essen möchten, und erfahren, bis wann sie bestellen sollten.
