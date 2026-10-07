@@ -313,7 +313,7 @@ h3 { font: 400 1.15rem/1.3 var(--versal); letter-spacing: .14em; text-transform:
 .gruppe-hinweis { margin: -6px 0 10px; color: var(--tinte-still); max-width: 44em; font-size: var(--gr-klein); }
 .posten-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 0 64px; }
 .posten { grid-template-columns: 2.6em 1fr auto; align-items: start; align-content: start; }
-.posten .nr { padding-top: .12em; font-size: var(--gr-klein); color: var(--kupfer); }
+.posten .nr { padding-top: .12em; font-size: var(--gr-klein); color: var(--kupfer-schrift); }
 .posten:not(:has(.nr)) { grid-template-columns: 1fr auto; }
 .posten .text { grid-column: -3 / -2; font-size: var(--gr-klein); color: var(--tinte-still); }
 .posten:not(:has(.nr)) .text { grid-column: 1 / 2; }
