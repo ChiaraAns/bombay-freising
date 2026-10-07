@@ -20,7 +20,7 @@ Statisch: HTML, CSS, Vanilla JS. Kein Build, keine Abhängigkeiten, keine CDNs. 
 
 ## Product Purpose
 
-Die Website ersetzt das Durcheinander aus zwei Bestellseiten. Sie zeigt das Lokal, wie es ist, und schickt jeden, der bestellen will, mit **einem** Knopf zur Karvi-Bestellseite. Erfolg: eine Adresse, eine App, eine Preisliste; mehr Bestellungen über Karvi; weniger Anrufe mit „Habt ihr heute offen?“.
+Die Website ersetzt das Durcheinander aus zwei Bestellseiten. Sie zeigt das Lokal, wie es ist, und lässt direkt auf der Seite bestellen: Gerichte auf den Bestellzettel, dann per Anruf oder WhatsApp ans Restaurant (Wunsch der Betreiberin, 07.10.2026; keine Weiterleitung zu Karvi). Die Bombay-App bleibt als zweiter Weg hervorgehoben. Erfolg: eine Adresse, eine Preisliste; mehr direkte Bestellungen; weniger Anrufe mit „Habt ihr heute offen?“.
 
 ## Positioning
 
@@ -32,14 +32,14 @@ Die Website ersetzt das Durcheinander aus zwei Bestellseiten. Sie zeigt das Loka
 ## Operating Context
 
 - Öffnungszeiten: Mo, Mi–So 11:30–14:00 und 17:30–22:00; **Dienstag Ruhetag**; Mittagspause 14:00–17:30. Lieferzeiten folgen den Öffnungszeiten.
-- Online bestellen: Karvi, `https://bombayrestaurant-freising.de/order_type` (Lieferung ca. 60 min, Abholung ca. 30 min, Vorbestellung, PayPal und Karte). Apps: iOS `id6504758170`, Android `com.de.bombay.resto`.
+- Bestellen: Bestellzettel auf der Speisekarte → Anruf (+49 8161 4965102) oder WhatsApp (Nummer offen, siehe `ABNAHME.md`). Richtwerte: Lieferung ca. 60 min, Abholung ca. 30 min. Apps: iOS `id6504758170`, Android `com.de.bombay.resto`. Die Karvi-Seite wird nicht mehr verlinkt.
 - Reservieren: telefonisch, +49 8161 4965102.
 - Die ältere order-smart-Seite und Lieferando werden nicht verlinkt (Vision: ein Weg).
 
 ## Capabilities and Constraints
 
-- Keine eigene Bestellstrecke, kein Warenkorb, kein Server: die Seite führt zu Karvi.
-- Keine Cookies, keine Tracker, keine Schriften, Skripte oder Karten von Drittanbietern. `localStorage` nur für die gemerkten Filter der Speisekarte.
+- Kein Server, keine Zahlung: Der Bestellzettel stellt nur einen Text zusammen; der Gast schickt ihn selbst (Anruf, WhatsApp, Kopieren). Die Bestellung gilt erst mit Bestätigung des Restaurants.
+- Keine Cookies, keine Tracker, keine Schriften, Skripte oder Karten von Drittanbietern. `localStorage` nur für die gemerkten Filter und die Gerichte auf dem Bestellzettel (keine Personendaten).
 - Preise: 7 Preise von der neueren Karvi-Seite bestätigt, die übrigen vorläufig (siehe `ABNAHME.md`).
 - Allergene/Zusatzstoffe: nur die Legende und der Wortlaut des Restaurants; Kennzeichnung je Gericht liegt nicht vor.
 - Barrierefreiheit des Lokals laut Google-Profil: kein rollstuhlgerechter Eingang, kein rollstuhlgerechter Parkplatz.
@@ -59,7 +59,7 @@ Die Website ersetzt das Durcheinander aus zwei Bestellseiten. Sie zeigt das Loka
 
 ## Product Principles
 
-1. Ein Weg zum Essen: genau ein Hauptknopf „Online bestellen“ (Karvi); Telefon für Reservierung gleich daneben.
+1. Ein Weg zum Essen: genau ein Hauptknopf „Jetzt bestellen“ (Bestellzettel); Telefon gleich daneben, die App als feine Tafel darunter.
 2. Der erste Bildschirm beantwortet: Was gibt es, heute offen bis wann, Lieferung/Abholung, Telefon.
 3. Das Lokal zeigen, wie es ist: echte Fotos, echte Farben, nichts Geliehenes.
 4. Nur echte Fakten. Unklares weglassen und in `ABNAHME.md` fragen.

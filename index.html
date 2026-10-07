@@ -36,6 +36,8 @@
   <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
   <symbol id="i-left" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></symbol>
   <symbol id="i-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></symbol>
+  <symbol id="i-handy" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5v6.5M9.3 11.6 12 14.3l2.7-2.7M10.5 18.5h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15a.8.8 0 0 0 1.2.7l12-7.5a.8.8 0 0 0 0-1.4l-12-7.5A.8.8 0 0 0 7 4.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
 </svg>
 
 <header class="kopf" data-weicht>
@@ -67,10 +69,16 @@
       <p class="wege"><span>Lieferung ca. 60 min</span> <span>Abholung ca. 30 min</span></p>
 
       <div class="handeln">
-        <a class="knopf knopf--lampe" href="https://bombayrestaurant-freising.de/order_type" rel="noopener" data-bestellen>Online bestellen</a>
+        <a class="knopf knopf--lampe" href="speisekarte.html" data-bestellen>Jetzt bestellen</a>
         <a class="knopf knopf--linie" href="tel:+4981614965102" aria-label="Tisch reservieren: 08161 4965102"><svg aria-hidden="true"><use href="#i-phone"/></svg>08161 4965102</a>
       </div>
-      <p class="apps">Auch als App: <a href="https://apps.apple.com/de/app/bombay-restaurant-freising/id6504758170" rel="noopener">iPhone</a> · <a href="https://play.google.com/store/apps/details?id=com.de.bombay.resto" rel="noopener">Android</a></p>
+      <div class="apps">
+        <p class="apps-titel">Die Bombay-App</p>
+        <div class="apps-knoepfe">
+          <a class="app-knopf" href="https://apps.apple.com/de/app/bombay-restaurant-freising/id6504758170" rel="noopener" aria-label="Bombay-App im App Store laden"><svg aria-hidden="true"><use href="#i-handy"/></svg><span><small>Laden im</small>App Store</span></a>
+          <a class="app-knopf" href="https://play.google.com/store/apps/details?id=com.de.bombay.resto" rel="noopener" aria-label="Bombay-App bei Google Play laden"><svg aria-hidden="true"><use href="#i-play"/></svg><span><small>Jetzt bei</small>Google Play</span></a>
+        </div>
+      </div>
     </div>
 
     <figure class="bogen">
@@ -106,7 +114,7 @@
         <li><span class="name">Garlic Naan</span><span class="preis">3,50 €</span><span class="text">Ovales Brot aus Hefeteig mit Knoblauch</span></li>
       </ol>
       <!-- beliebt:ende -->
-      <a class="mehr" href="speisekarte.html">Ganze Speisekarte <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="mehr" href="speisekarte.html">Ganze Speisekarte und bestellen <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </section>
 
     <section class="bei-uns" id="bei-uns" aria-labelledby="raum-titel">
@@ -153,9 +161,9 @@
         <p class="uhr-satz" id="uhr-satz" aria-live="polite"></p>
         <p class="uhr-zusatz" id="uhr-zusatz"></p>
         <div class="uhr-knoepfe">
-          <a class="knopf knopf--lampe" id="uhr-handeln" href="https://bombayrestaurant-freising.de/order_type" rel="noopener">Online bestellen</a>
+          <a class="knopf knopf--lampe" id="uhr-handeln" href="speisekarte.html">Zum Bestellzettel</a>
         </div>
-        <p class="klein">Richtwerte: Abholung ca. 30 min, Lieferung ca. 60 min. Geliefert und abgeholt wird zu den Öffnungszeiten. Online vorbestellen ist möglich.</p>
+        <p class="klein">Richtwerte: Abholung ca. 30 min, Lieferung ca. 60 min. Geliefert und abgeholt wird zu den Öffnungszeiten.</p>
       </div>
     </div>
     <noscript><p class="klein">Die Essensuhr braucht JavaScript. Öffnungszeiten stehen weiter unten.</p></noscript>
@@ -239,7 +247,6 @@
     <p>Restaurant Bombay · Obere Hauptstraße 67 · 85354 Freising · <a href="tel:+4981614965102">08161 4965102</a></p>
     <ul>
       <li><a href="speisekarte.html">Speisekarte</a></li>
-      <li><a href="https://bombayrestaurant-freising.de/order_type" rel="noopener">Online bestellen</a></li>
       <li><a href="impressum.html">Impressum</a></li>
       <li><a href="datenschutz.html">Datenschutz</a></li>
     </ul>
@@ -248,7 +255,7 @@
 </footer>
 
 <nav class="daumen" aria-label="Schnellzugriff" data-weicht data-daumen>
-  <a class="knopf knopf--lampe" href="https://bombayrestaurant-freising.de/order_type" rel="noopener"><svg aria-hidden="true"><use href="#i-bag"/></svg>Online bestellen</a>
+  <a class="knopf knopf--lampe" href="speisekarte.html"><svg aria-hidden="true"><use href="#i-bag"/></svg>Bestellen</a>
   <a class="knopf knopf--linie" href="tel:+4981614965102" aria-label="Anrufen: 08161 4965102"><svg aria-hidden="true"><use href="#i-phone"/></svg>Anrufen</a>
 </nav>
 

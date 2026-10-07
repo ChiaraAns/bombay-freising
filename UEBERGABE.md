@@ -6,8 +6,8 @@ Stand 06.10.2026, live auf `main` (PR #1 und #2): https://chiaraans.github.io/bo
 
 | Seite | Inhalt |
 |---|---|
-| `index.html` | Erster Bildschirm: Foto (mittags Thali, abends Thali am dunklen Tisch), „Heute geöffnet bis …“ in der Kuppelbogen-Plakette, Lieferung ca. 60 min · Abholung ca. 30 min, **ein** Knopf „Online bestellen“ (Karvi), Telefon zum Reservieren, App-Links. Danach mittags zuerst „Beliebt im Bombay“, abends zuerst der Gastraum. **Essensuhr**: Abholen/Liefern/bei uns essen, heute/morgen, Wunschzeit am Regler; sagt, bis wann man bestellen muss (Richtwerte 30/60 min, Öffnungszeiten aus `app.js`), rechnet nur im Browser. Lehmofen, Fotos, Google-Bewertungen mit Hinweis nach § 5b UWG, Öffnungszeiten mit Mittagspause und „heute“, Anfahrt, Barrierefreiheit. |
-| `speisekarte.html` | 17 Gruppen, 141 Posten, generiert aus `daten/speisekarte.json`. Suche, Filter (vegetarisch, vegan möglich, üblich scharf; gemerkt, funktionieren auch ohne Skript), Gruppen aufklappbar (am Handy zu), „… online bestellen“ am Ende jeder Gruppe, Hinweis auf die vier Schärfegrade, Allergenlegende im Wortlaut. |
+| `index.html` | Erster Bildschirm: Foto (mittags Thali, abends Thali am dunklen Tisch), „Heute geöffnet bis …“ in der Kuppelbogen-Plakette, Lieferung ca. 60 min · Abholung ca. 30 min, **ein** Knopf „Jetzt bestellen“ (zur Speisekarte mit Bestellzettel), Telefon zum Reservieren, darunter hervorgehoben die Bombay-App (App Store, Google Play). Danach mittags zuerst „Beliebt im Bombay“, abends zuerst der Gastraum. **Essensuhr**: Abholen/Liefern/bei uns essen, heute/morgen, Wunschzeit am Regler; sagt, bis wann man bestellen muss (Richtwerte 30/60 min, Öffnungszeiten aus `app.js`), rechnet nur im Browser. Lehmofen, Fotos, Google-Bewertungen mit Hinweis nach § 5b UWG, Öffnungszeiten mit Mittagspause und „heute“, Anfahrt, Barrierefreiheit. |
+| `speisekarte.html` | 17 Gruppen, 141 Posten, generiert aus `daten/speisekarte.json`. Suche, Filter (vegetarisch, vegan möglich, üblich scharf; gemerkt, funktionieren auch ohne Skript), Gruppen aufklappbar (am Handy zu), „+“ neben jedem Gericht und ein **Bestellzettel** (Menge, Schärfe, Abholen/Liefern, Zeit aus den Öffnungszeiten, Name, Telefon, Adresse, Anmerkung) → fertiger Text per Anruf, Kopieren oder WhatsApp (sobald die Nummer eingetragen ist), Hinweis auf die vier Schärfegrade, Allergenlegende im Wortlaut. |
 | `impressum.html`, `datenschutz.html` | Mit den Angaben aus dem Paket; Offenes gelb markiert. |
 
 Warum so: `PRODUCT.md` (Fakten), `DESIGN.md` (Gestaltungssystem), `.impeccable/surfaces/index-html.md` (Richtungsvertrag).
@@ -35,7 +35,9 @@ Warum so: `PRODUCT.md` (Fakten), `DESIGN.md` (Gestaltungssystem), `.impeccable/s
 - **Live-Seite angesehen:** Ausgeliefert ist sie laut GitHub Actions (Lauf „Website auf GitHub Pages ausliefern“, deploy-pages erfolgreich, Pages-Quelle auf „GitHub Actions“ umgestellt). Aus der Arbeitsumgebung ist `chiaraans.github.io` gesperrt; die Live-URL selbst wurde deshalb nicht abgerufen.
 - Echte Geräte (iPhone/Android), WhatsApp-/Instagram-WebView, Safari.
 - Die Bewegung der Plakette (nur Endzustand in Standbildern gesehen).
-- Ob die Karvi- und App-Links zum richtigen Ziel führen (am Ruhetag lud die Bestellstrecke nicht).
+- Ob die App-Links zum richtigen Ziel führen.
+- Der WhatsApp-Weg mit echter Nummer: getestet nur mit einer Testnummer im Browser (Link und Text stimmen), nicht auf einem Handy mit WhatsApp.
+- „Kopieren“ in der Zwischenablage auf echten Handys.
 
 ## Abweichungen von der Norm
 
