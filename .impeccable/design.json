@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-07T06:56:59.313Z",
+  "generatedAt": "2026-10-07T09:49:20.000Z",
   "title": "Design System: Restaurant Bombay Freising",
   "extensions": {
     "colorMeta": {
@@ -268,7 +268,7 @@
           "#feeadb"
         ],
         "source": "color-mix(in oklch, var(--kupfer) 30%, transparent)",
-        "note": "Im Stylesheet als color-mix über #b07440 geführt; canonical ist der aufgelöste Wert."
+        "note": "Kupferschein der Kielbogenkante und weicher Papierschatten des Preisschilds; canonical ist der aufgelöste Wert."
       },
       "glanz": {
         "role": "primary",
@@ -286,7 +286,25 @@
           "#feeadb"
         ],
         "source": "color-mix(in oklch, var(--kupfer) 16%, transparent)",
-        "note": "Nur der einmalige Lichtstreif über den App-Tafeln."
+        "note": "Einmaliger Lichtstreif über den App-Tafeln und weicher Papierschatten unter dem Bon der Essensuhr."
+      },
+      "bogen-fond": {
+        "role": "primary",
+        "displayName": "Bogenfond",
+        "canonical": "#e9d8cb",
+        "oklch": "oklch(89.2% 0.026 60.0)",
+        "tonalRamp": [
+          "#130802",
+          "#2b1f15",
+          "#483a2f",
+          "#66584c",
+          "#86776b",
+          "#a8988c",
+          "#cebdb1",
+          "#f6e4d7"
+        ],
+        "source": "color-mix(in oklch, var(--kupfer) 22%, var(--grund))",
+        "note": "Zweiter, gefüllter Kielbogen hinter dem Bühnenfoto, um 7 %/−5 % versetzt; die einzige stehende Kupferfläche außerhalb der Lampe. canonical ist der aufgelöste Wert."
       },
       "schleier": {
         "role": "neutral",
@@ -480,9 +498,9 @@
         "displayName": "Display Zahl",
         "purpose": "Bewertungsnote im Band."
       },
-      "uhr-zahl": {
-        "displayName": "Uhr-Zahl",
-        "purpose": "Gewählte Essenszeit in der Essensuhr."
+      "bon-zahl": {
+        "displayName": "Bon-Zahl",
+        "purpose": "„Bestellen bis“-Zeit auf dem Bon der Essensuhr, Kupferbraun."
       },
       "headline": {
         "displayName": "Headline",
@@ -498,7 +516,7 @@
       },
       "hand": {
         "displayName": "Hand",
-        "purpose": "Eine Allura-Zeile unter der Überschrift."
+        "purpose": "Eine Allura-Zeile unter der Überschrift; außerdem Fragen der Uhr-Karte und Zeile des Preisschilds."
       },
       "title": {
         "displayName": "Title",
@@ -528,9 +546,21 @@
         "displayName": "Status",
         "purpose": "Öffnungsstatus in der Kuppel-Plakette."
       },
-      "uhr-satz": {
-        "displayName": "Uhrsatz",
-        "purpose": "Ergebnis der Essensuhr: Bestellen bis X."
+      "bon-satz": {
+        "displayName": "Bon-Satz",
+        "purpose": "Ganze Sätze auf dem Bon (Ruhetag, zu knapp)."
+      },
+      "bon-zeile": {
+        "displayName": "Bon-Zeile",
+        "purpose": "Zeilen des Bons und Zeiten im Reservierungsbuch, Tabellenziffern."
+      },
+      "wort": {
+        "displayName": "Wort",
+        "purpose": "Antworten der Uhr-Karte, gewählt mit Kupfer-Federstrich."
+      },
+      "etikett": {
+        "displayName": "Etikett",
+        "purpose": "Gerichtname auf dem Preisschild der Bühne (ab 900 px 1,15 rem)."
       },
       "body": {
         "displayName": "Body",
@@ -562,7 +592,7 @@
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Knöpfe, Navigation, Mehr-Verweise."
+        "purpose": "Knöpfe, Navigation, Mehr-Verweise, Note-Text, Kopf des Bons."
       },
       "label-nav": {
         "displayName": "Label Nav",
@@ -570,7 +600,7 @@
       },
       "label-schalter": {
         "displayName": "Label Schalter",
-        "purpose": "Filter, Wahl der Essensuhr, Gruppensprung."
+        "purpose": "Filter der Speisekarte, Abholen · Liefern lassen im Bestellzettel, Gruppensprung."
       },
       "label-schmal": {
         "displayName": "Label Schmal",
@@ -592,14 +622,19 @@
         "purpose": "Kielbogenkante des Bühnenfotos."
       },
       {
-        "name": "kupferschein-zeiger",
-        "value": "filter: drop-shadow(0 0 6px var(--schein))",
-        "purpose": "Zeigerknopf des Zifferblatts der Essensuhr."
+        "name": "papierschatten-etikett",
+        "value": "box-shadow: 0 12px 26px -10px var(--schein)",
+        "purpose": "Preisschild am Bühnenbogen (Tafel, −3° gedreht)."
       },
       {
-        "name": "kupferhof-regler",
-        "value": "box-shadow: 0 0 0 5px var(--schein)",
-        "purpose": "Griff des Uhrreglers."
+        "name": "papierschatten-bon",
+        "value": "filter: drop-shadow(0 10px 18px var(--glanz))",
+        "purpose": "Bon der Essensuhr, folgt der Abrisskante; am Desktop 1,2° gedreht."
+      },
+      {
+        "name": "doppellinie-uhr-karte",
+        "value": "box-shadow: inset 0 0 0 5px var(--tafel), inset 0 0 0 6px var(--linie-kupfer)",
+        "purpose": "Keine Tiefe: zweite Kupfer-Haarlinie 5 px innerhalb der Kante der Uhr-Karte."
       }
     ],
     "motion": [
@@ -626,12 +661,22 @@
       {
         "name": "kachel-zoom",
         "value": "transform .7s var(--aus)",
-        "purpose": "Galeriebild beim Hover auf 1,03."
+        "purpose": "Küchenfoto beim Hover auf 1,03 (nur Zeigegerät)."
       },
       {
         "name": "bogen-auftritt",
         "value": "bogen .8s var(--aus); kuppel .7s var(--aus) .15s",
         "purpose": "Kuppel-Plakette einmal beim Laden."
+      },
+      {
+        "name": "bild-auftritt",
+        "value": "auftritt .9s var(--aus); opacity 0 und scale(1.04)",
+        "purpose": "Bühnenfoto einmal beim Laden."
+      },
+      {
+        "name": "etikett-auftritt",
+        "value": "etikett .7s var(--aus) .9s (erst nach Bild, Statusbogen und Kuppel, damit höchstens drei gleichzeitig laufen); translateY(14px) rotate(-3deg), opacity",
+        "purpose": "Preisschild einmal beim Laden, nach dem Foto."
       },
       {
         "name": "reduziert",
@@ -662,6 +707,26 @@
         "name": "app-hover",
         "value": "transform .3s var(--aus), translateY(-2px)",
         "purpose": "App-Tafel beim Hover (nur Zeigegerät)."
+      },
+      {
+        "name": "federstrich",
+        "value": "opacity .4s var(--aus), transform .5s var(--aus); scaleX(.6) von links",
+        "purpose": "Federstrich unter dem gewählten Wort der Uhr-Karte."
+      },
+      {
+        "name": "kringel",
+        "value": "opacity .35s var(--aus), transform .5s var(--aus); scale(.7) rotate(-6deg)",
+        "purpose": "Kringel um die gewählte Zeit im Reservierungsbuch."
+      },
+      {
+        "name": "drucken",
+        "value": "drucken .45s var(--aus); translateY(-6px), opacity",
+        "purpose": "Inhalt des Bons bei jeder Änderung der Essensuhr."
+      },
+      {
+        "name": "schale-hover",
+        "value": "transform .7s var(--aus), rotate(-8deg) scale(1.03)",
+        "purpose": "Schale aus der Karte beim Hover (nur Zeigegerät)."
       }
     ],
     "breakpoints": [
@@ -679,14 +744,21 @@
       }
     ],
     "shapes": {
-      "kielbogen": "path M0 400V138C0 78 70 70 150 0c80 70 150 78 150 138v262z (viewBox 0 0 300 400), Maske des Bühnenfotos; Kante 1,2 px Kupfer, 9 px außen",
+      "kielbogen": "path M0 400V138C0 78 70 70 150 0c80 70 150 78 150 138v262z (viewBox 0 0 300 400), Maske des Bühnenfotos; Kante 1,2 px Kupfer, 9 px außen; dahinter derselbe Bogen gefüllt in --bogen-fond, translate(7%, -5%)",
       "kuppelbogen": "border-radius: 50% 50% 0 0 / 26px 26px 0 0, 1 px linie-kupfer",
-      "zifferblatt": "oberer Halbkreis, Mitte 160/170, Radius 140 im viewBox 0 0 320 190; 11:00 links, 22:30 rechts; Vorlaufbogen Radius 156, Ziffern Radius 120"
+      "abrisskante": "Maske --zacken-oben top / 16px 51% repeat-x und --zacken-unten bottom / 16px 51% repeat-x auf dem Bon",
+      "doppelrahmen": "1 px linie-kupfer, dazu inset 5 px tafel und inset 6 px linie-kupfer (Uhr-Karte)",
+      "schalenkreis": "Kreis 4 % eingerückt, 1 px linie-kupfer auf tafel; Bild inset −8,8 %, 117,6 % groß, Schalenrand in der Datei 68 % des Quadrats"
     },
     "backdrop": "color-mix 94–96 % grund/grund-tief, backdrop-filter: blur(10px) für Kopf, Lotse, Daumenleiste; Bestellzettel: ::backdrop var(--schleier), ohne Unschärfe",
     "assets": {
       "pfeil": "url(\"data:image/svg+xml,…M1 1.5 6 6.5l5-5…stroke='%23b07440'…\") – Kupferpfeil (12 × 8, 1,5 px) der Auswahlfelder, als Token --pfeil in :root",
-      "bogen-form": "Kielbogen-Maske als Token --bogen-form in :root"
+      "bogen-form": "Kielbogen-Maske als Token --bogen-form in :root",
+      "strich": "Federstrich als Maske (viewBox 100 × 10, Strich 2,4), Token --strich in :root",
+      "kringel": "handgezogener Kringel als Maske (viewBox 100 × 50, Strich 2,2), Token --kringel in :root",
+      "zacken-oben": "conic-gradient(from 135deg at top, …) – obere Abrisskante des Bons, Token --zacken-oben",
+      "zacken-unten": "conic-gradient(from -45deg at bottom, …) – untere Abrisskante des Bons, Token --zacken-unten",
+      "stern": "SVG-Symbol #stern (24 × 24) und Verlauf #stern-halb für den halben fünften Stern"
     }
   },
   "components": [
@@ -694,7 +766,7 @@
       "name": "Lampe",
       "kind": "button",
       "refersTo": "button-lampe",
-      "description": "Die eine gefüllte Haupthandlung einer Knopfgruppe: „Jetzt bestellen“, „Zum Bestellzettel“, „Bestellzettel“, im Zettel „Anrufen“ oder „Per WhatsApp schicken“.",
+      "description": "Die eine gefüllte Haupthandlung einer Knopfgruppe: „Jetzt bestellen“, „Zum Bestellzettel“ auf dem Bon, „Bestellzettel“, im Zettel „Anrufen“ oder „Per WhatsApp schicken“.",
       "html": "<a class=\"ds-knopf ds-knopf--lampe\" href=\"#\">Jetzt bestellen</a>",
       "css": ".ds-knopf { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 4px 26px 0; border: 1px solid var(--linie-stark); border-radius: var(--pille); background: transparent; color: var(--tinte); font: 400 var(--gr-mini)/1 var(--versal); letter-spacing: .2em; text-transform: uppercase; text-decoration: none; white-space: nowrap; cursor: pointer; transition: transform .3s var(--aus); } .ds-knopf:active { transform: scale(.97); } .ds-knopf:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; } .ds-knopf--lampe { border-color: var(--lampe); background: var(--lampe); color: var(--auf-lampe); } .ds-knopf--lampe:hover { background: var(--lampe-hell); border-color: var(--lampe-hell); }"
     },
@@ -726,7 +798,7 @@
       "name": "Schalter",
       "kind": "chip",
       "refersTo": "schalter",
-      "description": "Filter der Speisekarte und Wahl der Essensuhr; aktiv mit Kupferkante und Punkt.",
+      "description": "Filter der Speisekarte und Abholen · Liefern lassen im Bestellzettel; aktiv mit Kupferkante und Punkt.",
       "html": "<span class=\"ds-schalter\">Vegetarisch</span> <span class=\"ds-schalter ds-schalter--an\">Abholen</span>",
       "css": ".ds-schalter { display: inline-flex; align-items: center; min-height: 38px; padding: 4px 16px 0; border: 1px solid var(--linie-stark); border-radius: var(--pille); font: 400 .72rem var(--versal); letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; color: var(--tinte-leise); } .ds-schalter--an { border-color: var(--kupfer); color: var(--kupfer-schrift); } .ds-schalter--an::before { content: \"\"; width: 6px; height: 6px; margin: -3px 8px 0 -4px; border-radius: 50%; background: var(--kupfer); }"
     },
@@ -766,7 +838,7 @@
       "name": "Tafel",
       "kind": "card",
       "refersTo": "tafel",
-      "description": "Weiße Tafel mit Haarlinie, eckig; Besuchsinfos und Wahlfeld der Essensuhr.",
+      "description": "Weiße Tafel mit Haarlinie, eckig; Öffnungszeiten und Anfahrt.",
       "html": "<div class=\"ds-tafel\"><h3>Zeiten</h3><p>Montag 11:30–14:00 · 17:30–22:00</p></div>",
       "css": ".ds-tafel { padding: 30px 24px 22px; background: var(--tafel); border: 1px solid var(--linie); color: var(--tinte-leise); font: 400 var(--gr-lauf)/1.65 var(--lauf); } .ds-tafel h3 { margin: 0 0 .6em; font: 400 1.15rem/1.3 var(--versal); letter-spacing: .14em; text-transform: uppercase; color: var(--tinte); } .ds-tafel p { margin: 0; font-variant-numeric: lining-nums tabular-nums; }"
     },
@@ -787,35 +859,43 @@
       "css": ".ds-heute { display: inline-grid; justify-items: center; text-align: center; } .ds-kuppel { width: 40px; height: 27px; color: var(--kupfer); margin-bottom: -1px; position: relative; z-index: 1; } .ds-heute-satz { position: relative; margin: 0; padding: 17px 26px 0; font: 400 .98rem/1.3 var(--versal); letter-spacing: .14em; text-transform: uppercase; color: var(--tinte); font-variant-numeric: lining-nums tabular-nums; } .ds-heute-satz::before { content: \"\"; position: absolute; inset: 0 0 .35em; border: 1px solid var(--linie-kupfer); border-bottom: 0; border-radius: 50% 50% 0 0 / var(--bogen) var(--bogen) 0 0; } .ds-heute-satz b { font-weight: 400; color: var(--kupfer-schrift); }"
     },
     {
-      "name": "Essensuhr-Zifferblatt",
+      "name": "Essensuhr: Karte und Bon",
       "kind": "custom",
-      "refersTo": "uhr-satz",
-      "description": "Halbrund 11:00–22:30 mit Öffnungsbögen, Vorlaufbogen, Jetzt-Strich und Zeiger; darunter der Uhrsatz.",
-      "html": "<div class=\"ds-uhr\"><svg class=\"ds-blatt\" viewBox=\"0 0 320 190\" aria-hidden=\"true\"><path class=\"g\" d=\"M20 170A140 140 0 0 1 300 170\"/><path class=\"o\" d=\"M24.6 134.6A140 140 0 0 1 101.3 42.9\"/><path class=\"o\" d=\"M181.2 31.6A140 140 0 0 1 299.4 165.8\"/><path class=\"v\" d=\"M141.9 15.1A156 156 0 0 1 181.3 15.5\"/><line class=\"z\" x1=\"160\" y1=\"170\" x2=\"175.9\" y2=\"30.9\"/><circle class=\"k\" cx=\"175.9\" cy=\"30.9\" r=\"7\"/><circle class=\"m\" cx=\"160\" cy=\"170\" r=\"4\"/></svg><p class=\"ds-uhr-satz\">Bestellen bis <b>12:30</b>, abholen um 13:00.</p></div>",
-      "css": ".ds-uhr { display: grid; justify-items: center; text-align: center; } .ds-blatt { width: min(100%, 360px); overflow: visible; } .ds-blatt .g { fill: none; stroke: var(--linie-stark); stroke-width: 1; } .ds-blatt .o { fill: none; stroke: var(--kupfer); stroke-width: 5; stroke-linecap: round; } .ds-blatt .v { fill: none; stroke: var(--kupfer); stroke-width: 2; stroke-dasharray: 2 4; stroke-linecap: round; } .ds-blatt .z { stroke: var(--kupfer); stroke-width: 1.2; } .ds-blatt .k { fill: var(--tafel); stroke: var(--kupfer); stroke-width: 1.5; filter: drop-shadow(0 0 6px var(--schein)); } .ds-blatt .m { fill: var(--kupfer); } .ds-uhr-satz { margin: 6px 0 4px; font: 400 clamp(1.05rem, .95rem + .6vw, 1.3rem)/1.4 var(--versal); letter-spacing: .08em; text-transform: uppercase; color: var(--tinte); } .ds-uhr-satz b { font-weight: 400; color: var(--kupfer-schrift); }"
+      "refersTo": "bon",
+      "description": "Uhr-Karte mit doppelter Kupferlinie, Fragen in Handschrift, Wörter mit Federstrich, Reservierungsbuch mit Kringel; daneben der Bon mit Abrisskante, Punktlinien und der einen Lampe.",
+      "html": "<div class=\"ds-uhr\"><div class=\"ds-karte\"><p class=\"ds-frage\">Wie möchten Sie essen?</p><p class=\"ds-worte\"><span class=\"ds-wort ds-wort--an\">Abholen</span><span class=\"ds-wort\">Liefern lassen</span><span class=\"ds-wort\">Bei uns essen</span></p><p class=\"ds-frage\">Um wie viel Uhr?</p><div class=\"ds-buch\"><span class=\"ds-zeit ds-zeit--weg\">11:30</span><span class=\"ds-zeit\">12:00</span><span class=\"ds-zeit\">12:30</span><span class=\"ds-zeit ds-zeit--an\">13:00</span></div></div><div class=\"ds-bon-schatten\"><div class=\"ds-bon\"><p class=\"ds-bon-kopf\">Bombay · Essensuhr<br>Heute, Mittwoch</p><p class=\"ds-bon-zeile ds-bon-zeile--gross\"><span>Bestellen bis</span><i></i><b>12:30</b></p><p class=\"ds-bon-zeile\"><span>Abholen um</span><i></i><b>13:00</b></p><a class=\"ds-lampe\" href=\"#\">Zum Bestellzettel</a></div></div></div>",
+      "css": ".ds-uhr { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 40px; align-items: center; } .ds-karte { display: grid; gap: 6px; padding: 26px 20px 22px; background: var(--tafel); border: 1px solid var(--linie-kupfer); box-shadow: inset 0 0 0 5px var(--tafel), inset 0 0 0 6px var(--linie-kupfer); } .ds-frage { margin: 8px 0 0; font: 400 var(--gr-hand)/1.2 var(--hand); color: var(--kupfer-schrift); } .ds-worte { display: flex; flex-wrap: wrap; column-gap: 22px; margin: 0; } .ds-wort { position: relative; display: inline-flex; align-items: center; min-height: 44px; padding-top: 3px; font: 400 1.1rem var(--versal); letter-spacing: .04em; color: var(--tinte-still); cursor: pointer; } .ds-wort--an { color: var(--tinte); } .ds-wort--an::after { content: \"\"; position: absolute; left: -3px; right: -3px; bottom: 5px; height: 9px; background: var(--kupfer); -webkit-mask: var(--strich) center / 100% 100% no-repeat; mask: var(--strich) center / 100% 100% no-repeat; } .ds-buch { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--linie); } .ds-zeit { position: relative; display: grid; place-items: center; min-height: 44px; padding-top: 3px; border-bottom: 1px solid var(--linie); font: 400 1.02rem var(--versal); font-variant-numeric: lining-nums tabular-nums; color: var(--tinte-leise); } .ds-zeit--an { color: var(--tinte); } .ds-zeit--an::after { content: \"\"; position: absolute; inset: 4px 2px; background: var(--kupfer); -webkit-mask: var(--kringel) center / 100% 100% no-repeat; mask: var(--kringel) center / 100% 100% no-repeat; } .ds-zeit--weg { color: var(--tinte-still); text-decoration: line-through; text-decoration-color: var(--linie-stark); opacity: .7; } .ds-bon-schatten { filter: drop-shadow(0 10px 18px var(--glanz)); transform: rotate(1.2deg); } .ds-bon { display: grid; justify-items: center; gap: 4px; padding: 34px 24px 32px; text-align: center; background: var(--tafel); -webkit-mask: var(--zacken-oben) top / 16px 51% repeat-x, var(--zacken-unten) bottom / 16px 51% repeat-x; mask: var(--zacken-oben) top / 16px 51% repeat-x, var(--zacken-unten) bottom / 16px 51% repeat-x; } .ds-bon-kopf { width: 100%; margin: 0 0 14px; padding-bottom: 14px; border-bottom: 1px dashed var(--linie-stark); font: 400 var(--gr-mini)/1.6 var(--versal); letter-spacing: .2em; text-transform: uppercase; color: var(--tinte-still); } .ds-bon-zeile { display: flex; align-items: baseline; gap: 10px; width: 100%; margin: 0 0 6px; text-align: left; font: 400 1.02rem var(--versal); color: var(--tinte-leise); } .ds-bon-zeile i { flex: 1; min-width: 16px; border-bottom: 2px dotted var(--linie-stark); transform: translateY(-4px); } .ds-bon-zeile b { font-weight: 400; color: var(--tinte); font-variant-numeric: lining-nums tabular-nums; } .ds-bon-zeile--gross b { font: 300 clamp(2.2rem, 1.9rem + 1.4vw, 2.9rem)/1 var(--versal); color: var(--kupfer-schrift); } .ds-lampe { display: inline-flex; align-items: center; min-height: 50px; margin-top: 18px; padding: 4px 26px 0; border-radius: var(--pille); background: var(--lampe); color: var(--auf-lampe); font: 400 var(--gr-mini)/1 var(--versal); letter-spacing: .2em; text-transform: uppercase; text-decoration: none; } .ds-lampe:hover { background: var(--lampe-hell); } .ds-lampe:focus-visible, .ds-wort:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; }"
+    },
+    {
+      "name": "Preisschild",
+      "kind": "custom",
+      "refersTo": "etikett",
+      "description": "Kleine Tafel am Bühnenbogen, −3° gedreht, mit Papierschatten: Handschriftzeile, Gericht, Preis und „+ Auf den Zettel“.",
+      "html": "<a class=\"ds-etikett\" href=\"#\" aria-label=\"Chicken Tikka, 16,90 Euro: auf den Bestellzettel legen\"><span class=\"ds-etikett-hand\" aria-hidden=\"true\">frisch aus dem Lehmofen</span><span class=\"ds-etikett-name\">Chicken Tikka</span><span class=\"ds-etikett-zeile\"><span class=\"ds-etikett-preis\">16,90 €</span><span class=\"ds-etikett-dazu\"><svg viewBox=\"0 0 24 24\" width=\"13\" height=\"13\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12h14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"/></svg>Auf den Zettel</span></span></a>",
+      "css": ".ds-etikett { display: inline-grid; gap: 1px; margin: 20px; padding: 16px 22px 14px; background: var(--tafel); border-radius: var(--ecke-feld); box-shadow: 0 12px 26px -10px var(--schein); color: var(--tinte); text-decoration: none; transform: rotate(-3deg); } .ds-etikett-hand { font: 400 1.6rem/1 var(--hand); color: var(--kupfer-schrift); } .ds-etikett-name { font: 400 1.15rem/1.3 var(--versal); letter-spacing: .1em; text-transform: uppercase; } .ds-etikett-zeile { display: flex; align-items: center; gap: 10px; min-height: 24px; } .ds-etikett-preis { font-size: var(--gr-klein); color: var(--tinte-leise); font-variant-numeric: lining-nums tabular-nums; } .ds-etikett-dazu { display: inline-flex; align-items: center; gap: 4px; font: 400 .7rem var(--versal); letter-spacing: .12em; text-transform: uppercase; color: var(--kupfer-schrift); } .ds-etikett-dazu svg { margin-top: -3px; } .ds-etikett:hover .ds-etikett-name { color: var(--kupfer-schrift); } .ds-etikett:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; }"
     }
   ],
   "narrative": {
     "northStar": "Das Bombay bei Tageslicht",
-    "overview": "Ein durchgehender heller Grund wie Steinputz in der Altstadt am Mittag, darauf Schrift in dunklem Holz, leise gesperrte Versalien, eine Zeile Handschrift und Kupfer, das wie die Kante einer Handi-Schale oder einer Sternlaterne im Licht steht. Inhalte liegen auf weißen Tafeln mit Haarlinie. Die Seite fließt ohne wechselnde Farbbänder von oben nach unten; nur die Stimmen der Gäste liegen auf einem einzigen dunklen Band aus Holz am Abend, als Pause.\n\nDer Eindruck folgt einer Vorlage der Betreiberin (ruhig, fließend, gesperrte Versalien, Handschrift als Akzent, feine Metallkante). Ocker/Rot hat sie abgelehnt; am 07.10.2026 hat sie die helle Fassung gewünscht: heller Grund, weiße Tafeln, dunkle Tinte, nur die Stimmen dunkel. Das Material kommt aus dem Lokal: dunkles Holz als Schrift und als Band, Kupfer und Messing von den Handi-Schalen und den Sternlaternen, der Kielbogen des Bühnenfotos aus den Bögen des Taj-Mahal-Wandbilds im Gastraum, die Kuppel über dem Öffnungsstatus aus dem Logo.\n\nDie Dichte ist ruhig: viel Luft zwischen den Abschnitten, feine 1-px-Linien statt Flächen, Fotos in ihrem eigenen Seitenverhältnis. Abgelehnt sind schwere Display-Schrift, wechselnde Farbbänder und die Maske eines Lieferportals. Bestellt wird darum nicht über ein fremdes Portal, sondern auf einem eigenen Bestellzettel im selben Material: Plus am Gericht, weißer Zettel, eine Lampe zum Abschicken.",
+    "overview": "Ein durchgehender heller Grund wie Steinputz in der Altstadt am Mittag, darauf Schrift in dunklem Holz, leise gesperrte Versalien, Handschrift als Akzent und Kupfer, das wie die Kante einer Handi-Schale oder einer Sternlaterne im Licht steht. Inhalte liegen auf weißen Tafeln mit Haarlinie. Die Seite fließt ohne wechselnde Farbbänder von oben nach unten; nur die Stimmen der Gäste liegen auf einem einzigen dunklen Band aus Holz am Abend, als Pause.\n\nDer Eindruck folgt einer Vorlage der Betreiberin (ruhig, fließend, gesperrte Versalien, Handschrift als Akzent, feine Metallkante). Ocker/Rot hat sie abgelehnt; am 07.10.2026 hat sie die helle Fassung gewünscht: heller Grund, weiße Tafeln, dunkle Tinte, nur die Stimmen dunkel. Am selben Tag kamen wärmere, greifbarere Dinge dazu: ein zweiter Bogen in hellem Kupferton hinter dem Bühnenfoto, ein Preisschild am Bogen und eine Essensuhr aus Papier (Karte mit Reservierungsbuch, Ergebnis als Bon). Das Material kommt aus dem Lokal: dunkles Holz als Schrift und als Band, Kupfer und Messing von den Handi-Schalen und den Sternlaternen, der Kielbogen des Bühnenfotos aus den Bögen des Taj-Mahal-Wandbilds im Gastraum, die Kuppel über dem Öffnungsstatus aus dem Logo, Bestellblock, Reservierungsbuch und Kassenbon aus dem Alltag des Restaurants.\n\nDie Dichte ist ruhig: viel Luft zwischen den Abschnitten, feine 1-px-Linien statt Flächen, Fotos in ihrem eigenen Seitenverhältnis. Abgelehnt sind schwere Display-Schrift, wechselnde Farbbänder und die Maske eines Lieferportals. Bestellt wird darum nicht über ein fremdes Portal, sondern auf einem eigenen Bestellzettel im selben Material: Plus am Gericht, weißer Zettel, eine Lampe zum Abschicken.",
     "keyCharacteristics": [
       "Ein heller Grund über die ganze Seite, weiße Tafeln, ein dunkles Band (Stimmen).",
-      "Gesperrte Versalien in Josefin Sans 300 für Namen und Überschriften, Allura als eine Zeile Handschrift, Hind als Lauftext.",
+      "Gesperrte Versalien in Josefin Sans 300 für Namen und Überschriften, Allura als Handschrift-Akzent, Hind als Lauftext.",
       "Kupfer als Haarlinie, Bogen und Punkt, Kupferbraun als Handschrift- und Akzentschrift, und als die eine gefüllte Lampe je Knopfgruppe.",
-      "Bühnenfoto im Kielbogen mit Kupferkante, im nativen Hochformat 3:4.",
+      "Bühnenfoto im Kielbogen mit Kupferkante vor einem zweiten, gefüllten Bogen in hellem Kupferton, im nativen Hochformat 3:4, mit einem Preisschild am Bogen.",
       "Schmale Pillenknöpfe mit 1-px-Kante.",
-      "Die Essensuhr: ein halbrundes Zifferblatt der Öffnungszeiten als eigene Funktion der Startseite.",
+      "Die Essensuhr: eine Karte mit drei handgeschriebenen Fragen und einem Reservierungsbuch, das Ergebnis als Bon mit Abrisskante.",
       "Der Bestellzettel: ein Plus-Kreis an jedem Gericht, der Zettel als Dialog (Handy ganze Fläche, Desktop Seitenpaneel), abgeschickt per Anruf oder WhatsApp."
     ],
     "rules": [
       {
         "name": "The One Lamp Rule",
-        "body": "Jede Knopfgruppe hat höchstens eine gefüllte Lampe, die Haupthandlung der Gruppe: auf der Bühne „Jetzt bestellen“ (zur Speisekarte), in der Daumenleiste der Startseite „Bestellen“, in der Essensuhr „Zum Bestellzettel“ (bei „Bei uns essen“ stattdessen „Tisch reservieren“, ruft an), auf der Speisekarte „Bestellzettel“ mit der Summe (Handy in der Daumenleiste, Desktop am Ende der Filterzeile im Lotsen), im Fuß des Bestellzettels „Anrufen“ – sobald die WhatsApp-Nummer gesetzt ist, wird „Per WhatsApp schicken“ die Lampe und „Anrufen“ eine Linien-Pille. Jeder andere Knopf ist eine Linien-Pille, auch „Kopieren“. Aktive Schalter sind ein Zustand (Kupferkante, Punkt, Kupferbraun-Schrift), keine Lampe und keine Fläche; Plus-Kreise und App-Tafeln sind Tafeln mit Kante, keine Lampen.",
+        "body": "Jede Knopfgruppe hat höchstens eine gefüllte Lampe, die Haupthandlung der Gruppe: auf der Bühne „Jetzt bestellen“ (zur Speisekarte), in der Daumenleiste der Startseite „Bestellen“, auf dem Bon der Essensuhr „Zum Bestellzettel“ (bei „Bei uns essen“ stattdessen „Tisch reservieren“, ruft an), auf der Speisekarte „Bestellzettel“ mit der Summe (Handy in der Daumenleiste, Desktop am Ende der Filterzeile im Lotsen), im Fuß des Bestellzettels „Anrufen“ – sobald die WhatsApp-Nummer gesetzt ist, wird „Per WhatsApp schicken“ die Lampe und „Anrufen“ eine Linien-Pille. Jeder andere Knopf ist eine Linien-Pille, auch „Kopieren“ und „Selbst bewerten“ auf dem Band. Aktive Schalter, gewählte Wörter und Zeiten der Essensuhr sind ein Zustand (Kupferkante und Punkt, Federstrich, Kringel), keine Lampe und keine Fläche; Plus-Kreise, App-Tafeln und das Preisschild sind Tafeln, keine Lampen.",
         "section": "colors"
       },
       {
         "name": "The Hairline Copper Rule",
-        "body": "Außerhalb der Lampe erscheint Kupfer nur als Linie, Bogen, Symbolstrich, Punkt, Kontur oder Schrift. Keine Kupferflächen, keine Kupferbänder; die einzige Ausnahme ist der einmal vorbeiziehende Messingglanz (glanz) der App-Tafeln. Der dickste Strich ist der 5-px-Öffnungsbogen des Zifferblatts.",
+        "body": "Außerhalb der Lampe erscheint Kupfer als Linie, Bogen, Symbolstrich, Punkt, Kontur oder Schrift; auch Federstrich und Kringel der Essensuhr sind gezeichnete Linien. Es gibt genau eine stehende Kupferfläche: den zweiten Bühnenbogen (bogen-fond), hell gemischt und hinter dem Foto. Daneben erscheint Kupfer nur als Licht, das nicht als Fläche steht: der einmal vorbeiziehende Messingglanz der App-Tafeln und die weichen Papierschatten von Preisschild und Bon. Auf dem Band sind die Sterne der Note als Symbol in Laternen-Messing gefüllt. Keine weiteren Kupferflächen, keine Kupferbänder.",
         "section": "colors"
       },
       {
@@ -834,27 +914,27 @@
         "section": "typography"
       },
       {
-        "name": "The One Script Line Rule",
-        "body": "Allura erscheint höchstens einmal pro Abschnitt, als ganze kurze Zeile unter der Überschrift, nie in Knöpfen, Navigation oder Fließtext.",
+        "name": "The Handwritten Accent Rule",
+        "body": "Allura steht als eine ganze kurze Zeile unter der Abschnittsüberschrift und sonst nur dort, wo im Restaurant von Hand geschrieben würde: auf dem Preisschild am Bühnenbogen und als die drei Fragen der Uhr-Karte. Nie in Knöpfen, Navigation, Fließtext oder als Zahl.",
         "section": "typography"
       },
       {
         "name": "The Lining Figures Rule",
-        "body": "Preise, Zeiten, Nummern, Status, Essenszeit, Note, Summe, Menge und Plakettenzahl stehen in Tabellenziffern (`lining-nums tabular-nums`).",
+        "body": "Preise, Zeiten, Nummern, Status, Note, Summe, Menge, Plakettenzahl, die Zeiten im Reservierungsbuch und die Werte auf dem Bon stehen in Tabellenziffern (`lining-nums tabular-nums`).",
         "section": "typography"
       },
       {
-        "name": "The No-Shadow Rule",
-        "body": "Karten, Knöpfe und Leisten werfen keine Schatten. Schein ist weiches Kupferlicht ohne Versatz und gehört nur dem Kielbogen und der Essensuhr (Zeigerknopf, Reglergriff).",
+        "name": "The Paper-Only Shadow Rule",
+        "body": "Karten, Tafeln, Knöpfe und Leisten werfen keine Schatten. Einen Schatten bekommen nur die zwei Papierstücke, Preisschild und Bon: weich, nach unten versetzt, in Kupferton (schein bzw. glanz), nie hart. Schein ohne Versatz gehört nur der Kielbogenkante.",
         "section": "elevation"
       }
     ],
     "dos": [
       "**Do** halte den Grund durchgehend hell (grund), Inhalte auf weißen Tafeln (tafel), und setze genau ein dunkles Band (band) für die Stimmen.",
       "**Do** fülle in jeder Knopfgruppe höchstens einen Knopf mit der Lampe; alle anderen Knöpfe sind Linien-Pillen (The One Lamp Rule).",
-      "**Do** nutze Kupfer (kupfer) sonst nur als Linie, Bogen, Symbolstrich oder Punkt, und für Schrift Kupferbraun (kupfer-schrift).",
-      "**Do** setze unter jede Abschnittsüberschrift eine 56 px lange Kupferlinie und höchstens eine Allura-Zeile.",
-      "**Do** zeige Fotos in ihrem nativen Seitenverhältnis; das Bühnenfoto als 3:4-Hochformat im 3:4-Kielbogen.",
+      "**Do** nutze Kupfer (kupfer) sonst nur als Linie, Bogen, Symbolstrich, gezeichneten Strich oder Punkt, und für Schrift Kupferbraun (kupfer-schrift); die einzige stehende Kupferfläche ist der zweite Bühnenbogen (bogen-fond).",
+      "**Do** setze unter jede Abschnittsüberschrift eine 56 px lange Kupferlinie und höchstens eine Allura-Zeile; weitere Handschrift nur dort, wo von Hand geschrieben würde (Preisschild, Fragen der Uhr-Karte).",
+      "**Do** zeige Fotos in ihrem nativen Seitenverhältnis; das Bühnenfoto als 3:4-Hochformat im 3:4-Kielbogen. Einzige Ausnahme ist das Küchenpaar am Handy (gleich breit, 4:5).",
       "**Do** bewege nur `transform` und `opacity`, mit `ease-out` (aus) zwischen 0,3 und 0,9 s, höchstens drei Dinge gleichzeitig, und schalte bei `prefers-reduced-motion` alles ab.",
       "**Do** umrande jedes Eingabefeld mit der Feldlinie (linie-feld), damit es mindestens 3 : 1 erreicht.",
       "**Do** lass neue Knöpfe ohne Lampe als Tafel oder Kreis mit 1-px-Kante auftreten (Plus-Kreis, App-Tafel), nicht als zweite Fläche.",
@@ -865,11 +945,12 @@
       "**Don't** setze einen zweiten gefüllten Knopf in dieselbe Knopfgruppe.",
       "**Don't** setze Handi-Kupfer (kupfer) als Schriftfarbe auf hellen Grund; dafür gibt es Kupferbraun.",
       "**Don't** verwende fette oder schwere Display-Schrift; Überschriften bleiben Josefin Sans 300.",
-      "**Don't** beschneide oder strecke ein Foto über seine Vorlage; kein Foto zweimal auf einer Seite.",
+      "**Don't** strecke ein Foto oder ziehe es über seine Vorlage hinaus; kein Foto zweimal auf einer Seite.",
       "**Don't** wechsle Abschnitte in farbigen Bändern ab und baue keine Lieferportal-Maske nach; bestellt wird auf dem eigenen Bestellzettel.",
       "**Don't** lass den Messingglanz stehen oder wiederholen; er zieht einmal nach dem Laden über die App-Tafeln.",
       "**Don't** setze den Titelstil der App-Tafel (kleine Kupferversalien zwischen Linien) als Dachzeile über Abschnittsüberschriften.",
-      "**Don't** nutze Schatten auf Karten oder Knöpfen; Schein gehört nur Kielbogen und Essensuhr."
+      "**Don't** nutze Schatten auf Karten, Tafeln, Knöpfen oder Leisten; Schatten gehören nur Preisschild und Bon (Papier), der Schein nur der Kielbogenkante.",
+      "**Don't** setze eine zweite gefüllte Kupferfläche neben den Bühnenbogen."
     ]
   }
 }
