@@ -1,60 +1,292 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-07T00:00:00+00:00",
+  "generatedAt": "2026-10-07T06:13:10.503Z",
   "title": "Design System: Restaurant Bombay Freising",
   "extensions": {
     "colorMeta": {
-      "nacht": {
+      "grund": {
         "role": "neutral",
-        "displayName": "Nachtholz",
-        "canonical": "#16110e",
-        "oklch": "oklch(18.3% 0.010 52.8)",
+        "displayName": "Steinputz",
+        "canonical": "#f7f5f1",
+        "oklch": "oklch(97.1% 0.006 84.6)",
         "tonalRamp": [
-          "#0f0a07",
-          "#28231f",
-          "#443e3b",
-          "#635c58",
-          "#827c78",
-          "#a49d99",
-          "#cac2be",
-          "#f4ede8"
+          "#0c0b09",
+          "#252421",
+          "#413f3c",
+          "#5f5d5a",
+          "#82807c",
+          "#a3a19d",
+          "#c9c7c3",
+          "#f0eeea"
         ]
       },
-      "nacht-tief": {
+      "grund-tief": {
         "role": "neutral",
-        "displayName": "Tiefes Holz",
-        "canonical": "#0f0b09",
-        "oklch": "oklch(15.4% 0.008 48.5)",
+        "displayName": "Tiefer Putz",
+        "canonical": "#eeeae3",
+        "oklch": "oklch(93.8% 0.010 81.8)",
         "tonalRamp": [
-          "#0e0a08",
-          "#272321",
-          "#443f3c",
-          "#625c5a",
-          "#827c79",
-          "#a39d9a",
-          "#c9c3bf",
-          "#f3edea"
+          "#0d0b07",
+          "#27241e",
+          "#423f3a",
+          "#615d57",
+          "#838079",
+          "#a5a19a",
+          "#cbc7c0",
+          "#f2eee7"
         ]
       },
       "tafel": {
         "role": "neutral",
         "displayName": "Tafel",
-        "canonical": "#1e1814",
-        "oklch": "oklch(21.5% 0.012 55.6)",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 89.9)",
         "tonalRamp": [
-          "#0f0a07",
-          "#29231e",
-          "#453e3a",
-          "#635c57",
-          "#837b76",
-          "#a59d97",
-          "#cbc2bd",
-          "#f5ede7"
+          "#0c0b09",
+          "#252421",
+          "#413f3c",
+          "#5f5d5a",
+          "#82807c",
+          "#a3a19d",
+          "#c9c7c3",
+          "#f0eeea"
         ]
       },
       "tinte": {
         "role": "neutral",
         "displayName": "Tinte",
+        "canonical": "#21170f",
+        "oklch": "oklch(21.5% 0.022 59.9)",
+        "tonalRamp": [
+          "#120903",
+          "#2c2219",
+          "#493d34",
+          "#675b51",
+          "#8a7d73",
+          "#ac9f94",
+          "#d3c4b9",
+          "#faebe0"
+        ]
+      },
+      "tinte-leise": {
+        "role": "neutral",
+        "displayName": "Leise Tinte",
+        "canonical": "#3b2f25",
+        "oklch": "oklch(31.5% 0.025 61.6)",
+        "tonalRamp": [
+          "#130903",
+          "#2d2118",
+          "#4a3d33",
+          "#685b50",
+          "#8b7d72",
+          "#ad9e92",
+          "#d4c4b8",
+          "#fbebde"
+        ]
+      },
+      "tinte-still": {
+        "role": "neutral",
+        "displayName": "Stille Tinte",
+        "canonical": "#6a5c4e",
+        "oklch": "oklch(48.4% 0.028 67.1)",
+        "tonalRamp": [
+          "#130901",
+          "#2d2115",
+          "#4a3d30",
+          "#695b4d",
+          "#8c7d6f",
+          "#ae9f8f",
+          "#d4c4b4",
+          "#fcebdb"
+        ]
+      },
+      "kupfer": {
+        "role": "primary",
+        "displayName": "Handi-Kupfer",
+        "canonical": "#b07440",
+        "oklch": "oklch(61.1% 0.102 60.0)",
+        "tonalRamp": [
+          "#150700",
+          "#381c01",
+          "#603301",
+          "#864e15",
+          "#ac713d",
+          "#d0925e",
+          "#f8b883",
+          "#feeadb"
+        ]
+      },
+      "kupfer-schrift": {
+        "role": "primary",
+        "displayName": "Kupferbraun",
+        "canonical": "#87511f",
+        "oklch": "oklch(48.8% 0.096 59.8)",
+        "tonalRamp": [
+          "#150700",
+          "#391c01",
+          "#603301",
+          "#854f1c",
+          "#aa7241",
+          "#ce9362",
+          "#f6b987",
+          "#ffeadb"
+        ]
+      },
+      "lampe": {
+        "role": "primary",
+        "displayName": "Lampe",
+        "canonical": "#87511f",
+        "oklch": "oklch(48.8% 0.096 59.8)",
+        "tonalRamp": [
+          "#150700",
+          "#391c01",
+          "#603301",
+          "#854f1c",
+          "#aa7241",
+          "#ce9362",
+          "#f6b987",
+          "#ffeadb"
+        ]
+      },
+      "lampe-hell": {
+        "role": "primary",
+        "displayName": "Lampe im Licht",
+        "canonical": "#9c5f29",
+        "oklch": "oklch(54.4% 0.105 59.0)",
+        "tonalRamp": [
+          "#160700",
+          "#391b01",
+          "#603201",
+          "#884d12",
+          "#ae703b",
+          "#d2915c",
+          "#fab781",
+          "#ffeadb"
+        ]
+      },
+      "auf-lampe": {
+        "role": "primary",
+        "displayName": "Auf der Lampe",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0c0b09",
+          "#252421",
+          "#413f3c",
+          "#5f5d5a",
+          "#82807c",
+          "#a3a19d",
+          "#c9c7c3",
+          "#f0eeea"
+        ]
+      },
+      "linie": {
+        "role": "neutral",
+        "displayName": "Linie",
+        "canonical": "rgba(33, 23, 15, 0.12)",
+        "oklch": "oklch(21.5% 0.022 59.9)",
+        "tonalRamp": [
+          "#120903",
+          "#2c2219",
+          "#493d34",
+          "#675b51",
+          "#8a7d73",
+          "#ac9f94",
+          "#d3c4b9",
+          "#faebe0"
+        ],
+        "source": "color-mix(in oklch, var(--tinte) 12%, transparent)",
+        "note": "Im Stylesheet als color-mix über #21170f geführt; canonical ist der aufgelöste Wert."
+      },
+      "linie-stark": {
+        "role": "neutral",
+        "displayName": "Starke Linie",
+        "canonical": "rgba(33, 23, 15, 0.28)",
+        "oklch": "oklch(21.5% 0.022 59.9)",
+        "tonalRamp": [
+          "#120903",
+          "#2c2219",
+          "#493d34",
+          "#675b51",
+          "#8a7d73",
+          "#ac9f94",
+          "#d3c4b9",
+          "#faebe0"
+        ],
+        "source": "color-mix(in oklch, var(--tinte) 28%, transparent)",
+        "note": "Im Stylesheet als color-mix über #21170f geführt; canonical ist der aufgelöste Wert."
+      },
+      "linie-kupfer": {
+        "role": "primary",
+        "displayName": "Kupferkante",
+        "canonical": "rgba(176, 116, 64, 0.55)",
+        "oklch": "oklch(61.1% 0.102 60.0)",
+        "tonalRamp": [
+          "#150700",
+          "#381c01",
+          "#603301",
+          "#864e15",
+          "#ac713d",
+          "#d0925e",
+          "#f8b883",
+          "#feeadb"
+        ],
+        "source": "color-mix(in oklch, var(--kupfer) 55%, transparent)",
+        "note": "Im Stylesheet als color-mix über #b07440 geführt; canonical ist der aufgelöste Wert."
+      },
+      "schein": {
+        "role": "primary",
+        "displayName": "Kupferschein",
+        "canonical": "rgba(176, 116, 64, 0.3)",
+        "oklch": "oklch(61.1% 0.102 60.0)",
+        "tonalRamp": [
+          "#150700",
+          "#381c01",
+          "#603301",
+          "#864e15",
+          "#ac713d",
+          "#d0925e",
+          "#f8b883",
+          "#feeadb"
+        ],
+        "source": "color-mix(in oklch, var(--kupfer) 30%, transparent)",
+        "note": "Im Stylesheet als color-mix über #b07440 geführt; canonical ist der aufgelöste Wert."
+      },
+      "band": {
+        "role": "tertiary",
+        "displayName": "Abendholz",
+        "canonical": "#231a13",
+        "oklch": "oklch(22.6% 0.019 59.5)",
+        "tonalRamp": [
+          "#110904",
+          "#2b221b",
+          "#483d36",
+          "#665b53",
+          "#897e75",
+          "#ab9f96",
+          "#d1c5bb",
+          "#f9ece2"
+        ]
+      },
+      "band-tafel": {
+        "role": "tertiary",
+        "displayName": "Band-Tafel",
+        "canonical": "#2d231b",
+        "oklch": "oklch(26.5% 0.021 60.4)",
+        "tonalRamp": [
+          "#120904",
+          "#2c221a",
+          "#483d35",
+          "#675b52",
+          "#8a7e74",
+          "#ac9f95",
+          "#d2c4ba",
+          "#faece1"
+        ]
+      },
+      "band-tinte": {
+        "role": "tertiary",
+        "displayName": "Band-Tinte",
         "canonical": "#f2e9dc",
         "oklch": "oklch(93.8% 0.020 77.3)",
         "tonalRamp": [
@@ -62,317 +294,157 @@
           "#292319",
           "#463f34",
           "#645c51",
-          "#847c70",
-          "#a59d91",
-          "#cbc3b6",
+          "#877f73",
+          "#a9a094",
+          "#cfc6b9",
           "#f6ede0"
         ]
       },
-      "tinte-leise": {
-        "role": "neutral",
-        "displayName": "Leise Tinte",
-        "canonical": "#d9cdbb",
-        "oklch": "oklch(85.3% 0.028 78.2)",
-        "tonalRamp": [
-          "#110901",
-          "#2b2214",
-          "#483e2f",
-          "#665c4c",
-          "#877c6b",
-          "#a89d8c",
-          "#cec2b1",
-          "#f9edda"
-        ]
-      },
-      "tinte-still": {
-        "role": "neutral",
-        "displayName": "Stille Tinte",
-        "canonical": "#b3a591",
-        "oklch": "oklch(72.8% 0.032 76.9)",
-        "tonalRamp": [
-          "#130900",
-          "#2d2211",
-          "#4a3e2c",
-          "#685c49",
-          "#887b68",
-          "#aa9c88",
-          "#d0c2ad",
-          "#fbecd7"
-        ]
-      },
-      "kupfer": {
-        "role": "primary",
-        "displayName": "Handi-Kupfer",
-        "canonical": "#d39a66",
-        "oklch": "oklch(73.0% 0.097 62.8)",
-        "tonalRamp": [
-          "#230000",
-          "#421400",
-          "#623100",
-          "#835019",
-          "#a6703c",
-          "#c9915d",
-          "#f1b782",
-          "#ffe1ab"
-        ]
-      },
-      "kupfer-hell": {
-        "role": "primary",
-        "displayName": "Laternen-Messing",
-        "canonical": "#e6b98a",
-        "oklch": "oklch(81.5% 0.081 67.5)",
-        "tonalRamp": [
-          "#1f0100",
-          "#3c1900",
-          "#5b3601",
-          "#7c5427",
-          "#9d7447",
-          "#c09567",
-          "#e8bb8c",
-          "#ffe5b5"
-        ]
-      },
-      "linie": {
-        "role": "neutral",
-        "displayName": "Linie",
-        "canonical": "color-mix(in oklch, var(--tinte) 14%, transparent)",
-        "resolved": "color-mix(in oklch, #f2e9dc 14%, transparent)",
-        "oklch": "oklch(93.8% 0.020 77.3)",
-        "tonalRamp": [
-          "#100a03",
-          "#292319",
-          "#463f34",
-          "#645c51",
-          "#847c70",
-          "#a59d91",
-          "#cbc3b6",
-          "#f6ede0"
-        ]
-      },
-      "linie-stark": {
-        "role": "neutral",
-        "displayName": "Starke Linie",
-        "canonical": "color-mix(in oklch, var(--tinte) 32%, transparent)",
-        "resolved": "color-mix(in oklch, #f2e9dc 32%, transparent)",
-        "oklch": "oklch(93.8% 0.020 77.3)",
-        "tonalRamp": [
-          "#100a03",
-          "#292319",
-          "#463f34",
-          "#645c51",
-          "#847c70",
-          "#a59d91",
-          "#cbc3b6",
-          "#f6ede0"
-        ]
-      },
-      "linie-kupfer": {
-        "role": "primary",
-        "displayName": "Kupferkante",
-        "canonical": "color-mix(in oklch, var(--kupfer) 55%, transparent)",
-        "resolved": "color-mix(in oklch, #d39a66 55%, transparent)",
-        "oklch": "oklch(73.0% 0.097 62.8)",
-        "tonalRamp": [
-          "#230000",
-          "#421400",
-          "#623100",
-          "#835019",
-          "#a6703c",
-          "#c9915d",
-          "#f1b782",
-          "#ffe1ab"
-        ]
-      },
-      "schein": {
-        "role": "primary",
-        "displayName": "Kupferschein",
-        "canonical": "color-mix(in oklch, var(--kupfer) 38%, transparent)",
-        "resolved": "color-mix(in oklch, #d39a66 38%, transparent)",
-        "oklch": "oklch(73.0% 0.097 62.8)",
-        "tonalRamp": [
-          "#230000",
-          "#421400",
-          "#623100",
-          "#835019",
-          "#a6703c",
-          "#c9915d",
-          "#f1b782",
-          "#ffe1ab"
-        ]
-      },
-      "decke": {
+      "band-still": {
         "role": "tertiary",
-        "displayName": "Tischdecke",
-        "canonical": "#efe8dd",
-        "oklch": "oklch(93.3% 0.017 79.3)",
+        "displayName": "Stille Band-Tinte",
+        "canonical": "#cdbda8",
+        "oklch": "oklch(80.6% 0.034 74.7)",
         "tonalRamp": [
-          "#0f0a04",
-          "#28231b",
-          "#443f36",
-          "#635d53",
-          "#837c72",
-          "#a49d93",
-          "#cac3b8",
-          "#f5ede2"
+          "#120900",
+          "#2e2210",
+          "#4b3d2b",
+          "#695b48",
+          "#8d7e6a",
+          "#ae9f8a",
+          "#d5c5b0",
+          "#fcecd6"
         ]
       },
-      "decke-tafel": {
+      "band-linie": {
         "role": "tertiary",
-        "displayName": "Gestärktes Leinen",
-        "canonical": "#f8f4ee",
-        "oklch": "oklch(96.9% 0.009 78.3)",
-        "tonalRamp": [
-          "#0d0b07",
-          "#26241f",
-          "#423f3a",
-          "#605d58",
-          "#807d77",
-          "#a19e98",
-          "#c7c3be",
-          "#f2eee8"
-        ]
-      },
-      "decke-tinte": {
-        "role": "tertiary",
-        "displayName": "Dunkle Tinte",
-        "canonical": "#2a1d14",
-        "oklch": "oklch(24.4% 0.026 55.8)",
+        "displayName": "Band-Linie",
+        "canonical": "#4a3c30",
+        "oklch": "oklch(36.7% 0.028 62.4)",
         "tonalRamp": [
           "#130802",
-          "#2e2118",
-          "#4b3c33",
-          "#6a5a50",
-          "#8a7a6f",
-          "#ac9b8f",
-          "#d2c0b4",
-          "#fdeade"
+          "#2e2116",
+          "#4b3d31",
+          "#695a4e",
+          "#8d7d6f",
+          "#af9e90",
+          "#d5c4b5",
+          "#fdebdc"
         ]
       },
-      "decke-still": {
+      "band-kupfer": {
         "role": "tertiary",
-        "displayName": "Stille Decken-Tinte",
-        "canonical": "#5b4a3a",
-        "oklch": "oklch(42.2% 0.034 65.0)",
+        "displayName": "Laternen-Messing",
+        "canonical": "#e2b588",
+        "oklch": "oklch(80.3% 0.079 66.3)",
         "tonalRamp": [
-          "#150800",
-          "#302012",
-          "#4d3c2d",
-          "#6b5a49",
-          "#8c7968",
-          "#ae9b89",
-          "#d4c0ae",
-          "#ffead7"
-        ]
-      },
-      "decke-linie": {
-        "role": "tertiary",
-        "displayName": "Deckenfalte",
-        "canonical": "#d6cab8",
-        "oklch": "oklch(84.4% 0.028 78.2)",
-        "tonalRamp": [
-          "#120901",
-          "#2b2214",
-          "#483e2f",
-          "#665c4c",
-          "#877c6b",
-          "#a89d8b",
-          "#cec2b0",
-          "#f9edda"
+          "#140800",
+          "#361d00",
+          "#5b3604",
+          "#7c5429",
+          "#a1774b",
+          "#c4986c",
+          "#ebbe90",
+          "#feebd8"
         ]
       },
       "gruen": {
-        "role": "functional",
+        "role": "tertiary",
         "displayName": "Grün (vegetarisch)",
-        "canonical": "#9cc99a",
-        "oklch": "oklch(79.1% 0.081 143.7)",
+        "canonical": "#3b6b38",
+        "oklch": "oklch(48.0% 0.095 142.7)",
         "tonalRamp": [
-          "#001200",
-          "#032d05",
-          "#224a22",
-          "#40693f",
-          "#5f8a5e",
-          "#80ac7e",
-          "#a5d2a3",
-          "#cffdcc"
+          "#001000",
+          "#012e01",
+          "#1c4c1a",
+          "#3b6b38",
+          "#5d8f5a",
+          "#7eb17a",
+          "#a3d89f",
+          "#ccffc7"
         ]
       },
       "tuerkis": {
-        "role": "functional",
+        "role": "tertiary",
         "displayName": "Türkis (vegan)",
-        "canonical": "#8cc5b4",
-        "oklch": "oklch(77.9% 0.064 174.1)",
+        "canonical": "#1f6656",
+        "oklch": "oklch(46.2% 0.074 174.9)",
         "tonalRamp": [
-          "#001309",
-          "#002d22",
-          "#0e4b3d",
-          "#32695b",
-          "#528a7a",
-          "#74ac9b",
-          "#99d2c1",
-          "#c3fdeb"
+          "#010f0a",
+          "#012b23",
+          "#034b3e",
+          "#256b5b",
+          "#4b8f7d",
+          "#6db19f",
+          "#93d8c4",
+          "#bdffec"
         ]
       },
       "chili": {
-        "role": "functional",
+        "role": "tertiary",
         "displayName": "Chili (scharf)",
-        "canonical": "#e59a7c",
-        "oklch": "oklch(75.4% 0.100 42.6)",
+        "canonical": "#a8452a",
+        "oklch": "oklch(51.8% 0.137 36.1)",
         "tonalRamp": [
-          "#280000",
-          "#480900",
-          "#692a0b",
-          "#8b482d",
-          "#af684c",
-          "#d3896c",
-          "#fcaf90",
-          "#ffd9b9"
+          "#1c0300",
+          "#450e01",
+          "#731d01",
+          "#9b391e",
+          "#c45e42",
+          "#e98063",
+          "#feb29c",
+          "#ffe9e3"
         ]
       },
       "markiert": {
-        "role": "functional",
-        "displayName": "Markierung (offene Stelle)",
+        "role": "neutral",
+        "displayName": "Markierung (offene Stellen)",
         "canonical": "#fff07a",
         "oklch": "oklch(94.4% 0.140 102.1)",
         "tonalRamp": [
-          "#170700",
-          "#312300",
-          "#4d4000",
-          "#6c5f00",
-          "#8c7f0e",
-          "#ada13d",
-          "#d3c766",
-          "#fef290"
+          "#0e0b00",
+          "#292500",
+          "#484103",
+          "#695f02",
+          "#8f8207",
+          "#b3a421",
+          "#d9ca53",
+          "#fff28c"
         ]
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Nur der Name „Bombay“ auf der Bühne, gesperrte Versalien."
+        "purpose": "Nur der Name „Bombay“ auf der Bühne."
       },
       "display-karte": {
         "displayName": "Display Karte",
-        "purpose": "Seitentitel der Speisekarte."
+        "purpose": "Titel der Speisekarte."
       },
       "display-zahl": {
         "displayName": "Display Zahl",
-        "purpose": "Bewertungsnote im Abschnitt Stimmen."
+        "purpose": "Bewertungsnote im Band."
+      },
+      "uhr-zahl": {
+        "displayName": "Uhr-Zahl",
+        "purpose": "Gewählte Essenszeit in der Essensuhr."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Abschnittsüberschriften mit 56-px-Kupferlinie darunter."
+        "purpose": "Abschnittsüberschriften mit 56-px-Kupferlinie."
       },
       "headline-recht": {
         "displayName": "Headline Recht",
-        "purpose": "Seitentitel Impressum und Datenschutz."
+        "purpose": "Titel von Impressum und Datenschutz."
       },
       "headline-gruppe": {
         "displayName": "Headline Gruppe",
-        "purpose": "Aufklappbare Gruppen der Speisekarte, ohne Linie."
+        "purpose": "Gruppen der Speisekarte, ohne Linie."
       },
       "hand": {
         "displayName": "Hand",
-        "purpose": "Eine Allura-Zeile unter der Überschrift, Laternen-Messing."
+        "purpose": "Eine Allura-Zeile unter der Überschrift."
       },
       "title": {
         "displayName": "Title",
@@ -380,7 +452,7 @@
       },
       "title-klein": {
         "displayName": "Title klein",
-        "purpose": "Überschriften der Legende."
+        "purpose": "Legende der Speisekarte."
       },
       "title-recht": {
         "displayName": "Title Recht",
@@ -388,23 +460,27 @@
       },
       "zitat": {
         "displayName": "Zitat",
-        "purpose": "Gästezitate auf der Tischdecke."
+        "purpose": "Gästezitate im Band."
       },
       "status": {
         "displayName": "Status",
-        "purpose": "„Heute geöffnet bis …“ in der Kuppel-Plakette."
+        "purpose": "Öffnungsstatus in der Kuppel-Plakette."
+      },
+      "uhr-satz": {
+        "displayName": "Uhrsatz",
+        "purpose": "Ergebnis der Essensuhr: Bestellen bis X."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Lauftext, Hind."
+        "purpose": "Lauftext."
       },
       "body-fuehrung": {
         "displayName": "Führung",
-        "purpose": "Einstiegssatz im Abschnitt Küche."
+        "purpose": "Einstieg Küche."
       },
       "body-adresse": {
         "displayName": "Adresse",
-        "purpose": "Anschrift in der Besuchstafel."
+        "purpose": "Anschrift in der Anfahrt."
       },
       "gericht": {
         "displayName": "Gericht",
@@ -416,15 +492,15 @@
       },
       "body-klein": {
         "displayName": "Klein",
-        "purpose": "Beschreibungen, Hinweise, Lieferzeile."
+        "purpose": "Beschreibungen, Hinweise."
       },
       "body-fein": {
         "displayName": "Fein",
-        "purpose": "Copyright im Fuß."
+        "purpose": "Copyright."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Knöpfe, Desktop-Navigation, Mehr-Verweise, Fußverweise."
+        "purpose": "Knöpfe, Navigation, Mehr-Verweise."
       },
       "label-nav": {
         "displayName": "Label Nav",
@@ -432,10 +508,10 @@
       },
       "label-schalter": {
         "displayName": "Label Schalter",
-        "purpose": "Filterschalter und Gruppensprung der Speisekarte."
+        "purpose": "Filter, Wahl der Essensuhr, Gruppensprung."
       },
       "label-schmal": {
-        "displayName": "Label schmal",
+        "displayName": "Label Schmal",
         "purpose": "Feste Navigation unter 390 px."
       },
       "label-marke": {
@@ -445,9 +521,19 @@
     },
     "shadows": [
       {
-        "name": "kupferschein",
+        "name": "kupferschein-bogen",
         "value": "filter: drop-shadow(0 0 8px var(--schein))",
-        "purpose": "Nur auf der Kielbogenkante des Bühnenfotos."
+        "purpose": "Kielbogenkante des Bühnenfotos."
+      },
+      {
+        "name": "kupferschein-zeiger",
+        "value": "filter: drop-shadow(0 0 6px var(--schein))",
+        "purpose": "Zeigerknopf des Zifferblatts der Essensuhr."
+      },
+      {
+        "name": "kupferhof-regler",
+        "value": "box-shadow: 0 0 0 5px var(--schein)",
+        "purpose": "Griff des Uhrreglers."
       }
     ],
     "motion": [
@@ -455,6 +541,11 @@
         "name": "aus",
         "value": "cubic-bezier(.16, 1, .3, 1)",
         "purpose": "Ease-out für alle Ein- und Zustandsbewegungen, 0,3–0,9 s, nur transform/opacity."
+      },
+      {
+        "name": "ein",
+        "value": "cubic-bezier(.55, 0, 1, .45)",
+        "purpose": "Nur für das Ausweichen der Leisten beim Herunterscrollen (0,3 s)."
       },
       {
         "name": "knopf-druck",
@@ -498,41 +589,42 @@
     ],
     "shapes": {
       "kielbogen": "path M0 400V138C0 78 70 70 150 0c80 70 150 78 150 138v262z (viewBox 0 0 300 400), Maske des Bühnenfotos; Kante 1,2 px Kupfer, 9 px außen",
-      "kuppelbogen": "border-radius: 50% 50% 0 0 / 26px 26px 0 0, 1 px linie-kupfer"
+      "kuppelbogen": "border-radius: 50% 50% 0 0 / 26px 26px 0 0, 1 px linie-kupfer",
+      "zifferblatt": "oberer Halbkreis, Mitte 160/170, Radius 140 im viewBox 0 0 320 190; 11:00 links, 22:30 rechts; Vorlaufbogen Radius 156, Ziffern Radius 120"
     },
-    "backdrop": "color-mix 94–96 % nacht/nacht-tief, backdrop-filter: blur(10px) für Kopf, Lotse, Daumenleiste"
+    "backdrop": "color-mix 94–96 % grund/grund-tief, backdrop-filter: blur(10px) für Kopf, Lotse, Daumenleiste"
   },
   "components": [
     {
-      "name": "Lampe (Online bestellen)",
+      "name": "Lampe",
       "kind": "button",
       "refersTo": "button-lampe",
-      "description": "Der eine gefüllte Knopf: nur „Online bestellen“.",
+      "description": "Die eine gefüllte Haupthandlung einer Knopfgruppe, meist „Online bestellen“.",
       "html": "<a class=\"ds-knopf ds-knopf--lampe\" href=\"#\">Online bestellen</a>",
-      "css": ".ds-knopf { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 4px 26px 0; border: 1px solid var(--linie-stark); border-radius: var(--pille); background: transparent; color: var(--tinte); font-family: var(--versal); font-size: var(--gr-mini); letter-spacing: .2em; text-transform: uppercase; line-height: 1; text-decoration: none; white-space: nowrap; transition: transform .3s var(--aus); } .ds-knopf:active { transform: scale(.97); } .ds-knopf:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; } .ds-knopf--lampe { border-color: var(--kupfer); background: var(--kupfer); color: var(--nacht); } .ds-knopf--lampe:hover { background: var(--kupfer-hell); border-color: var(--kupfer-hell); }"
+      "css": ".ds-knopf { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 4px 26px 0; border: 1px solid var(--linie-stark); border-radius: var(--pille); background: transparent; color: var(--tinte); font: 400 var(--gr-mini)/1 var(--versal); letter-spacing: .2em; text-transform: uppercase; text-decoration: none; white-space: nowrap; cursor: pointer; transition: transform .3s var(--aus); } .ds-knopf:active { transform: scale(.97); } .ds-knopf:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; } .ds-knopf--lampe { border-color: var(--lampe); background: var(--lampe); color: var(--auf-lampe); } .ds-knopf--lampe:hover { background: var(--lampe-hell); border-color: var(--lampe-hell); }"
     },
     {
       "name": "Linien-Pille",
       "kind": "button",
       "refersTo": "button-linie",
-      "description": "Jeder andere Knopf: Telefon, Route, Anrufen.",
-      "html": "<a class=\"ds-knopf-linie\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2\"/></svg>08161 4965102</a>",
-      "css": ".ds-knopf-linie { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 4px 26px 0; border: 1px solid var(--linie-stark); border-radius: var(--pille); background: transparent; color: var(--tinte); font-family: var(--versal); font-size: var(--gr-mini); letter-spacing: .2em; text-transform: uppercase; line-height: 1; text-decoration: none; white-space: nowrap; transition: transform .3s var(--aus); } .ds-knopf-linie svg { margin-top: -4px; } .ds-knopf-linie:hover { border-color: var(--kupfer); color: var(--kupfer-hell); } .ds-knopf-linie:active { transform: scale(.97); } .ds-knopf-linie:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; }"
+      "description": "Jeder andere Knopf: Telefon, Route, Anrufen, Zurücksetzen.",
+      "html": "<a class=\"ds-knopf-linie\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\" d=\"M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z\"/></svg>08161 4965102</a>",
+      "css": ".ds-knopf-linie { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 4px 26px 0; border: 1px solid var(--linie-stark); border-radius: var(--pille); background: transparent; color: var(--tinte); font: 400 var(--gr-mini)/1 var(--versal); letter-spacing: .2em; text-transform: uppercase; text-decoration: none; white-space: nowrap; cursor: pointer; transition: transform .3s var(--aus); } .ds-knopf-linie svg { margin-top: -4px; } .ds-knopf-linie:hover { border-color: var(--kupfer); color: var(--kupfer-schrift); } .ds-knopf-linie:active { transform: scale(.97); } .ds-knopf-linie:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; }"
     },
     {
-      "name": "Filterschalter",
+      "name": "Schalter",
       "kind": "chip",
       "refersTo": "schalter",
-      "description": "Filter der Speisekarte; aktiv kupfergefüllt als Zustand.",
-      "html": "<span class=\"ds-schalter\">Vegetarisch</span> <span class=\"ds-schalter ds-schalter--an\">Vegan</span>",
-      "css": ".ds-schalter { display: inline-flex; align-items: center; min-height: 38px; padding: 4px 16px 0; border: 1px solid var(--linie-stark); border-radius: var(--pille); font: 400 .72rem var(--versal); letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; color: var(--tinte-leise); } .ds-schalter--an { border-color: var(--kupfer); background: var(--kupfer); color: var(--nacht); }"
+      "description": "Filter der Speisekarte und Wahl der Essensuhr; aktiv mit Kupferkante und Punkt.",
+      "html": "<span class=\"ds-schalter\">Vegetarisch</span> <span class=\"ds-schalter ds-schalter--an\">Abholen</span>",
+      "css": ".ds-schalter { display: inline-flex; align-items: center; min-height: 38px; padding: 4px 16px 0; border: 1px solid var(--linie-stark); border-radius: var(--pille); font: 400 .72rem var(--versal); letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; color: var(--tinte-leise); } .ds-schalter--an { border-color: var(--kupfer); color: var(--kupfer-schrift); } .ds-schalter--an::before { content: \"\"; width: 6px; height: 6px; margin: -3px 8px 0 -4px; border-radius: 50%; background: var(--kupfer); }"
     },
     {
       "name": "Kennzeichen",
       "kind": "chip",
       "refersTo": "marke",
       "description": "Kleine Konturpille für vegetarisch, vegan, scharf.",
-      "html": "<span class=\"ds-marke ds-marke--veg\">veg.</span> <span class=\"ds-marke ds-marke--vegan\">vegan</span> <span class=\"ds-marke ds-marke--scharf\">scharf</span>",
+      "html": "<span class=\"ds-marke ds-marke--veg\">vegetarisch</span> <span class=\"ds-marke ds-marke--vegan\">vegan möglich</span> <span class=\"ds-marke ds-marke--scharf\">scharf</span>",
       "css": ".ds-marke { display: inline-block; padding: 3px 8px 0; border: 1px solid; border-radius: var(--pille); font: 400 .72rem/1.4 var(--versal); letter-spacing: .08em; text-transform: uppercase; } .ds-marke--veg { color: var(--gruen); } .ds-marke--vegan { color: var(--tuerkis); } .ds-marke--scharf { color: var(--chili); }"
     },
     {
@@ -540,7 +632,7 @@
       "kind": "input",
       "refersTo": "suchfeld",
       "description": "Suche der Speisekarte, Pille auf Tafel mit Kupfer-Lupe.",
-      "html": "<label class=\"ds-suche\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"6\"/><path d=\"m20 20-4.5-4.5\"/></svg><input type=\"search\" placeholder=\"Gericht oder Zutat suchen\" aria-label=\"Speisekarte durchsuchen\"></label>",
+      "html": "<label class=\"ds-suche\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"6\"/><path d=\"m20 20-4.5-4.5\"/></svg><input type=\"search\" placeholder=\"Gericht oder Zutat suchen\" aria-label=\"Speisekarte durchsuchen\"></label>",
       "css": ".ds-suche { position: relative; display: block; } .ds-suche svg { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--kupfer); pointer-events: none; } .ds-suche input { width: 100%; min-height: 46px; padding: 10px 18px 8px 46px; border: 1px solid var(--linie-stark); border-radius: var(--pille); background: var(--tafel); color: var(--tinte); font: 400 1rem var(--lauf); } .ds-suche input::placeholder { color: var(--tinte-still); } .ds-suche input:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; }"
     },
     {
@@ -548,63 +640,72 @@
       "kind": "nav",
       "refersTo": "menu-knopf",
       "description": "Desktop-Navigation in gesperrten Versalien, Telefon als Kupferkanten-Pille.",
-      "html": "<nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">Start</a><a href=\"#\">Speisekarte</a><a href=\"#\">Besuch</a><a class=\"ds-nav-tel\" href=\"#\">08161 4965102</a></nav>",
-      "css": ".ds-nav { display: flex; align-items: center; gap: 4px; background: var(--nacht); padding: 12px; } .ds-nav a { padding: 12px 12px 8px; color: var(--tinte); font: 400 var(--gr-mini) var(--versal); letter-spacing: .2em; text-transform: uppercase; text-decoration: none; } .ds-nav a:hover, .ds-nav a[aria-current=\"page\"] { color: var(--kupfer-hell); } .ds-nav a:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; } .ds-nav .ds-nav-tel { margin-left: 10px; padding: 11px 18px 8px; border: 1px solid var(--linie-kupfer); border-radius: var(--pille); color: var(--kupfer-hell); }"
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">Speisekarte</a><a href=\"#\">Bei uns</a><a href=\"#\">Zeiten &amp; Anfahrt</a><a class=\"ds-nav-tel\" href=\"#\">08161 4965102</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 4px; background: var(--grund); padding: 12px; border-bottom: 1px solid var(--linie); } .ds-nav a { padding: 12px 12px 8px; color: var(--tinte); font: 400 var(--gr-mini) var(--versal); letter-spacing: .2em; text-transform: uppercase; text-decoration: none; } .ds-nav a:hover, .ds-nav a[aria-current=\"page\"] { color: var(--kupfer-schrift); } .ds-nav a:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; } .ds-nav .ds-nav-tel { margin-left: 10px; padding: 11px 18px 8px; border: 1px solid var(--linie-kupfer); border-radius: var(--pille); color: var(--kupfer-schrift); }"
     },
     {
       "name": "Tafel",
       "kind": "card",
       "refersTo": "tafel",
-      "description": "Besuchsinfos auf Tafelgrund mit Haarlinie, eckig.",
-      "html": "<div class=\"ds-tafel\"><h3>Öffnungszeiten</h3><p>Mo und Mi–So 11:30–14:00 und 17:30–22:00</p></div>",
+      "description": "Weiße Tafel mit Haarlinie, eckig; Besuchsinfos und Wahlfeld der Essensuhr.",
+      "html": "<div class=\"ds-tafel\"><h3>Zeiten</h3><p>Montag 11:30–14:00 · 17:30–22:00</p></div>",
       "css": ".ds-tafel { padding: 30px 24px 22px; background: var(--tafel); border: 1px solid var(--linie); color: var(--tinte-leise); font: 400 var(--gr-lauf)/1.65 var(--lauf); } .ds-tafel h3 { margin: 0 0 .6em; font: 400 1.15rem/1.3 var(--versal); letter-spacing: .14em; text-transform: uppercase; color: var(--tinte); } .ds-tafel p { margin: 0; font-variant-numeric: lining-nums tabular-nums; }"
     },
     {
       "name": "Zitatkarte",
       "kind": "card",
       "refersTo": "zitat-karte",
-      "description": "Gästezitat auf gestärktem Leinen, nur im Abschnitt Stimmen.",
-      "html": "<div class=\"ds-decke\"><blockquote class=\"ds-zitat\">Sehr freundlich, das Essen kam heiß und schnell.</blockquote></div>",
-      "css": ".ds-decke { background: var(--decke); padding: 24px; } .ds-zitat { margin: 0; padding: 26px 24px 20px; background: var(--decke-tafel); border: 1px solid var(--decke-linie); font: 300 1.2rem/1.5 var(--versal); color: var(--decke-tinte); }"
+      "description": "Gästezitat auf der Band-Tafel, nur im dunklen Band der Stimmen.",
+      "html": "<div class=\"ds-band\"><blockquote class=\"ds-zitat\">„Sehr gutes Essen, kurze Wartezeiten.“</blockquote></div>",
+      "css": ".ds-band { background: var(--band); padding: 24px; } .ds-zitat { margin: 0; padding: 26px 24px 20px; background: var(--band-tafel); border: 1px solid var(--band-linie); font: 300 1.2rem/1.5 var(--versal); color: var(--band-tinte); }"
     },
     {
       "name": "Kuppel-Plakette",
       "kind": "custom",
       "refersTo": "status",
       "description": "Kuppel aus dem Logo über einem flachen Kupferbogen mit dem Öffnungsstatus.",
-      "html": "<div class=\"ds-heute\"><svg class=\"ds-kuppel\" viewBox=\"0 0 40 27\" aria-hidden=\"true\"><path d=\"M20 3c-8 0-14 6-14 14v9h28v-9c0-8-6-14-14-14z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.2\"/></svg><p class=\"ds-heute-satz\">Heute geöffnet bis <b>22:00</b></p></div>",
-      "css": ".ds-heute { display: inline-grid; justify-items: center; text-align: center; background: var(--nacht); padding: 16px; } .ds-kuppel { width: 40px; height: 27px; color: var(--kupfer); margin-bottom: -1px; position: relative; z-index: 1; } .ds-heute-satz { position: relative; margin: 0; padding: 17px 26px 0; font: 400 .98rem/1.3 var(--versal); letter-spacing: .14em; text-transform: uppercase; color: var(--tinte); font-variant-numeric: lining-nums tabular-nums; } .ds-heute-satz::before { content: \"\"; position: absolute; inset: 0 0 .35em; border: 1px solid var(--linie-kupfer); border-bottom: 0; border-radius: 50% 50% 0 0 / 26px 26px 0 0; } .ds-heute-satz b { font-weight: 400; color: var(--kupfer-hell); }"
+      "html": "<div class=\"ds-heute\"><svg class=\"ds-kuppel\" viewBox=\"0 0 48 32.5\" aria-hidden=\"true\"><path d=\"M24 10c-9 0-15.5 6.8-15.5 15.5V31h31v-5.5C39.5 16.8 33 10 24 10z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"/><path d=\"M4 31h40\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\"/></svg><p class=\"ds-heute-satz\">Heute geöffnet bis <b>14:00</b></p></div>",
+      "css": ".ds-heute { display: inline-grid; justify-items: center; text-align: center; } .ds-kuppel { width: 40px; height: 27px; color: var(--kupfer); margin-bottom: -1px; position: relative; z-index: 1; } .ds-heute-satz { position: relative; margin: 0; padding: 17px 26px 0; font: 400 .98rem/1.3 var(--versal); letter-spacing: .14em; text-transform: uppercase; color: var(--tinte); font-variant-numeric: lining-nums tabular-nums; } .ds-heute-satz::before { content: \"\"; position: absolute; inset: 0 0 .35em; border: 1px solid var(--linie-kupfer); border-bottom: 0; border-radius: 50% 50% 0 0 / var(--bogen) var(--bogen) 0 0; } .ds-heute-satz b { font-weight: 400; color: var(--kupfer-schrift); }"
+    },
+    {
+      "name": "Essensuhr-Zifferblatt",
+      "kind": "custom",
+      "refersTo": "uhr-satz",
+      "description": "Halbrund 11:00–22:30 mit Öffnungsbögen, Vorlaufbogen, Jetzt-Strich und Zeiger; darunter der Uhrsatz.",
+      "html": "<div class=\"ds-uhr\"><svg class=\"ds-blatt\" viewBox=\"0 0 320 190\" aria-hidden=\"true\"><path class=\"g\" d=\"M20 170A140 140 0 0 1 300 170\"/><path class=\"o\" d=\"M24.6 134.6A140 140 0 0 1 101.3 42.9\"/><path class=\"o\" d=\"M181.2 31.6A140 140 0 0 1 299.4 165.8\"/><path class=\"v\" d=\"M141.9 15.1A156 156 0 0 1 181.3 15.5\"/><line class=\"z\" x1=\"160\" y1=\"170\" x2=\"175.9\" y2=\"30.9\"/><circle class=\"k\" cx=\"175.9\" cy=\"30.9\" r=\"7\"/><circle class=\"m\" cx=\"160\" cy=\"170\" r=\"4\"/></svg><p class=\"ds-uhr-satz\">Bestellen bis <b>12:30</b>, abholen um 13:00.</p></div>",
+      "css": ".ds-uhr { display: grid; justify-items: center; text-align: center; } .ds-blatt { width: min(100%, 360px); overflow: visible; } .ds-blatt .g { fill: none; stroke: var(--linie-stark); stroke-width: 1; } .ds-blatt .o { fill: none; stroke: var(--kupfer); stroke-width: 5; stroke-linecap: round; } .ds-blatt .v { fill: none; stroke: var(--kupfer); stroke-width: 2; stroke-dasharray: 2 4; stroke-linecap: round; } .ds-blatt .z { stroke: var(--kupfer); stroke-width: 1.2; } .ds-blatt .k { fill: var(--tafel); stroke: var(--kupfer); stroke-width: 1.5; filter: drop-shadow(0 0 6px var(--schein)); } .ds-blatt .m { fill: var(--kupfer); } .ds-uhr-satz { margin: 6px 0 4px; font: 400 clamp(1.05rem, .95rem + .6vw, 1.3rem)/1.4 var(--versal); letter-spacing: .08em; text-transform: uppercase; color: var(--tinte); } .ds-uhr-satz b { font-weight: 400; color: var(--kupfer-schrift); }"
     }
   ],
   "narrative": {
-    "northStar": "Das Bombay am Abend",
-    "overview": "Ein durchgehender Grund aus dunklem Holz, darauf leise gesperrte Versalien, eine Zeile Handschrift und Kupfer, das wie die Kante einer Handi-Schale oder einer Sternlaterne im Licht steht. Die Seite fließt ohne wechselnde Farbbänder von oben nach unten; nur die Stimmen der Gäste liegen auf einem hellen Abschnitt im Ton einer Tischdecke, als eine einzige Pause.\n\nDer Eindruck folgt einer Vorlage der Betreiberin (dunkel, fließend, gesperrte Versalien, Handschrift als Akzent, Goldkante). Sie hat am 07.10.2026 die früheren Paletten Ocker/Rot und Tischdecken-Weiß abgelehnt. Die Vorlage bestimmt den Eindruck, nicht das Material: Das Material kommt aus dem Lokal. Dunkles Holz ist der Grund, Kupfer und Messing stammen von den Handi-Schalen und den Sternlaternen, der Kielbogen des Bühnenfotos ist aus den Bögen des Taj-Mahal-Wandbilds im Gastraum abgeleitet, die Kuppel über dem Öffnungsstatus aus dem Logo. Es gibt keinen Seed-Roll; die Welt ist aus Vorlage und Laden gebaut.\n\nDie Dichte ist ruhig: viel Luft zwischen den Abschnitten, feine 1-px-Linien statt Flächen, Fotos in ihrem eigenen Seitenverhältnis. Abgelehnt sind schwere Display-Schrift, wechselnde Farbbänder und die Maske eines Lieferportals.",
+    "northStar": "Das Bombay bei Tageslicht",
+    "overview": "Ein durchgehender heller Grund wie Steinputz in der Altstadt am Mittag, darauf Schrift in dunklem Holz, leise gesperrte Versalien, eine Zeile Handschrift und Kupfer, das wie die Kante einer Handi-Schale oder einer Sternlaterne im Licht steht. Inhalte liegen auf weißen Tafeln mit Haarlinie. Die Seite fließt ohne wechselnde Farbbänder von oben nach unten; nur die Stimmen der Gäste liegen auf einem einzigen dunklen Band aus Holz am Abend, als Pause.\n\nDer Eindruck folgt einer Vorlage der Betreiberin (ruhig, fließend, gesperrte Versalien, Handschrift als Akzent, feine Metallkante). Ocker/Rot hat sie abgelehnt; am 07.10.2026 hat sie die helle Fassung gewünscht: heller Grund, weiße Tafeln, dunkle Tinte, nur die Stimmen dunkel. Das Material kommt aus dem Lokal: dunkles Holz als Schrift und als Band, Kupfer und Messing von den Handi-Schalen und den Sternlaternen, der Kielbogen des Bühnenfotos aus den Bögen des Taj-Mahal-Wandbilds im Gastraum, die Kuppel über dem Öffnungsstatus aus dem Logo.\n\nDie Dichte ist ruhig: viel Luft zwischen den Abschnitten, feine 1-px-Linien statt Flächen, Fotos in ihrem eigenen Seitenverhältnis. Abgelehnt sind schwere Display-Schrift, wechselnde Farbbänder und die Maske eines Lieferportals.",
     "keyCharacteristics": [
-      "Ein dunkler Holzgrund über die ganze Seite, ein heller Abschnitt (Stimmen).",
+      "Ein heller Grund über die ganze Seite, weiße Tafeln, ein dunkles Band (Stimmen).",
       "Gesperrte Versalien in Josefin Sans 300 für Namen und Überschriften, Allura als eine Zeile Handschrift, Hind als Lauftext.",
-      "Kupfer als Haarlinie, als Handschrift-Akzent und als die eine gefüllte Lampe „Online bestellen“.",
+      "Kupfer als Haarlinie, Bogen und Punkt, Kupferbraun als Handschrift- und Akzentschrift, und als die eine gefüllte Lampe je Knopfgruppe.",
       "Bühnenfoto im Kielbogen mit Kupferkante, im nativen Hochformat 3:4.",
-      "Schmale Pillenknöpfe mit 1-px-Kante."
+      "Schmale Pillenknöpfe mit 1-px-Kante.",
+      "Die Essensuhr: ein halbrundes Zifferblatt der Öffnungszeiten als eigene Funktion der Startseite."
     ],
     "rules": [
       {
         "name": "The One Lamp Rule",
-        "body": "Kupfer füllt unter den Handlungsknöpfen genau eine Fläche: „Online bestellen“. Jeder andere Knopf ist eine Linien-Pille. Steht in einer Knopfgruppe ein zweiter gefüllter Knopf, ist das ein Fehler. Gefüllte Filterschalter der Speisekarte sind ein Zustand („aktiv“), keine Lampe.",
+        "body": "Jede Knopfgruppe hat höchstens eine gefüllte Lampe, die Haupthandlung der Gruppe: „Online bestellen“, in der Essensuhr bei „Bei uns essen“ stattdessen „Tisch reservieren“. Jeder andere Knopf ist eine Linien-Pille. Aktive Schalter sind ein Zustand (Kupferkante, Punkt, Kupferbraun-Schrift), keine Lampe und keine Fläche.",
         "section": "colors"
       },
       {
         "name": "The Hairline Copper Rule",
-        "body": "Außerhalb der Lampe erscheint Kupfer nur als Linie (1 px), als Symbolstrich, als Punkt oder als Handschrift. Keine Kupferflächen, keine Kupferbänder.",
+        "body": "Außerhalb der Lampe erscheint Kupfer nur als Linie, Bogen, Symbolstrich, Punkt oder Schrift. Keine Kupferflächen, keine Kupferbänder. Der dickste Strich ist der 5-px-Öffnungsbogen des Zifferblatts.",
         "section": "colors"
       },
       {
-        "name": "The One Tablecloth Rule",
-        "body": "Es gibt genau einen hellen Abschnitt, die Stimmen. Er überdeckt die volle Breite und hat seine eigenen Tinten; dunkle Tokens werden dort nicht benutzt.",
+        "name": "The One Band Rule",
+        "body": "Es gibt genau ein dunkles Band, die Stimmen. Es reicht über die volle Breite und hat eigene Tokens (band*); helle Tinten werden dort nicht benutzt, Band-Tokens nirgends sonst.",
         "section": "colors"
       },
       {
         "name": "The Material Test",
-        "body": "Eine neue Farbe muss im Lokal zu finden sein (Holz, Kupfer, Messing, Leinen). Verschwände sie mit einem Lieferanten, gehört sie nicht hierher.",
+        "body": "Eine neue Farbe muss im Lokal zu finden sein (Putz, Holz, Kupfer, Messing). Verschwände sie mit einem Lieferanten, gehört sie nicht hierher.",
         "section": "colors"
       },
       {
@@ -619,31 +720,32 @@
       },
       {
         "name": "The Lining Figures Rule",
-        "body": "Preise, Zeiten, Nummern, Status und Note stehen in Tabellenziffern (`lining-nums tabular-nums`).",
+        "body": "Preise, Zeiten, Nummern, Status, Essenszeit und Note stehen in Tabellenziffern (`lining-nums tabular-nums`).",
         "section": "typography"
       },
       {
         "name": "The No-Shadow Rule",
-        "body": "Karten, Knöpfe und Leisten werfen keine Schatten. Der einzige Schein gehört dem Kielbogen.",
+        "body": "Karten, Knöpfe und Leisten werfen keine Schatten. Schein ist weiches Kupferlicht ohne Versatz und gehört nur dem Kielbogen und der Essensuhr (Zeigerknopf, Reglergriff).",
         "section": "elevation"
       }
     ],
     "dos": [
-      "**Do** halte den Grund durchgehend dunkel (nacht) und setze genau einen hellen Abschnitt (decke) für die Stimmen.",
-      "**Do** fülle nur „Online bestellen“ mit Kupfer; alle anderen Knöpfe sind Linien-Pillen (The One Lamp Rule).",
-      "**Do** nutze Kupfer sonst nur als 1-px-Linie, Symbolstrich, Punkt oder Handschrift.",
+      "**Do** halte den Grund durchgehend hell (grund), Inhalte auf weißen Tafeln (tafel), und setze genau ein dunkles Band (band) für die Stimmen.",
+      "**Do** fülle in jeder Knopfgruppe höchstens einen Knopf mit der Lampe; alle anderen Knöpfe sind Linien-Pillen (The One Lamp Rule).",
+      "**Do** nutze Kupfer (kupfer) sonst nur als Linie, Bogen, Symbolstrich oder Punkt, und für Schrift Kupferbraun (kupfer-schrift).",
       "**Do** setze unter jede Abschnittsüberschrift eine 56 px lange Kupferlinie und höchstens eine Allura-Zeile.",
       "**Do** zeige Fotos in ihrem nativen Seitenverhältnis; das Bühnenfoto als 3:4-Hochformat im 3:4-Kielbogen.",
       "**Do** bewege nur `transform` und `opacity`, mit `ease-out` (aus) zwischen 0,3 und 0,9 s, höchstens drei Dinge gleichzeitig, und schalte bei `prefers-reduced-motion` alles ab.",
       "**Do** lege jeden Gestaltungswert als Token in `:root` an."
     ],
     "donts": [
-      "**Don't** bringe Ocker, Rot oder Tischdecken-Weiß als Flächen- oder Bandfarbe zurück; die Betreiberin hat diese Paletten am 07.10.2026 abgelehnt. Das Rot der Bänke bleibt in den Fotos.",
+      "**Don't** bringe Ocker oder Rot als Flächen- oder Bandfarbe; die Betreiberin hat diese Paletten am 07.10.2026 abgelehnt. Das Rot der Bänke bleibt in den Fotos.",
       "**Don't** setze einen zweiten gefüllten Knopf in dieselbe Knopfgruppe.",
+      "**Don't** setze Handi-Kupfer (kupfer) als Schriftfarbe auf hellen Grund; dafür gibt es Kupferbraun.",
       "**Don't** verwende fette oder schwere Display-Schrift; Überschriften bleiben Josefin Sans 300.",
       "**Don't** beschneide oder strecke ein Foto über seine Vorlage; kein Foto zweimal auf einer Seite.",
       "**Don't** wechsle Abschnitte in farbigen Bändern ab und baue keine Lieferportal-Maske nach.",
-      "**Don't** nutze Schatten auf Karten oder Knöpfen; der einzige Schein gehört der Kielbogenkante."
+      "**Don't** nutze Schatten auf Karten oder Knöpfen; Schein gehört nur Kielbogen und Essensuhr."
     ]
   }
 }
