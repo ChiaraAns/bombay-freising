@@ -24,6 +24,15 @@ Wunsch: Muster auf der Bühne weg (nicht wie eine Tapete, Muster nur gezielt), �
 - **Beliebt als Tafel:** Aubergine, Preise in Kurkuma, bei jedem Gericht ein pinkes Plus, das es auf den Bestellzettel legt (Nummer aus den Daten, `data-nr`), Filter „Alle zehn / Vegetarisch“ (`data-v` aus dem Kennzeichen v).
 - **Bei uns:** der Gastraum über die ganze Breite, darüber eine weiße Karte mit Adresse, Merkmalen (Taj-Mahal-Wandbild, Terrasse, WLAN) und der Lampe „Tisch reservieren“.
 
+## Dritte Runde (10.10.2026)
+
+- Farbige Teller entfernt, Schalen größer (118 % der Bühnenfläche, sichtbare Schale ca. 70 %).
+- Hinter der Schale ein Lotus-Mandala (Lotuskranz doppelt, Kranz kleiner Spitzblätter, Punktringe, innerer Lotus) statt der Jali-Rosette; dieselbe Form als Maske in der Ecke der Beliebt-Tafel.
+- Start/Stopp-Knopf entfernt. Anhalten (WCAG 2.2.2) jetzt so: Antippen einer kleinen Schale, Wischen oder Pfeiltasten halten den Wechsel an; Zeigen mit der Maus oder Tastaturfokus auf der Bühne pausiert ihn, Verlassen setzt ihn fort.
+- Wellenstrich unter den Überschriften vollständig (Zeichenfläche 76 × 14, Bogen innen; vorher oben und unten angeschnitten).
+- Stimmen: zartes Rosé statt Kurkuma-Gelb, weiße Zitatkarten mit großem pinkem Anführungszeichen, Note in Pink.
+- Hinweis unter den Bewertungen („417 Bewertungen im Google-Unternehmensprofil … Wir prüfen nicht …“) auf Wunsch entfernt; siehe `ABNAHME.md` (§ 5b UWG).
+
 ## Geprüft (10.10.2026, lokal)
 
 Detektor `[]` (390 und 1440, alle vier Seiten), keine Überbreite 390/360, Konsole leer, Kontrast über der Grenze (Gelb auf Pink nur für große Schrift, 3,8–4,0:1; kleine Schrift ≥ 4,97:1), Wechsel von selbst / Antippen / Anhalten / Fortsetzen, „Auf den Zettel“ → Bestellzettel, Essensuhr unverändert.

@@ -144,7 +144,7 @@
     var name = document.querySelector('[data-lust-name]'), text = document.querySelector('[data-lust-text]');
     var preis = document.querySelector('[data-lust-preis]'), dazu = document.querySelector('[data-lust-dazu]');
     var merkmale = document.querySelector('[data-lust-merkmale]'), sticker = document.querySelector('[data-sticker]');
-    var pause = document.querySelector('[data-pause]'), lustBox = document.querySelector('[data-lust]');
+    var lustBox = document.querySelector('[data-lust]');
     var aktiv = 0, takt = null, angehalten = matchMedia('(prefers-reduced-motion: reduce)').matches;
     var zeige = function (i, vomGast) {
       i = (i + wahlen.length) % wahlen.length;
@@ -166,13 +166,18 @@
       wahlen.forEach(function (x, k) { x.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
       if (vomGast) lustBox.setAttribute('aria-live', 'polite');
     };
-    var halt = function () { clearInterval(takt); takt = null; angehalten = true; pause.setAttribute('aria-pressed', 'true'); pause.setAttribute('aria-label', 'Wechsel fortsetzen'); };
+    var halt = function () { clearInterval(takt); takt = null; angehalten = true; };
     var los = function () {
-      angehalten = false; pause.setAttribute('aria-pressed', 'false'); pause.setAttribute('aria-label', 'Wechsel anhalten');
+      angehalten = false;
       clearInterval(takt); takt = setInterval(function () { if (!document.hidden) zeige(aktiv + 1); }, 5200);
     };
     wahlen.forEach(function (w, i) { w.addEventListener('click', function () { halt(); zeige(i, true); }); });
-    pause.addEventListener('click', function () { if (angehalten) los(); else halt(); });
+    // Anhalten ohne eigenen Knopf (WCAG 2.2.2): Antippen, Wischen, Pfeiltasten halten an; Zeigen mit der Maus oder Fokus pausiert
+    var buehneEl = document.querySelector('.buehne'), ruht = false;
+    var pausieren = function () { if (takt) { clearInterval(takt); takt = null; ruht = true; } };
+    var fortsetzen = function () { if (ruht && !angehalten) { ruht = false; los(); } };
+    buehneEl.addEventListener('mouseenter', pausieren); buehneEl.addEventListener('mouseleave', fortsetzen);
+    buehneEl.addEventListener('focusin', pausieren); buehneEl.addEventListener('focusout', function (e) { if (!buehneEl.contains(e.relatedTarget)) fortsetzen(); });
     // Pfeiltasten in der Reihe der kleinen Schalen
     document.querySelector('.gerichtwahl').addEventListener('keydown', function (e) {
       if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
@@ -187,10 +192,10 @@
       if (Math.abs(dx) > 40) { halt(); zeige(aktiv + (dx < 0 ? 1 : -1), true); }
     });
     teller.style.touchAction = 'pan-y';
-    // Wechselt von selbst, solange die Bühne zu sehen ist; mit „Anhalten“ und bei reduzierter Bewegung nicht
+    // Wechselt von selbst, solange die Bühne zu sehen ist; nach dem ersten Eingreifen und bei reduzierter Bewegung nicht
     if (!angehalten) los(); else halt();
     if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (e) { if (!e[0].isIntersecting && takt) { clearInterval(takt); takt = null; } else if (e[0].isIntersecting && !angehalten && !takt) los(); }).observe(document.querySelector('.buehne'));
+      new IntersectionObserver(function (e) { if (!e[0].isIntersecting && takt) { clearInterval(takt); takt = null; } else if (e[0].isIntersecting && !angehalten && !takt && !ruht) los(); }).observe(document.querySelector('.buehne'));
     }
   }
 
