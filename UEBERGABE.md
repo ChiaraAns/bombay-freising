@@ -2,6 +2,16 @@
 
 Stand 06.10.2026, live auf `main` (PR #1 und #2): https://chiaraans.github.io/bombay-freising/
 
+## Fassungen (10.10.2026)
+
+| Pfad | Inhalt |
+|---|---|
+| `/` (Repo-Wurzel) | aktuelle Seite = Fassung 1, wird weiter aus `daten/speisekarte.json` geschrieben |
+| `fassung-1/` | eingefrorene, eigenständige Kopie vom 07.10.2026 (eigene Bilder und Schriften, `noindex`); wird nicht mehr generiert |
+| `fassung-2/` | Entwurf „Laternenlicht“ (`fassung-2/LIESMICH.md`), eigenständig, `noindex`; `karte.mjs` schreibt Speisekarte, „Beliebt“ und den Tisch mit |
+
+Der Auslieferungs-Workflow kopiert alle `fassung-*`-Ordner mit. Wird Fassung 2 gewählt: ihre Dateien in die Wurzel übernehmen, `noindex` dort entfernen, `DESIGN.md` neu schreiben.
+
 ## Was gebaut wurde
 
 | Seite | Inhalt |

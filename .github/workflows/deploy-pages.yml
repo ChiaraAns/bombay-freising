@@ -42,13 +42,13 @@ jobs:
           # Seiten und ihre Dateien — bei Bedarf ergänzen.
           cp *.html _site/
           shopt -s nullglob
-          for d in img fonts; do if [ -d "$d" ]; then cp -r "$d" _site/; fi; done
+          for d in img fonts fassung-*; do if [ -d "$d" ]; then cp -r "$d" _site/; fi; done
           for f in *.css *.js *.svg *.png *.ico *.webmanifest; do cp "$f" _site/; done
           # Sicherheitsnetz: keine Notizen, Skripte oder Quelldaten im Netz.
           find _site \( -name '*.md' -o -name '*.py' -o -name '*.mjs' -o -name '*.json' -o -name '.DS_Store' \) -delete
           find _site -mindepth 1 -name '.*' -prune -exec rm -rf {} +
           touch _site/.nojekyll
-          echo "Ausgeliefert:"; find _site -maxdepth 2 | sort | head -60
+          echo "Ausgeliefert:"; find _site -maxdepth 2 | sort | head -120
 
       - uses: actions/upload-pages-artifact@v3
         with:

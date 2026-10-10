@@ -2,6 +2,12 @@
 
 Stand 06.10.2026. Bis zur Antwort steht auf der Seite nichts Geratenes; unklare Angaben sind weggelassen oder im Impressum gelb markiert.
 
+## Zwei Fassungen zur Auswahl (10.10.2026)
+
+- **Fassung 1** (bisher, eingefroren): https://chiaraans.github.io/bombay-freising/fassung-1/
+- **Fassung 2 „Laternenlicht“** (neu): https://chiaraans.github.io/bombay-freising/fassung-2/ — Laternen aus dem Gastraum als Erkennungszeichen, gedeckter Tisch mit vier Schalen als Startbild (Beschreibung in `fassung-2/LIESMICH.md`).
+- Die Hauptadresse zeigt weiter Fassung 1. **Bitte entscheiden, welche Fassung dorthin soll.** Beide Unterseiten sind für Suchmaschinen gesperrt (`noindex`).
+
 ## Vor dem Livegang nötig
 
 1. **Speisekarte bestätigen** (`daten/speisekarte.json`): Nur 7 Preise stammen von der neueren Karvi-Seite (`"karvi": true`), alle übrigen von der älteren order-smart-Seite und sind vorläufig. Bitte die ganze Karvi-Karte abgleichen (am besten Mittwoch ab 11:30, wenn die Bestellstrecke lädt) oder die Preise einmal bestätigen.
