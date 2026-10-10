@@ -1,0 +1,749 @@
+/*
+  Restaurant Bombay Freising – hell wie ein Mittag in der Altstadt.
+  Ein durchgehender heller Grund, Schrift in dunklem Holz, Kupfer und Messing der
+  Handi-Schalen und Laternen als feine Linie, ein dunkles Band (Holz am Abend) als Pause.
+  Schriften lokal (OFL): Josefin Sans (gesperrte Versalien), Allura (Handschrift), Hind (Text).
+*/
+@font-face { font-family: "Josefin Sans"; src: url("fonts/josefin-300.woff2") format("woff2"); font-weight: 300; font-display: swap; }
+@font-face { font-family: "Josefin Sans"; src: url("fonts/josefin-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Allura"; src: url("fonts/allura.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Hind"; src: url("fonts/hind-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Hind"; src: url("fonts/hind-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Hind"; src: url("fonts/hind-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+
+:root {
+  /* Heller Grund: Steinputz bei Tageslicht */
+  --grund: #f7f5f2;          /* Seitengrund: Steinputz, fast neutral */
+  --grund-tief: #eeeae3;     /* Fuß, Leisten */
+  --tafel: #ffffff;          /* Tafeln und Karten */
+  /* Schrift: dunkles Holz */
+  --tinte: #21170f;
+  --tinte-leise: #3b2f25;
+  --tinte-still: #6a5c4e;
+  /* Kupfer der Handi-Schalen, Messing der Laternen: Linie, Handschrift, eine Lampe */
+  --kupfer: #b07440;         /* Linien, Ornament */
+  --kupfer-schrift: #87511f;    /* Kupfer als Schrift auf hellem Grund */
+  --lampe: #87511f;          /* die eine gefüllte Lampe: Online bestellen */
+  --lampe-hell: #9c5f29;
+  --auf-lampe: #ffffff;
+  --linie: color-mix(in oklch, var(--tinte) 12%, transparent);
+  --linie-stark: color-mix(in oklch, var(--tinte) 28%, transparent);
+  --linie-feld: color-mix(in oklch, var(--tinte) 52%, transparent);  /* Rand von Eingabefeldern, mind. 3:1 */
+  --linie-kupfer: color-mix(in oklch, var(--kupfer) 55%, transparent);
+  --schein: color-mix(in oklch, var(--kupfer) 30%, transparent);
+  --glanz: color-mix(in oklch, var(--kupfer) 16%, transparent);   /* Lichtstreif der App-Tafeln, Schatten des Bons */
+  --band-hof: color-mix(in oklch, var(--band-kupfer) 14%, transparent); /* Hover der Linien-Pille im Band */
+  --schleier: color-mix(in oklch, var(--tinte) 40%, transparent); /* hinter dem Bestellzettel */
+  /* Das eine dunkle Band: Holz am Abend (Stimmen) */
+  --band: #231a13;
+  --band-tafel: #2d231b;
+  --band-tinte: #f2e9dc;
+  --band-still: #cdbda8;
+  --band-linie: #4a3c30;
+  --band-kupfer: #e2b588;
+  /* Kennzeichen der Karte */
+  --gruen: #3b6b38;
+  --tuerkis: #1f6656;
+  --chili: #a8452a;
+  --markiert: #fff07a;
+  /* Schrift */
+  --versal: "Josefin Sans", "Futura", system-ui, sans-serif;
+  --hand: "Allura", "Segoe Script", cursive;
+  --lauf: Hind, "Segoe UI", system-ui, sans-serif;
+  --gr-titel: clamp(2.6rem, 1.6rem + 4.6vw, 5rem);
+  --gr-h2: clamp(1.9rem, 1.3rem + 2.6vw, 3rem);
+  --gr-hand: clamp(1.75rem, 1.4rem + 1.2vw, 2.4rem);
+  --gr-lauf: 1.0625rem;
+  --gr-klein: .92rem;
+  --gr-mini: .76rem;
+  /* Maß */
+  --rand: clamp(18px, 4.5vw, 40px);
+  --luft: clamp(64px, 10vw, 128px);
+  --kopf-hoehe: 62px;
+  --pille: 999px;
+  --ecke-tafel: 16px;        /* App-Tafeln */
+  --ecke-feld: 12px;         /* Eingabefelder im Bestellzettel */
+  --bogen: 26px;             /* Scheitelhöhe des Kuppelbogens über dem Status */
+  --aus: cubic-bezier(.16, 1, .3, 1);
+  --ein: cubic-bezier(.55, 0, 1, .45);
+  --fokus: var(--kupfer-schrift);
+  --pfeil: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%23b07440' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  --strich: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M2 7C24 3 58 2 98 4.5' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E");
+  --kringel: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 50' preserveAspectRatio='none'%3E%3Cpath d='M66 7C44 2 14 7 6 21c-6 12 12 24 44 24 29 0 46-10 45-22C94 11 74 4 46 6' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E");
+  --zacken-oben: conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg);
+  --zacken-unten: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg);
+  /* Laternenlicht: aus den Laternen des Gastraums */
+  --licht: #ffd27e;                 /* Licht im Inneren der Laterne */
+  --licht-hof: color-mix(in oklch, var(--licht) 42%, transparent);
+  --licht-tief: #e2a24d;            /* Funken, dunkleres Laternenlicht */
+  --pfeil-hoch: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 30'%3E%3Cpath d='M20 28C8 22 6 12 12 3m0 0-6 5m6-5 4 7' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  --funke: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M5 0l1.2 3.8L10 5 6.2 6.2 5 10 3.8 6.2 0 5l3.8-1.2z'/%3E%3C/svg%3E");
+  --glut-mitte: #b9692b;
+  --glut-rand: #4c301b;
+  --laterne-dunkel: #2b1c10;
+  --laterne-metall: #5b3d22;
+  --laterne-loch: #ffe1a0;
+  --laterne-band: #7a5330;
+  --laterne-glanz: color-mix(in oklch, #fff6e6 38%, transparent);
+  --laterne-faden: color-mix(in oklch, var(--tinte) 45%, transparent);
+  --glas-rot: #d2452f;              /* farbige Glassteine der Laternen */
+  --glas-blau: #2f7cc4;
+  --glas-gruen: #2f9a57;
+  --glas-tuerkis: #1fb0a6;
+  /* Thali-Tablett aus Messing */
+  --thali-flaeche: radial-gradient(circle at 36% 30%, #fcf7ee 0, #f2e5d1 46%, #e4cdae 100%);
+  --thali-rand: #ecdcc3;
+  --thali-schatten: color-mix(in oklch, var(--tinte) 42%, transparent);
+  --schale-schatten: drop-shadow(0 12px 10px color-mix(in oklch, var(--tinte) 34%, transparent));
+  --sternlicht: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cg fill='%23d99a3e'%3E%3Cpath d='M22 30l1.6 5 5 1.6-5 1.6-1.6 5-1.6-5-5-1.6 5-1.6z' opacity='.7'/%3E%3Cpath d='M128 18l1.2 3.6 3.6 1.2-3.6 1.2-1.2 3.6-1.2-3.6-3.6-1.2 3.6-1.2z' opacity='.55'/%3E%3Cpath d='M92 96l1.8 5.6 5.6 1.8-5.6 1.8-1.8 5.6-1.8-5.6-5.6-1.8 5.6-1.8z' opacity='.6'/%3E%3Cpath d='M160 132l1.2 3.6 3.6 1.2-3.6 1.2-1.2 3.6-1.2-3.6-3.6-1.2 3.6-1.2z' opacity='.5'/%3E%3Cpath d='M40 150l1.4 4.2 4.2 1.4-4.2 1.4-1.4 4.2-1.4-4.2-4.2-1.4 4.2-1.4z' opacity='.45'/%3E%3Ccircle cx='70' cy='40' r='1.6' opacity='.5'/%3E%3Ccircle cx='150' cy='70' r='1.3' opacity='.45'/%3E%3Ccircle cx='12' cy='96' r='1.4' opacity='.4'/%3E%3Ccircle cx='118' cy='160' r='1.6' opacity='.45'/%3E%3Ccircle cx='60' cy='118' r='1.1' opacity='.4'/%3E%3C/g%3E%3C/svg%3E");
+  /* Zier unter Überschriften: Faden, Stern, Faden */
+  --zier: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 14'%3E%3Cpath d='M0 7h28M52 7h28' stroke='%23000' stroke-width='1'/%3E%3Cpath d='M40 .5l1.9 4.1 4.1-1.4-1.4 4.1L48.7 7l-4.1 1.9 1.4 4.1-4.1-1.4L40 13.5l-1.9-4.1-4.1 1.4 1.4-4.1L31.3 7l4.1-1.9-1.4-4.1 4.1 1.4z'/%3E%3C/svg%3E");
+  --fenster-form: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300' preserveAspectRatio='none'%3E%3Cpath d='M0 300V92C0 70 52 62 120 46 162 36 186 18 200 0c14 18 38 36 80 46 68 16 120 24 120 46v208z'/%3E%3C/svg%3E");
+  /* Festfarben: nur auf der Bühne. Pink aus dem Logo (Werbegrafik des Inhabers),
+     Ringelblumen-Orange und Kurkuma-Gelb der Girlanden, Pfauentürkis und Chilirot der Rangoli */
+  --rani: #d6246e;
+  --rani-tief: #b3135a;             /* Pink als Schrift und Lampe der Bühne */
+  --genda: #f7961d;
+  --genda-tief: #c45a00;            /* Orange als Schrift */
+  --genda-rand: #e8690f;
+  --haldi: #fbc531;
+  --haldi-hell: #ffe066;
+  --mor: #0e7c80;
+  --mirchi: #c0321c;
+  --patta: #4f8a2e;
+  --bogen-fond: color-mix(in oklch, var(--kupfer) 22%, var(--grund));  /* zweiter Bogen hinter dem Bühnenbild */
+  --bogen-form: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400' preserveAspectRatio='none'%3E%3Cpath d='M0 400V138C0 78 70 70 150 0c80 70 150 78 150 138v262z'/%3E%3C/svg%3E");
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--kopf-hoehe) + 16px); scrollbar-color: var(--kupfer) var(--grund-tief); }
+body { margin: 0; background: var(--grund); color: var(--tinte-leise); font: 400 var(--gr-lauf)/1.65 var(--lauf); -webkit-font-smoothing: antialiased; caret-color: var(--kupfer); }
+::selection { background: var(--lampe); color: var(--auf-lampe); }
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; text-underline-offset: .25em; text-decoration-thickness: 1px; }
+p { margin: 0 0 1em; }
+h1, h2, h3 { margin: 0; font-weight: 300; color: var(--tinte); text-wrap: balance; }
+h2 { font: 300 var(--gr-h2)/1.1 var(--versal); letter-spacing: .24em; text-transform: uppercase; }
+h2::after { content: ""; display: block; width: 92px; height: 16px; margin: .45em 0 .4em; background: var(--kupfer); -webkit-mask: var(--zier) center / contain no-repeat; mask: var(--zier) center / contain no-repeat; }
+h3 { font: 400 1.15rem/1.3 var(--versal); letter-spacing: .14em; text-transform: uppercase; }
+.hand { margin: 0 0 1.1rem; font: 400 var(--gr-hand)/1.1 var(--hand); color: var(--kupfer-schrift); }
+.wrap { width: min(1160px, 100% - 2 * var(--rand)); margin-inline: auto; }
+.defs { position: absolute; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.skip { position: absolute; left: -999px; top: 8px; z-index: 200; background: var(--tinte); color: var(--grund); padding: 10px 16px; font-weight: 700; }
+.skip:focus { left: 8px; }
+:focus-visible { outline: 2px solid var(--fokus); outline-offset: 4px; }
+[hidden] { display: none !important; }
+.preis, .zeiten td, .nr, .heute-satz, .note-zahl { font-variant-numeric: lining-nums tabular-nums; }
+.klein { font-size: var(--gr-klein); color: var(--tinte-still); }
+
+/* ---------- Logo: Freisteller als Maske ---------- */
+.logo { display: block; width: 92px; height: 40px; background: var(--tinte); -webkit-mask: url("logo-gold.png") center / contain no-repeat; mask: url("logo-gold.png") center / contain no-repeat; }
+.logo--fuss { width: 132px; height: 58px; background: var(--kupfer); margin-inline: auto; }
+
+/* ---------- Knöpfe: schmale Pillen, gesperrte Versalien ---------- */
+.knopf { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 4px 26px 0; border: 1px solid var(--linie-stark); border-radius: var(--pille); background: transparent; color: var(--tinte); font: 400 var(--gr-mini)/1 var(--versal); letter-spacing: .2em; text-transform: uppercase; text-decoration: none; white-space: nowrap; cursor: pointer; transition: transform .3s var(--aus); }
+.knopf svg { width: 17px; height: 17px; flex: none; margin-top: -4px; }
+.knopf:active { transform: scale(.97); }
+.knopf--lampe { border-color: var(--lampe); background: var(--lampe); color: var(--auf-lampe); }
+.knopf--linie { border-color: var(--linie-stark); }
+@media (hover: hover) and (pointer: fine) {
+  .knopf--lampe:hover { background: var(--lampe-hell); border-color: var(--lampe-hell); }
+  .knopf--linie:hover { border-color: var(--kupfer); color: var(--kupfer-schrift); }
+  .knopf--band:hover { background: var(--band-hof); }
+  .nav a:hover, .fuss ul a:hover { color: var(--kupfer-schrift); }
+  .mehr:hover svg { transform: translateX(4px); }
+  .app-knopf:hover { border-color: var(--kupfer); transform: translateY(-2px); }
+  .dazu:hover { border-color: var(--kupfer); color: var(--kupfer-schrift); }
+  .kachel:hover img { transform: scale(1.03); }
+  .beliebt-liste li:hover::before { transform: rotate(90deg) scale(1.3); }
+  .beliebt-liste li:hover .name { transform: translateX(5px); color: var(--kupfer-schrift); }
+  .etikett:hover .etikett-name { color: var(--kupfer-schrift); }
+  .schale:hover .schale-bild img { transform: rotate(-8deg) scale(1.03); }
+  .schale:hover .schale-dazu { border-color: var(--kupfer); color: var(--kupfer-schrift); }
+}
+
+/* ---------- Kopfleiste, weicht beim Runterscrollen aus ---------- */
+.kopf { position: sticky; top: 0; z-index: 80; height: var(--kopf-hoehe); background: color-mix(in oklch, var(--grund) 94%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--linie); transition: transform .35s var(--aus); }
+.kopf.weg { transform: translateY(-100%); transition-timing-function: var(--ein); transition-duration: .3s; }
+.kopf-zeile { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 100%; }
+.marke { display: block; padding: 6px 0; }
+.menu-knopf { min-height: 42px; padding: 4px 18px 0; border: 1px solid var(--linie-stark); border-radius: var(--pille); background: transparent; color: var(--tinte); font: 400 var(--gr-mini) var(--versal); letter-spacing: .2em; text-transform: uppercase; cursor: pointer; }
+.menu-knopf[aria-expanded="true"] { border-color: var(--kupfer); color: var(--kupfer-schrift); }
+.nav { display: none; position: absolute; inset: 100% 0 auto; flex-direction: column; padding: 8px var(--rand) 22px; background: var(--grund-tief); border-bottom: 1px solid var(--linie); }
+.nav.offen { display: flex; }
+.nav a { padding: 18px 2px 14px; border-bottom: 1px solid var(--linie); color: var(--tinte); font: 400 .9rem var(--versal); letter-spacing: .2em; text-transform: uppercase; text-decoration: none; }
+.nav a[aria-current="page"] { color: var(--kupfer-schrift); }
+.nav .nav-tel { border: 0; color: var(--kupfer-schrift); }
+.nav--fest { display: flex; position: static; flex-direction: row; gap: 4px; padding: 0; border: 0; background: none; }
+.nav--fest a { border: 0; padding: 12px 10px 8px; font-size: var(--gr-mini); }
+
+/* ---------- Bühne ---------- */
+.buehne { display: flex; flex-direction: column; padding: 86px var(--rand) 40px; }
+.buehne-text { display: contents; }
+.buehne h1 { order: 1; display: grid; justify-items: center; gap: 10px; margin-bottom: 4px; text-align: center; }
+.buehne h1 .name { font: 300 var(--gr-titel)/1 var(--versal); letter-spacing: .3em; text-transform: uppercase; color: var(--tinte); margin-right: -.3em; }
+.buehne h1 .zusatz { display: flex; align-items: center; gap: 12px; font: 400 var(--gr-mini)/1.4 var(--versal); letter-spacing: .26em; text-transform: uppercase; color: var(--tinte-still); }
+.buehne h1 .zusatz::before { content: ""; width: 28px; height: 1px; background: var(--kupfer); flex: none; }
+.buehne > .buehne-text > .hand { order: 2; margin: 6px 0 6px; text-align: center; }
+.buehne h1 .zusatz::after { content: ""; width: 28px; height: 1px; background: var(--kupfer); flex: none; }
+.unterzeile { display: none; max-width: 30em; }
+/* Laternen: nach den durchbrochenen Laternen im Gastraum. Sie hängen an einem Faden vom oberen Rand,
+   pendeln beim Laden einmal aus und werfen warmes Licht (Lichthof) auf Wand und Tisch. */
+.laternen { position: absolute; inset: 0; z-index: 2; overflow: hidden; pointer-events: none; }
+.laterne { position: absolute; top: 0; display: grid; justify-items: center; width: var(--b); transform-origin: 50% 0; animation: pendeln .9s var(--aus) backwards; }
+.laterne::before { content: ""; width: 1px; height: var(--faden, 20px); background: var(--laterne-faden); }
+.laterne svg { width: 100%; height: auto; aspect-ratio: 100 / 190; overflow: visible; }
+.laterne--stern svg { aspect-ratio: 1; }
+/* Lichthof hinter dem Körper: Licht einer Lampe, kein Schatten */
+.laterne::after { content: ""; position: absolute; z-index: -1; left: 50%; top: calc(var(--faden, 20px) + var(--b) * .8); width: calc(var(--b) * 4.4); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(closest-side, var(--licht-hof), transparent); transform: translate(-50%, -50%); }
+.laterne--stern::after { display: none; }
+@keyframes pendeln { 0% { opacity: 0; transform: rotate(-9deg); } 40% { opacity: 1; } }
+.laterne-koerper { fill: url(#laterne-glut); }
+.glut-1 { stop-color: var(--licht); } .glut-2 { stop-color: var(--glut-mitte); } .glut-3 { stop-color: var(--glut-rand); } .glut-4 { stop-color: var(--laterne-dunkel); }
+.laterne-metall { fill: var(--laterne-metall); stroke: var(--laterne-metall); stroke-width: 1.2; stroke-linejoin: round; }
+.laterne-loecher { fill: var(--laterne-loch); }
+.laterne-band { fill: none; stroke: var(--laterne-band); stroke-width: 1.6; }
+.laterne-glanz { fill: none; stroke: var(--laterne-glanz); stroke-width: 2; stroke-linecap: round; }
+.glas--rot { fill: var(--glas-rot); } .glas--blau { fill: var(--glas-blau); } .glas--gruen { fill: var(--glas-gruen); } .glas--tuerkis { fill: var(--glas-tuerkis); }
+.stern-rand { fill: none; stroke: var(--kupfer); stroke-width: 1.6; stroke-linejoin: round; }
+/* Sternlicht: Lichtpunkte, die durch die Löcher der Laternen an die Wand fallen */
+.buehne { position: relative; isolation: isolate; }
+.buehne::before { content: ""; position: absolute; z-index: -1; inset: 0 0 40% 0; background: var(--sternlicht) 0 0 / 180px 180px; -webkit-mask: linear-gradient(#000 0, transparent 100%); mask: linear-gradient(#000 0, transparent 100%); pointer-events: none; }
+
+/* Lichterkette über der Bühne: wie die Lichter im Fenster des Gastraums. Daran hängen Laternen
+   und Deckensterne; antippen lässt sie schwingen, aufleuchten und Sterne sprühen,
+   beim Scrollen wiegen sie sich im Wind (--wind, aus app.js). */
+.girlande { --seil: 56px; position: absolute; z-index: 2; inset: 0; overflow: hidden; pointer-events: none; animation: aufhaengen .9s var(--aus) backwards; }
+@keyframes aufhaengen { from { opacity: 0; transform: translateY(-24px); } }
+.girlande-seil { position: absolute; left: 0; top: 0; width: 100%; height: var(--seil); overflow: visible; fill: none; stroke: var(--laterne-faden); stroke-width: 1.2; }
+.birne { position: absolute; left: calc(var(--p) * 100%); top: calc(var(--seil) / 40 * (2 + 72 * var(--p) * (1 - var(--p)))); width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; background: radial-gradient(circle, var(--licht) 0 2.6px, var(--licht-hof) 3.6px, transparent 8px); }
+.anhaenger { --p: var(--pm); --b: var(--bm); --f: var(--fm); --y: calc(var(--seil) / 40 * (2 + 72 * var(--p) * (1 - var(--p)))); position: absolute; left: calc(var(--p) * 100%); top: var(--y); width: var(--b); margin: 0 0 0 calc(var(--b) / -2); padding: 0; border: 0; background: none; cursor: pointer; pointer-events: auto; -webkit-tap-highlight-color: transparent; transform: rotate(var(--wind, 0deg)); transform-origin: 50% 0; transition: transform .9s var(--aus); }
+.anhaenger.nur-gross { display: none; }
+.pendel { position: relative; display: grid; justify-items: center; transform-origin: 50% 0; }
+.pendel::before { content: ""; width: 1px; height: var(--f); background: var(--laterne-faden); }
+.pendel svg { width: 100%; height: auto; aspect-ratio: 100 / 190; overflow: visible; }
+.anhaenger--stern .pendel svg { aspect-ratio: 1; }
+.anhaenger--stern .stern-rand { stroke-width: 2.2; }
+/* Lichthof der Laterne */
+.pendel::after { content: ""; position: absolute; z-index: -1; left: 50%; top: calc(var(--f) + var(--b) * .8); width: calc(var(--b) * 4); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(closest-side, var(--licht-hof), transparent); transform: translate(-50%, -50%); }
+.anhaenger--stern .pendel::after { top: calc(var(--f) + var(--b) * .5); width: calc(var(--b) * 2.4); opacity: .6; }
+/* Sterne, die beim Antippen aus der Laterne sprühen */
+.funken { position: absolute; left: 50%; top: calc(var(--f) + var(--b) * .8); width: 0; height: 0; opacity: 0; }
+.anhaenger--stern .funken { top: calc(var(--f) + var(--b) * .5); }
+.funken i { position: absolute; left: -7px; top: -7px; width: 14px; height: 14px; background: var(--kupfer); -webkit-mask: var(--funke) center / contain no-repeat; mask: var(--funke) center / contain no-repeat; transform: rotate(var(--w)) translateY(calc(var(--b) * -1.1)); }
+.funken i:nth-child(odd) { background: var(--licht-tief); transform: rotate(var(--w)) translateY(calc(var(--b) * -.8)) scale(.7); }
+.angestossen .pendel { animation: schwingen .9s var(--aus); }
+.anhaenger--stern.angestossen .pendel { animation: drehen .9s var(--aus); }
+.angestossen .funken { animation: spruehen .8s var(--aus); }
+.angestossen .pendel::after { animation: aufleuchten .9s var(--aus); }
+@keyframes schwingen { 0% { transform: rotate(16deg); } 30% { transform: rotate(-9deg); } 60% { transform: rotate(4deg); } 100% { transform: rotate(0); } }
+@keyframes drehen { from { transform: rotate(-200deg) scale(.9); } }
+@keyframes spruehen { from { opacity: 1; transform: scale(.35); } 60% { opacity: 1; } to { opacity: 0; transform: scale(1.35); } }
+@keyframes aufleuchten { 30% { opacity: 1; transform: translate(-50%, -50%) scale(1.6); } }
+.girlande-tipp { position: relative; display: none; width: max-content; margin: 0 0 26px 34px; font: 400 1.45rem/1 var(--hand); color: var(--kupfer-schrift); transform: rotate(-4deg); }
+
+/* Gedeckter Tisch: Thali-Tablett aus Messing von oben, darauf die Schalen der Karte */
+.tisch { order: 3; position: relative; overflow-x: clip; display: flex; flex-direction: column; margin: 0 calc(-1 * var(--rand)) 18px; padding: 40px 0 40px; }
+.tisch-titel { order: 2; position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; margin: 46px var(--rand) 0; font-size: var(--gr-klein); color: var(--tinte-leise); text-align: center; }
+.thali { position: relative; width: min(74vw, 340px); aspect-ratio: 1; margin: 0 auto; border-radius: 50%; background: var(--thali-flaeche); box-shadow: 0 30px 44px -26px var(--thali-schatten), inset 0 0 0 1px var(--linie-kupfer), inset 0 0 0 11px var(--thali-rand), inset 0 0 0 12px var(--linie-kupfer); animation: auftragen .7s var(--aus) .9s backwards; }
+/* Lichtkegel der Laterne auf dem Tablett */
+.thali::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 70% 8%, var(--licht-hof), transparent 55%); pointer-events: none; }
+@keyframes auftragen { from { opacity: 0; transform: translateY(18px) scale(.97); } }
+.gericht { position: absolute; left: var(--x); top: var(--y); width: var(--w); aspect-ratio: 1; border-radius: 50%; color: var(--tinte); text-decoration: none; }
+.gericht img { position: relative; z-index: 1; width: 100%; height: 100%; filter: var(--schale-schatten); transform: rotate(var(--r, 0deg)); transition: transform .7s var(--aus); }
+/* alle vier Schalen gleich groß, zwei mal zwei auf dem Tablett */
+.gericht { --w: 61.8%; }
+.gericht--1 { --x: -2.9%; --y: -2.9%; --r: 115deg; }
+.gericht--2 { --x: 41.1%; --y: -2.9%; --r: 24deg; }
+.gericht--3 { --x: -2.9%; --y: 41.1%; --r: 70deg; }
+.gericht--4 { --x: 41.1%; --y: 41.1%; --r: -40deg; }
+.gericht:focus-visible { outline-offset: -14%; }
+/* ---------- Festfarben der Bühne ---------- */
+.buehne { --lampe: var(--rani-tief); --lampe-hell: var(--rani); }
+.buehne h1 { animation: auftauchen .8s var(--aus) backwards; }
+@keyframes auftauchen { from { opacity: 0; transform: translateY(14px); } }
+/* „Heute Lust auf …?“: die Gerichte vom Tisch wechseln sich in ihren Farben ab */
+.lust { color: var(--tinte-leise); line-height: 1.35; }
+.lust-woerter { display: inline-grid; vertical-align: bottom; }
+.lust-wort { grid-area: 1 / 1; white-space: nowrap; color: var(--wf, var(--rani-tief)); opacity: 0; transform: translateY(.45em) rotate(-4deg); transition: opacity .6s var(--aus), transform .6s var(--aus); }
+.lust-wort.ist-da { opacity: 1; transform: none; }
+/* Rangoli unter dem Tablett: die Willkommensblüte vor indischen Türen; dreht sich beim Scrollen */
+.tablett { position: relative; width: min(74vw, 340px); margin: 0 auto; }
+.tablett .thali { width: 100%; }
+.rangoli { position: absolute; left: -16%; top: -16%; width: 132%; max-width: none; height: 132%; overflow: visible; transform: rotate(calc(var(--dreh, 0) * 1deg)); animation: rangoli-auf .9s var(--aus) .9s backwards; pointer-events: none; }
+@keyframes rangoli-auf { from { opacity: 0; transform: rotate(-40deg) scale(.82); } }
+.rg-pink { fill: var(--rani); stroke: #fff; stroke-width: 1.4; stroke-linejoin: round; }
+.rg-orange { fill: var(--genda); stroke: #fff; stroke-width: 1.2; stroke-linejoin: round; }
+.rg-gelb { fill: var(--haldi); }
+.rg-tuerkis { fill: var(--mor); }
+.rg-weiss { fill: #fff; }
+/* Ringelblumen-Stränge an der Lichterkette, wie Genda-Phool-Girlanden */
+.strang { --y: calc(var(--seil) / 40 * (2 + 72 * var(--p) * (1 - var(--p)))); position: absolute; left: calc(var(--p) * 100%); top: calc(var(--y) - 2px); display: flex; flex-direction: column; align-items: center; width: 16px; margin-left: -8px; transform: rotate(var(--wind, 0deg)); transform-origin: 50% 0; transition: transform .9s var(--aus); }
+.strang.nur-gross { display: none; }
+.blume { --bl-a: var(--genda-rand); --bl-m: var(--genda); --bl-k: var(--haldi); width: 16px; height: 16px; margin-top: -4px; }
+.blume:first-child { margin-top: 0; }
+.blume--gelb { --bl-a: #f0a400; --bl-m: var(--haldi); --bl-k: var(--haldi-hell); }
+.blume--pink { --bl-a: var(--rani-tief); --bl-m: var(--rani); --bl-k: var(--haldi); }
+.bl-a { fill: var(--bl-a); } .bl-m { fill: var(--bl-m); } .bl-k { fill: var(--bl-k); }
+.strang-blatt { width: 8px; height: 13px; margin-top: -2px; }
+.bl-blatt { fill: var(--patta); }
+.buehne .gericht-notiz { color: var(--rani-tief); }
+/* auf der Rangoli: Notiz auf einem Papierschildchen, damit sie lesbar bleibt */
+.notiz-text { padding: 5px 10px 2px; border-radius: var(--ecke-feld); background: var(--grund); box-shadow: 0 6px 12px -8px var(--thali-schatten); }
+.buehne .gericht-notiz svg { stroke: var(--rani); }
+
+/* ---------- Bewegung der Seite: Überschriften und Bilder gleiten beim Scrollen herein ---------- */
+.js .zeigen { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--aus), transform .7s var(--aus); }
+.js .zeigen.ist-sichtbar { opacity: 1; transform: none; }
+
+/* Handschriftliche Notiz mit Pfeil, wie auf einer Tafel im Lokal */
+.gericht-notiz { position: absolute; z-index: 3; display: flex; align-items: flex-end; gap: 2px; white-space: nowrap; font: 400 1.15rem/1 var(--hand); color: var(--kupfer-schrift); pointer-events: none; }
+.gericht-notiz svg { width: 26px; height: 18px; flex: none; fill: none; stroke: var(--kupfer); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.gericht--1 .gericht-notiz { left: 4%; bottom: 99%; transform: rotate(-5deg); }
+.gericht--2 .gericht-notiz { right: 4%; bottom: 99%; flex-direction: row-reverse; transform: rotate(4deg); }
+.gericht--2 .gericht-notiz svg { transform: scaleX(-1); }
+.gericht--3 .gericht-notiz { left: 4%; top: 101%; align-items: flex-start; transform: rotate(4deg); }
+.gericht--3 .gericht-notiz svg { transform: scaleY(-1); }
+.gericht--4 .gericht-notiz { right: 4%; top: 101%; align-items: flex-start; flex-direction: row-reverse; transform: rotate(-4deg); }
+.gericht--4 .gericht-notiz svg { transform: scale(-1); }
+/* eingravierte Punktringe des Messingtabletts */
+.thali-gravur { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: var(--kupfer); stroke-width: .9; stroke-dasharray: 0 2.2; stroke-linecap: round; opacity: .55; }
+/* Schild am Schalenrand: Name, Preis, Plus */
+.gericht-schild { position: absolute; z-index: 3; left: 50%; top: 72%; display: grid; grid-template-columns: auto auto; justify-items: start; align-items: center; gap: 2px 6px; padding: 6px 6px 5px 11px; border-radius: var(--ecke-feld); white-space: nowrap; border-radius: var(--pille); background: var(--tafel); box-shadow: 0 6px 14px -6px var(--thali-schatten); transform: translateX(-50%); font: 400 .66rem/1 var(--versal); letter-spacing: .1em; text-transform: uppercase; }
+.gericht-name { grid-column: 1 / -1; }
+.gericht-preis { color: var(--tinte-still); letter-spacing: .02em; font-variant-numeric: lining-nums tabular-nums; }
+.gericht-schild svg { flex: none; justify-self: end; width: 18px; height: 18px; padding: 3px; border-radius: 50%; background: var(--lampe); color: var(--auf-lampe); stroke-width: 2.4; }
+
+/* Kuppelbogen-Plakette: Kuppel aus dem Logo, Bogen über dem Status */
+.heute { order: 4; display: grid; justify-items: center; text-align: center; margin: 0 auto 14px; }
+.heute-kuppel { width: 40px; height: 27px; color: var(--kupfer); margin-bottom: -1px; position: relative; z-index: 1; }
+.heute-satz { position: relative; margin: 0; padding: 17px 22px 0; font: 400 .98rem/1.3 var(--versal); letter-spacing: .14em; text-transform: uppercase; color: var(--tinte); }
+.heute-satz::before { content: ""; position: absolute; inset: 0 0 .35em; border: 1px solid var(--linie-kupfer); border-bottom: 0; border-radius: 50% 50% 0 0 / var(--bogen) var(--bogen) 0 0; pointer-events: none; }
+.heute-satz b { font-weight: 400; color: var(--kupfer-schrift); }
+.heute-zusatz { margin: 8px 0 0; font-size: var(--gr-klein); color: var(--tinte-still); }
+.wege { order: 5; display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 20px; margin: 0 0 18px; font-size: var(--gr-klein); color: var(--tinte-leise); }
+.wege span + span::before { content: ""; display: inline-block; width: 4px; height: 4px; margin: 0 20px 3px -12px; border-radius: 50%; background: var(--kupfer); }
+.handeln { order: 6; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.handeln .knopf { width: 100%; padding-inline: 12px; }
+.apps { order: 7; display: grid; justify-items: center; gap: 10px; margin: 18px 0 0; }
+.apps-titel { display: flex; align-items: center; gap: 14px; margin: 0; padding-top: 3px; font: 400 var(--gr-mini) var(--versal); letter-spacing: .24em; text-transform: uppercase; color: var(--kupfer-schrift); }
+.apps-titel::before, .apps-titel::after { content: ""; width: 28px; height: 1px; margin-top: -3px; background: var(--kupfer); }
+.apps-knoepfe { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; width: 100%; }
+.app-knopf { position: relative; display: flex; align-items: center; gap: 12px; min-height: 58px; padding: 8px 16px; overflow: hidden; border: 1px solid var(--linie-kupfer); border-radius: var(--ecke-tafel); background: var(--tafel); color: var(--tinte); text-decoration: none; transition: transform .3s var(--aus); }
+.app-knopf svg { width: 24px; height: 24px; flex: none; color: var(--kupfer); }
+.app-knopf span { display: grid; gap: 3px; padding-top: 3px; font: 400 1.02rem/1.05 var(--versal); letter-spacing: .06em; white-space: nowrap; }
+.app-knopf small { font: 400 .72rem/1 var(--versal); letter-spacing: .16em; text-transform: uppercase; color: var(--tinte-still); }
+/* Einmal ein Lichtstreif über die Tafeln, wie Messing im Fenster */
+.app-knopf::after { content: ""; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 35%, var(--glanz) 50%, transparent 65%); transform: translateX(-110%); animation: glanz .9s var(--aus) 1.8s forwards; pointer-events: none; }
+.app-knopf + .app-knopf::after { animation-delay: 2s; }
+@keyframes glanz { to { transform: translateX(110%); } }
+
+/* ---------- Abschnitte ---------- */
+.wechsel { display: flex; flex-direction: column; }
+[data-zeit="abend"] .bei-uns { order: -1; }
+.beliebt, .bei-uns, .kueche { padding-block: calc(var(--luft) * .55); }
+.wechsel > :first-child { padding-top: var(--luft); }
+.einleitung { max-width: 34em; }
+.beliebt-liste { list-style: none; margin: 30px 0 28px; padding: 0; display: grid; gap: 0 64px; border-top: 1px solid var(--linie); }
+.beliebt-liste li, .posten { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; align-items: baseline; padding: 16px 0 14px; border-bottom: 1px solid var(--linie); }
+.beliebt-liste .name, .posten .name { font-weight: 600; font-size: 1.08rem; line-height: 1.35; color: var(--tinte); }
+.beliebt-liste .preis, .posten .preis { font-weight: 600; color: var(--tinte); white-space: nowrap; }
+.beliebt-liste .text { grid-column: 1 / -1; font-size: var(--gr-klein); color: var(--tinte-still); }
+/* Beliebt wie die Tafel im Lokal: Namen in Handschrift, Pünktchen bis zum Preis, ein Stern davor */
+.beliebt-liste { border-top: 0; gap: 0 64px; }
+.beliebt-liste li { grid-template-columns: auto minmax(0, auto) minmax(16px, 1fr) auto; gap: 0 10px; padding: 14px 0 12px; border-bottom: 1px dashed var(--linie-stark); }
+.beliebt-liste li::before { content: ""; grid-row: 1; width: 15px; height: 15px; align-self: center; background: var(--kupfer); -webkit-mask: var(--funke) center / contain no-repeat; mask: var(--funke) center / contain no-repeat; transition: transform .7s var(--aus); }
+.beliebt-liste li::after { content: ""; grid-row: 1; grid-column: 3; align-self: end; margin-bottom: .55em; border-bottom: 2px dotted var(--linie-stark); }
+.beliebt-liste .name { grid-row: 1; grid-column: 2; font: 400 clamp(1.75rem, 1.5rem + .8vw, 2.15rem)/1.15 var(--hand); color: var(--tinte); transition: transform .5s var(--aus); }
+.beliebt-liste .preis { grid-row: 1; grid-column: 4; font: 400 1.08rem var(--versal); letter-spacing: .04em; color: var(--kupfer-schrift); font-variant-numeric: lining-nums tabular-nums; }
+.beliebt-liste .text { grid-row: 2; grid-column: 2 / -1; margin-top: 2px; }
+.mehr { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding-top: 3px; font: 400 var(--gr-mini) var(--versal); letter-spacing: .2em; text-transform: uppercase; color: var(--kupfer-schrift); text-decoration: none; }
+.mehr svg { width: 18px; height: 18px; margin-top: -3px; transition: transform .3s var(--aus); }
+
+.bei-uns { width: min(1160px, 100% - 2 * var(--rand)); margin-inline: auto; }
+/* Der Gastraum durch einen breiten Kielbogen gesehen, wie die Bögen im Taj-Mahal-Wandbild */
+.raum-bild { position: relative; margin: 0 0 30px; }
+.raum-bild img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 62% 50%; -webkit-mask: var(--fenster-form) center / 100% 100% no-repeat; mask: var(--fenster-form) center / 100% 100% no-repeat; }
+.raum-kante { position: absolute; inset: -8px; width: calc(100% + 16px); max-width: none; height: calc(100% + 16px); fill: none; stroke: var(--kupfer); stroke-width: 1.2; pointer-events: none; }
+.raum-text { width: auto; margin: 0; }
+.raum-text p { max-width: 32em; }
+.tel { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: var(--tinte); text-decoration: none; }
+.tel svg { width: 18px; height: 18px; flex: none; color: var(--kupfer); margin-top: -3px; }
+.tel b { font-weight: 600; white-space: nowrap; }
+
+.kueche { display: grid; gap: 30px; }
+/* Zwei Gästefotos nebeneinander in einem Kupferrahmen: mobil gleich breit (4:5), ab 700px gleich hoch */
+.kueche-bilder { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 10px; border: 1px solid var(--linie-kupfer); }
+.kueche-bilder .kachel { flex: 1 1 0; min-width: 0; }
+.kueche-bilder .kachel img { width: 100%; height: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.kueche-bilder .bildhinweis { flex-basis: 100%; margin: 0; }
+.kueche-fuehrung { font-size: 1.15rem; color: var(--tinte); max-width: 28em; }
+.kueche-text h3 { margin-top: 1.6em; padding-top: 20px; border-top: 1px solid var(--linie); }
+.kueche-text h3 + p { margin-top: .6em; max-width: 28em; }
+
+/* Kachel: Foto, das sich in der Bildansicht vergrößern lässt */
+.kachel { display: block; padding: 0; border: 0; background: var(--tafel); cursor: zoom-in; overflow: hidden; }
+.kachel img { transition: transform .7s var(--aus); }
+.bildhinweis { font-size: var(--gr-klein); color: var(--tinte-still); margin: 8px 0 0; }
+
+.ansicht { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: color-mix(in oklch, var(--grund-tief) 96%, transparent); color: var(--tinte); }
+.ansicht[open] { display: grid; place-items: center; animation: auf .3s var(--aus); }
+.ansicht::backdrop { background: transparent; }
+.ansicht img { max-width: min(100vw - 24px, 1200px); max-height: calc(100dvh - 120px); width: auto; object-fit: contain; }
+.ansicht button { position: absolute; display: grid; place-items: center; width: 50px; height: 50px; border: 1px solid var(--linie-stark); border-radius: 50%; background: var(--grund); color: var(--tinte); cursor: pointer; }
+.ansicht button svg { width: 22px; height: 22px; }
+.ansicht-zu { top: 12px; right: 12px; }
+.ansicht-vor { left: 12px; bottom: 16px; }
+.ansicht-nach { right: 12px; bottom: 16px; }
+@keyframes auf { from { opacity: 0; } }
+
+/* ---------- Schalen aus der Karte: freigestellt auf einem Kupferring ---------- */
+.schalen { padding-block: calc(var(--luft) * .55); }
+.schalen-liste { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 14px; margin: 28px 0 0; padding: 0; }
+.schale { display: grid; justify-items: center; gap: 4px; text-align: center; color: var(--tinte); text-decoration: none; }
+.schale-bild { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 1; margin-bottom: 10px; }
+.schale-bild::before { content: ""; position: absolute; inset: 4%; border: 1px solid var(--linie-kupfer); border-radius: 50%; background: var(--tafel); }
+/* Bilddatei: Schalenrand immer 68 % des Quadrats, so wirken alle Schalen gleich groß; Griffe dürfen über den Ring */
+.schale-bild img { position: absolute; inset: -8.8%; width: 117.6%; max-width: none; height: 117.6%; object-fit: contain; transition: transform .7s var(--aus); }
+.schale-name { font-weight: 600; font-size: 1.02rem; line-height: 1.3; }
+.schale-preis { font-size: var(--gr-klein); color: var(--tinte-still); font-variant-numeric: lining-nums tabular-nums; }
+.schale-dazu { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; margin-top: 4px; padding: 3px 10px 0; white-space: nowrap; border: 1px solid var(--linie-stark); border-radius: var(--pille); font: 400 .72rem var(--versal); letter-spacing: .08em; text-transform: uppercase; color: var(--tinte-leise); }
+.schale-dazu svg { width: 15px; height: 15px; margin-top: -3px; }
+
+/* ---------- Essensuhr: Karte mit Reservierungsbuch, Ergebnis als Bon ---------- */
+.essensuhr { padding-block: calc(var(--luft) * .55); }
+.uhr-raster { display: grid; gap: 34px; margin-top: 26px; }
+/* Speisekartenkarte: Tafel mit doppelter Kupferlinie */
+.uhr-karte { display: grid; gap: 22px; padding: 26px 20px 22px; background: var(--tafel); border: 1px solid var(--linie-kupfer); box-shadow: inset 0 0 0 5px var(--tafel), inset 0 0 0 6px var(--linie-kupfer); }
+.uhr-frage { min-width: 0; margin: 0; padding: 0; border: 0; }
+.uhr-frage legend { float: left; width: 100%; padding: 0; margin-bottom: 4px; font: 400 var(--gr-hand)/1.2 var(--hand); color: var(--kupfer-schrift); }
+.uhr-frage + .uhr-frage { padding-top: 18px; border-top: 1px solid var(--linie); }
+.worte, .buch { clear: both; }
+.worte { display: flex; flex-wrap: wrap; column-gap: 22px; }
+.wort { position: relative; }
+.wort input, .zeit input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.wort span { position: relative; display: inline-flex; align-items: center; min-height: 44px; padding-top: 3px; font: 400 1.1rem var(--versal); letter-spacing: .04em; color: var(--tinte-still); }
+/* gewählt: ein Federstrich darunter, wie auf dem Bestellblock */
+.wort span::after { content: ""; position: absolute; left: -3px; right: -3px; bottom: 5px; height: 9px; background: var(--kupfer); -webkit-mask: var(--strich) center / 100% 100% no-repeat; mask: var(--strich) center / 100% 100% no-repeat; opacity: 0; transform: scaleX(.6); transform-origin: left; transition: opacity .4s var(--aus), transform .5s var(--aus); }
+.wort input:checked + span { color: var(--tinte); }
+.wort input:checked + span::after { opacity: 1; transform: none; }
+.wort input:focus-visible + span, .zeit input:focus-visible + span { outline: 2px solid var(--fokus); outline-offset: 2px; }
+/* Reservierungsbuch: Zeilen mit Haarlinie, die gewählte Zeit wird umkringelt */
+.buch { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; padding-top: 6px; }
+.buch-kopf { margin: 0 0 2px; font: 400 var(--gr-mini)/1.6 var(--versal); letter-spacing: .2em; text-transform: uppercase; color: var(--tinte-still); }
+.buch-zeiten { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--linie); }
+.zeit { position: relative; border-bottom: 1px solid var(--linie); }
+.zeit span { position: relative; display: grid; place-items: center; min-height: 44px; padding-top: 3px; font: 400 1.02rem var(--versal); font-variant-numeric: lining-nums tabular-nums; color: var(--tinte-leise); }
+.zeit span::after { content: ""; position: absolute; inset: 4px 2px; background: var(--kupfer); -webkit-mask: var(--kringel) center / 100% 100% no-repeat; mask: var(--kringel) center / 100% 100% no-repeat; opacity: 0; transform: scale(.7) rotate(-6deg); transition: opacity .35s var(--aus), transform .5s var(--aus); pointer-events: none; }
+.zeit input:checked + span { color: var(--tinte); font-weight: 400; }
+.zeit input:checked + span::after { opacity: 1; transform: none; }
+.zeit input:disabled { cursor: default; }
+.zeit input:disabled + span { color: var(--tinte-still); text-decoration: line-through; text-decoration-color: var(--linie-stark); opacity: .7; }
+/* Bon: Papier mit gezackter Abrisskante, Punktlinien wie auf der Karte */
+.bon-schatten { filter: drop-shadow(0 10px 18px var(--glanz)); }
+.bon { display: grid; justify-items: center; gap: 4px; padding: 34px 24px 32px; text-align: center; background: var(--tafel); -webkit-mask: var(--zacken-oben) top / 16px 51% repeat-x, var(--zacken-unten) bottom / 16px 51% repeat-x; mask: var(--zacken-oben) top / 16px 51% repeat-x, var(--zacken-unten) bottom / 16px 51% repeat-x; }
+.bon-kuppel { width: 38px; height: 26px; color: var(--kupfer); }
+.bon-kopf { display: grid; gap: 2px; width: 100%; margin: 6px 0 14px; padding-bottom: 14px; border-bottom: 1px dashed var(--linie-stark); font: 400 var(--gr-mini)/1.6 var(--versal); letter-spacing: .2em; text-transform: uppercase; color: var(--tinte-still); }
+.bon-inhalt { width: 100%; }
+.bon-zeile { display: flex; align-items: baseline; gap: 10px; margin: 0 0 6px; text-align: left; font: 400 1.02rem var(--versal); color: var(--tinte-leise); }
+.bon-zeile i { flex: 1; min-width: 16px; border-bottom: 2px dotted var(--linie-stark); transform: translateY(-4px); }
+.bon-zeile b { font-weight: 400; color: var(--tinte); font-variant-numeric: lining-nums tabular-nums; }
+.bon-zeile--gross b { font: 300 clamp(2.2rem, 1.9rem + 1.4vw, 2.9rem)/1 var(--versal); color: var(--kupfer-schrift); }
+.bon-satz { margin: 0 0 6px; font: 300 clamp(1.2rem, 1.1rem + .5vw, 1.45rem)/1.35 var(--versal); color: var(--tinte); text-wrap: balance; }
+.uhr-zusatz { min-height: 1.6em; width: 100%; margin: 8px 0 18px; padding-top: 12px; border-top: 1px dashed var(--linie-stark); color: var(--tinte-still); }
+.bon-fuss { max-width: 26em; margin: 16px 0 0; font-size: var(--gr-klein); color: var(--tinte-still); }
+.bon.neu .bon-inhalt { animation: drucken .45s var(--aus); }
+@keyframes drucken { from { opacity: 0; transform: translateY(-6px); } }
+
+/* ---------- Stimmen: das eine dunkle Band (Holz am Abend) ---------- */
+.stimmen { width: 100%; max-width: none; margin-top: calc(var(--luft) * .5); padding: var(--luft) max(var(--rand), (100% - 1160px) / 2); background: var(--band); color: var(--band-still); --fokus: var(--band-kupfer); }
+.stimmen h2 { color: var(--band-tinte); }
+.stimmen h2::after { background: var(--band-kupfer); }
+/* Abends unter den Laternen: das dunkle Band mit leuchtenden Laternen und Sternlicht */
+.stimmen { position: relative; isolation: isolate; overflow: hidden; }
+.stimmen::before { content: ""; position: absolute; z-index: -1; inset: 0 0 40% 30%; background: var(--sternlicht) 0 0 / 200px 200px; -webkit-mask: radial-gradient(farthest-side at 80% 0, #000 25%, transparent); mask: radial-gradient(farthest-side at 80% 0, #000 25%, transparent); }
+.laternen--band .laterne { --licht-hof: color-mix(in oklch, var(--licht) 30%, transparent); }
+.laternen--band .laterne::before { background: var(--band-linie); }
+.laterne--a { --b: 52px; --faden: 14px; right: 5%; }
+.laterne--b { --b: 36px; --faden: 60px; right: 21%; }
+.laterne--c { --b: 30px; --faden: 26px; right: 35%; }
+.stimmen .hand { color: var(--band-kupfer); }
+.note { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; margin: 10px 0 30px; padding-bottom: 26px; border-bottom: 1px solid var(--band-linie); }
+.note-zahl { font: 300 clamp(3.4rem, 2.6rem + 3vw, 4.6rem)/1 var(--versal); color: var(--band-tinte); }
+.note-text { display: grid; gap: 8px; margin: 0; font: 400 var(--gr-mini)/1.4 var(--versal); letter-spacing: .2em; text-transform: uppercase; color: var(--band-still); }
+/* Sterne in Messing der Laternen; der fünfte zur Hälfte gefüllt (4,5) */
+.sterne { display: flex; gap: 3px; }
+.sterne svg { width: 28px; height: 28px; fill: var(--band-kupfer); stroke: var(--band-kupfer); stroke-width: 1.2; stroke-linejoin: round; }
+.sterne .stern--halb { fill: url(#stern-halb); }
+.stern-voll { stop-color: var(--band-kupfer); }
+.stern-leer { stop-color: var(--band-kupfer); stop-opacity: 0; }
+.knopf--band { width: 100%; border-color: var(--band-kupfer); color: var(--band-tinte); }
+.knopf--band svg { width: 16px; height: 16px; margin-top: -3px; color: var(--band-kupfer); }
+.zitate { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 14px; }
+.zitate li { padding: 26px 24px 20px; background: var(--band-tafel); border: 1px solid var(--band-linie); }
+.zitate blockquote { margin: 0; font: 300 1.2rem/1.5 var(--versal); color: var(--band-tinte); }
+.quelle { font-size: var(--gr-klein); max-width: 36em; margin: 0; }
+
+/* ---------- Besuch: zwei Tafeln ---------- */
+.besuch { padding-block: var(--luft); }
+.besuch-spalten { display: grid; gap: 16px; }
+.besuch-spalten > div { padding: 30px 24px 22px; background: var(--tafel); border: 1px solid var(--linie); }
+.zeiten { width: 100%; border-collapse: collapse; margin: 6px 0 14px; }
+.zeiten th, .zeiten td { padding: 12px 0 10px; text-align: left; border-bottom: 1px solid var(--linie); font-size: 1rem; }
+.zeiten th { font-weight: 400; color: var(--tinte); padding-right: 8px; }
+.zeiten td { text-align: right; padding-left: 12px; white-space: nowrap; }
+.zeiten .ruhetag { color: var(--tinte-still); }
+.zeiten tr.ist-heute th, .zeiten tr.ist-heute td { color: var(--kupfer-schrift); }
+.zeiten tr.ist-heute th::after { content: "heute"; display: inline-block; margin-left: 10px; padding: 4px 9px 1px; border: 1px solid var(--kupfer); border-radius: var(--pille); font: 400 .72rem/1 var(--versal); letter-spacing: .16em; text-transform: uppercase; vertical-align: 2px; }
+.adresse { font-style: normal; font-size: 1.1rem; color: var(--tinte); margin: 6px 0 20px; }
+.aktionen { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+
+/* ---------- Fuß ---------- */
+.fuss { background: var(--grund-tief); color: var(--tinte-still); padding: 64px 0 calc(32px + 84px + env(safe-area-inset-bottom)); text-align: center; border-top: 1px solid var(--linie); }
+.fuss-zeile { display: grid; gap: 18px; justify-items: center; }
+.fuss-zeile p { margin: 0; font-size: var(--gr-klein); }
+.fuss a { color: var(--tinte); }
+.fuss ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 0 22px; }
+.fuss ul a { display: inline-block; padding: 10px 0 6px; font: 400 var(--gr-mini) var(--versal); letter-spacing: .18em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid var(--linie-stark); }
+.copy { margin-top: 26px; font-size: .82rem; }
+.fuss--schmal { padding-bottom: 32px; }
+
+/* ---------- Daumenleiste (Handy) ---------- */
+.daumen { position: fixed; z-index: 70; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 10px; padding: 10px var(--rand) calc(10px + env(safe-area-inset-bottom)); background: color-mix(in oklch, var(--grund-tief) 94%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-top: 1px solid var(--linie); transform: translateY(110%); transition: transform .35s var(--aus); }
+.daumen.da { transform: none; }
+.daumen.da.weg { transform: translateY(110%); transition-timing-function: var(--ein); transition-duration: .3s; }
+.daumen .knopf { min-height: 48px; min-width: 0; padding-inline: 8px; letter-spacing: .12em; }
+.zettel-stand:not(:empty) { margin-left: -2px; letter-spacing: .06em; white-space: nowrap; }
+.zettel-auf--lotse { display: none; }
+.zettel-stand:not(:empty)::before { content: "·"; margin-right: 8px; }
+.stups { animation: stups .45s var(--aus); }
+@keyframes stups { 40% { transform: scale(1.05); } }
+
+/* ---------- Bestellzettel ---------- */
+html.zettel-offen { overflow: hidden; }
+.zettel { width: 100%; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 0; border: 0; background: var(--grund); color: var(--tinte-leise); }
+.zettel[open] { animation: zettel-auf .45s var(--aus); }
+@keyframes zettel-auf { from { transform: translateY(24px); opacity: 0; } }
+.zettel::backdrop { background: var(--schleier); }
+.zettel-form { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: 100%; }
+.zettel-kopf { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px var(--rand) 10px; border-bottom: 1px solid var(--linie); }
+.zettel-kopf h2 { font-size: 1.35rem; letter-spacing: .22em; padding-top: 4px; }
+.zettel-kopf h2::after { display: none; }
+.zettel-zu { display: grid; place-items: center; width: 46px; height: 46px; padding: 0; border: 1px solid var(--linie-stark); border-radius: 50%; background: var(--tafel); color: var(--tinte); cursor: pointer; }
+.zettel-zu svg { width: 20px; height: 20px; }
+.zettel-inhalt { overflow-y: auto; overscroll-behavior: contain; padding: 6px var(--rand) 24px; }
+.zettel-leer { margin: 28px 0; font: 400 var(--gr-hand)/1.35 var(--hand); color: var(--kupfer-schrift); }
+.zettel-liste { list-style: none; margin: 0; padding: 0; }
+.zeile { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 16px; align-items: baseline; padding: 16px 0 14px; border-bottom: 1px solid var(--linie); }
+.zeile p { margin: 0; }
+.zeile-name { font-weight: 600; color: var(--tinte); line-height: 1.35; }
+.zeile-name .nr { margin-right: 10px; font-weight: 400; font-size: var(--gr-klein); color: var(--kupfer-schrift); }
+.zeile-preis { font-weight: 600; color: var(--tinte); white-space: nowrap; }
+.zeile-wahl { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.menge { display: inline-flex; align-items: center; border: 1px solid var(--linie-feld); border-radius: var(--pille); background: var(--tafel); }
+.menge button { display: grid; place-items: center; width: 44px; height: 42px; padding: 0; border: 0; border-radius: var(--pille); background: none; color: var(--tinte); cursor: pointer; }
+.menge button svg { width: 18px; height: 18px; }
+.menge output { min-width: 2ch; text-align: center; font-weight: 600; color: var(--tinte); font-variant-numeric: tabular-nums; }
+.zeile-wahl select, .feld select { min-height: 44px; padding: 4px 38px 0 16px; border: 1px solid var(--linie-feld); border-radius: var(--pille); background: var(--tafel) var(--pfeil) right 14px center / 12px no-repeat; color: var(--tinte); font: 400 var(--gr-mini) var(--versal); letter-spacing: .14em; text-transform: uppercase; -webkit-appearance: none; appearance: none; cursor: pointer; }
+.zettel-summe { display: flex; justify-content: space-between; gap: 16px; margin: 18px 0 6px; padding-bottom: 4px; font: 400 var(--gr-mini) var(--versal); letter-spacing: .2em; text-transform: uppercase; color: var(--tinte-still); }
+.zettel-summe output { font: 300 1.6rem/1 var(--versal); letter-spacing: .04em; color: var(--tinte); font-variant-numeric: lining-nums tabular-nums; }
+.zettel-felder { display: grid; gap: 16px; margin-top: 18px; padding: 22px 20px; background: var(--tafel); border: 1px solid var(--linie); }
+.feld { display: grid; gap: 6px; }
+.feld > span { font: 400 var(--gr-mini) var(--versal); letter-spacing: .18em; text-transform: uppercase; color: var(--tinte-still); padding-top: 2px; }
+.feld i { font-style: normal; letter-spacing: .08em; text-transform: none; font-family: var(--lauf); }
+.feld input, .feld textarea { width: 100%; min-height: 46px; padding: 11px 14px 9px; border: 1px solid var(--linie-feld); border-radius: var(--ecke-feld); background: var(--grund); color: var(--tinte); font: 400 1rem/1.4 var(--lauf); }
+.feld textarea { resize: vertical; }
+.feld select { width: 100%; text-transform: none; letter-spacing: .04em; font: 400 1rem var(--lauf); padding-top: 2px; background-color: var(--grund); }
+.feld [aria-invalid="true"] { border-color: var(--chili); }
+.zettel-text { margin-top: 18px; }
+.zettel-text summary { display: inline-flex; min-height: 44px; align-items: center; padding-top: 3px; font: 400 var(--gr-mini) var(--versal); letter-spacing: .18em; text-transform: uppercase; color: var(--kupfer-schrift); cursor: pointer; }
+.zettel-text pre { margin: 6px 0 0; padding: 16px 18px; background: var(--tafel); border: 1px solid var(--linie); font: 400 var(--gr-klein)/1.6 var(--lauf); color: var(--tinte); white-space: pre-wrap; overflow-wrap: anywhere; }
+.zettel-fuss { padding: 12px var(--rand) calc(14px + env(safe-area-inset-bottom)); border-top: 1px solid var(--linie); background: var(--grund-tief); }
+.zettel-meldung { margin: 0 0 10px; font-size: var(--gr-klein); color: var(--tinte); }
+.zettel-meldung:empty { display: none; }
+.zettel-meldung.ist-fehler { color: var(--chili); font-weight: 600; }
+.zettel-knoepfe { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; }
+.zettel-knoepfe .knopf { min-width: 0; padding-inline: 14px; letter-spacing: .12em; }
+.zettel-knoepfe > :not([hidden]):first-child { grid-column: 1 / -1; }
+.zettel-hinweis { margin: 10px 0 0; font-size: .82rem; line-height: 1.5; color: var(--tinte-still); }
+
+/* ---------- Speisekarte ---------- */
+.karte-kopf { position: relative; isolation: isolate; padding-block: 84px 22px; }
+.karte-kopf::before { content: ""; position: absolute; z-index: -1; inset: 0 0 20% 45%; background: var(--sternlicht) 0 0 / 180px 180px; -webkit-mask: radial-gradient(farthest-side at 85% 0, #000 20%, transparent); mask: radial-gradient(farthest-side at 85% 0, #000 20%, transparent); pointer-events: none; }
+.laternen--karte .laterne--gross { --b: 38px; --faden: 0px; right: 0; }
+.laternen--karte .laterne--stern { display: grid; }
+.laternen--karte .laterne--stern { --b: 34px; display: grid; right: 20%; }
+.karte-kopf h1 { font: 300 clamp(1.9rem, 1rem + 5.2vw, 4.4rem)/1 var(--versal); letter-spacing: .2em; text-transform: uppercase; color: var(--tinte); margin-right: -.24em; }
+.karte-kopf h1::after { content: ""; display: block; width: 80px; height: 14px; margin: .35em 0 .3em; background: var(--kupfer); -webkit-mask: var(--zier) center / contain no-repeat; mask: var(--zier) center / contain no-repeat; }
+.karte-kopf p:not(.hand) { max-width: 34em; }
+.karte-kopf b { color: var(--tinte); font-weight: 600; }
+.lotse { position: sticky; top: var(--kopf-hoehe); z-index: 60; background: color-mix(in oklch, var(--grund-tief) 96%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); padding: 12px 0 8px; border-block: 1px solid var(--linie); transition: transform .35s var(--aus); }
+.lotse.oben { transform: translateY(calc(-1 * var(--kopf-hoehe))); transition-timing-function: var(--ein); transition-duration: .3s; }
+.suche { position: relative; }
+.suche svg { position: absolute; left: 16px; top: 50%; width: 18px; height: 18px; transform: translateY(-50%); color: var(--kupfer); pointer-events: none; }
+.suche input { width: 100%; min-height: 46px; padding: 10px 18px 8px 46px; border: 1px solid var(--linie-feld); border-radius: var(--pille); background: var(--tafel); color: var(--tinte); font: 400 1rem var(--lauf); }
+.suche input::placeholder { color: var(--tinte-still); }
+.filter { display: flex; align-items: center; gap: 8px; margin: 10px 0 0; padding: 0; border: 0; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+.filter::-webkit-scrollbar, .gruppen-sprung::-webkit-scrollbar { display: none; }
+.uhr-gruppe { display: flex; flex-wrap: wrap; gap: 8px; }
+.schalter { position: relative; flex: none; }
+.schalter input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.schalter span { display: inline-flex; align-items: center; min-height: 38px; padding: 4px 16px 0; border: 1px solid var(--linie-stark); border-radius: var(--pille); font: 400 .72rem var(--versal); letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; color: var(--tinte-leise); }
+.schalter input:checked + span { border-color: var(--kupfer); color: var(--kupfer-schrift); }
+.schalter input:checked + span::before { content: ""; width: 6px; height: 6px; margin: -3px 8px 0 -4px; border-radius: 50%; background: var(--kupfer); }
+.schalter input:focus-visible + span { outline: 2px solid var(--kupfer-schrift); outline-offset: 3px; }
+.zaehler { flex: none; margin-left: auto; padding-left: 6px; font-size: var(--gr-klein); color: var(--tinte); white-space: nowrap; }
+.gruppen-sprung { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; margin-top: 6px; }
+.gruppen-sprung a { flex: none; padding: 10px 10px 7px; color: var(--tinte-still); text-decoration: none; font: 400 .72rem var(--versal); letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; border-bottom: 1px solid transparent; }
+.gruppen-sprung a[aria-current="true"] { color: var(--kupfer-schrift); border-bottom-color: var(--kupfer); }
+
+.gruppen { padding-top: 12px; }
+.gruppe { border-bottom: 1px solid var(--linie); scroll-margin-top: calc(var(--kopf-hoehe) + 180px); }
+.gruppe summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 28px 0 20px; cursor: pointer; list-style: none; }
+.gruppe summary::-webkit-details-marker { display: none; }
+.gruppe-bild { flex: none; width: 56px; height: 56px; margin: -10px -2px -10px -4px; object-fit: contain; }
+.gruppe summary h2 { margin-right: auto; font-size: clamp(1.05rem, .9rem + 1.2vw, 1.6rem); letter-spacing: .14em; }
+.gruppe summary h2::after { display: none; }
+.anzahl { flex: none; display: inline-flex; align-items: center; gap: 12px; font-size: var(--gr-klein); color: var(--tinte-still); }
+.anzahl::after { content: ""; width: 8px; height: 8px; border: solid var(--kupfer); border-width: 0 1px 1px 0; transform: rotate(45deg) translateY(-3px); transition: transform .3s var(--aus); }
+.gruppe[open] .anzahl::after { transform: rotate(-135deg) translateY(-1px); }
+.gruppe-hinweis { margin: -6px 0 10px; color: var(--tinte-still); max-width: 36em; font-size: var(--gr-klein); }
+.posten-liste { list-style: none; margin: 0; padding: 0 0 26px; display: grid; gap: 0 64px; }
+.posten { grid-template-columns: 2.6em 1fr auto auto; align-items: start; align-content: start; }
+.posten .nr { padding-top: .12em; font-size: var(--gr-klein); color: var(--kupfer-schrift); }
+.posten:not(:has(.nr)) { grid-template-columns: 1fr auto auto; }
+.posten .text { grid-column: 2 / 4; font-size: var(--gr-klein); color: var(--tinte-still); }
+.posten:not(:has(.nr)) .text { grid-column: 1 / 3; }
+.marken { display: inline-flex; flex-wrap: wrap; gap: 4px 6px; margin-left: 8px; vertical-align: 1px; }
+.marken span { padding: 3px 8px 0; border: 1px solid; border-radius: var(--pille); font: 400 .72rem/1.4 var(--versal); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+.marke-veg { color: var(--gruen); border-color: var(--gruen); }
+.marke-vegan { color: var(--tuerkis); border-color: var(--tuerkis); }
+.marke-scharf, .marke-sehr-scharf { color: var(--chili); border-color: var(--chili); }
+.marke-ab18 { color: var(--tinte-still); border-color: var(--tinte-still); }
+/* Plus neben jedem Gericht: auf den Bestellzettel */
+.dazu { position: relative; grid-column: -2; grid-row: 1 / span 2; align-self: center; display: grid; place-items: center; width: 44px; height: 44px; margin: -4px 0 0 4px; padding: 0; border: 1px solid var(--linie-stark); border-radius: 50%; background: var(--tafel); color: var(--tinte); cursor: pointer; transition: transform .3s var(--aus); }
+.dazu svg { width: 20px; height: 20px; }
+.dazu:active { transform: scale(.92); }
+.dazu.drauf { border-color: var(--kupfer); color: var(--kupfer-schrift); }
+.dazu-zahl:empty { display: none; }
+.dazu-zahl { position: absolute; top: -7px; right: -7px; min-width: 20px; height: 20px; padding: 3px 5px 0; border: 1px solid var(--kupfer); border-radius: var(--pille); background: var(--tafel); color: var(--kupfer-schrift); font: 600 .72rem/1.2 var(--lauf); font-variant-numeric: tabular-nums; animation: auf .3s var(--aus); }
+.leer { padding: 56px 0; text-align: center; }
+.leer p { font: 400 var(--gr-hand)/1.35 var(--hand); color: var(--kupfer-schrift); }
+/* Filter ohne Skript, per :has() */
+body:has(#f-v:checked) .posten:not([data-v]),
+body:has(#f-n:checked) .posten:not([data-n]),
+body:has(#f-s:checked) .posten:not([data-s]) { display: none; }
+.legende { padding-block: 48px var(--luft); }
+.legende > p { max-width: 34em; }
+.legende summary { display: inline-flex; min-height: 44px; align-items: center; padding-top: 3px; font: 400 var(--gr-mini) var(--versal); letter-spacing: .18em; text-transform: uppercase; color: var(--kupfer-schrift); cursor: pointer; }
+.legende-spalten { display: grid; gap: 24px; margin-top: 20px; }
+.legende-spalten h3 { margin-bottom: .6em; font-size: .95rem; }
+.legende-spalten p { max-width: 36em; font-size: var(--gr-klein); color: var(--tinte-still); }
+
+/* ---------- Rechtstexte ---------- */
+.recht { max-width: 36rem; padding-block: 48px 80px; line-height: 1.7; }
+.recht { overflow-wrap: break-word; }
+.recht h1, .recht h2 { hyphens: auto; }
+.recht h1 { font: 300 clamp(1.6rem, 1rem + 3vw, 3rem)/1.15 var(--versal); letter-spacing: .14em; text-transform: uppercase; margin-bottom: .8em; }
+.recht h2 { font-size: 1rem; letter-spacing: .12em; margin-top: 2em; }
+.recht h2::after { display: none; }
+.recht a { color: var(--kupfer-schrift); }
+.todo { background: var(--markiert); color: var(--tinte); padding: .35em .55em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+
+/* ---------- ab Tablet ---------- */
+@media (min-width: 700px) {
+  .beliebt-liste, .posten-liste { grid-template-columns: 1fr 1fr; }
+  .kueche { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 56px; align-items: center; }
+  .kueche-bilder { gap: 12px; }
+  .kueche-bilder .kachel--hoch { flex-grow: .75; }
+  .kueche-bilder .kachel--quer { flex-grow: 1.333; }
+  .kueche-bilder .kachel img { height: auto; }
+  .kueche-bilder .kachel--hoch img { aspect-ratio: 3 / 4; }
+  .kueche-bilder .kachel--quer img { aspect-ratio: 4 / 3; }
+  .zitate { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .knopf--band { width: auto; margin-left: auto; }
+  .laterne--a { --b: 100px; --faden: 30px; right: 6%; }
+  .laterne--b { --b: 66px; --faden: 120px; right: 17%; }
+  .laterne--c { --b: 52px; --faden: 56px; right: 27%; }
+  .schalen-liste { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+  .schale-dazu { padding-inline: 14px; letter-spacing: .14em; }
+  .uhr-raster { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; align-items: center; }
+  .uhr-karte { padding: 34px 34px 28px; }
+  .buch { grid-template-columns: 3fr 5fr; }
+  .buch-seite:first-child .buch-zeiten { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .buch-seite:last-child .buch-zeiten { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .bon-schatten { transform: rotate(1.2deg); }
+  .besuch-spalten { grid-template-columns: 1.1fr 1fr; gap: 18px; }
+  .besuch-spalten > div { padding: 40px 36px 30px; }
+  .legende-spalten { grid-template-columns: 1fr 1fr; }
+}
+
+/* ---------- Desktop ---------- */
+@media (min-width: 900px) {
+  :root { --kopf-hoehe: 72px; }
+  .menu-knopf { display: none; }
+  .nav { display: flex; position: static; flex-direction: row; align-items: center; gap: 4px; padding: 0; background: none; border: 0; }
+  .nav a { border: 0; padding: 12px 12px 8px; font-size: var(--gr-mini); }
+  .nav .nav-tel { margin-left: 10px; padding: 11px 18px 8px; border: 1px solid var(--linie-kupfer); border-radius: var(--pille); }
+  .logo { width: 104px; height: 46px; }
+  .buehne { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); align-items: center; gap: 56px; width: min(1160px, 100% - 2 * var(--rand)); margin-inline: auto; padding: 72px 0 96px; min-height: calc(100svh - var(--kopf-hoehe)); }
+  .buehne-text { display: block; }
+  .unterzeile { display: block; margin-bottom: 30px; }
+  .heute { display: inline-grid; margin: 0 0 18px; }
+  .heute-satz { padding-inline: 26px; }
+  .wege { justify-content: flex-start; margin-bottom: 26px; }
+  .handeln { grid-template-columns: auto auto; justify-content: start; gap: 12px; }
+  .handeln .knopf { padding-inline: 28px; }
+  .buehne { width: auto; padding: 170px max(var(--rand), (100% - 1160px) / 2) 90px; }
+  .buehne h1 { justify-items: start; text-align: left; }
+  .buehne h1 .zusatz::after { display: none; }
+  .buehne > .buehne-text > .hand { text-align: left; margin: 18px 0 14px; }
+  .anhaenger { --p: var(--pd); --b: var(--bd); --f: var(--fd); }
+  .anhaenger.nur-gross { display: block; }
+  .girlande { --seil: 70px; }
+  .girlande-tipp { display: block; }
+  .girlande-tipp::before { content: ""; position: absolute; left: -34px; bottom: 30%; width: 28px; height: 30px; background: var(--kupfer); -webkit-mask: var(--pfeil-hoch) center / contain no-repeat; mask: var(--pfeil-hoch) center / contain no-repeat; }
+  .tisch { margin: 0; padding: 96px 0 20px; }
+  .tisch-titel { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; margin-top: 78px; }
+  .gericht-schild { top: 74%; }
+  .gericht-notiz { font-size: 1.55rem; }
+  .gericht-notiz svg { width: 40px; height: 27px; }
+  .karte-kopf { padding-top: 44px; }
+  .laternen--karte .laterne--gross { --b: 92px; }
+  .laternen--karte .laterne--stern { --b: 60px; right: 18%; }
+  .tablett { width: min(100%, 440px); }
+  .strang { width: 22px; margin-left: -11px; }
+  .blume { width: 22px; height: 22px; margin-top: -6px; }
+  .strang-blatt { width: 11px; height: 18px; }
+  .strang.nur-klein { display: none; }
+  .strang.nur-gross { display: flex; }
+  .gericht-schild { gap: 8px; padding: 7px 7px 6px 14px; font-size: .74rem; }
+  .gericht-schild svg { width: 22px; height: 22px; padding: 4px; }
+  .daumen { display: none; }
+  .zettel-auf--lotse:not([hidden]) { display: inline-flex; flex: none; min-height: 42px; margin-left: 12px; padding-inline: 22px; }
+  .zettel { width: min(480px, 100vw); margin: 0 0 0 auto; border-left: 1px solid var(--linie); }
+  @keyframes zettel-auf { from { transform: translateX(32px); opacity: 0; } }
+  .apps { justify-items: start; gap: 12px; margin-top: 26px; }
+  .apps-titel::before { display: none; }
+  .apps-knoepfe { width: auto; grid-template-columns: repeat(2, auto); }
+  .fuss { padding-bottom: 36px; }
+  .bei-uns { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; align-items: center; }
+  .raum-bild { margin: 0; }
+  .raum-bild img { aspect-ratio: 16 / 10; }
+}
+@media (max-width: 389px) {
+  .handeln { grid-template-columns: 1fr; }
+  .app-knopf { gap: 9px; padding-inline: 12px; }
+  .gruppe-bild { display: none; }
+  .app-knopf span { font-size: .95rem; letter-spacing: .03em; }
+  .nav--fest a { padding-inline: 5px; letter-spacing: .06em; font-size: .7rem; }
+}
+@media (max-width: 339px) {
+  .apps-knoepfe { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
