@@ -44,9 +44,9 @@
   --schatten: 0 18px 30px -16px color-mix(in oklch, var(--tinte) 45%, transparent);
   --band-hof: color-mix(in oklch, var(--tinte) 10%, transparent);
   --schleier: color-mix(in oklch, var(--tinte) 45%, transparent);
-  /* Das Band der Stimmen: Kurkuma-Gelb */
-  --band: var(--haldi);
-  --band-tafel: #fff3c4;
+  /* Das Band der Stimmen: zartes Rosé aus dem Logo-Pink */
+  --band: #fbe4ec;            /* zartes Rosé */
+  --band-tafel: #ffffff;
   --band-tinte: var(--tinte);
   --band-still: var(--tinte-leise);
   --band-linie: color-mix(in oklch, var(--tinte) 22%, transparent);
@@ -87,7 +87,7 @@
   --zacken-unten: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg);
   --dampf: color-mix(in oklch, #fff 70%, transparent);
   --rosette: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-100 -100 200 200'%3E%3Cg fill='none' stroke='%23000' stroke-width='1.2'%3E%3Ccircle r='98'/%3E%3Ccircle r='92'/%3E%3Ccircle r='40'/%3E%3Ccircle r='16'/%3E%3Cpath d='M0 -92Q3.7 -69.9 11.3 -56.9Q23.4 -66 35.2 -85M35.2 -85Q30.1 -63.2 32.2 -48.2Q46.8 -52 65.1 -65.1M65.1 -65.1Q52 -46.8 48.2 -32.2Q63.2 -30.1 85 -35.2M85 -35.2Q66 -23.4 56.9 -11.3Q69.9 -3.7 92 0M92 0Q69.9 3.7 56.9 11.3Q66 23.4 85 35.2M85 35.2Q63.2 30.1 48.2 32.2Q52 46.8 65.1 65.1M65.1 65.1Q46.8 52 32.2 48.2Q30.1 63.2 35.2 85M35.2 85Q23.4 66 11.3 56.9Q3.7 69.9 0 92M0 92Q-3.7 69.9 -11.3 56.9Q-23.4 66 -35.2 85M-35.2 85Q-30.1 63.2 -32.2 48.2Q-46.8 52 -65.1 65.1M-65.1 65.1Q-52 46.8 -48.2 32.2Q-63.2 30.1 -85 35.2M-85 35.2Q-66 23.4 -56.9 11.3Q-69.9 3.7 -92 0M-92 0Q-69.9 -3.7 -56.9 -11.3Q-66 -23.4 -85 -35.2M-85 -35.2Q-63.2 -30.1 -48.2 -32.2Q-52 -46.8 -65.1 -65.1M-65.1 -65.1Q-46.8 -52 -32.2 -48.2Q-30.1 -63.2 -35.2 -85M-35.2 -85Q-23.4 -66 -11.3 -56.9Q-3.7 -69.9 -0 -92'/%3E%3Cpath d='M0 -40L8.4 -20.3L28.3 -28.3L20.3 -8.4L40 0L20.3 8.4L28.3 28.3L8.4 20.3L0 40L-8.4 20.3L-28.3 28.3L-20.3 8.4L-40 0L-20.3 -8.4L-28.3 -28.3L-8.4 -20.3Z'/%3E%3Cpath d='M7.8 -39.2L11.3 -56.9M22.2 -33.3L32.2 -48.2M33.3 -22.2L48.2 -32.2M39.2 -7.8L56.9 -11.3M39.2 7.8L56.9 11.3M33.3 22.2L48.2 32.2M22.2 33.3L32.2 48.2M7.8 39.2L11.3 56.9M-7.8 39.2L-11.3 56.9M-22.2 33.3L-32.2 48.2M-33.3 22.2L-48.2 32.2M-39.2 7.8L-56.9 11.3M-39.2 -7.8L-56.9 -11.3M-33.3 -22.2L-48.2 -32.2M-22.2 -33.3L-32.2 -48.2M-7.8 -39.2L-11.3 -56.9'/%3E%3C/g%3E%3Cg fill='%23000'%3E%3Ccircle cx='0' cy='-95' r='1.3'/%3E%3Ccircle cx='18.5' cy='-93.2' r='1.3'/%3E%3Ccircle cx='36.4' cy='-87.8' r='1.3'/%3E%3Ccircle cx='52.8' cy='-79' r='1.3'/%3E%3Ccircle cx='67.2' cy='-67.2' r='1.3'/%3E%3Ccircle cx='79' cy='-52.8' r='1.3'/%3E%3Ccircle cx='87.8' cy='-36.4' r='1.3'/%3E%3Ccircle cx='93.2' cy='-18.5' r='1.3'/%3E%3Ccircle cx='95' cy='0' r='1.3'/%3E%3Ccircle cx='93.2' cy='18.5' r='1.3'/%3E%3Ccircle cx='87.8' cy='36.4' r='1.3'/%3E%3Ccircle cx='79' cy='52.8' r='1.3'/%3E%3Ccircle cx='67.2' cy='67.2' r='1.3'/%3E%3Ccircle cx='52.8' cy='79' r='1.3'/%3E%3Ccircle cx='36.4' cy='87.8' r='1.3'/%3E%3Ccircle cx='18.5' cy='93.2' r='1.3'/%3E%3Ccircle cx='0' cy='95' r='1.3'/%3E%3Ccircle cx='-18.5' cy='93.2' r='1.3'/%3E%3Ccircle cx='-36.4' cy='87.8' r='1.3'/%3E%3Ccircle cx='-52.8' cy='79' r='1.3'/%3E%3Ccircle cx='-67.2' cy='67.2' r='1.3'/%3E%3Ccircle cx='-79' cy='52.8' r='1.3'/%3E%3Ccircle cx='-87.8' cy='36.4' r='1.3'/%3E%3Ccircle cx='-93.2' cy='18.5' r='1.3'/%3E%3Ccircle cx='-95' cy='0' r='1.3'/%3E%3Ccircle cx='-93.2' cy='-18.5' r='1.3'/%3E%3Ccircle cx='-87.8' cy='-36.4' r='1.3'/%3E%3Ccircle cx='-79' cy='-52.8' r='1.3'/%3E%3Ccircle cx='-67.2' cy='-67.2' r='1.3'/%3E%3Ccircle cx='-52.8' cy='-79' r='1.3'/%3E%3Ccircle cx='-36.4' cy='-87.8' r='1.3'/%3E%3Ccircle cx='-18.5' cy='-93.2' r='1.3'/%3E%3C/g%3E%3C/svg%3E");
-  --wellenstrich: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 10'%3E%3Cpath d='M2 6c6-6 11-6 17 0s11 6 17 0 11-6 17 0 11 6 17 0' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+  --wellenstrich: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 76 14'%3E%3Cpath d='M3 7c5.5-5 10-5 15.5 0s10 5 15.5 0 10-5 15.5 0 10 5 15.5 0 10-5 7.5-2.5' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   /* Bühne: jede Kulisse eine tiefe Farbe; Schrift darauf immer Creme */
   --buehne: #c0115d;
   --buehne-tief: #9c0b4b;
@@ -95,11 +95,11 @@
   --auf-buehne-leise: #fbeee6;
   --tafel-dunkel: #3a1238;  /* Aubergine: Beliebt-Tafel */
   --auf-buehne-flaeche: rgba(0, 0, 0, .2);   /* Plakette, Knöpfe auf der Bühne */
-  /* Kulisse und Teller je Gericht (nur auf der Bühne) */
-  --kulisse-1: #c0115d; --teller-1: var(--mor);
-  --kulisse-2: #0b5f61; --teller-2: #e0247c;
-  --kulisse-3: #4a1d4b; --teller-3: var(--haldi);
-  --kulisse-4: #a8470c; --teller-4: #fff1dc;
+  /* Kulisse je Gericht (nur auf der Bühne) */
+  --kulisse-1: #c0115d;
+  --kulisse-2: #0b5f61;
+  --kulisse-3: #4a1d4b;
+  --kulisse-4: #a8470c;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -113,7 +113,7 @@ p { margin: 0 0 1em; }
 h1, h2, h3 { margin: 0; font-weight: 400; color: var(--tinte); text-wrap: balance; }
 h2 { font: 400 var(--gr-h2)/1.12 var(--display); letter-spacing: -.005em; }
 /* unter jeder Überschrift eine kleine Welle in Pink */
-h2::after { content: ""; display: block; width: 72px; height: 10px; margin: .32em 0 .5em; background: var(--rani); -webkit-mask: var(--wellenstrich) center / contain no-repeat; mask: var(--wellenstrich) center / contain no-repeat; }
+h2::after { content: ""; display: block; width: 76px; height: 14px; margin: .32em 0 .5em; background: var(--rani); -webkit-mask: var(--wellenstrich) center / contain no-repeat; mask: var(--wellenstrich) center / contain no-repeat; }
 h3 { font: 700 1.2rem/1.3 var(--lauf); letter-spacing: .005em; }
 .hand { margin: 0 0 1.1rem; font: 600 var(--gr-hand)/1.4 var(--lauf); color: var(--rani-tief); }
 .wrap { width: min(1160px, 100% - 2 * var(--rand)); margin-inline: auto; }
@@ -192,17 +192,15 @@ h3 { font: 700 1.2rem/1.3 var(--lauf); letter-spacing: .005em; }
 .kulisse.ist-da { z-index: 2; opacity: 1; transition: opacity .8s var(--aus); }
 .kulisse.kommt { opacity: 0; transition: none; }
 /* der Name groß Ton in Ton, hochkant am rechten Rand angeschnitten wie auf einem Plakat (erst ab Desktop) */
-.kulisse-name { display: none; position: absolute; right: -.18em; top: 50%; transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl; font: 400 clamp(6rem, 3rem + 7vw, 11rem)/1 var(--display); white-space: nowrap; color: rgba(0, 0, 0, .14); pointer-events: none; }
+.kulisse-name { display: none; position: absolute; right: -.18em; top: 50%; transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl; font: 400 clamp(6rem, 3rem + 7vw, 11rem)/1 var(--display); white-space: nowrap; color: rgba(0, 0, 0, .1); pointer-events: none; }
 /* Gang: Teller und Schale kommen zusammen herein, wie serviert */
 .gang { position: absolute; inset: 0; display: none; }
 .gang.ist-da { display: block; animation: servieren .9s var(--aus); }
 @keyframes servieren { from { opacity: 0; transform: translateX(26%) rotate(28deg); } }
-.gang-teller { position: absolute; inset: 9%; border-radius: 50%; background: var(--t); box-shadow: 0 30px 50px -24px rgba(20, 0, 10, .6), inset 0 0 0 10px rgba(255, 255, 255, .14); }
-.gang--1 { --t: var(--teller-1); } .gang--2 { --t: var(--teller-2); } .gang--3 { --t: var(--teller-3); } .gang--4 { --t: var(--teller-4); }
-.grosse-schale { position: absolute; left: 50%; top: 52%; width: 96%; max-width: none; filter: drop-shadow(0 24px 22px rgba(20, 0, 10, .45)); transform: translate(-50%, -50%); }
-/* Ein Jali-Fenster als Schein hinter dem Teller: ein Muster, gezielt gesetzt */
-.rosette { position: absolute; inset: 0; width: 100%; max-width: none; height: 100%; overflow: visible; color: var(--auf-buehne); opacity: .22; }
-.rosette-linien { fill: none; stroke: currentColor; stroke-width: .9; }
+.grosse-schale { position: absolute; left: 50%; top: 52%; width: 118%; max-width: none; filter: drop-shadow(0 24px 22px rgba(20, 0, 10, .45)); transform: translate(-50%, -50%); }
+/* Ein Lotus-Mandala hinter der Schale: ein Muster, gezielt gesetzt */
+.rosette { position: absolute; inset: 0; width: 100%; max-width: none; height: 100%; overflow: visible; color: var(--auf-buehne); opacity: .3; }
+.rosette-linien { fill: none; stroke: currentColor; stroke-width: .8; }
 .rosette-punkte { fill: currentColor; }
 .dampf { position: absolute; z-index: 4; left: 50%; top: -4%; width: 64px; transform: translateX(-50%); fill: none; stroke: var(--dampf); stroke-width: 3; stroke-linecap: round; }
 .preis-sticker { position: absolute; z-index: 5; right: 0; bottom: 8%; display: grid; place-items: center; width: 82px; aspect-ratio: 1; padding-top: 6px; border-radius: 50%; background: var(--haldi); color: var(--tinte); font: 400 1.05rem/1 var(--display); font-variant-numeric: lining-nums tabular-nums; box-shadow: 0 12px 20px -10px rgba(40, 0, 20, .6); transform: rotate(-12deg); }
@@ -226,11 +224,6 @@ h3 { font: 700 1.2rem/1.3 var(--lauf); letter-spacing: .005em; }
 .wahl { position: relative; width: 54px; height: 54px; padding: 0; border: 3px solid transparent; border-radius: 50%; background: var(--auf-buehne-flaeche); cursor: pointer; transition: transform .3s var(--aus); }
 .wahl img { width: 118%; max-width: none; height: 118%; margin: -9%; }
 .wahl[aria-pressed="true"] { border-color: var(--haldi); transform: scale(1.12); }
-.wahl-pause { display: grid; place-items: center; width: 40px; height: 40px; margin-left: 4px; padding: 0; border: 1.5px solid var(--auf-buehne-leise); border-radius: 50%; background: none; color: var(--auf-buehne); cursor: pointer; }
-.wahl-pause svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
-.wahl-pause .zeichen-weiter { display: none; fill: currentColor; stroke: none; }
-.wahl-pause[aria-pressed="true"] .zeichen-pause { display: none; }
-.wahl-pause[aria-pressed="true"] .zeichen-weiter { display: block; }
 
 .handeln { order: 6; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .handeln .knopf { width: 100%; padding-inline: 12px; }
@@ -683,7 +676,7 @@ body { font-weight: 400; }
 .karte-kopf { position: relative; width: 100%; max-width: none; margin: 0 0 var(--welle); padding: 40px max(var(--rand), (100% - 1160px) / 2) 30px; background: var(--buehne); color: var(--auf-buehne); }
 .karte-kopf::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: var(--welle); background: radial-gradient(circle at 50% 0, var(--buehne) calc(var(--welle) - .5px), transparent var(--welle)) 0 0 / calc(var(--welle) * 2) var(--welle) repeat-x; }
 .karte-kopf h1 { font: 400 clamp(2.6rem, 1.8rem + 4vw, 4.8rem)/1.05 var(--display); color: var(--auf-buehne); margin: 0; }
-.karte-kopf h1::after { background: var(--haldi); -webkit-mask: var(--wellenstrich) center / contain no-repeat; mask: var(--wellenstrich) center / contain no-repeat; width: 72px; height: 10px; margin: .3em 0 .5em; }
+.karte-kopf h1::after { background: var(--haldi); -webkit-mask: var(--wellenstrich) center / contain no-repeat; mask: var(--wellenstrich) center / contain no-repeat; width: 76px; height: 14px; margin: .3em 0 .5em; }
 .karte-kopf .hand { color: var(--auf-buehne); }
 .karte-kopf p:not(.hand), .karte-kopf b { color: var(--auf-buehne); }
 .gruppe summary h2 { font: 400 clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem)/1.15 var(--display); letter-spacing: 0; }
@@ -742,3 +735,13 @@ body { font-weight: 400; }
 /* Wischen über den Teller: Bilder lassen sich nicht ziehen, die Geste gehört dem Teller */
 .teller { -webkit-user-select: none; user-select: none; cursor: grab; }
 .teller > *, .teller img { pointer-events: none; -webkit-user-drag: none; }
+
+/* Stimmen: weiße Zitatkarten mit großem pinkem Anführungszeichen, Note groß in Pink */
+.stimmen .hand { color: var(--rani-tief); }
+.note-zahl { color: var(--rani-tief); }
+.sterne svg { width: 26px; height: 26px; }
+.zitate { margin-bottom: 0; }
+.zitate li { position: relative; padding: 46px 26px 24px; }
+.zitate li::before { content: "\201C"; position: absolute; left: 20px; top: -6px; font: 400 4.6rem/1 var(--display); color: var(--rani); }
+.zitate blockquote { font: 500 1.18rem/1.55 var(--lauf); }
+.knopf--band { border-color: var(--rani-tief); color: var(--rani-tief); }
