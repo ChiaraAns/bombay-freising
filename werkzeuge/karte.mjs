@@ -1,7 +1,7 @@
 // Schreibt die Speisekarte aus daten/speisekarte.json in die Seiten.
 // Aufruf: node werkzeuge/karte.mjs   (der Deploy-Workflow ruft es auch auf)
 // Bricht ab, wenn ein Posten nicht sauber zugeordnet ist.
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
@@ -93,15 +93,21 @@ const beliebtHtml = `      <ol class="beliebt-liste">\n` + beliebt.map((p) =>
 
 function einsetzen(datei, marke, inhalt) {
   const pfad = join(wurzel, datei);
+  if (!existsSync(pfad)) return;
   const alt = readFileSync(pfad, 'utf8');
   const re = new RegExp(`(<!-- ${marke}:anfang -->)[\\s\\S]*?(\\s*<!-- ${marke}:ende -->)`);
   if (!re.test(alt)) { console.error(`Marke ${marke} fehlt in ${datei}`); process.exit(1); }
   writeFileSync(pfad, alt.replace(re, `$1\n${inhalt}$2`));
 }
 
-einsetzen('speisekarte.html', 'karte', karte);
-einsetzen('speisekarte.html', 'sprung', sprung);
-einsetzen('index.html', 'beliebt', beliebtHtml);
+// Die Hauptseite und die Entwurfsfassung 2 (fassung-2/) bekommen dieselbe Karte;
+// fassung-1/ ist eingefroren und wird nicht angefasst.
+const FASSUNGEN = ['', 'fassung-2/'];
+for (const f of FASSUNGEN) {
+  einsetzen(f + 'speisekarte.html', 'karte', karte);
+  einsetzen(f + 'speisekarte.html', 'sprung', sprung);
+  einsetzen(f + 'index.html', 'beliebt', beliebtHtml);
+}
 
 const alleposten = new Map(daten.gruppen.flatMap((g) => g.posten.filter((p) => p.nr != null).map((p) => [p.nr, p])));
 const schalenHtml = `      <ul class="schalen-liste">\n` + SCHALEN.map(([nr, bild]) => {
@@ -113,5 +119,17 @@ const schalenHtml = `      <ul class="schalen-liste">\n` + SCHALEN.map(([nr, bil
     `<span class="schale-dazu"><svg aria-hidden="true"><use href="#i-plus"/></svg>Auf den Zettel</span></a></li>`;
 }).join('\n') + `\n      </ul>`;
 einsetzen('index.html', 'schalen', schalenHtml);
+
+// Fassung 2: dieselben Schalen als gedeckter Tisch auf der Bühne
+const tischHtml = SCHALEN.map(([nr, bild], i) => {
+  const p = alleposten.get(nr);
+  return `      <a class="gericht gericht--${i + 1}" href="speisekarte.html?dazu=${nr}" aria-label="${esc(p.name)}, ${p.preis} Euro: auf den Bestellzettel legen">` +
+    `<img src="img/schale-${bild}-640.webp" srcset="img/schale-${bild}-640.webp 640w, img/schale-${bild}-900.webp 900w" sizes="(min-width: 900px) 360px, 60vw" width="640" height="640" alt="">` +
+    `<span class="gericht-schild" aria-hidden="true"><span class="gericht-name">${esc(p.name)}</span><span class="gericht-preis">${p.preis} €</span><svg><use href="#i-plus"/></svg></span></a>`;
+}).join('\n');
+if (existsSync(join(wurzel, 'fassung-2/index.html'))) {
+  const v2 = readFileSync(join(wurzel, 'fassung-2/index.html'), 'utf8');
+  if (v2.includes('<!-- tisch:anfang -->')) einsetzen('fassung-2/index.html', 'tisch', tischHtml);
+}
 const alle = daten.gruppen.reduce((s, g) => s + g.posten.length, 0);
 console.log(`Speisekarte geschrieben: ${daten.gruppen.length} Gruppen, ${alle} Posten, ${beliebt.length} beliebt.`);
