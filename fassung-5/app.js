@@ -137,27 +137,30 @@
     }, { passive: true });
   }
 
-  /* ---------- Bühne: Gerichte auf dem Farbteller wechseln ---------- */
+  /* ---------- Bühne: Gerichte wechseln; Kulisse, Gang, Name und Merkmale ziehen mit ---------- */
   var wahlen = Array.prototype.slice.call(document.querySelectorAll('.wahl'));
   if (wahlen.length) {
-    var farben = document.querySelectorAll('.farbe'), schalen = document.querySelectorAll('.grosse-schale');
+    var kulissen = document.querySelectorAll('.kulisse'), gaenge = document.querySelectorAll('.gang');
     var name = document.querySelector('[data-lust-name]'), text = document.querySelector('[data-lust-text]');
     var preis = document.querySelector('[data-lust-preis]'), dazu = document.querySelector('[data-lust-dazu]');
-    var sticker = document.querySelector('[data-sticker]'), pause = document.querySelector('[data-pause]');
-    var lustBox = document.querySelector('[data-lust]');
+    var merkmale = document.querySelector('[data-lust-merkmale]'), sticker = document.querySelector('[data-sticker]');
+    var pause = document.querySelector('[data-pause]'), lustBox = document.querySelector('[data-lust]');
     var aktiv = 0, takt = null, angehalten = matchMedia('(prefers-reduced-motion: reduce)').matches;
     var zeige = function (i, vomGast) {
+      i = (i + wahlen.length) % wahlen.length;
       if (i === aktiv) return;
       var alt = aktiv; aktiv = i;
-      // Farbe: die neue blendet über der alten ein, danach geht die alte
-      farben[alt].classList.remove('ist-da'); farben[alt].classList.add('war-da');
-      farben[i].classList.add('kommt'); void farben[i].offsetWidth; farben[i].classList.remove('kommt'); farben[i].classList.add('ist-da');
-      setTimeout(function () { if (aktiv !== alt) farben[alt].classList.remove('war-da'); }, 950);
-      schalen[alt].classList.remove('ist-da'); void schalen[i].offsetWidth; schalen[i].classList.add('ist-da');
+      // Kulisse: die neue blendet über der alten ein, danach geht die alte
+      kulissen[alt].classList.remove('ist-da'); kulissen[alt].classList.add('war-da');
+      kulissen[i].classList.add('kommt'); void kulissen[i].offsetWidth; kulissen[i].classList.remove('kommt'); kulissen[i].classList.add('ist-da');
+      setTimeout(function () { if (aktiv !== alt) kulissen[alt].classList.remove('war-da'); }, 850);
+      // Gang: Teller und Schale werden hereingeschoben, wie serviert
+      gaenge[alt].classList.remove('ist-da'); void gaenge[i].offsetWidth; gaenge[i].classList.add('ist-da');
       var w = wahlen[i];
-      name.className = 'lust-name lust-farbe--' + (i + 1);
       name.firstElementChild.textContent = w.dataset.name;
-      void name.offsetWidth; name.classList.add('rein');
+      name.classList.remove('rein'); void name.offsetWidth; name.classList.add('rein');
+      merkmale.innerHTML = '';
+      w.dataset.merkmale.split('|').forEach(function (m) { var el = document.createElement('span'); el.textContent = m; merkmale.appendChild(el); });
       text.textContent = w.dataset.text; preis.textContent = w.dataset.preis; sticker.textContent = w.dataset.preis;
       dazu.href = 'speisekarte.html?dazu=' + w.dataset.nr;
       wahlen.forEach(function (x, k) { x.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
@@ -166,14 +169,50 @@
     var halt = function () { clearInterval(takt); takt = null; angehalten = true; pause.setAttribute('aria-pressed', 'true'); pause.setAttribute('aria-label', 'Wechsel fortsetzen'); };
     var los = function () {
       angehalten = false; pause.setAttribute('aria-pressed', 'false'); pause.setAttribute('aria-label', 'Wechsel anhalten');
-      clearInterval(takt); takt = setInterval(function () { if (!document.hidden) zeige((aktiv + 1) % wahlen.length); }, 4800);
+      clearInterval(takt); takt = setInterval(function () { if (!document.hidden) zeige(aktiv + 1); }, 5200);
     };
     wahlen.forEach(function (w, i) { w.addEventListener('click', function () { halt(); zeige(i, true); }); });
     pause.addEventListener('click', function () { if (angehalten) los(); else halt(); });
+    // Pfeiltasten in der Reihe der kleinen Schalen
+    document.querySelector('.gerichtwahl').addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      e.preventDefault(); halt(); zeige(aktiv + (e.key === 'ArrowRight' ? 1 : -1), true); wahlen[aktiv].focus();
+    });
+    // Wischen über den Teller
+    var teller = document.querySelector('.teller'), startX = null;
+    teller.addEventListener('pointerdown', function (e) { startX = e.clientX; });
+    teller.addEventListener('pointerup', function (e) {
+      if (startX === null) return;
+      var dx = e.clientX - startX; startX = null;
+      if (Math.abs(dx) > 40) { halt(); zeige(aktiv + (dx < 0 ? 1 : -1), true); }
+    });
+    teller.style.touchAction = 'pan-y';
     // Wechselt von selbst, solange die Bühne zu sehen ist; mit „Anhalten“ und bei reduzierter Bewegung nicht
     if (!angehalten) los(); else halt();
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (e) { if (!e[0].isIntersecting && takt) { clearInterval(takt); takt = null; } else if (e[0].isIntersecting && !angehalten && !takt) los(); }).observe(document.querySelector('.buehne'));
+    }
+  }
+
+  /* ---------- Beliebt: Plus zum Bestellen, Filter „Vegetarisch“ ---------- */
+  var tafel = document.querySelector('.beliebt-liste');
+  if (tafel) {
+    tafel.querySelectorAll('li[data-nr]').forEach(function (li) {
+      var a = document.createElement('a');
+      a.className = 'tafel-dazu'; a.href = 'speisekarte.html?dazu=' + li.dataset.nr;
+      a.setAttribute('aria-label', li.querySelector('.name').textContent + ' auf den Bestellzettel');
+      a.innerHTML = '<svg aria-hidden="true"><use href="#i-plus"/></svg>';
+      li.appendChild(a);
+    });
+    var filter = document.querySelector('[data-tafel-filter]');
+    if (filter) {
+      filter.hidden = false;
+      filter.addEventListener('click', function (e) {
+        var knopf = e.target.closest('button'); if (!knopf) return;
+        filter.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', b === knopf ? 'true' : 'false'); });
+        var nurVeg = knopf.dataset.filterWert === 'v';
+        tafel.querySelectorAll('li').forEach(function (li) { li.hidden = nurVeg && !li.hasAttribute('data-v'); });
+      });
     }
   }
 

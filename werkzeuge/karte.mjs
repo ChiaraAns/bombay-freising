@@ -88,7 +88,7 @@ const sprung = daten.gruppen.map((g) => `        <a href="#${g.id}">${esc(g.name
 const beliebt = daten.gruppen.flatMap((g) => g.posten.filter((p) => (p.kennzeichen || '').includes('t')));
 if (!beliebt.length) { console.error('Keine beliebten Gerichte (Kennzeichen t) gefunden.'); process.exit(1); }
 const beliebtHtml = `      <ol class="beliebt-liste">\n` + beliebt.map((p) =>
-  `        <li><span class="name">${esc(p.name)}</span><span class="preis">${p.preis} €</span><span class="text">${esc(p.beschreibung)}</span></li>`
+  `        <li data-nr="${p.nr}"${(p.kennzeichen || '').includes('v') ? ' data-v' : ''}><span class="name">${esc(p.name)}</span><span class="preis">${p.preis} €</span><span class="text">${esc(p.beschreibung)}</span></li>`
 ).join('\n') + `\n      </ol>`;
 
 function einsetzen(datei, marke, inhalt) {
@@ -144,18 +144,31 @@ for (const f of ['fassung-2/', 'fassung-3/']) {
 const F4 = 'fassung-5/index.html';
 if (existsSync(join(wurzel, F4)) && readFileSync(join(wurzel, F4), 'utf8').includes('<!-- schau:anfang -->')) {
   const gerichte = SCHALEN.map(([nr, bild]) => ({ nr, bild, p: alleposten.get(nr) }));
+  // je Gericht ein Gang: Teller und Schale zusammen, damit sie als ein Ding hereinkommen
   const schau = gerichte.map((g, i) =>
-    `        <span class="farbe farbe--${i + 1}${i ? '' : ' ist-da'}"></span>`).join('\n') + '\n' +
-    gerichte.map((g, i) =>
-    `        <img class="grosse-schale${i ? '' : ' ist-da'}" src="img/schale-${g.bild}-640.webp" srcset="img/schale-${g.bild}-640.webp 640w, img/schale-${g.bild}-900.webp 900w" sizes="(min-width: 900px) 560px, 84vw" width="640" height="640" alt=""${i ? '' : ' fetchpriority="high"'}>`).join('\n');
+    `        <div class="gang gang--${i + 1}${i ? '' : ' ist-da'}"><span class="gang-teller"></span>` +
+    `<img class="grosse-schale" src="img/schale-${g.bild}-640.webp" srcset="img/schale-${g.bild}-640.webp 640w, img/schale-${g.bild}-900.webp 900w" sizes="(min-width: 900px) 560px, 84vw" width="640" height="640" alt=""${i ? '' : ' fetchpriority="high"'}></div>`).join('\n');
+  // je Gericht eine Kulisse: Bühnenfarbe mit dem Namen groß Ton in Ton
+  const kulisse = gerichte.map((g, i) =>
+    `      <div class="kulisse kulisse--${i + 1}${i ? '' : ' ist-da'}"><span class="kulisse-name">${esc(g.p.name)}</span></div>`).join('\n');
+  const merkmale = (p) => {
+    const k = p.kennzeichen || '', m = [];
+    if (k.includes('t')) m.push('Empfohlen vom Haus');
+    if (k.includes('v')) m.push('vegetarisch');
+    if (k.includes('n')) m.push('auf Wunsch vegan');
+    if (!m.length) m.push(p.beschreibung.split(/[ ,]/)[0]);
+    return m.join('|');
+  };
   const g0 = gerichte[0];
   const lust = `      <p class="hand lust-zeile">Heute Lust auf</p>\n` +
     `      <p class="lust-name lust-farbe--1" data-lust-name><span>${esc(g0.p.name)}</span></p>\n` +
+    `      <p class="lust-merkmale" data-lust-merkmale>${merkmale(g0.p).split('|').map((m) => `<span>${esc(m)}</span>`).join('')}</p>\n` +
     `      <p class="lust-text"><span data-lust-text>${esc(g0.p.beschreibung)}</span> <b data-lust-preis>${g0.p.preis} €</b></p>\n` +
     `      <a class="lust-dazu" href="speisekarte.html?dazu=${g0.nr}" data-lust-dazu><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Auf den Zettel</span></a>`;
   const wahl = gerichte.map((g, i) =>
-    `        <button class="wahl wahl--${i + 1}" type="button" aria-pressed="${i ? 'false' : 'true'}" aria-label="${esc(g.p.name)} zeigen" data-name="${esc(g.p.name)}" data-text="${esc(g.p.beschreibung)}" data-preis="${g.p.preis} €" data-nr="${g.nr}"><img src="img/schale-${g.bild}-640.webp" width="640" height="640" alt="" loading="lazy"></button>`).join('\n');
+    `        <button class="wahl wahl--${i + 1}" type="button" aria-pressed="${i ? 'false' : 'true'}" aria-label="${esc(g.p.name)} zeigen" data-name="${esc(g.p.name)}" data-text="${esc(g.p.beschreibung)}" data-preis="${g.p.preis} €" data-nr="${g.nr}" data-merkmale="${esc(merkmale(g.p))}"><img src="img/schale-${g.bild}-640.webp" width="640" height="640" alt="" loading="lazy"></button>`).join('\n');
   einsetzen(F4, 'schau', schau);
+  einsetzen(F4, 'kulisse', kulisse);
   einsetzen(F4, 'lust', lust);
   einsetzen(F4, 'wahl', wahl);
 }

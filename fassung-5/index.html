@@ -60,6 +60,14 @@
 
 <main id="inhalt">
   <section class="buehne" aria-labelledby="titel">
+    <div class="kulissen" aria-hidden="true">
+      <!-- kulisse:anfang -->
+      <div class="kulisse kulisse--1 ist-da"><span class="kulisse-name">Butter Chicken</span></div>
+      <div class="kulisse kulisse--2"><span class="kulisse-name">Karahi Paneer</span></div>
+      <div class="kulisse kulisse--3"><span class="kulisse-name">Dal Makhni</span></div>
+      <div class="kulisse kulisse--4"><span class="kulisse-name">Jheenga Curry</span></div>
+      <!-- kulisse:ende -->
+    </div>
     <div class="buehne-innen">
       <div class="buehne-text">
         <h1 id="titel" class="schriftzug"><span class="name">Bombay</span><span class="zusatz">Indische Küche in der Altstadt Freising</span></h1>
@@ -69,6 +77,7 @@
         <!-- lust:anfang -->
       <p class="hand lust-zeile">Heute Lust auf</p>
       <p class="lust-name lust-farbe--1" data-lust-name><span>Butter Chicken</span></p>
+      <p class="lust-merkmale" data-lust-merkmale><span>Empfohlen vom Haus</span></p>
       <p class="lust-text"><span data-lust-text>Zartes Hühnerfleisch in Butter-Tomaten-Soße</span> <b data-lust-preis>14,90 €</b></p>
       <a class="lust-dazu" href="speisekarte.html?dazu=57" data-lust-dazu><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Auf den Zettel</span></a>
         <!-- lust:ende -->
@@ -76,10 +85,10 @@
 
         <div class="gerichtwahl" role="group" aria-label="Gericht zeigen">
         <!-- wahl:anfang -->
-        <button class="wahl wahl--1" type="button" aria-pressed="true" aria-label="Butter Chicken zeigen" data-name="Butter Chicken" data-text="Zartes Hühnerfleisch in Butter-Tomaten-Soße" data-preis="14,90 €" data-nr="57"><img src="img/schale-butter-chicken-640.webp" width="640" height="640" alt="" loading="lazy"></button>
-        <button class="wahl wahl--2" type="button" aria-pressed="false" aria-label="Karahi Paneer zeigen" data-name="Karahi Paneer" data-text="Frischer, gebratener, hausgemachter Käse in Currysoße, in der Pfanne serviert" data-preis="12,90 €" data-nr="109"><img src="img/schale-karahi-paneer-640.webp" width="640" height="640" alt="" loading="lazy"></button>
-        <button class="wahl wahl--3" type="button" aria-pressed="false" aria-label="Dal Makhni zeigen" data-name="Dal Makhni" data-text="Indisches Nationalgericht mit gelben Linsen und Butter nach ayurvedischer Art, auf Wunsch vegan zubereitet" data-preis="12,90 €" data-nr="108"><img src="img/schale-dal-makhni-640.webp" width="640" height="640" alt="" loading="lazy"></button>
-        <button class="wahl wahl--4" type="button" aria-pressed="false" aria-label="Jheenga Curry zeigen" data-name="Jheenga Curry" data-text="Riesengarnelen ohne Schale in Currysoße mit feinen Gewürzen" data-preis="16,90 €" data-nr="92"><img src="img/schale-jheenga-curry-640.webp" width="640" height="640" alt="" loading="lazy"></button>
+        <button class="wahl wahl--1" type="button" aria-pressed="true" aria-label="Butter Chicken zeigen" data-name="Butter Chicken" data-text="Zartes Hühnerfleisch in Butter-Tomaten-Soße" data-preis="14,90 €" data-nr="57" data-merkmale="Empfohlen vom Haus"><img src="img/schale-butter-chicken-640.webp" width="640" height="640" alt="" loading="lazy"></button>
+        <button class="wahl wahl--2" type="button" aria-pressed="false" aria-label="Karahi Paneer zeigen" data-name="Karahi Paneer" data-text="Frischer, gebratener, hausgemachter Käse in Currysoße, in der Pfanne serviert" data-preis="12,90 €" data-nr="109" data-merkmale="vegetarisch"><img src="img/schale-karahi-paneer-640.webp" width="640" height="640" alt="" loading="lazy"></button>
+        <button class="wahl wahl--3" type="button" aria-pressed="false" aria-label="Dal Makhni zeigen" data-name="Dal Makhni" data-text="Indisches Nationalgericht mit gelben Linsen und Butter nach ayurvedischer Art, auf Wunsch vegan zubereitet" data-preis="12,90 €" data-nr="108" data-merkmale="vegetarisch|auf Wunsch vegan"><img src="img/schale-dal-makhni-640.webp" width="640" height="640" alt="" loading="lazy"></button>
+        <button class="wahl wahl--4" type="button" aria-pressed="false" aria-label="Jheenga Curry zeigen" data-name="Jheenga Curry" data-text="Riesengarnelen ohne Schale in Currysoße mit feinen Gewürzen" data-preis="16,90 €" data-nr="92" data-merkmale="Riesengarnelen"><img src="img/schale-jheenga-curry-640.webp" width="640" height="640" alt="" loading="lazy"></button>
         <!-- wahl:ende -->
           <button class="wahl-pause" type="button" aria-pressed="false" aria-label="Wechsel anhalten" data-pause><svg aria-hidden="true" viewBox="0 0 24 24"><path class="zeichen-pause" d="M9 6v12M15 6v12"/><path class="zeichen-weiter" d="M8 5.5v13l11-6.5z"/></svg></button>
         </div>
@@ -97,16 +106,13 @@
       </div>
 
       <div class="teller" aria-hidden="true">
+        <svg class="rosette" viewBox="-100 -100 200 200" aria-hidden="true" focusable="false"><g class="rosette-linien"><circle r="98"/><circle r="92"/><path d="M0 -92Q3.7 -69.9 11.3 -56.9Q23.4 -66 35.2 -85M35.2 -85Q30.1 -63.2 32.2 -48.2Q46.8 -52 65.1 -65.1M65.1 -65.1Q52 -46.8 48.2 -32.2Q63.2 -30.1 85 -35.2M85 -35.2Q66 -23.4 56.9 -11.3Q69.9 -3.7 92 0M92 0Q69.9 3.7 56.9 11.3Q66 23.4 85 35.2M85 35.2Q63.2 30.1 48.2 32.2Q52 46.8 65.1 65.1M65.1 65.1Q46.8 52 32.2 48.2Q30.1 63.2 35.2 85M35.2 85Q23.4 66 11.3 56.9Q3.7 69.9 0 92M0 92Q-3.7 69.9 -11.3 56.9Q-23.4 66 -35.2 85M-35.2 85Q-30.1 63.2 -32.2 48.2Q-46.8 52 -65.1 65.1M-65.1 65.1Q-52 46.8 -48.2 32.2Q-63.2 30.1 -85 35.2M-85 35.2Q-66 23.4 -56.9 11.3Q-69.9 3.7 -92 0M-92 0Q-69.9 -3.7 -56.9 -11.3Q-66 -23.4 -85 -35.2M-85 -35.2Q-63.2 -30.1 -48.2 -32.2Q-52 -46.8 -65.1 -65.1M-65.1 -65.1Q-46.8 -52 -32.2 -48.2Q-30.1 -63.2 -35.2 -85M-35.2 -85Q-23.4 -66 -11.3 -56.9Q-3.7 -69.9 -0 -92"/></g><g class="rosette-punkte"><circle cx="0" cy="-95" r="1.3"/><circle cx="18.5" cy="-93.2" r="1.3"/><circle cx="36.4" cy="-87.8" r="1.3"/><circle cx="52.8" cy="-79" r="1.3"/><circle cx="67.2" cy="-67.2" r="1.3"/><circle cx="79" cy="-52.8" r="1.3"/><circle cx="87.8" cy="-36.4" r="1.3"/><circle cx="93.2" cy="-18.5" r="1.3"/><circle cx="95" cy="0" r="1.3"/><circle cx="93.2" cy="18.5" r="1.3"/><circle cx="87.8" cy="36.4" r="1.3"/><circle cx="79" cy="52.8" r="1.3"/><circle cx="67.2" cy="67.2" r="1.3"/><circle cx="52.8" cy="79" r="1.3"/><circle cx="36.4" cy="87.8" r="1.3"/><circle cx="18.5" cy="93.2" r="1.3"/><circle cx="0" cy="95" r="1.3"/><circle cx="-18.5" cy="93.2" r="1.3"/><circle cx="-36.4" cy="87.8" r="1.3"/><circle cx="-52.8" cy="79" r="1.3"/><circle cx="-67.2" cy="67.2" r="1.3"/><circle cx="-79" cy="52.8" r="1.3"/><circle cx="-87.8" cy="36.4" r="1.3"/><circle cx="-93.2" cy="18.5" r="1.3"/><circle cx="-95" cy="0" r="1.3"/><circle cx="-93.2" cy="-18.5" r="1.3"/><circle cx="-87.8" cy="-36.4" r="1.3"/><circle cx="-79" cy="-52.8" r="1.3"/><circle cx="-67.2" cy="-67.2" r="1.3"/><circle cx="-52.8" cy="-79" r="1.3"/><circle cx="-36.4" cy="-87.8" r="1.3"/><circle cx="-18.5" cy="-93.2" r="1.3"/></g></svg>
         <div class="schau">
         <!-- schau:anfang -->
-        <span class="farbe farbe--1 ist-da"></span>
-        <span class="farbe farbe--2"></span>
-        <span class="farbe farbe--3"></span>
-        <span class="farbe farbe--4"></span>
-        <img class="grosse-schale ist-da" src="img/schale-butter-chicken-640.webp" srcset="img/schale-butter-chicken-640.webp 640w, img/schale-butter-chicken-900.webp 900w" sizes="(min-width: 900px) 560px, 84vw" width="640" height="640" alt="" fetchpriority="high">
-        <img class="grosse-schale" src="img/schale-karahi-paneer-640.webp" srcset="img/schale-karahi-paneer-640.webp 640w, img/schale-karahi-paneer-900.webp 900w" sizes="(min-width: 900px) 560px, 84vw" width="640" height="640" alt="">
-        <img class="grosse-schale" src="img/schale-dal-makhni-640.webp" srcset="img/schale-dal-makhni-640.webp 640w, img/schale-dal-makhni-900.webp 900w" sizes="(min-width: 900px) 560px, 84vw" width="640" height="640" alt="">
-        <img class="grosse-schale" src="img/schale-jheenga-curry-640.webp" srcset="img/schale-jheenga-curry-640.webp 640w, img/schale-jheenga-curry-900.webp 900w" sizes="(min-width: 900px) 560px, 84vw" width="640" height="640" alt="">
+        <div class="gang gang--1 ist-da"><span class="gang-teller"></span><img class="grosse-schale" src="img/schale-butter-chicken-640.webp" srcset="img/schale-butter-chicken-640.webp 640w, img/schale-butter-chicken-900.webp 900w" sizes="(min-width: 900px) 560px, 84vw" width="640" height="640" alt="" fetchpriority="high"></div>
+        <div class="gang gang--2"><span class="gang-teller"></span><img class="grosse-schale" src="img/schale-karahi-paneer-640.webp" srcset="img/schale-karahi-paneer-640.webp 640w, img/schale-karahi-paneer-900.webp 900w" sizes="(min-width: 900px) 560px, 84vw" width="640" height="640" alt=""></div>
+        <div class="gang gang--3"><span class="gang-teller"></span><img class="grosse-schale" src="img/schale-dal-makhni-640.webp" srcset="img/schale-dal-makhni-640.webp 640w, img/schale-dal-makhni-900.webp 900w" sizes="(min-width: 900px) 560px, 84vw" width="640" height="640" alt=""></div>
+        <div class="gang gang--4"><span class="gang-teller"></span><img class="grosse-schale" src="img/schale-jheenga-curry-640.webp" srcset="img/schale-jheenga-curry-640.webp 640w, img/schale-jheenga-curry-900.webp 900w" sizes="(min-width: 900px) 560px, 84vw" width="640" height="640" alt=""></div>
         <!-- schau:ende -->
         </div>
         <svg class="dampf" viewBox="0 0 120 80" focusable="false"><path d="M30 76c-10-14 10-22 0-38s8-24 2-34"/><path d="M60 72c-9-12 9-20 0-34s7-22 2-32"/><path d="M90 76c-10-14 10-22 0-38s8-24 2-34"/></svg>
@@ -120,18 +126,22 @@
       <h2 id="beliebt-titel">Beliebt</h2>
       <p class="hand">Empfohlen vom Haus.</p>
       <p class="einleitung">Zehn Gerichte, die das Restaurant selbst empfiehlt. Jedes gibt es mild, pikant, scharf oder sehr scharf.</p>
+      <div class="tafel-filter" role="group" aria-label="Beliebte Gerichte filtern" data-tafel-filter hidden>
+        <button type="button" aria-pressed="true" data-filter-wert="alle">Alle zehn</button>
+        <button type="button" aria-pressed="false" data-filter-wert="v">Vegetarisch</button>
+      </div>
       <!-- beliebt:anfang -->
       <ol class="beliebt-liste">
-        <li><span class="name">Chicken Curry</span><span class="preis">14,90 €</span><span class="text">Zartes Hühnerfleisch in Currysoße mit feinen Gewürzen</span></li>
-        <li><span class="name">Butter Chicken</span><span class="preis">14,90 €</span><span class="text">Zartes Hühnerfleisch in Butter-Tomaten-Soße</span></li>
-        <li><span class="name">Chicken Tikka Masala</span><span class="preis">14,90 €</span><span class="text">Zartes Hühnerfleisch in Masalasoße</span></li>
-        <li><span class="name">Shahi Paneer</span><span class="preis">12,90 €</span><span class="text">Hausgemachter Käse, zubereitet in Butter-Tomaten-Sahne-Soße, fein gewürzt</span></li>
-        <li><span class="name">Palak Paneer</span><span class="preis">12,90 €</span><span class="text">Kräftiger Spinat mit hausgemachtem Käse, Ayurvedische Art</span></li>
-        <li><span class="name">Shahi Baingan</span><span class="preis">12,90 €</span><span class="text">Auberginen mit hausgemachtem Käse und Ingwer in Mandelsoße, fein gewürzt</span></li>
-        <li><span class="name">Chana Masala</span><span class="preis">12,90 €</span><span class="text">Kichererbsen in Curry mit frischen Tomaten und Ingwer</span></li>
-        <li><span class="name">Bhindi Masala</span><span class="preis">12,90 €</span><span class="text">Frisches indisches Okra-Gemüse in kräftiger Soße</span></li>
-        <li><span class="name">Paneer Butter Masala</span><span class="preis">12,90 €</span><span class="text">Käse in Masala-Soße</span></li>
-        <li><span class="name">Garlic Naan</span><span class="preis">3,50 €</span><span class="text">Ovales Brot aus Hefeteig mit Knoblauch</span></li>
+        <li data-nr="51"><span class="name">Chicken Curry</span><span class="preis">14,90 €</span><span class="text">Zartes Hühnerfleisch in Currysoße mit feinen Gewürzen</span></li>
+        <li data-nr="57"><span class="name">Butter Chicken</span><span class="preis">14,90 €</span><span class="text">Zartes Hühnerfleisch in Butter-Tomaten-Soße</span></li>
+        <li data-nr="58"><span class="name">Chicken Tikka Masala</span><span class="preis">14,90 €</span><span class="text">Zartes Hühnerfleisch in Masalasoße</span></li>
+        <li data-nr="103" data-v><span class="name">Shahi Paneer</span><span class="preis">12,90 €</span><span class="text">Hausgemachter Käse, zubereitet in Butter-Tomaten-Sahne-Soße, fein gewürzt</span></li>
+        <li data-nr="104" data-v><span class="name">Palak Paneer</span><span class="preis">12,90 €</span><span class="text">Kräftiger Spinat mit hausgemachtem Käse, Ayurvedische Art</span></li>
+        <li data-nr="105" data-v><span class="name">Shahi Baingan</span><span class="preis">12,90 €</span><span class="text">Auberginen mit hausgemachtem Käse und Ingwer in Mandelsoße, fein gewürzt</span></li>
+        <li data-nr="107" data-v><span class="name">Chana Masala</span><span class="preis">12,90 €</span><span class="text">Kichererbsen in Curry mit frischen Tomaten und Ingwer</span></li>
+        <li data-nr="110" data-v><span class="name">Bhindi Masala</span><span class="preis">12,90 €</span><span class="text">Frisches indisches Okra-Gemüse in kräftiger Soße</span></li>
+        <li data-nr="116" data-v><span class="name">Paneer Butter Masala</span><span class="preis">12,90 €</span><span class="text">Käse in Masala-Soße</span></li>
+        <li data-nr="159"><span class="name">Garlic Naan</span><span class="preis">3,50 €</span><span class="text">Ovales Brot aus Hefeteig mit Knoblauch</span></li>
       </ol>
       <!-- beliebt:ende -->
       <a class="mehr" href="speisekarte.html">Ganze Speisekarte <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
@@ -139,13 +149,18 @@
 
     <section class="bei-uns" id="bei-uns" aria-labelledby="raum-titel">
       <figure class="raum-bild">
-        <img src="img/04-gastraum-wandbild-900.webp" srcset="img/04-gastraum-wandbild-900.webp 900w, img/04-gastraum-wandbild-1800.webp 1800w" sizes="(min-width: 700px) 680px, 100vw" width="900" height="506" loading="lazy" alt="Der Gastraum: ockerfarbene Wände, ein Wandbild des Taj Mahal, rote Polsterbänke, rote Servietten und Sternlaternen an der Decke">
+        <img src="img/04-gastraum-wandbild-900.webp" srcset="img/04-gastraum-wandbild-900.webp 900w, img/04-gastraum-wandbild-1800.webp 1800w" sizes="100vw" width="900" height="506" loading="lazy" alt="Der Gastraum: ockerfarbene Wände, ein Wandbild des Taj Mahal, rote Polsterbänke, rote Servietten und Sternlaternen an der Decke">
       </figure>
-      <div class="wrap raum-text">
+      <div class="raum-karte">
         <h2 id="raum-titel">Bei uns</h2>
-        <p class="hand">In der Oberen Hauptstraße.</p>
-        <p>Farbige Räume mit dem Taj-Mahal-Wandbild, roten Bänken und Sternlaternen. Dazu eine Terrasse und WLAN.</p>
-        <a class="tel tel--hell" href="tel:+4981614965102"><svg aria-hidden="true"><use href="#i-phone"/></svg><span>Tisch reservieren: <b>08161 4965102</b></span></a>
+        <p class="hand">In der Oberen Hauptstraße 67, mitten in der Altstadt.</p>
+        <p>Farbige Räume mit dem Taj-Mahal-Wandbild, roten Bänken und Sternlaternen.</p>
+        <ul class="raum-merkmale">
+          <li>Taj-Mahal-Wandbild</li>
+          <li>Terrasse</li>
+          <li>WLAN</li>
+        </ul>
+        <a class="knopf knopf--lampe" href="tel:+4981614965102" aria-label="Tisch reservieren: 08161 4965102"><svg aria-hidden="true"><use href="#i-phone"/></svg>Tisch reservieren</a>
       </div>
     </section>
   </div>
