@@ -100,9 +100,9 @@ function einsetzen(datei, marke, inhalt) {
   writeFileSync(pfad, alt.replace(re, `$1\n${inhalt}$2`));
 }
 
-// Die Hauptseite und die Entwurfsfassungen 2 und 3 bekommen dieselbe Karte;
+// Die Hauptseite und die Entwurfsfassungen 2, 3 und 5 bekommen dieselbe Karte;
 // fassung-1/ ist eingefroren und wird nicht angefasst.
-const FASSUNGEN = ['', 'fassung-2/', 'fassung-3/'];
+const FASSUNGEN = ['', 'fassung-2/', 'fassung-3/', 'fassung-5/'];
 for (const f of FASSUNGEN) {
   einsetzen(f + 'speisekarte.html', 'karte', karte);
   einsetzen(f + 'speisekarte.html', 'sprung', sprung);
@@ -139,6 +139,25 @@ const tischHtml = SCHALEN.map(([nr, bild], i) => {
 for (const f of ['fassung-2/', 'fassung-3/']) {
   if (!existsSync(join(wurzel, f + 'index.html'))) continue;
   if (readFileSync(join(wurzel, f + 'index.html'), 'utf8').includes('<!-- tisch:anfang -->')) einsetzen(f + 'index.html', 'tisch', tischHtml);
+}
+// Fassung 5: Bühne mit Farbteller; je Gericht eine Tellerfarbe, eine große Schale, ein Knopf zum Wählen
+const F4 = 'fassung-5/index.html';
+if (existsSync(join(wurzel, F4)) && readFileSync(join(wurzel, F4), 'utf8').includes('<!-- schau:anfang -->')) {
+  const gerichte = SCHALEN.map(([nr, bild]) => ({ nr, bild, p: alleposten.get(nr) }));
+  const schau = gerichte.map((g, i) =>
+    `        <span class="farbe farbe--${i + 1}${i ? '' : ' ist-da'}"></span>`).join('\n') + '\n' +
+    gerichte.map((g, i) =>
+    `        <img class="grosse-schale${i ? '' : ' ist-da'}" src="img/schale-${g.bild}-640.webp" srcset="img/schale-${g.bild}-640.webp 640w, img/schale-${g.bild}-900.webp 900w" sizes="(min-width: 900px) 560px, 84vw" width="640" height="640" alt=""${i ? '' : ' fetchpriority="high"'}>`).join('\n');
+  const g0 = gerichte[0];
+  const lust = `      <p class="hand lust-zeile">Heute Lust auf</p>\n` +
+    `      <p class="lust-name lust-farbe--1" data-lust-name><span>${esc(g0.p.name)}</span></p>\n` +
+    `      <p class="lust-text"><span data-lust-text>${esc(g0.p.beschreibung)}</span> <b data-lust-preis>${g0.p.preis} €</b></p>\n` +
+    `      <a class="lust-dazu" href="speisekarte.html?dazu=${g0.nr}" data-lust-dazu><svg aria-hidden="true"><use href="#i-plus"/></svg><span>Auf den Zettel</span></a>`;
+  const wahl = gerichte.map((g, i) =>
+    `        <button class="wahl wahl--${i + 1}" type="button" aria-pressed="${i ? 'false' : 'true'}" aria-label="${esc(g.p.name)} zeigen" data-name="${esc(g.p.name)}" data-text="${esc(g.p.beschreibung)}" data-preis="${g.p.preis} €" data-nr="${g.nr}"><img src="img/schale-${g.bild}-640.webp" width="640" height="640" alt="" loading="lazy"></button>`).join('\n');
+  einsetzen(F4, 'schau', schau);
+  einsetzen(F4, 'lust', lust);
+  einsetzen(F4, 'wahl', wahl);
 }
 const alle = daten.gruppen.reduce((s, g) => s + g.posten.length, 0);
 console.log(`Speisekarte geschrieben: ${daten.gruppen.length} Gruppen, ${alle} Posten, ${beliebt.length} beliebt.`);

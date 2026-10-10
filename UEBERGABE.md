@@ -10,8 +10,9 @@ Stand 06.10.2026, live auf `main` (PR #1 und #2): https://chiaraans.github.io/bo
 | `fassung-1/` | eingefrorene, eigenständige Kopie vom 07.10.2026 (eigene Bilder und Schriften, `noindex`); wird nicht mehr generiert |
 | `fassung-2/` | Entwurf „Laternenlicht“ (`fassung-2/LIESMICH.md`), eigenständig, `noindex`; `karte.mjs` schreibt Speisekarte, „Beliebt“ und den Tisch mit |
 | `fassung-3/` | Entwurf „Farbe“ auf Basis von Fassung 2 (`fassung-3/LIESMICH.md`), eigenständig, `noindex`; ebenfalls von `karte.mjs` beschrieben |
+| `fassung-5/` | Entwurf „Masala“, ganze Seite neu (`fassung-5/LIESMICH.md`), eigene Schriften Shrikhand und Baloo 2, `noindex`; `karte.mjs` schreibt Karte, „Beliebt“ und die Bühne |
 
-Der Auslieferungs-Workflow kopiert alle `fassung-*`-Ordner mit. Wird Fassung 2 oder 3 gewählt: ihre Dateien in die Wurzel übernehmen, `noindex` dort entfernen, `DESIGN.md` neu schreiben.
+Der Auslieferungs-Workflow kopiert alle `fassung-*`-Ordner mit. Wird eine der Fassungen 2, 3 oder 5 gewählt: ihre Dateien in die Wurzel übernehmen, `noindex` dort entfernen, `DESIGN.md` neu schreiben.
 
 ## Was gebaut wurde
 
