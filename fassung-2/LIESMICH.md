@@ -13,8 +13,19 @@ Wunsch der Betreiberin: mehr Wiedererkennungswert, das gewisse Etwas, ein einlad
 - **Zier unter Überschriften** (`--zier`): Faden, Stern, Faden statt der glatten Linie. Bewertungssterne als Laternensterne.
 - Neue Farben nur aus den Laternen: Licht `--licht`, Glut, Metall, Glassteine. Grund, Schrift, Kupfer, Lampe und Abendband wie in Fassung 1 (`DESIGN.md`).
 
+## Zweite Runde (10.10.2026): verspielter Startbereich
+
+Wunsch: Startseite verspielter und einladender, weißer Grund bleibt, keine neuen Farben; mit den Laternen spielen; alle Schalen gleich groß; „Beliebt“ weniger schlicht.
+
+- **Lichterkette** quer über die Bühne (wie die Lichter im Fenster des Gastraums): Seil mit Lichtpunkten, daran Laternen und Deckensterne (Handy 6, Desktop 9). Hängt beim Laden einmal ein (0,9 s).
+- **Antippen:** Laterne schwingt aus, ihr Lichthof leuchtet auf, Sterne sprühen heraus; Deckensterne drehen sich. Beim Scrollen neigen sich alle gegen die Bewegung und pendeln zurück (`--wind`, app.js). Mit `prefers-reduced-motion` alles aus. Hinweis „Stupsen Sie die Laternen an!“ (Desktop).
+- **Tisch:** vier gleich große Schalen zwei mal zwei, Messingtablett mit eingravierten Punktringen, Schilder am Handy zweizeilig, **handschriftliche Notizen mit Pfeil** aus den Daten (`karte.mjs`: Empfohlen vom Haus / auf Wunsch vegan / vegetarisch / sonst erstes Wort der Beschreibung).
+- **Beliebt als Tafel:** Gerichtnamen in Handschrift, Pünktchen bis zum Preis (Kupferbraun), Stern davor (dreht sich beim Darüberfahren).
+
 ## Geprüft (10.10.2026, lokal)
 
 Detektor `[]` (390 und 1440, alle vier Seiten), Konsole leer, keine Überbreite bei 390/360, Kontrast über der Grenze (Tischtitel auf dem Lichthof zuerst 4,38:1, auf leise Tinte gehoben), Tipp auf eine Schale legt sie auf den Zettel, Tastaturreihenfolge.
 
-Nicht geprüft: echte Handys, Live-Seite (aus der Arbeitsumgebung gesperrt), Bewegung nur als Endzustand gesehen.
+Zweite Runde: Detektor `[]`, keine Überbreite, Konsole leer, Antippen und Scrollwind per Playwright ausgelöst (Klassen gesetzt und wieder entfernt). Kontrast: eine Messung trifft am Handy einen Lichtpunkt neben der Notiz „Empfohlen vom Haus“; die Schrift steht auf hellem Grund (5,98:1).
+
+Nicht geprüft: echte Handys (Tippen mit dem Finger), Live-Seite (aus der Arbeitsumgebung gesperrt), Bewegung nur als Endzustand gesehen.

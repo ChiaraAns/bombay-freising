@@ -120,12 +120,21 @@ const schalenHtml = `      <ul class="schalen-liste">\n` + SCHALEN.map(([nr, bil
 }).join('\n') + `\n      </ul>`;
 einsetzen('index.html', 'schalen', schalenHtml);
 
-// Fassung 2: dieselben Schalen als gedeckter Tisch auf der Bühne
+// Fassung 2: dieselben Schalen als gedeckter Tisch auf der Bühne, mit einer Notiz
+// aus den Daten (Empfehlung des Hauses, vegan/vegetarisch, sonst das erste Wort der Beschreibung)
+const notiz = (p) => {
+  const k = p.kennzeichen || '';
+  if (k.includes('t')) return 'Empfohlen vom Haus';
+  if (k.includes('n')) return 'auf Wunsch vegan';
+  if (k.includes('v')) return 'vegetarisch';
+  return p.beschreibung.split(/[ ,]/)[0];
+};
 const tischHtml = SCHALEN.map(([nr, bild], i) => {
   const p = alleposten.get(nr);
   return `      <a class="gericht gericht--${i + 1}" href="speisekarte.html?dazu=${nr}" aria-label="${esc(p.name)}, ${p.preis} Euro: auf den Bestellzettel legen">` +
-    `<img src="img/schale-${bild}-640.webp" srcset="img/schale-${bild}-640.webp 640w, img/schale-${bild}-900.webp 900w" sizes="(min-width: 900px) 360px, 60vw" width="640" height="640" alt="">` +
-    `<span class="gericht-schild" aria-hidden="true"><span class="gericht-name">${esc(p.name)}</span><span class="gericht-preis">${p.preis} €</span><svg><use href="#i-plus"/></svg></span></a>`;
+    `<img src="img/schale-${bild}-640.webp" srcset="img/schale-${bild}-640.webp 640w, img/schale-${bild}-900.webp 900w" sizes="(min-width: 900px) 300px, 45vw" width="640" height="640" alt="">` +
+    `<span class="gericht-schild" aria-hidden="true"><span class="gericht-name">${esc(p.name)}</span><span class="gericht-preis">${p.preis} €</span><svg><use href="#i-plus"/></svg></span>` +
+    `<span class="gericht-notiz" aria-hidden="true">${esc(notiz(p))}<svg viewBox="0 0 60 40"><path d="M4 6c18 2 34 10 46 28m0 0-1-11m1 11-10-3"/></svg></span></a>`;
 }).join('\n');
 if (existsSync(join(wurzel, 'fassung-2/index.html'))) {
   const v2 = readFileSync(join(wurzel, 'fassung-2/index.html'), 'utf8');

@@ -111,6 +111,31 @@
     ansicht.addEventListener('close', function () { if (ausloeser) ausloeser.focus(); });
   }
 
+  /* ---------- Lichterkette: Laternen antippen, im Scrollwind wiegen ---------- */
+  var girlande = document.querySelector('[data-girlande]');
+  if (girlande) {
+    var still = matchMedia('(prefers-reduced-motion: reduce)');
+    girlande.addEventListener('click', function (e) {
+      var teil = e.target.closest('.anhaenger');
+      if (!teil || still.matches) return;
+      teil.classList.remove('angestossen'); void teil.offsetWidth; teil.classList.add('angestossen');
+    });
+    girlande.addEventListener('animationend', function (e) {
+      if (e.animationName === 'schwingen' || e.animationName === 'drehen') e.target.closest('.anhaenger').classList.remove('angestossen');
+    });
+    // Beim Scrollen neigen sich die Laternen gegen die Bewegung und pendeln zurück
+    var vorher = window.scrollY, ruhe = null;
+    window.addEventListener('scroll', function () {
+      if (still.matches) return;
+      var y = window.scrollY, w = Math.max(-7, Math.min(7, (vorher - y) * .35));
+      vorher = y;
+      if (y > innerHeight) return;
+      girlande.style.setProperty('--wind', w.toFixed(1) + 'deg');
+      clearTimeout(ruhe);
+      ruhe = setTimeout(function () { girlande.style.setProperty('--wind', '0deg'); }, 140);
+    }, { passive: true });
+  }
+
   /* ---------- Essensuhr: bis wann bestellen, damit es zur Wunschzeit schmeckt ---------- */
   var uhr = document.getElementById('uhr');
   if (uhr) {
