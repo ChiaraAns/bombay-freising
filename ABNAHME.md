@@ -6,7 +6,8 @@ Stand 06.10.2026. Bis zur Antwort steht auf der Seite nichts Geratenes; unklare 
 
 - **Fassung 1** (bisher, eingefroren): https://chiaraans.github.io/bombay-freising/fassung-1/
 - **Fassung 2 „Laternenlicht“**: https://chiaraans.github.io/bombay-freising/fassung-2/ — Laternen aus dem Gastraum als Erkennungszeichen, gedeckter Tisch mit vier Schalen als Startbild (Beschreibung in `fassung-2/LIESMICH.md`).
-- **Fassung 3 „Farbe“** (neu): https://chiaraans.github.io/bombay-freising/fassung-3/ — wie Fassung 2, die Startseite mit Rangoli, Ringelblumen und Pink aus dem Logo, „Heute Lust auf …?“, Einblendungen beim Scrollen (`fassung-3/LIESMICH.md`).
+- **Fassung 3 „Farbe“**: https://chiaraans.github.io/bombay-freising/fassung-3/ — wie Fassung 2, die Startseite mit Rangoli, Ringelblumen und Pink aus dem Logo, „Heute Lust auf …?“, Einblendungen beim Scrollen (`fassung-3/LIESMICH.md`).
+- **Fassung 5 „Masala“** (neu, ganze Seite neu gestaltet): https://chiaraans.github.io/bombay-freising/fassung-5/ — Pink aus dem Logo, Kurkuma-Gelb, gebogte Kanten, Plakatschrift Shrikhand; ein Gericht groß auf dem Farbteller, wechselt mit „Heute Lust auf …“ (`fassung-5/LIESMICH.md`).
 - Die Hauptadresse zeigt weiter Fassung 1. **Bitte entscheiden, welche Fassung dorthin soll.** Beide Unterseiten sind für Suchmaschinen gesperrt (`noindex`).
 
 ## Vor dem Livegang nötig
