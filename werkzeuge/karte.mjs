@@ -100,9 +100,9 @@ function einsetzen(datei, marke, inhalt) {
   writeFileSync(pfad, alt.replace(re, `$1\n${inhalt}$2`));
 }
 
-// Die Hauptseite und die Entwurfsfassung 2 (fassung-2/) bekommen dieselbe Karte;
+// Die Hauptseite und die Entwurfsfassungen 2 und 3 bekommen dieselbe Karte;
 // fassung-1/ ist eingefroren und wird nicht angefasst.
-const FASSUNGEN = ['', 'fassung-2/'];
+const FASSUNGEN = ['', 'fassung-2/', 'fassung-3/'];
 for (const f of FASSUNGEN) {
   einsetzen(f + 'speisekarte.html', 'karte', karte);
   einsetzen(f + 'speisekarte.html', 'sprung', sprung);
@@ -134,11 +134,11 @@ const tischHtml = SCHALEN.map(([nr, bild], i) => {
   return `      <a class="gericht gericht--${i + 1}" href="speisekarte.html?dazu=${nr}" aria-label="${esc(p.name)}, ${p.preis} Euro: auf den Bestellzettel legen">` +
     `<img src="img/schale-${bild}-640.webp" srcset="img/schale-${bild}-640.webp 640w, img/schale-${bild}-900.webp 900w" sizes="(min-width: 900px) 300px, 45vw" width="640" height="640" alt="">` +
     `<span class="gericht-schild" aria-hidden="true"><span class="gericht-name">${esc(p.name)}</span><span class="gericht-preis">${p.preis} €</span><svg><use href="#i-plus"/></svg></span>` +
-    `<span class="gericht-notiz" aria-hidden="true">${esc(notiz(p))}<svg viewBox="0 0 60 40"><path d="M4 6c18 2 34 10 46 28m0 0-1-11m1 11-10-3"/></svg></span></a>`;
+    `<span class="gericht-notiz" aria-hidden="true"><span class="notiz-text">${esc(notiz(p))}</span><svg viewBox="0 0 60 40"><path d="M4 6c18 2 34 10 46 28m0 0-1-11m1 11-10-3"/></svg></span></a>`;
 }).join('\n');
-if (existsSync(join(wurzel, 'fassung-2/index.html'))) {
-  const v2 = readFileSync(join(wurzel, 'fassung-2/index.html'), 'utf8');
-  if (v2.includes('<!-- tisch:anfang -->')) einsetzen('fassung-2/index.html', 'tisch', tischHtml);
+for (const f of ['fassung-2/', 'fassung-3/']) {
+  if (!existsSync(join(wurzel, f + 'index.html'))) continue;
+  if (readFileSync(join(wurzel, f + 'index.html'), 'utf8').includes('<!-- tisch:anfang -->')) einsetzen(f + 'index.html', 'tisch', tischHtml);
 }
 const alle = daten.gruppen.reduce((s, g) => s + g.posten.length, 0);
 console.log(`Speisekarte geschrieben: ${daten.gruppen.length} Gruppen, ${alle} Posten, ${beliebt.length} beliebt.`);
